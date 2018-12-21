@@ -5,14 +5,15 @@
     @if (count($errors) > 0)
         <div class="row">
             <div class="col s12">
-                <div class"card red darken-1">
+                <div class="card red darken-1">
                     <div class="card-content white-text">
-                        <span class="card-title"> Erro! </span>
+                        @foreach ($errors->all() as $message )
+                            <li> {{$message}} </li>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-
     @endif
 
     <div class="row">
