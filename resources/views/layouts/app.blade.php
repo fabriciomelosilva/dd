@@ -18,12 +18,12 @@
 
   </head>
   
-  <nav>
+  <nav style="background-color: #26a69a;">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo center">Logo</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             @if(Auth::guard('web')->check())
-                <li><a href="">Edição</a></li>
+                <li><a href="{{ route('edicaoGet') }}">Edição</a></li>
             @endif    
         </ul>
         </div>

@@ -16,11 +16,8 @@
         </div>
 
         <div class='col-sm-16'>
-                <div class="form-group">
-
-                        <p>Data: <input type="text" id="calendario" /></p>
-
-
+            <div class="form-group">
+                    <p>Data: <input type="text" id="calendario" /></p>
                 </div>
             </div>
 

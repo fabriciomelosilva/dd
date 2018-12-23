@@ -16,7 +16,6 @@ class EdicaoController extends Controller
         ],[
             "edicao.required" => "PDF é obrigatório!"
         ]);
-
         
         if ($request->hasFile('edicao')){
             $files = $request->file('edicao');
