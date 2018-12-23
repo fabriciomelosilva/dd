@@ -19,14 +19,10 @@ class uploadEdicao extends Controller
             ]);
 
         if ($request->hasFile('edicao')){
-            //$imagem = $request->file('edicao');
+            $imagem = $request->file('edicao');
             $imagem = $request->edicao;
             
             $imagem_nome = time().$imagem->getClientOriginalName();
-
-            $imagem->move("imagem/", $imagem_nome);
-
-            dd($imagem_nome);
         }
 
     }

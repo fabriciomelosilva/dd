@@ -11,9 +11,21 @@
 |
 */
 
-Route::get("admin","uploadEdicao@uploadView");
-Route::post("admin","uploadEdicao@uploadPost");
+Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+
+    Route::get("edicao","EdicaoController@cadastroEdicaoGet")->name('edicaoGet');
+    Route::post("edicao","EdicaoController@cadastroEdicaoPost")->name('edicaoPost');
+
 });
+
+
+
