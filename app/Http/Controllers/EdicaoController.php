@@ -19,11 +19,22 @@ class EdicaoController extends Controller
         
         if ($request->hasFile('edicao')){
             $files = $request->file('edicao');
-
+            
             foreach ($files as $key => $file) {
                 $file = $request->edicao;
-                $file_name = time().$file[$key]->getClientOriginalName();
-                var_dump($file[$key]);
+                
+                $file[$key]->store('edicao');
+
+                
+                //$file_path = $file[$key]->getPathName();
+
+                //var_dump($file_path);
+
+                //\Storage::disk('local')->put($file_path, 'Contents');
+
+                //$file = $request->edicao;
+                //$file_name = time().$file[$key]->getClientOriginalName();
+                //var_dump($file[$key]);
             }
  
         }    
