@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f4ab341e5daf911a1a0fb40dab4a66d",
+    "content-hash": "91dffb420a739cf7d0e11a731426a8ab",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1225,6 +1225,51 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "rguedes/pdfmerger",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rguedes/PDFMerger.git",
+                "reference": "88747f4741916e035e213556abe4a4eedd5a0711"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rguedes/PDFMerger/zipball/88747f4741916e035e213556abe4a4eedd5a0711",
+                "reference": "88747f4741916e035e213556abe4a4eedd5a0711",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PDFMerger": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Myo Kyaw Htun",
+                    "homepage": "https://github.com/myokyawhtun"
+                },
+                {
+                    "name": "Rolando Guedes",
+                    "homepage": "https://github.com/rguedes"
+                }
+            ],
+            "description": "PDFMerger for PHP",
+            "homepage": "https://github.com/rguedes/PDFMerger",
+            "keywords": [
+                "pdf",
+                "php"
+            ],
+            "time": "2016-04-22T09:30:57+00:00"
         },
         {
             "name": "skydiver/laravel-materialize-css",
@@ -3862,8 +3907,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "skydiver/laravel-materialize-css": 20,
-        "intervention/image": 20
+        "intervention/image": 20,
+        "skydiver/laravel-materialize-css": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

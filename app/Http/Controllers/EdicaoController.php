@@ -17,26 +17,32 @@ class EdicaoController extends Controller
             "edicao.required" => "PDF é obrigatório!"
         ]);
         
+        $pdf = new \PDFMerger;
+        $cont = 0;
+
         if ($request->hasFile('edicao')){
             $files = $request->file('edicao');
-            
+            $cont = 0;
+            $qtdFiles = count($files);
+
             foreach ($files as $key => $file) {
                 $file = $request->edicao;
-                
-                $file[$key]->store('edicao');
+                $caderno = $file[$key];
+                $tempPdf = $caderno->store('pdfs');
+                $cont++;
 
-                
-                //$file_path = $file[$key]->getPathName();
+                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
 
-                //var_dump($file_path);
+                $pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
 
-                //\Storage::disk('local')->put($file_path, 'Contents');
-
-                //$file = $request->edicao;
-                //$file_name = time().$file[$key]->getClientOriginalName();
-                //var_dump($file[$key]);
+                if ($cont == $qtdFiles){
+                    $pdfFinal = uniqid();
+                    $pdf->merge('file', storage_path("app/pdfsmerge/".$pdfFinal.".pdf"));    
+                }
             }
- 
+
+            var_dump($pdf);
+
         }    
     } 
 }
