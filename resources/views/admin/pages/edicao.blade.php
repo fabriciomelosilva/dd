@@ -8,6 +8,12 @@
             {{csrf_field()}}
         </div>
 
+        @if (session()->has('flash.message'))
+        <div class="alert alert-{{ session('flash.class') }}">
+            {{ session('flash.message') }}
+        </div>
+        @endif
+
 
         <div class='col-sm-16'>
             <div class="form-group">
@@ -17,7 +23,7 @@
 
         <div class='col-sm-16'>
             <div class="form-group">
-                    <p>Data: <input type="text" id="calendario" /></p>
+                    <p>Data: <input name="data_edicao" type="text" id="calendario" /></p>
                 </div>
             </div>
 
