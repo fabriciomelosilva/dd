@@ -11,12 +11,12 @@ $(function() {
 
 
 jQuery(document).ready(function() {
-		var campos_max          = 10;   //max de 10 campos
+		var campos_max          = 20;   
 		var x = 2; // campos iniciais
-		$('#novoProd').click (function(e) {
+		$('#novaEdicao').click (function(e) {
 				e.preventDefault();     //prevenir novos clicks
 				if (x < campos_max) {
-						$('#cadernos').append('<div class="form-group">\
+						$('#cadernos').append('<div>\
 								<label for="PDF">Caderno '+ x +' </label>\
 								<input type="file" name="edicao[]">\
 								<a href="#" class="remover_campo">Remover</a>\

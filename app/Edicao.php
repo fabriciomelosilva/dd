@@ -8,6 +8,6 @@ class Edicao extends Model
 {
     protected $fillable = [
         //'data-edicao', 'url','publicado'
-        'ed_year','ed_mounth','ed_day', 'url'
+        'ed_year','ed_mounth','ed_day', 'url', 'ed_status'
     ];
 }

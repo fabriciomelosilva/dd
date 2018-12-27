@@ -23,7 +23,10 @@
           <a href="#" class="brand-logo center">Logo</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             @if(Auth::guard('web')->check())
-                <li><a href="{{ route('edicaoGet') }}">Edição</a></li>
+                <li><a href="{{ route('edicaoGet') }}">Cadastrar Edição</a></li>
+                <li><a href="{{ route('lista_edicao') }}">Lista de Edições</a></li>
+                <li><a href="{{ route('register') }}">Usuários</a></li>
+
             @endif    
         </ul>
         </div>

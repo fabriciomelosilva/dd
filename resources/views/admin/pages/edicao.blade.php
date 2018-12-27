@@ -34,21 +34,26 @@
         </div>
         <div class='col-sm-16'>
             <div class="form-group">
-                <input type="button" class="btn" id="novoProd" value="Novo caderno" />
+                <input type="button" class="btn" id="novaEdicao" value="Novo caderno" />
             </div>
         </div>
 
         <div class='col-sm-16'>
-            <div id="cadernos" class="form-group">
+            <div id="cadernos">
                 <label>Cardeno 1</label>
                 <input type="file" name="edicao[]">
             </div>
         </div>
+
         <div class='col-sm-16'>
             <div class="form-group">
                     <button type="submit" class="btn btn-default">Criar Edição</button>
             </div>
         </div>
+
+   
+
+
     </form>
 </div>
 @stop

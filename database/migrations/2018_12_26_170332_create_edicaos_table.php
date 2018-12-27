@@ -19,8 +19,6 @@ class CreateEdicaosTable extends Migration
             $table->integer('ed_mounth');
             $table->integer('ed_day');
             $table->string('url');
-
-
             $table->timestamps();
         });
     }

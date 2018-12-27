@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUrlToEdicaos extends Migration
+class AddStatusToEdicaos extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddUrlToEdicaos extends Migration
     public function up()
     {
         Schema::table('edicaos', function (Blueprint $table) {
-            //
+            $table->integer('ed_status');
         });
     }
 

@@ -66,16 +66,26 @@ class EdicaoController extends Controller
                     $edicao->ed_year = $year;
                     $edicao->ed_mounth = $month;
                     $edicao->ed_day = $day;
+                    $edicao->ed_status = 0;
+
                     $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
 
                     $edicao->save();
+
                     return redirect()->route('edicaoGet')->with('flash.message', 'Edição criada!')->with('flash.class', 'success');;
 
                 }
             }
-           
-        
         }    
     } 
+
+
+
+    public function listEdicao()
+    {
+        $edicao = Edicao::orderBy('ed_year', 'desc')->simplePaginate(3);
+        
+        return view('admin.pages.edicaolist', compact('edicao'));
+    }
     
 }
