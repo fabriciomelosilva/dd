@@ -79,13 +79,19 @@ class EdicaoController extends Controller
         }    
     } 
 
-
-
     public function listEdicao()
     {
         $edicao = Edicao::orderBy('ed_year', 'desc')->simplePaginate(3);
         
         return view('admin.pages.edicaolist', compact('edicao'));
+    }
+    
+    public function listFront()
+    {
+        
+        $edicao = Edicao::orderBy('ed_year', 'desc')->simplePaginate(6);
+        
+        return view("front.front", compact('edicao'));
     }
     
 }

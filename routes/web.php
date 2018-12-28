@@ -51,6 +51,8 @@ Route::get('login', [
     'as' => 'register',
     'uses' => 'Auth\RegisterController@showRegistrationForm'
   ]);
+
+
   
 Route::middleware(['auth'])->group(function () {
 
@@ -62,8 +64,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get("edicao","EdicaoController@cadastroEdicaoGet")->name('edicaoGet');
     Route::post("edicao","EdicaoController@store")->name('edicaoPost');
     Route::get("lista_edicao","EdicaoController@listEdicao")->name('lista_edicao');
+   
+    Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');;
+    Route::get("front","EdicaoController@listFront")->name('front');
+   
+   
+    Route::post('register', 'Auth\RegisterController@register');
 
 });
 
-Route::get("uploads/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/","FileController@show");
+
+
 
