@@ -16,13 +16,12 @@ Diário do nordeste
   </div>
 </div>
 
-
+{{$file_name}}
 <script type="text/javascript">
 
-  $('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => 'ed_12_5c251cf29e75f.pdf'])}}"});
+  //$('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => 'ed_13_5c26c61ae1034.pdf'])}}"});
+  $('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => $file_name])}}"});
 
 
 </script>
-
-
 @stop

@@ -66,8 +66,9 @@ class EdicaoController extends Controller
                     $edicao->ed_year = $year;
                     $edicao->ed_mounth = $month;
                     $edicao->ed_day = $day;
+                    $edicao->ed_file_name = $pdfFinal.".pdf";
                     $edicao->ed_status = 0;
-
+                    
                     $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
 
                     $edicao->save();
@@ -91,8 +92,9 @@ class EdicaoController extends Controller
         $year   = $request->input('year');
         $mounth = $request->input('mounth');
         $day    = $request->input('day');
+        $file_name    = $request->input('file_name');
             
-        return view("front.front", compact('year','mounth','day'));
+        return view("front.front", compact('year','mounth','day','file_name'));
 
     }
     

@@ -7,6 +7,7 @@
 {{ $year = (string) $value->ed_year}} 
 {{ $mounth = (string) $value->ed_mounth}} 
 {{ $day = (string) $value->ed_day}}
+{{ $file_name = (string) $value->ed_file_name}}
 
 <ul class="collection with-header">
 
@@ -17,7 +18,9 @@
         {{csrf_field()}}
         <input name="year" type="hidden" value="{{$year}}">
         <input name="mounth" type="hidden" value="{{$mounth}}">
-        <input name="day" type="hidden" value="{{$day}}">        
+        <input name="day" type="hidden" value="{{$day}}">
+        <input name="file_name" type="hidden" value="{{$file_name}}">
+
         <button type="submit" class="btn btn-default">preview</button>
     </form>
 
