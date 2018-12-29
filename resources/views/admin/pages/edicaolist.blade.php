@@ -4,20 +4,23 @@
 
 @foreach ($edicao as $value)
 
-
-
-{{ 
-    $year = (string) $value->ed_year 
-    
-    
-}}
+{{ $year = (string) $value->ed_year}} 
+{{ $mounth = (string) $value->ed_mounth}} 
+{{ $day = (string) $value->ed_day}}
 
 <ul class="collection with-header">
 
     <li class="collection-header"><h4>{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</h4></li>
     <!--<li class="collection-item"><div>Edição<a href="{{ URL::to('uploads/app/' . $value->url) }}" class="secondary-content"><i class="material-icons">send</i></a></div></li>-->
-    <!--<li class="collection-item"><div>Edição<a href="{{route('uploads', ['ano' => $year, 'mes' => '08','dia' => '01', 'arquivo' => 'ed_01_5c253fed131f5.pdf'])}}" class="secondary-content"><i class="material-icons">send</i></a></div></li>-->
-    <li class="collection-item"><div>Edição<a href="{{route('front')}}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+  
+    <form class="form" action="front" method="post">
+        {{csrf_field()}}
+        <input name="year" type="hidden" value="{{$year}}">
+        <input name="mounth" type="hidden" value="{{$mounth}}">
+        <input name="day" type="hidden" value="{{$day}}">        
+        <button type="submit" class="btn btn-default">preview</button>
+    </form>
+
 </ul>
       
 

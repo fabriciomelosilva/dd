@@ -86,12 +86,14 @@ class EdicaoController extends Controller
         return view('admin.pages.edicaolist', compact('edicao'));
     }
     
-    public function listFront()
+    public function listFront(Request $request)
     {
-        
-        $edicao = Edicao::orderBy('ed_year', 'desc')->simplePaginate(6);
-        
-        return view("front.front", compact('edicao'));
+        $year   = $request->input('year');
+        $mounth = $request->input('mounth');
+        $day    = $request->input('day');
+            
+        return view("front.front", compact('year','mounth','day'));
+
     }
     
 }

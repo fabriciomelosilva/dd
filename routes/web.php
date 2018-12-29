@@ -65,8 +65,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post("edicao","EdicaoController@store")->name('edicaoPost');
     Route::get("lista_edicao","EdicaoController@listEdicao")->name('lista_edicao');
    
+    Route::post("front","EdicaoController@listFront")->name('front');
+    
     Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');;
-    Route::get("front","EdicaoController@listFront")->name('front');
    
    
     Route::post('register', 'Auth\RegisterController@register');

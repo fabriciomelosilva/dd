@@ -16,18 +16,13 @@ Diário do nordeste
   </div>
 </div>
 
-@foreach ($edicao as $value)
-
-{{$value->ed_day}}
 
 <script type="text/javascript">
-  //$('.sample-container div').FlipBook({pdf: "{{ URL::to('uploads/app/' . $value->url) }}"});
-  $('.sample-container div').FlipBook({pdf: " {{route('uploads', ['ano' => 2018, 'mes' => '08','dia' => '01', 'arquivo' => 'ed_01_5c268d053ade3.pdf'])}}"});
 
- 
+  $('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => 'ed_12_5c251cf29e75f.pdf'])}}"});
+
 
 </script>
 
-@endforeach
 
 @stop
