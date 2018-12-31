@@ -28,24 +28,6 @@ Route::get('login', [
     'uses' => 'Auth\LoginController@logout'
   ]);
   
-  // Password Reset Routes...
-  Route::post('password/email', [
-    'as' => 'password.email',
-    'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail'
-  ]);
-  Route::get('password/reset', [
-    'as' => 'password.request',
-    'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm'
-  ]);
-  Route::post('password/reset', [
-    'as' => '',
-    'uses' => 'Auth\ResetPasswordController@reset'
-  ]);
-  Route::get('password/reset/{token}', [
-    'as' => 'password.reset',
-    'uses' => 'Auth\ResetPasswordController@showResetForm'
-  ]);
-
     // Registration Route...
     Route::get('register', [
     'as' => 'register',
@@ -67,10 +49,34 @@ Route::middleware(['auth'])->group(function () {
    
     //acessar pdfs no store. Utilizada no preview do admin
     Route::post("front","EdicaoController@listFront")->name('front');   
-    Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');;
+    Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');
+
+    //editar
+    //Route::post("editar/{id}","EdicaoController@editEdicaoGet")->name('editarEdicaoPost');   
+    Route::get("editar/{edicao} ","EdicaoController@editEdicaoGet")->name('editarEdicaoGet');   
+
    
    //cadastar usuários
     Route::post('register', 'Auth\RegisterController@register');
+
+
+    // Password Reset Routes...
+    Route::post('password/email', [
+      'as' => 'password.email',
+      'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail'
+    ]);
+    Route::get('password/reset', [
+      'as' => 'password.request',
+      'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm'
+    ]);
+    Route::post('password/reset', [
+      'as' => '',
+      'uses' => 'Auth\ResetPasswordController@reset'
+    ]);
+    Route::get('password/reset/{token}', [
+      'as' => 'password.reset',
+      'uses' => 'Auth\ResetPasswordController@showResetForm'
+    ]);
 
 });
 
