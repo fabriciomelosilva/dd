@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');
 
     //editar
-    //Route::post("editar/{id}","EdicaoController@editEdicaoGet")->name('editarEdicaoPost');   
+    Route::post("editar/{id}","EdicaoController@update")->name('editarEdicaoPost');   
     Route::get("editar/{edicao} ","EdicaoController@editEdicaoGet")->name('editarEdicaoGet');   
 
    

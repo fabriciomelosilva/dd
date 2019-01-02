@@ -13,11 +13,12 @@ class EdicaoController extends Controller
     } 
 
     public function store (Request $request){
-        $this->validate($request,[
+        /*$this->validate($request,[
             "edicao"=>"required"
         ],[
             "edicao.required" => "PDF é obrigatório!"
         ]);
+        */
         
         $pdf = new \PDFMerger;
         $edicao = new Edicao();
@@ -30,6 +31,106 @@ class EdicaoController extends Controller
         $day    = $data_edicao[0];
         $month  = $data_edicao[1];
         $year   = $data_edicao[2];
+
+        $findEdicao = Edicao::where('ed_year', $year)->where('ed_mounth', $month)->where('ed_day', $day)->first();        
+
+        if (!$findEdicao){     
+
+            if ($request->hasFile('edicao')){
+                $files = $request->file('edicao');
+                
+                $cont = 0;
+                $qtdFiles = count($files);
+
+                foreach ($files as $key => $file) {
+                    $file = $request->edicao;
+                    $caderno = $file[$key];
+                    $tempPdf = $caderno->store('pdfs');
+                    $cont++;
+
+                    //$output = shell_exec('gswin64c -sDE,VICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
+                    //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
+
+                    $pdf->addPDF(storage_path("app/".$tempPdf));
+
+                    if(!\File::exists(storage_path("app/edicao/".$year))) {
+                        \File::makeDirectory(storage_path("app/edicao/".$year));
+                    }
+                    if(!\File::exists(storage_path("app/edicao/".$year."/".$month))) {
+                        \File::makeDirectory(storage_path("app/edicao/".$year."/".$month));
+                    }
+                    if(!\File::exists(storage_path("app/edicao/".$year."/".$month."/".$day))) {
+                        \File::makeDirectory(storage_path("app/edicao/".$year."/".$month."/".$day));
+                    }             
+        
+                    if ($cont == $qtdFiles){
+                        $pdfFinal = "ed_".$day."_".uniqid();
+                    
+                        $pdf->merge('file', storage_path("app/edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf"));
+
+                        $edicao->ed_year = $year;
+                        $edicao->ed_mounth = $month;
+                        $edicao->ed_day = $day;
+                        $edicao->ed_file_name = $pdfFinal.".pdf";
+                        $edicao->ed_status = 0;
+                        
+                        $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
+
+                        $edicao->save();
+
+                        return redirect()->route('edicaoGet')->with('flash.message', 'Edição criada!')->with('flash.class', 'sucess');;
+
+                    }
+                }
+            }
+        }else{
+            return redirect()->route('edicaoGet')->with('flash.message', 'Edição já existe!')->with('flash.class', 'danger');;
+        }   
+    } 
+
+    public function listEdicao()
+    {
+        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->simplePaginate(5);
+        
+        return view('admin.pages.edicaolist', compact('edicao'));
+    }
+    
+    public function listFront(Request $request)
+    {
+        $year   = $request->input('year');
+        $mounth = $request->input('mounth');
+        $day    = $request->input('day');
+        $file_name    = $request->input('file_name');
+            
+        return view("front.front", compact('year','mounth','day','file_name'));
+
+    }
+
+    public function editEdicaoGet(Edicao $edicao){
+        return view("admin.pages.edicaoedit", compact('edicao'));
+    } 
+
+    public function update (Request $request, $id){
+
+        $pdf = new \PDFMerger;
+
+        $edicao = Edicao::findOrFail($id);
+
+        $cont = 0;
+
+        $data_edicao = $request->input('data_edicao');
+        
+        $data_edicao = explode('/', $data_edicao);
+        $day    = $data_edicao[0];
+        $month  = $data_edicao[1];
+        $year   = $data_edicao[2];
+
+        $findEdicao = Edicao::where('ed_year', $year)->where('ed_mounth', $month)->where('ed_day', $day)->first();   
+        
+        $data_atual =  $edicao->ed_year.$edicao->ed_mounth.$edicao->ed_day;
+        $new_data = $year.$month.$day;
+
+        if (!$findEdicao || ($new_data == $data_atual)){     
 
         if ($request->hasFile('edicao')){
             $files = $request->file('edicao');
@@ -71,34 +172,17 @@ class EdicaoController extends Controller
                     
                     $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
 
-                    $edicao->save();
+                    $edicao->update();
 
-                    return redirect()->route('edicaoGet')->with('flash.message', 'Edição criada!')->with('flash.class', 'success');;
+                    return redirect()->route('editarEdicaoGet',[$edicao])->with('flash.message', 'Edição atualizada!')->with('flash.class', 'success');;
 
                 }
             }
-        }    
-    } 
-
-    public function listEdicao()
-    {
-        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->simplePaginate(5);
-        
-        return view('admin.pages.edicaolist', compact('edicao'));
-    }
+        }   
     
-    public function listFront(Request $request)
-    {
-        $year   = $request->input('year');
-        $mounth = $request->input('mounth');
-        $day    = $request->input('day');
-        $file_name    = $request->input('file_name');
-            
-        return view("front.front", compact('year','mounth','day','file_name'));
-
+    
+    }else{
+        return redirect()->route('editarEdicaoGet',[$edicao])->with('flash.message', 'Edição já existe!')->with('flash.class', 'danger');
     }
-
-    public function editEdicaoGet(Edicao $edicao){
-        return view("admin.pages.edicaoedit", compact('edicao'));
-    } 
+    }
 }
