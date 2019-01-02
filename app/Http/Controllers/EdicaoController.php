@@ -78,7 +78,7 @@ class EdicaoController extends Controller
 
                         $edicao->save();
 
-                        return redirect()->route('edicaoGet')->with('flash.message', 'Edição criada!')->with('flash.class', 'sucess');;
+                        return redirect()->route('edicaoGet')->with('flash.message', 'Edição criada!')->with('flash.class', 'success');;
 
                     }
                 }
