@@ -1,16 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-
 @foreach ($edicao as $value)
-
 
 {{ !$year = (string) $value->ed_year}} 
 {{ !$mounth = (string) $value->ed_mounth}} 
 {{ !$day = (string) $value->ed_day}}
 {{ !$file_name = (string) $value->ed_file_name}}
-
-
 
 <ul class="collection">
 
@@ -62,8 +58,6 @@
  <br>
 @endforeach
 
-
 {{ $edicao->links() }}
-
 
 @stop
