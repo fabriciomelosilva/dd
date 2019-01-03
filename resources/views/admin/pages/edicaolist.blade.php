@@ -39,14 +39,14 @@
     </div>
 
     <div style="float: left; margin-right: 5px;">
-    <form class="form" action="front" method="post">
+    <form class="form" action="{{route('alterarStatusPost', ['id'=>$value->id])}}" method="post">
         {{csrf_field()}}
         <?php if ($value->ed_status == 0): ?>
-            <input name="status" type="hidden" value="{{$value->ed_status}}">
+            <input name="status" type="hidden" value="1">
             <button type="submit" class="btn btn-default">Publicar Edição</button>
         <?php endif; ?>
         <?php if ($value->ed_status == 1): ?>
-            <input name="status" type="hidden" value="{{$value->ed_status}}">
+            <input name="status" type="hidden" value="0">
             <button type="submit" class="btn btn-default">Tornar Rascunho</button>
         <?php endif; ?>
     </form>

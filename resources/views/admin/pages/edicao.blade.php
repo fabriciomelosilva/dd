@@ -50,10 +50,6 @@
                     <button type="submit" class="btn btn-default">Criar Edição</button>
             </div>
         </div>
-
-   
-
-
     </form>
 </div>
 @stop

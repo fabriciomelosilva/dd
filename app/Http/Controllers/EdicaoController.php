@@ -13,12 +13,11 @@ class EdicaoController extends Controller
     } 
 
     public function store (Request $request){
-        /*$this->validate($request,[
+        $this->validate($request,[
             "edicao"=>"required"
         ],[
             "edicao.required" => "PDF é obrigatório!"
         ]);
-        */
         
         $pdf = new \PDFMerger;
         $edicao = new Edicao();
@@ -90,7 +89,7 @@ class EdicaoController extends Controller
 
     public function listEdicao()
     {
-        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->simplePaginate(5);
+        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->simplePaginate(4);
         
         return view('admin.pages.edicaolist', compact('edicao'));
     }
@@ -109,6 +108,22 @@ class EdicaoController extends Controller
     public function editEdicaoGet(Edicao $edicao){
         return view("admin.pages.edicaoedit", compact('edicao'));
     } 
+
+    public function alterarStatus(Request $request, $id){
+
+        $status = $request->input('status');
+
+        $edicao = Edicao::findOrFail($id);
+
+
+        $edicao->ed_status = $status;
+
+        $edicao->save();
+
+        return redirect()->route('lista_edicao');
+
+
+    }
 
     public function update (Request $request, $id){
 

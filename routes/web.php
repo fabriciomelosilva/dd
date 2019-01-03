@@ -55,10 +55,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post("editar/{id}","EdicaoController@update")->name('editarEdicaoPost');   
     Route::get("editar/{edicao} ","EdicaoController@editEdicaoGet")->name('editarEdicaoGet');   
 
-   
-   //cadastar usuários
-    Route::post('register', 'Auth\RegisterController@register');
+    //alterar status
+    Route::post("alterarstatus/{id}","EdicaoController@alterarStatus")->name('alterarStatusPost');
 
+    //cadastar usuários
+    Route::post('register', 'Auth\RegisterController@register');
 
     // Password Reset Routes...
     Route::post('password/email', [
