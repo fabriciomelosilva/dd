@@ -18,11 +18,6 @@
 
         <div class='col-sm-16'>
 
-        <label>
-            <input type="checkbox" class="filled-in" <?php if ($edicao->ed_status == 1) echo "checked"; else echo ""; ?> />
-            <span>Publicado</span>
-            </label>
-        </div>
 
         <div class='col-sm-16'>
             <div class="form-group">

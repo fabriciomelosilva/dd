@@ -28,7 +28,7 @@
     </div>
 
     <div style="float: left; margin-right: 5px;">
-    <form class="form" action="front" method="post">
+    <form class="form" action="front" method="post" target="_blank">
         {{csrf_field()}}
         <input name="year" type="hidden" value="{{$year}}">
         <input name="mounth" type="hidden" value="{{$mounth}}">

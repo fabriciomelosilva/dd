@@ -13,18 +13,21 @@ class EdicaoController extends Controller
     } 
 
     public function store (Request $request){
+        
         $this->validate($request,[
-            "edicao"=>"required"
+            "data_edicao"=>"required"
         ],[
-            "edicao.required" => "PDF é obrigatório!"
+            "data_edicao.required" => "O campo data é obrigatório!"
         ]);
         
         $pdf = new \PDFMerger;
         $edicao = new Edicao();
-
         $cont = 0;
-
         $data_edicao = $request->input('data_edicao');
+
+        if (!$data_edicao){
+            //return redirect()->route('edicaoGet')->with('flash.message', 'Preencha a data!')->with('flash.class', 'danger');;
+        }
         
         $data_edicao = explode('/', $data_edicao);
         $day    = $data_edicao[0];
@@ -61,7 +64,10 @@ class EdicaoController extends Controller
                     if(!\File::exists(storage_path("app/edicao/".$year."/".$month."/".$day))) {
                         \File::makeDirectory(storage_path("app/edicao/".$year."/".$month."/".$day));
                     }             
-        
+                    if ($cont == 1){
+                        $capa = "capa_".uniqid();
+                        //$output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("edicao/".$year."/".$month."/".$day."/".$capa.".pdf ").storage_path("app/".$tempPdf));
+                    }
                     if ($cont == $qtdFiles){
                         $pdfFinal = "ed_".$day."_".uniqid();
                     
@@ -72,7 +78,7 @@ class EdicaoController extends Controller
                         $edicao->ed_day = $day;
                         $edicao->ed_file_name = $pdfFinal.".pdf";
                         $edicao->ed_status = 0;
-                        
+                        $edicao->ed_capa = "edicao/".$year."/".$month."/".$day."/".$capa.".pdf";
                         $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
 
                         $edicao->save();
@@ -112,29 +118,19 @@ class EdicaoController extends Controller
     public function alterarStatus(Request $request, $id){
 
         $status = $request->input('status');
-
         $edicao = Edicao::findOrFail($id);
-
-
         $edicao->ed_status = $status;
-
         $edicao->save();
-
         return redirect()->route('lista_edicao');
-
 
     }
 
     public function update (Request $request, $id){
 
         $pdf = new \PDFMerger;
-
         $edicao = Edicao::findOrFail($id);
-
         $cont = 0;
-
         $data_edicao = $request->input('data_edicao');
-        
         $data_edicao = explode('/', $data_edicao);
         $day    = $data_edicao[0];
         $month  = $data_edicao[1];
@@ -172,7 +168,12 @@ class EdicaoController extends Controller
                 }
                 if(!\File::exists(storage_path("app/edicao/".$year."/".$month."/".$day))) {
                     \File::makeDirectory(storage_path("app/edicao/".$year."/".$month."/".$day));
-                }             
+                }
+    
+                if ($cont == 1){
+                    $capa = "capa_".uniqid();
+                    //$output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("edicao/".$year."/".$month."/".$day."/".$capa.".pdf ").storage_path("app/".$tempPdf));
+                }
     
                 if ($cont == $qtdFiles){
                     $pdfFinal = "ed_".$day."_".uniqid();
@@ -184,7 +185,7 @@ class EdicaoController extends Controller
                     $edicao->ed_day = $day;
                     $edicao->ed_file_name = $pdfFinal.".pdf";
                     $edicao->ed_status = 0;
-                    
+                    $edicao->ed_capa = "edicao/".$year."/".$month."/".$day."/".$capa.".pdf";
                     $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
 
                     $edicao->update();
@@ -194,7 +195,6 @@ class EdicaoController extends Controller
                 }
             }
         }   
-    
     
     }else{
         return redirect()->route('editarEdicaoGet',[$edicao])->with('flash.message', 'Edição já existe!')->with('flash.class', 'danger');
