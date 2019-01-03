@@ -10,19 +10,23 @@
 {{ !$day = (string) $value->ed_day}}
 {{ !$file_name = (string) $value->ed_file_name}}
 
-<ul class="collection with-header">
-
-    <li class="collection-header"><h6 style="font-weight: bold;">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</h6></li>
 
 
-    <?php if ($value->ed_status == 1): ?>
-        <li class="collection-header"><h6 style="color: green;">Status: Publicada</h6></li>
-    <?php endif; ?>
-    <?php if ($value->ed_status == 0): ?>
-        <li class="collection-header"><h6 style="color: red;">Status: Em Rascunho</h6></li>
-    <?php endif; ?>
-    <!--<li class="collection-item"><div>Edição<a href="{{ URL::to('uploads/app/' . $value->url) }}" class="secondary-content"><i class="material-icons">send</i></a></div></li>-->
-  
+<ul class="collection">
+
+    <li class="collection-item avatar">
+      <i class="material-icons circle">folder</i>
+      <div class="title" style="font-weight: bold;">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}
+    
+            <?php if ($value->ed_status == 1): ?>
+            <p class="title"><h6 style="color: green;">Status: Publicada</h6></p>
+            <?php endif; ?>
+            <?php if ($value->ed_status == 0): ?>
+            <p class="title"><h6 style="color: red;">Status: Em Rascunho</h6></p>
+            <?php endif; ?>
+      
+      </div>
+        
     <div style="float: left; margin-right: 5px;">
         <a href="{{ route('editarEdicaoGet', ['edicao' => $value]) }}" class="btn btn-default">Editar</a>
     </div>
@@ -51,7 +55,9 @@
         <?php endif; ?>
     </form>
     </div>
-</ul>
+      
+    </li>
+  </ul>
       
  <br>
 @endforeach
