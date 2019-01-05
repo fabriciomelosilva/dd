@@ -8,6 +8,8 @@ use App\Edicao;
 
 class EdicaoController extends Controller
 {
+
+    
     public function cadastroEdicaoGet(){
         return view("admin.pages.edicao");
     } 

@@ -29,14 +29,11 @@ Route::get('login', [
   ]);
   
     // Registration Route...
-    Route::get('register', [
-    'as' => 'register',
-    'uses' => 'Auth\RegisterController@showRegistrationForm'
-  ]);
+ 
 
 
   
-Route::middleware(['auth'])->group(function () {
+  Route::group(['middleware' => ['auth', 'role:admin']], function() {
 
     Route::get('/', function () {
         return view('welcome');
@@ -79,8 +76,15 @@ Route::middleware(['auth'])->group(function () {
       'uses' => 'Auth\ResetPasswordController@showResetForm'
     ]);
 
+    Route::get('register', [
+      'as' => 'register',
+      'uses' => 'Auth\RegisterController@showRegistrationForm'
+    ]);
+
 });
 
+Route::group(['middleware' => ['auth', 'role:assinante']], function() {
 
+  Route::get('/assinante', 'AssinanteController@index');
 
-
+});
