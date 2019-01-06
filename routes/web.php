@@ -57,6 +57,12 @@ Route::get('login', [
 
     //cadastar usuários
     Route::post('register', 'Auth\RegisterController@register');
+    
+    Route::get('register', [
+      'as' => 'register',
+      'uses' => 'Auth\RegisterController@showRegistrationForm'
+    ]);
+
 
     // Password Reset Routes...
     Route::post('password/email', [
@@ -76,10 +82,7 @@ Route::get('login', [
       'uses' => 'Auth\ResetPasswordController@showResetForm'
     ]);
 
-    Route::get('register', [
-      'as' => 'register',
-      'uses' => 'Auth\RegisterController@showRegistrationForm'
-    ]);
+
 
 });
 
@@ -88,3 +91,17 @@ Route::group(['middleware' => ['auth', 'role:assinante']], function() {
   Route::get('/assinante', 'AssinanteController@index');
 
 });
+
+    
+Route::get('loginAssinante', [
+  'as' => 'loginAssinante',
+  'uses' => 'AuthAssinantes\LoginAssinanteController@showLoginForm'
+]);
+
+Route::post('loginAssinante', [
+  'as' => '',
+  'uses' => 'AuthAssinantes\LoginAssinanteController@login'
+]);
+
+
+    //Route::post('registerAssinante', 'AuthAssinantes\RegisterAssinanteController@register');

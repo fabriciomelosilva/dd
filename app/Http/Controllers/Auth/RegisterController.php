@@ -68,6 +68,7 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'cpf' => '00000000000',
             'password' => bcrypt($data['password']),
         ]);
 
@@ -76,6 +77,5 @@ class RegisterController extends Controller
         $user->roles()->attach($findRole);
 
         return $user;
-
     }
 }
