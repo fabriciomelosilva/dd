@@ -29,7 +29,7 @@ class LoginAssinanteController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/assinante';
     private $apiResponse = true;
 
     /**
