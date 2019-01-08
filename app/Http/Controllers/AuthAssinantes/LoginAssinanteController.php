@@ -51,11 +51,12 @@ class LoginAssinanteController extends Controller
     {
 
        $cpf = $request->input('cpf');
+       $request->request->add(['password' => 'svmdes9605']);
 
        if ($this->apiResponse == true) {
             $user = User::create([
                 'name' => $cpf,
-                'email' => uniqid().'@verdesmares.com.br',
+                'email' => $cpf.'@verdesmares.com.br',
                 'cpf' => $cpf,
                 'password' => bcrypt('svmdes9605'),
             ]);

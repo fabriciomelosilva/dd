@@ -35,17 +35,6 @@
                       <label for='cpf'>Digite seu cpf</label>
                     </div>
                   </div>
-
-                  <div class='row'>
-                    <div class='input-field col s12'>
-                      <input class='validate' type='hidden' name='password' value="svmdes9605" id='password' />
-                      @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
-                    </div>
-                  </div>
       
                   <br />
                   <center>
