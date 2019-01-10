@@ -53,7 +53,13 @@ class LoginAssinanteController extends Controller
        $cpf = $request->input('cpf');
        $request->request->add(['password' => 'svmdes9605']);
 
-       if ($this->apiResponse == true) {
+       $userExist = User::where('name', $cpf)-> first();
+
+       if ($this->apiResponse == false) {
+           return "usuário não possui assinatura";
+       }
+
+       if (($this->apiResponse == true) && ($userExist === null)) {
             $user = User::create([
                 'name' => $cpf,
                 'email' => $cpf.'@verdesmares.com.br',
@@ -78,13 +84,28 @@ class LoginAssinanteController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
     }
     else{
-        return "usuário não possui assinatura";
+
+        $this->validateLogin($request);
+
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
+
     }
     
     }
