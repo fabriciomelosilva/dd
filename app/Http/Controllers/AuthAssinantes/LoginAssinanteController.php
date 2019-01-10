@@ -65,6 +65,7 @@ class LoginAssinanteController extends Controller
                 'email' => $cpf.'@verdesmares.com.br',
                 'cpf' => $cpf,
                 'password' => bcrypt('svmdes9605'),
+                'status_assinante' => 'true',
                 'type' => 'assinante',
             ]);
     

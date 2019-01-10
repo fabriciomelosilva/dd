@@ -69,7 +69,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'cpf' => '00000000000',
+            'status_assinante' => 'false',
             'password' => bcrypt($data['password']),
+            'type' => 'admin',
         ]);
 
         $findRole = Role::where('name','admin')->first();
