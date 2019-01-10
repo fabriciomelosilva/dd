@@ -59,14 +59,13 @@ class LoginAssinanteController extends Controller
                 'email' => $cpf.'@verdesmares.com.br',
                 'cpf' => $cpf,
                 'password' => bcrypt('svmdes9605'),
+                'type' => 'assinante',
             ]);
     
             $findRole = Role::where('name','assinante')->first();
             
             $user->roles()->attach($findRole);
        
-        
-
         $this->validateLogin($request);
 
         if ($this->hasTooManyLoginAttempts($request)) {
