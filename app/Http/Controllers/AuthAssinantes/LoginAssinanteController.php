@@ -30,7 +30,7 @@ class LoginAssinanteController extends Controller
      * @var string
      */
     protected $redirectTo = '/assinante';
-    private $apiResponse = false;
+    private $apiResponse = true;
 
     /**
      * Create a new controller instance.
@@ -45,6 +45,11 @@ class LoginAssinanteController extends Controller
     public function showLoginForm()
     {
         return view('authfront.login');
+    }
+
+
+    public function realizarLogin($request){
+
     }
 
     public function login(Request $request)
@@ -100,7 +105,11 @@ class LoginAssinanteController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
-    else{
+    else if (($this->apiResponse == true) && ($userExist)) {
+        $user = User::findOrFail($userExist->id);
+        $user->status_assinante = "true";
+
+        $user->update();
 
         $this->validateLogin($request);
 
