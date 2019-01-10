@@ -30,7 +30,7 @@ class LoginAssinanteController extends Controller
      * @var string
      */
     protected $redirectTo = '/assinante';
-    private $apiResponse = true;
+    private $apiResponse = false;
 
     /**
      * Create a new controller instance.
@@ -56,8 +56,19 @@ class LoginAssinanteController extends Controller
        $userExist = User::where('name', $cpf)-> first();
 
        if ($this->apiResponse == false) {
+
+        if ($userExist){
+
+            $user = User::findOrFail($userExist->id);
+
+            $user->status_assinante = "false";
+
+            $user->update();
+        }
+        
            return "usuário não possui assinatura";
        }
+
 
        if (($this->apiResponse == true) && ($userExist === null)) {
             $user = User::create([
