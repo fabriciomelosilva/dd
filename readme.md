@@ -1,4 +1,13 @@
 
+## Instalação
+
+- composer install
+- php artisan migrate
+- php artisan db:seed
+- php artisan key:generate
+- criar as pastas: dentro de storage(edicao, pdfs)
+
+
 
 ## Configurações PHP.ini
 
