@@ -14,6 +14,6 @@
 - Ajuste no tamanho do POST para que seja possível o envio de vários arquivos: "post_max_size=200M"
 
 
-## Software necessários
+## Softwares necessários
 
 - Ghostscript versão 9.26
