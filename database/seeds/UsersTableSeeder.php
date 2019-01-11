@@ -16,6 +16,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'fabricio.melo@geq.com.br',
             'password' => bcrypt('fab87144551'),
             'status_assinante' => 'false',
+            'type' => 'admin',
+
         ]);
     }
 }

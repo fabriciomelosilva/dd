@@ -47,11 +47,6 @@ class LoginAssinanteController extends Controller
         return view('authfront.login');
     }
 
-
-    public function realizarLogin($request){
-
-    }
-
     public function login(Request $request)
     {
 
@@ -70,7 +65,6 @@ class LoginAssinanteController extends Controller
 
             $user->update();
         }
-        
            return "usuário não possui assinatura";
        }
 
