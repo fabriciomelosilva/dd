@@ -155,10 +155,10 @@ class EdicaoController extends Controller
                 $tempPdf = $caderno->store('pdfs');
                 $cont++;
 
-                //$output = shell_exec('gswin64c -sDE,VICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
-                //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
+                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
+                $pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
 
-                $pdf->addPDF(storage_path("app/".$tempPdf));
+                //$pdf->addPDF(storage_path("app/".$tempPdf));
 
                 if(!\File::exists(storage_path("app/edicao/".$year))) {
                     \File::makeDirectory(storage_path("app/edicao/".$year));
@@ -172,7 +172,7 @@ class EdicaoController extends Controller
     
                 if ($cont == 1){
                     $capa = "capa_".uniqid();
-                    //$output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("edicao/".$year."/".$month."/".$day."/".$capa.".pdf ").storage_path("app/".$tempPdf));
+                    $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
                 }
     
                 if ($cont == $qtdFiles){
@@ -185,7 +185,7 @@ class EdicaoController extends Controller
                     $edicao->ed_day = $day;
                     $edicao->ed_file_name = $pdfFinal.".pdf";
                     $edicao->ed_status = 0;
-                    $edicao->ed_capa = "edicao/".$year."/".$month."/".$day."/".$capa.".pdf";
+                    $edicao->ed_capa = "edicao/".$year."/".$month."/".$day."/".$capa.".jpg";
                     $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
 
                     $edicao->update();
