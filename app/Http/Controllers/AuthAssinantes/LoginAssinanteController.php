@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 
+use App\Http\Controllers\ConsultaApiAssinantes;
+
 class LoginAssinanteController extends Controller
 {
     /*
@@ -42,6 +44,21 @@ class LoginAssinanteController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    public function isAssinante($cpfcnpj)
+    {
+        $assinante = new ConsultaApiAssinantes();
+        $token = 'a5f9e056-ce4f-491e-9003-b28354e5c2b2';//diario ipad
+
+        $params_request = array('cpfcnpj'=>$cpfcnpj,'token'=>$token);
+        $responseXML = $assinante->requestAssinante($params_request);
+        $dados = simplexml_load_string($responseXML->AssinanteDNResult);
+
+        //echo "isAssinante: ". $dados->Dados->Assinante;
+
+        return $dados->Dados->Assinante;
+
+    }
+
     public function showLoginForm()
     {
         return view('authfront.login');
@@ -51,11 +68,14 @@ class LoginAssinanteController extends Controller
     {
 
        $cpf = $request->input('cpf');
+
+       $apiResponse = $this->isAssinante($cpf);
+
        $request->request->add(['password' => 'svmdes9605']);
 
        $userExist = User::where('name', $cpf)-> first();
 
-       if ($this->apiResponse == false) {
+       if ($apiResponse == 'False') {
 
         if ($userExist){
 
@@ -69,7 +89,7 @@ class LoginAssinanteController extends Controller
        }
 
 
-       if (($this->apiResponse == true) && ($userExist === null)) {
+       if (($apiResponse == 'True') && ($userExist === null)) {
             $user = User::create([
                 'name' => $cpf,
                 'email' => $cpf.'@verdesmares.com.br',
@@ -99,7 +119,7 @@ class LoginAssinanteController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
-    else if (($this->apiResponse == true) && ($userExist)) {
+    else if (($apiResponse == 'True') && ($userExist)) {
         $user = User::findOrFail($userExist->id);
         $user->status_assinante = "true";
 
