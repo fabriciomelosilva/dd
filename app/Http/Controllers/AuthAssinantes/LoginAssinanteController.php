@@ -32,7 +32,6 @@ class LoginAssinanteController extends Controller
      * @var string
      */
     protected $redirectTo = '/assinante';
-    private $apiResponse = true;
 
     /**
      * Create a new controller instance.
