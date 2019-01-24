@@ -6,15 +6,12 @@
     <title>Diário Digital</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/simulor/admin/dist/bootstrap.min.css" rel="stylesheet">
+    <link href="/simulor/admin/dist/app.css" rel="stylesheet">
+    <link href="/simulor/admin/dist/icons.min.css" rel="stylesheet">
 
-    {!! MaterializeCSS::include_full() !!}
-
-        
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-
-    <script src="/js/custom.js"></script>
+    <script src="/simulor/admin/dist/js/vendor.min.js"></script>
+    <script src="/simulor/admin/dist/js/app.min.js"></script>
 
   </head>
   
