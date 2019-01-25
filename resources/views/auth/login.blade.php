@@ -1,65 +1,66 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="account-pages mt-5 mb-5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-5">
+				<div class="card">
 
-        <div class="section"></div>
-        <main>
-          <center>
-            <div class="section"></div>
-      
-            <h5 class="indigo-text">Login</h5>
-            <div class="section"></div>
-      
-            <div class="container">
-              <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-      
+					<div class="card-body p-4">
+						<div class="text-center w-75 m-auto">
+							<a href="index.html">
+								<span><img src="assets/images/logo-dark.png" alt="" height="22"></span>
+							</a>
+							<p class="text-muted mb-4 mt-3">Entre com seu endereço de email e senha para acessar o painel.</p>
+						</div>
 
-                <form class="col s12" method="POST" action="{{ route('login') }}">
+						<form method="POST" action="{{ route('login') }}">
+							{{ csrf_field() }}
+							<div class="form-group mb-3">
+								<label for="emailaddress">Email</label>
+								<input class="form-control" type="email" id="email" required="" name='email' value="{{ old('email') }}" placeholder="Digite seu email">
+								@if ($errors->has('email'))
+									<span class="help-block">
+										<strong>{{ $errors->first('email') }}</strong>
+									</span>
+								@endif
+							</div>
 
-                        {{ csrf_field() }}
-                  <div class='row'>
-                    <div class='col s12'>
-                    </div>
-                  </div>
-      
-                  <div class='row'>
-                    <div class='input-field col s12'>
-                      <input class='validate' type='email' name='email' value="{{ old('email') }}" id='email' />
-                      @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
-                      <label for='email'>Digite seu email</label>
-                    </div>
-                  </div>
-      
-                  <div class='row'>
-                    <div class='input-field col s12'>
-                      <input class='validate' type='password' name='password' id='password' />
-                      <label for='password'>Digite sua senha</label>
-                    </div>
-                    <label style='float: right;'>
-                                      <a class='pink-text' href="{{ route('password.request') }}"><b>Esqueceu sua senha?</b></a>
-                    </label>
-                  </div>
-      
-                  <br />
-                  <center>
-                    <div class='row'>
-                      <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Login</button>
-                    </div>
-                  </center>
-                </form>
-              </div>
-            </div>
-          </center>
-      
-          <div class="section"></div>
-          <div class="section"></div>
-        </main>
-      
+							<div class="form-group mb-3">
+								<a href="pages-recoverpw.html" class="text-muted float-right"><small></small></a>
+								<label for="password">Senha</label>
+								<input class="form-control" type="password" name='password' required="" id="password" placeholder="Digite sua senha">
+							</div>
 
+							<div class="form-group mb-3">
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+									<label class="custom-control-label" for="checkbox-signin">Remember me</label>
+								</div>
+							</div>
 
+							<div class="form-group mb-0 text-center">
+								<button class="btn btn-primary btn-block" type="submit"> Login </button>
+							</div>
+
+						</form>
+					</div> <!-- end card-body -->
+				</div>
+				<!-- end card -->
+
+				<div class="row mt-3">
+					<div class="col-12 text-center">
+						<p class="text-muted"><a href="{{ route('password.request') }}" class="text-muted ml-1">Esqueceu sua senha?</a></p>
+					</div> <!-- end col -->
+				</div>
+				<!-- end row -->
+
+			</div> <!-- end col -->
+		</div>
+		<!-- end row -->
+	</div>
+	<!-- end container -->
+</div>
+<!-- end page -->
 @endsection
