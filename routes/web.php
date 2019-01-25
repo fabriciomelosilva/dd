@@ -36,7 +36,7 @@ Route::get('login', [
   Route::group(['middleware' => ['auth', 'role:admin']], function() {
 
     Route::get('/', function () {
-        return view('welcome');
+        return view('dashboard');
     });
 
     Route::get('/home', 'HomeController@index')->name('home');
