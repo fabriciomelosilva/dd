@@ -8,6 +8,7 @@
 		<link href="/simulor/admin/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="/simulor/admin/dist/css/app.css" rel="stylesheet">
 		<link href="/simulor/admin/dist/css/icons.min.css" rel="stylesheet">
+
 	</head>
 
 	<body>
@@ -21,5 +22,9 @@
 
 		<script src="/simulor/admin/dist/js/vendor.min.js"></script>
 		<script src="/simulor/admin/dist/js/app.min.js"></script>
+
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+		<script src="/js/custom.js"></script>
+
 	</body>
 </html>

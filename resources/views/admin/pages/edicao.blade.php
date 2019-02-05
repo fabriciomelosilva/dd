@@ -51,7 +51,7 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Data</label>
 						<div class="col-sm-10">
-							<input class="form-control" name="data_edicao" type="date">
+							<input class="form-control" name="data_edicao" type="date" id="calendario">
 						</div>
 					</div>
 
@@ -68,6 +68,15 @@
 								<i class="fe-plus"></i>
 								Novo carderno
 							</button>
+							<input type="button" class="btn" id="novaEdicao" value="Novo caderno" />
+
+						</div>
+
+						<div class='col-sm-2'>
+							<div id="cadernos">
+								<label>Cardeno 1</label>
+								<input type="file" name="edicao[]">
+							</div>
 						</div>
 					</div>
 
