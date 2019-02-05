@@ -22,13 +22,16 @@ class EdicaoController extends Controller
             "data_edicao.required" => "O campo data é obrigatório!"
         ]);
         
-        $pdf = new \PDFMerger;
+        $pdf = new \PdfMerger;
         
         $edicao = new Edicao();
         $cont = 0;
         $data_edicao = $request->input('data_edicao');
 
-        $data_edicao = explode('/', $data_edicao);
+		$data_edicao = explode('/', $data_edicao);
+		
+
+
         $day    = $data_edicao[0];
         $month  = $data_edicao[1];
         $year   = $data_edicao[2];
@@ -49,11 +52,11 @@ class EdicaoController extends Controller
                     $tempPdf = $caderno->store('pdfs');
                     $cont++;
                 
-                    $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
+                    //$output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
         
-                    $pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
+                    //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
 
-                    //$pdf->addPDF(storage_path("app/".$tempPdf));
+                    $pdf->addPDF(storage_path("app/".$tempPdf));
 
                     if(!\File::exists(storage_path("app/edicao/".$year))) {
                         \File::makeDirectory(storage_path("app/edicao/".$year));
@@ -66,7 +69,7 @@ class EdicaoController extends Controller
                     }             
                     if ($cont == 1){
                         $capa = "capa_".uniqid();
-                        $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                        //$output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
                     }
                     if ($cont == $qtdFiles){
                         $pdfFinal = "ed_".$day."_".uniqid();
@@ -95,7 +98,7 @@ class EdicaoController extends Controller
 
     public function listEdicao()
     {
-        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->simplePaginate(4);
+        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->paginate(4);
         
         return view('admin.pages.edicaolist', compact('edicao'));
     }
@@ -127,7 +130,7 @@ class EdicaoController extends Controller
 
     public function update (Request $request, $id){
 
-        $pdf = new \PDFMerger;
+        $pdf = new \PdfMerger;
         $edicao = Edicao::findOrFail($id);
         $cont = 0;
         $data_edicao = $request->input('data_edicao');
@@ -155,10 +158,10 @@ class EdicaoController extends Controller
                 $tempPdf = $caderno->store('pdfs');
                 $cont++;
 
-                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
-                $pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
+                //$output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
+                //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
 
-                //$pdf->addPDF(storage_path("app/".$tempPdf));
+                $pdf->addPDF(storage_path("app/".$tempPdf));
 
                 if(!\File::exists(storage_path("app/edicao/".$year))) {
                     \File::makeDirectory(storage_path("app/edicao/".$year));
@@ -172,7 +175,7 @@ class EdicaoController extends Controller
     
                 if ($cont == 1){
                     $capa = "capa_".uniqid();
-                    $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                    //$output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
                 }
     
                 if ($cont == $qtdFiles){
