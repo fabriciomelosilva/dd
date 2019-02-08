@@ -98,7 +98,7 @@ class EdicaoController extends Controller
 
     public function listEdicao()
     {
-        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->paginate(4);
+        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->paginate(8);
         
         return view('admin.pages.edicaolist', compact('edicao'));
     }

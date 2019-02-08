@@ -78,7 +78,7 @@
 						<div class="text-right d-print-none">
 							<button type="submit" class="btn btn-primary btn-rounded">
 								<i class="fe-upload-cloud"></i>
-								Criar edição
+								Editar edição
 							</button>
 						</div>
 					</div>

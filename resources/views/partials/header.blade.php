@@ -162,12 +162,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="app-search">
-                    <form>
-                        <input type="text" placeholder="Search..." class="form-control">
-                        <button type="submit" class="sr-only"></button>
-                    </form>
-                </li>
+       
             </ul>
         </div>
 
