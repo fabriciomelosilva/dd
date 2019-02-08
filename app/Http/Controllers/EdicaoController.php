@@ -9,6 +9,11 @@ use App\Edicao;
 class EdicaoController extends Controller
 {
 
+    private $edicao;
+
+    function __construct(){
+        $this->edicao = new Edicao();
+    }
     
     public function cadastroEdicaoGet(){
         return view("admin.pages.edicao");
@@ -24,14 +29,11 @@ class EdicaoController extends Controller
         
         $pdf = new \PdfMerger;
         
-        $edicao = new Edicao();
         $cont = 0;
         $data_edicao = $request->input('data_edicao');
 
 		$data_edicao = explode('/', $data_edicao);
-		
-
-
+	
         $day    = $data_edicao[0];
         $month  = $data_edicao[1];
         $year   = $data_edicao[2];
@@ -76,15 +78,15 @@ class EdicaoController extends Controller
                     
                         $pdf->merge('file', storage_path("app/edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf"));
 
-                        $edicao->ed_year = $year;
-                        $edicao->ed_mounth = $month;
-                        $edicao->ed_day = $day;
-                        $edicao->ed_file_name = $pdfFinal.".pdf";
-                        $edicao->ed_status = 0;
-                        $edicao->ed_capa = "edicao/".$year."/".$month."/".$day."/".$capa.".jpg";
-                        $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
+                        $this->edicao->ed_year = $year;
+                        $this->edicao->ed_mounth = $month;
+                        $this->edicao->ed_day = $day;
+                        $this->edicao->ed_file_name = $pdfFinal.".pdf";
+                        $this->edicao->ed_status = 0;
+                        $this->edicao->ed_capa = "edicao/".$year."/".$month."/".$day."/".$capa.".jpg";
+                        $this->edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
 
-                        $edicao->save();
+                        $this->edicao->save();
 
                         return redirect()->route('edicaoGet')->with('flash.message', 'Edição criada!')->with('flash.class', 'success');;
 

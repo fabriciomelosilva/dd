@@ -28,8 +28,7 @@ Route::get('login', [
     'uses' => 'Auth\LoginController@logout'
   ]);
   
-    // Registration Route...
- 
+  Route::get('/logout', 'Auth\LoginController@logout');
 
 
   
@@ -63,7 +62,6 @@ Route::get('login', [
       'uses' => 'Auth\RegisterController@showRegistrationForm'
     ]);
 
-
     // Password Reset Routes...
     Route::post('password/email', [
       'as' => 'password.email',
@@ -81,8 +79,6 @@ Route::get('login', [
       'as' => 'password.reset',
       'uses' => 'Auth\ResetPasswordController@showResetForm'
     ]);
-
-
 
 });
 //área do assinante
