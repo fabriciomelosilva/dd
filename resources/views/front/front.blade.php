@@ -6,10 +6,6 @@
 <script src="{{ URL::to('/js/pdf.min.js') }}"></script>
 <script src="{{ URL::to('/js/3dflipbook.min.js') }}"></script>
 
-<div>
-Diário do nordeste
-</div>
-
 <div class="sample-container">
   <div>
 

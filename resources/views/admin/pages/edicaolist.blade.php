@@ -49,7 +49,7 @@
 			</div>
 
 			<div class="card-footer">
-				<div class="d-flex justify-content-end"
+				<div class="d-flex justify-content-end">
 					<form class="form" action="front" method="post" target="_blank">
 						{{csrf_field()}}
 						<input name="year" type="hidden" value="{{$year}}">
