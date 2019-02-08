@@ -18,12 +18,7 @@
                 </li>
 
                 <li class="dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <i class="fe-bell noti-icon"></i>
-                        <span class="badge badge-danger noti-icon-badge">2</span>
-                    </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
-
                         <!-- item-->
                         <div class="dropdown-item noti-title">
                             <h5 class="m-0">
@@ -106,15 +101,15 @@
                 </li>
 
                 <li class="dropdown notification-list">
+                   @if(Auth::guard('web')->check())
                     <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <small class="pro-user-name ml-1">
-                            Morgan K
+                            {{Auth::user()->name}}
                         </small>
                     </a>
+                    @endif  
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
-
                         <div class="dropdown-divider"></div>
-
                         <!-- item-->
                         <a href="{{ url('/logout') }}" class="dropdown-item notify-item">
                             <i class="fe-log-out"></i>
