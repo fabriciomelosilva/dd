@@ -28,7 +28,7 @@ class AssinanteController extends Controller
 
             $menu = array();
             foreach($edicao_ano as $ano){
-                $edicao_mes = \DB::table('edicaos')->where('ed_year', $ano->ed_year)->get();
+                $edicao_mes = \DB::table('edicaos')->select('ed_mounth')->groupBy('ed_mounth')->where('ed_year', $ano->ed_year)->get();
                 foreach($edicao_mes as $mes){
                      $menu[$ano->ed_year][] = $mes->ed_mounth;
                 }
