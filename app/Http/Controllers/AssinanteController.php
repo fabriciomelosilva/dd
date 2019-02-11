@@ -19,13 +19,10 @@ class AssinanteController extends Controller
     public function index()
     {
 
-        $menu = array();
-
         $edicao_ano = \DB::table('edicaos')
             ->select('ed_year')
             ->groupBy('ed_year')->get();
             
-
             $menu = array();
             foreach($edicao_ano as $ano){
                 $edicao_mes = \DB::table('edicaos')->select('ed_mounth')->groupBy('ed_mounth')->where('ed_year', $ano->ed_year)->get();
@@ -33,9 +30,6 @@ class AssinanteController extends Controller
                      $menu[$ano->ed_year][] = $mes->ed_mounth;
                 }
             }
-
-            print_r($menu);
-     
-
+            //print_r($menu);
     }
 }
