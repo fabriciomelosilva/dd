@@ -34,7 +34,7 @@
 				</h6>
 			</div>
 
-			<img class="img-fluid" src="{{ url('/uploadsCapa/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="Card image cap">
+			<img class="img-fluid" src="{{ url('/uploadsThumb/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="Card image cap">
 
 			<div class="card-footer">
 				<div class="d-flex justify-content-end">
