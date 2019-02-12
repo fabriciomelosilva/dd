@@ -14,7 +14,6 @@
 
 <script type="text/javascript">
 
-  //$('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => 'ed_13_5c26c61ae1034.pdf'])}}"});
   $('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => $file_name])}}",
   
      controlsProps: {

@@ -109,7 +109,6 @@
                     </a>
                     @endif  
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
-                        <div class="dropdown-divider"></div>
                         <!-- item-->
                         <a href="{{ url('/logout') }}" class="dropdown-item notify-item">
                             <i class="fe-log-out"></i>
