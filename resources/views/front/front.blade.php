@@ -12,12 +12,29 @@
   </div>
 </div>
 
-{{$file_name}}
 <script type="text/javascript">
 
   //$('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => 'ed_13_5c26c61ae1034.pdf'])}}"});
-  $('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => $file_name])}}"});
-
+  $('.sample-container div').FlipBook({pdf: "{{route('uploads', ['ano' => $year, 'mes' =>  $mounth,'dia' => $day, 'arquivo' => $file_name])}}",
+  
+     controlsProps: {
+     actions: {
+       cmdBackward: {
+         code: 37,
+       },
+       cmdForward: {
+         code: 39
+       },
+       cmdZoomIn: {
+       code: 38
+       },
+       cmdZoomOut: {
+       code: 40
+       }  
+     }
+   }  
+  });
+  
 
 </script>
 @stop
