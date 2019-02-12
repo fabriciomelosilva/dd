@@ -30,6 +30,9 @@
        },
        cmdZoomOut: {
        code: 40
+       },
+       cmdSinglePage: {
+       activeForMobile: true
        }  
      }
    }  
