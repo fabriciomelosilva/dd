@@ -46,7 +46,7 @@ Route::get('login', [
     //acessar pdfs no store. Utilizada no preview do admin
     Route::post("front","EdicaoController@listFront")->name('front');   
     Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');
-    Route::get("uploadsCapa/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@showCapa")->name('uploadsCapa');
+    Route::get("uploadsThumb/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumb');
 
 
     //editar
@@ -84,11 +84,11 @@ Route::get('login', [
 
 });
 //área do assinante
-Route::group(['middleware' => ['auth', 'role:assinante']], function() {
+//Route::group(['middleware' => ['auth', 'role:assinante']], function() {
 
   Route::get('/assinante', 'AssinanteController@index');
 
-});
+//});
 
 //Rotas login assinante  
 Route::get('loginAssinante', [

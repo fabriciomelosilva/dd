@@ -112,7 +112,7 @@ class EdicaoController extends Controller
         $day    = $request->input('day');
         $file_name    = $request->input('file_name');
             
-        return view("front.front", compact('year','mounth','day','file_name'));
+        return view("flip-page.front", compact('year','mounth','day','file_name'));
 
     }
 

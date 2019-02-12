@@ -30,6 +30,6 @@ class AssinanteController extends Controller
                      $menu[$ano->ed_year][] = $mes->ed_mounth;
                 }
             }
-            //print_r($menu);
+            print_r($menu);
     }
 }
