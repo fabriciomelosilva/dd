@@ -46,6 +46,8 @@ Route::get('login', [
     //acessar pdfs no store. Utilizada no preview do admin
     Route::post("front","EdicaoController@listFront")->name('front');   
     Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');
+    Route::get("uploadsCapa/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@showCapa")->name('uploadsCapa');
+
 
     //editar
     Route::post("editar/{id}","EdicaoController@update")->name('editarEdicaoPost');   

@@ -34,12 +34,7 @@
 				</h6>
 			</div>
 
-			<img class="img-fluid" src="assets/images/small/small-4.jpg" alt="Card image cap">
-			
-			<div class="card-body">
-				<p class="card-text">Some quick example text to build on the card title and make
-					up the bulk of the card's content.</p>
-			</div>
+			<img class="img-fluid" src="{{ url('/uploadsCapa/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="Card image cap">
 
 			<div class="card-footer">
 				<div class="d-flex justify-content-end">
