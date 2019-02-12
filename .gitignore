@@ -66,6 +66,7 @@ typings/
 /public/storage
 /storage/*.key
 /vendor
+/public/vendor/
 /.idea
 Homestead.json
 Homestead.yaml
