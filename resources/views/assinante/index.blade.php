@@ -4,7 +4,6 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 
 //print_r($menu);
 
-
 foreach($menu as $key => $value){
     $year = $key;
     echo '<div>'.$year.'</div>';
