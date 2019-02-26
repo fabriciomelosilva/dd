@@ -19,6 +19,12 @@ class AssinanteController extends Controller
     public function index()
     {
 
+        date_default_timezone_set("America/Fortaleza");
+        $dateNow = getdate();
+
+        $mounth = $dateNow['mon'];
+        $year = $dateNow['year'];
+
         $edicao_ano = \DB::table('edicaos')
             ->select('ed_year')
             ->groupBy('ed_year')->get();
@@ -31,12 +37,17 @@ class AssinanteController extends Controller
                 }
             }
 
-            return view("assinante.index", compact('menu'));
-
+            $edicao = $this->getEditions($mounth, $year);
+            
+            return view("assinante.index", compact('menu','edicao' ));
     }
 
 
-    public function getEditions(){
-        
+    public function getEditions($mounth, $year){
+
+        $edicao = \DB::table('edicaos')->where('ed_year', $year)->where('ed_mounth', $mounth)->get();
+
+       return $edicao;
+
     }
 }
