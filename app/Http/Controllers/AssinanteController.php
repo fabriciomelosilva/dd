@@ -25,9 +25,7 @@ class AssinanteController extends Controller
         $mounth = $dateNow['mon'];
         $year = $dateNow['year'];
 
-        $edicao_ano = \DB::table('edicaos')
-            ->select('ed_year')
-            ->groupBy('ed_year')->get();
+        $edicao_ano = \DB::table('edicaos')->select('ed_year')->groupBy('ed_year')->orderBy('ed_year', 'desc')->get();
             
             $menu = array();
             foreach($edicao_ano as $ano){
