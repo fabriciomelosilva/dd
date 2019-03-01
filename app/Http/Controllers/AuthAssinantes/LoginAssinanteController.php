@@ -70,10 +70,9 @@ class LoginAssinanteController extends Controller
             foreach ($dias_assinante as $dia_assinante) {
                 if ($dia_atual == $dia_assinante){
                     return "True";
-                }else{
-                    return "False";
                 }
             }
+            return "False";
         }else {
             return "False";
         }
