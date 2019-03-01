@@ -23,7 +23,6 @@ class LoginAssinanteController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
 
     /**
@@ -39,24 +38,48 @@ class LoginAssinanteController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {       
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    public function connectWS($cpfcnpj)
+    {          
+        $token = 'a5f9e056-ce4f-491e-9003-b28354e5c2b2';//diario ipad
+        $assinante = new ConsultaApiAssinantes();
+        $params_request = array('cpfcnpj'=>$cpfcnpj,'token'=>$token);
+        $responseXML = $assinante->requestAssinante($params_request);
+
+        return $responseXML;
+
     }
 
     public function isAssinante($cpfcnpj)
     {
-        $assinante = new ConsultaApiAssinantes();
-        $token = 'a5f9e056-ce4f-491e-9003-b28354e5c2b2';//diario ipad
+        $responseXML = $this->connectWS($cpfcnpj);
 
-        $params_request = array('cpfcnpj'=>$cpfcnpj,'token'=>$token);
-        $responseXML = $assinante->requestAssinante($params_request);
         $dados = simplexml_load_string($responseXML->AssinanteDNResult);
 
-        //echo "isAssinante: ". $dados->Dados->Assinante;
+        if ($dados->Dados->Assinante == "True"){
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
 
-        return $dados->Dados->Assinante;
+            $dia_atual = strtoupper(strftime('%a', strtotime('today')));
+
+            $dias_assinante = explode(";", $dados->Dados->DiasSemana);
+
+            foreach ($dias_assinante as $dia_assinante) {
+                if ($dia_atual == $dia_assinante){
+                    return "True";
+                }else{
+                    return "False";
+                }
+            }
+        }else {
+            return "False";
+        }
 
     }
+
 
     public function showLoginForm()
     {
