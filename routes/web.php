@@ -27,11 +27,11 @@ Route::get('login', [
     'as' => 'logout',
     'uses' => 'Auth\LoginController@logout'
   ]);
-  
+
   Route::get('/logout', 'Auth\LoginController@logout');
 
 
-  
+
   Route::group(['middleware' => ['auth', 'role:admin']], function() {
 
     Route::get('/', function () {
@@ -42,23 +42,23 @@ Route::get('login', [
     Route::get("edicao","EdicaoController@cadastroEdicaoGet")->name('edicaoGet');
     Route::post("edicao","EdicaoController@store")->name('edicaoPost');
     Route::get("lista_edicao","EdicaoController@listEdicao")->name('lista_edicao');
-   
+
     //acessar pdfs no store. Utilizada no preview do admin
-    Route::post("front","EdicaoController@listFront")->name('front');   
+    Route::post("front","EdicaoController@listFront")->name('front');
     Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');
     Route::get("uploadsThumb/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumb');
 
 
     //editar
-    Route::post("editar/{id}","EdicaoController@update")->name('editarEdicaoPost');   
-    Route::get("editar/{edicao} ","EdicaoController@editEdicaoGet")->name('editarEdicaoGet');   
+    Route::post("editar/{id}","EdicaoController@update")->name('editarEdicaoPost');
+    Route::get("editar/{edicao} ","EdicaoController@editEdicaoGet")->name('editarEdicaoGet');
 
     //alterar status
     Route::post("alterarstatus/{id}","EdicaoController@alterarStatus")->name('alterarStatusPost');
 
     //cadastar usuários
     Route::post('register', 'Auth\RegisterController@register');
-    
+
     Route::get('register', [
       'as' => 'register',
       'uses' => 'Auth\RegisterController@showRegistrationForm'
@@ -84,13 +84,13 @@ Route::get('login', [
 
 });
 //área do assinante
-Route::group(['middleware' => ['auth', 'role:assinante']], function() {
+//Route::group(['middleware' => ['auth', 'role:assinante']], function() {
 
   Route::get('/assinante', 'AssinanteController@index');
 
-});
+//});
 
-//Rotas login assinante  
+//Rotas login assinante
 Route::get('loginAssinante', [
   'as' => 'loginAssinante',
   'uses' => 'AuthAssinantes\LoginAssinanteController@showLoginForm'
