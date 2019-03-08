@@ -1,106 +1,181 @@
-<!DOCTYPE html>
-<html lang="pt-BR" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.app')
 
-		<title>Diário Digital</title>
-		<link rel="stylesheet" href="./css/front.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	</head>
-	<body class="bg-light">
+@section('content')
 
-		<section class="jumbotron">
-			<div class="container">
-				<!-- navbar -->
-				<nav class="navbar navbar-main navbar-expand-lg navbar-transparent p-0 mb-4" id="navbar-main">
-					<div class="container px-lg-0">
-						<a class="navbar-brand mr-lg-5" href="index.html">
-							<img alt="Image placeholder" src="./images/diario-logo.svg" id="navbar-logo" style="height: 50px;">
-						</a>
-					</div>
-				</nav>
-				<!-- /navbar -->
+<header id="topnav">
+    <nav class="navbar-custom">
+        <div class="container-fluid">
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
-				<div class="row">
-					<div class="col-md-6">
-						<h1 class="jumbotron-heading text-white">Direto. Claro. Simples</h1>
-						<p class="lead text-white">Acessar todo o conteúdo do Diário do Nordeste agora é exclusividade de nossos assinantes, a qualquer hora, em qualquer lugar, no computador, celular ou tablet.</p>
+                <li class="dropdown notification-list">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle nav-link">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </li>
 
-						<a href="#" class="btn btn btn-outline-light btn-lg mt-4">Solicitar degustação</a>
+                <li class="dropdown notification-list">
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0">
+                                <span class="float-right">
+                                    <a href="" class="text-dark">
+                                        <small>Clear All</small>
+                                    </a>
+                                </span>Notification</h5>
+                        </div>
 
-					</div>
+                        <div class="slimscroll noti-scroll">
 
-					<div class="col-md-6">
-						<div class="card shadow bg-white rounded p-4">
-							<div class="bg-white border-0 card-header">
-								<p class="font-weight-bold m-0 text-uppercase">Acesso do assinate</p>
-							</div>
-							<div class="card-body">
-								<form>
-									<div class="form-group">
-										<label for="">Digite o CPF do assinante</label>
-										<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="000.000.000-00">
-										<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-									</div>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                <div class="notify-icon">
+                                <p class="notify-details">Cristina Pride</p>
+                                <p class="text-muted mb-0 user-msg">
+                                    <small>Hi, How are you? What about our next meeting</small>
+                                </p>
+                            </a>
 
-									<div class="mt-4">
-										<button type="submit" class="btn btn-primary btn-lg">Acessar</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-light">
+                                    <i class="mdi mdi-comment-account-outline"></i>
+                                </div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">1 min ago</small>
+                                </p>
+                            </a>
 
-			</div>
-		</section>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon">
+                                <p class="notify-details">Karen Robinson</p>
+                                <p class="text-muted mb-0 user-msg">
+                                    <small>Wow ! this admin looks good and awesome design</small>
+                                </p>
+                            </a>
 
-		<section class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-			<div class="container">
-				<h1 class="display-5">Quero Assinar</h1>
-				<p class="lead">Vantagens de ser assinante impresso + digital</p>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-light">
+                                    <i class="mdi mdi-account-plus"></i>
+                                </div>
+                                <p class="notify-details">New user registered.
+                                    <small class="text-muted">5 hours ago</small>
+                                </p>
+                            </a>
 
-				<div class="row">
-					<div class="col-lg-4 col-sm-6">
-						<div class="card text-center hover-shadow-lg hover-translate-y-n10">
-						<div class="px-4 py-5">
-						</div>
-						<div class="px-4 pb-5">
-							<h5>Comodidade</h5>
-							<p class="text-muted">Comodidade de receber o jornal impresso</p>
-						</div>
-						</div>
-					</div>
-					
-					<div class="col-lg-4 col-sm-6">
-						<div class="card text-center hover-shadow-lg hover-translate-y-n10">
-						<div class="px-4 py-5">
-						</div>
-						<div class="px-4 pb-5">
-							<h5>Acervo</h5>
-							<p class="text-muted">Acervo de cadernos especiais no computador ou tablet.</p>
-						</div>
-						</div>
-					</div>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-light">
+                                    <i class="mdi mdi-comment-account-outline"></i>
+                                </div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">4 days ago</small>
+                                </p>
+                            </a>
 
-					<div class="col-lg-4 col-sm-6">
-						<div class="card text-center hover-shadow-lg hover-translate-y-n10">
-						<div class="px-4 py-5">
-						</div>
-						<div class="px-4 pb-5">
-							<h5>Vantagens</h5>
-							<p class="text-muted">Vantagens do Clube do Assinante.</p>
-						</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-light">
+                                    <i class="mdi mdi-heart"></i>
+                                </div>
+                                <p class="notify-details">Carlos Crouch liked
+                                    <b>Admin</b>
+                                    <small class="text-muted">13 days ago</small>
+                                </p>
+                            </a>
+                        </div>
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                        <!-- All-->
+                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                            View all
+                            <i class="fi-arrow-right"></i>
+                        </a>
 
-	</body>
-</html>
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list">
+                   @if(Auth::guard('web')->check())
+                    <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <small class="pro-user-name ml-1">
+                            {{Auth::user()->name}}
+                        </small>
+                    </a>
+                    @endif  
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
+                        <!-- item-->
+                        <a href="{{ url('/logout') }}" class="dropdown-item notify-item">
+                            <i class="fe-log-out"></i>
+                            <span>Logout</span>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <a href="index.html" class="logo">
+                        <span class="logo-lg">
+                            <img src="assets/images/logo.png" alt="" height="18">
+                        </span>
+                        <span class="logo-sm">
+                            <img src="assets/images/logo-sm.png" alt="" height="28">
+                        </span>
+                    </a>
+                </li>
+       
+            </ul>
+        </div>
+
+    </nav>
+    <!-- end topbar-main -->
+
+    <div class="topbar-menu">
+        <div class="container-fluid">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+
+					@if(Auth::guard('web')->check())
+						<li class="has-submenu">
+							<a href="{{ route('edicaoGet') }}">
+								<i class="fe-airplay"></i>Cadastrar Edição
+							</a>
+						</li>
+						<li class="has-submenu">
+							<a href="{{ route('lista_edicao') }}">
+								<i class="fe-airplay"></i>Lista de Edições
+							</a>
+						</li>
+						<li class="has-submenu">
+							<a href="{{ route('register') }}">
+								<i class="fe-airplay"></i>Usuários
+							</a>
+						</li>
+					@endif
+
+                </ul>
+                <!-- End navigation menu -->
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- end #navigation -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end navbar-custom -->
+</header>
+<!-- End Navigation Bar-->
+
+
+@endsection

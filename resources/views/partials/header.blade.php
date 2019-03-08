@@ -1,3 +1,4 @@
+@auth
 <!-- Navigation Bar-->
 <header id="topnav">
     <nav class="navbar-custom">
@@ -174,3 +175,4 @@
     <!-- end navbar-custom -->
 </header>
 <!-- End Navigation Bar-->
+@endauth
