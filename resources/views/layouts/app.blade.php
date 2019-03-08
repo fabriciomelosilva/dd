@@ -24,14 +24,8 @@
 	<body class="bg-light">
 		@include('partials.header')
 
-
 		@yield('content')
 
-		<!-- <main class="wrapper">
-			<div class="container-fluid">
-				
-			</div>
-		</main> -->
-
+		@include('partials.footer')
 	</body>
 </html>

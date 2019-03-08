@@ -2,180 +2,130 @@
 
 @section('content')
 
-<header id="topnav">
-    <nav class="navbar-custom">
-        <div class="container-fluid">
-            <ul class="list-unstyled topbar-right-menu float-right mb-0">
-
-                <li class="dropdown notification-list">
-                    <!-- Mobile menu toggle-->
-                    <a class="navbar-toggle nav-link">
-                        <div class="lines">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </a>
-                    <!-- End mobile menu toggle-->
-                </li>
-
-                <li class="dropdown notification-list">
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5 class="m-0">
-                                <span class="float-right">
-                                    <a href="" class="text-dark">
-                                        <small>Clear All</small>
-                                    </a>
-                                </span>Notification</h5>
-                        </div>
-
-                        <div class="slimscroll noti-scroll">
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                                <div class="notify-icon">
-                                <p class="notify-details">Cristina Pride</p>
-                                <p class="text-muted mb-0 user-msg">
-                                    <small>Hi, How are you? What about our next meeting</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-light">
-                                    <i class="mdi mdi-comment-account-outline"></i>
-                                </div>
-                                <p class="notify-details">Caleb Flakelar commented on Admin
-                                    <small class="text-muted">1 min ago</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon">
-                                <p class="notify-details">Karen Robinson</p>
-                                <p class="text-muted mb-0 user-msg">
-                                    <small>Wow ! this admin looks good and awesome design</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-light">
-                                    <i class="mdi mdi-account-plus"></i>
-                                </div>
-                                <p class="notify-details">New user registered.
-                                    <small class="text-muted">5 hours ago</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-light">
-                                    <i class="mdi mdi-comment-account-outline"></i>
-                                </div>
-                                <p class="notify-details">Caleb Flakelar commented on Admin
-                                    <small class="text-muted">4 days ago</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-light">
-                                    <i class="mdi mdi-heart"></i>
-                                </div>
-                                <p class="notify-details">Carlos Crouch liked
-                                    <b>Admin</b>
-                                    <small class="text-muted">13 days ago</small>
-                                </p>
-                            </a>
-                        </div>
-
-                        <!-- All-->
-                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                            View all
-                            <i class="fi-arrow-right"></i>
-                        </a>
-
-                    </div>
-                </li>
-
-                <li class="dropdown notification-list">
-                   @if(Auth::guard('web')->check())
-                    <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <small class="pro-user-name ml-1">
-                            {{Auth::user()->name}}
-                        </small>
-                    </a>
-                    @endif  
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
-                        <!-- item-->
-                        <a href="{{ url('/logout') }}" class="dropdown-item notify-item">
-                            <i class="fe-log-out"></i>
-                            <span>Logout</span>
-                        </a>
-
-                    </div>
-                </li>
-
-            </ul>
-
-            <ul class="list-inline menu-left mb-0">
-                <li class="float-left">
-                    <a href="index.html" class="logo">
-                        <span class="logo-lg">
-                            <img src="assets/images/logo.png" alt="" height="18">
-                        </span>
-                        <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="28">
-                        </span>
-                    </a>
-                </li>
-       
-            </ul>
-        </div>
-
-    </nav>
-    <!-- end topbar-main -->
-
-    <div class="topbar-menu">
-        <div class="container-fluid">
-            <div id="navigation">
-                <!-- Navigation Menu-->
-                <ul class="navigation-menu">
-
-					@if(Auth::guard('web')->check())
-						<li class="has-submenu">
-							<a href="{{ route('edicaoGet') }}">
-								<i class="fe-airplay"></i>Cadastrar Edição
-							</a>
+<div class="container-fluid">
+	<!-- start page title -->
+	<div class="row">
+		<div class="col-12">
+			<div class="page-title-box">
+				<h4 class="page-title">Edições</h4>
+			</div>
+		</div>
+	</div>
+	<!-- end page title --> 
+	
+	<div class="bg-white">
+		<div class="row">
+			<div class="col-12">
+				<div class="p-3 border-bottom">
+					<ul class="nav justify-content-center">
+						<li class="dropdown mr-4 mr-lg-5 nav-item">
+							<p class="d-inline font-14 mr-2 text-muted">Ano:</p>
+							<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 2019 <span class="caret"></span> </button>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+								<a class="dropdown-item" href="#">2019</a>
+								<a class="dropdown-item" href="#">2018</a>
+								<a class="dropdown-item" href="#">2017</a>
+							</div>
 						</li>
-						<li class="has-submenu">
-							<a href="{{ route('lista_edicao') }}">
-								<i class="fe-airplay"></i>Lista de Edições
-							</a>
+
+						<li class="nav-item dropdown">
+							<p class="d-inline font-14 mr-2 text-muted">Mês:</p>
+							<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Março <span class="caret"></span> </button>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+								<a class="dropdown-item" href="#">Janeiro</a>
+								<a class="dropdown-item" href="#">Fevereiro</a>
+								<a class="dropdown-item" href="#">Março</a>
+								<a class="dropdown-item" href="#">Abril</a>
+								<a class="dropdown-item" href="#">Maio</a>
+								<a class="dropdown-item" href="#">Junho</a>
+								<a class="dropdown-item" href="#">Julho</a>
+								<a class="dropdown-item" href="#">Agosto</a>
+								<a class="dropdown-item" href="#">Setembro</a>
+								<a class="dropdown-item" href="#">Outubro</a>
+								<a class="dropdown-item" href="#">Novembro</a>
+								<a class="dropdown-item" href="#">Dezembro</a>
+							</div>
 						</li>
-						<li class="has-submenu">
-							<a href="{{ route('register') }}">
-								<i class="fe-airplay"></i>Usuários
-							</a>
-						</li>
-					@endif
+					</ul>
+				</div>
+			</div>
+		</div>
 
-                </ul>
-                <!-- End navigation menu -->
+		<div class="row p-4">
+			<div class="col-lg-6 col-xl-3">
+				<a href="#" class="card">
+					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
+					<div class="card-body">
+						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
+					</div>
+				</a>
+			</div>
 
-                <div class="clearfix"></div>
-            </div>
-            <!-- end #navigation -->
-        </div>
-        <!-- end container -->
-    </div>
-    <!-- end navbar-custom -->
-</header>
-<!-- End Navigation Bar-->
+			<div class="col-lg-6 col-xl-3">
+				<a href="#" class="card m-0">
+					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
+					<div class="card-body">
+						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
+					</div>
+				</a>
+			</div>
 
+			<div class="col-lg-6 col-xl-3">
+				<div class="card m-0">
+					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
+					<div class="card-body">
+						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-xl-3">
+				<div class="card m-0">
+					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
+					<div class="card-body">
+						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-xl-3">
+				<div class="card m-0">
+					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
+					<div class="card-body">
+						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-xl-3">
+				<div class="card m-0">
+					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
+					<div class="card-body">
+						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<nav class="p-4">
+			<ul class="pagination justify-content-center  m-0">
+				<li class="page-item disabled">
+					<a class="page-link" href="#" tabindex="-1">
+						<i class="dripicons-arrow-thin-left"></i>
+					</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item">
+					<a class="page-link" href="#">
+						<i class="dripicons-arrow-thin-right"></i>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	
+	</div>
+</div>
 
 @endsection
