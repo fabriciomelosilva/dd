@@ -208,4 +208,13 @@ class LoginAssinanteController extends Controller
         return 'cpf';
     }
 
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('loginAssinante');
+    }
+
 }

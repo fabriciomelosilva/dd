@@ -108,15 +108,25 @@
                             {{Auth::user()->name}}
                         </small>
                     </a>
-                    @endif  
+                    @endif 
+
+                    @if (\Request::is('assinante'))  
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
+                        <!-- item-->
+                        <a href="{{ url('/logoutAssinante') }}" class="dropdown-item notify-item">
+                            <i class="fe-log-out"></i>
+                            <span>Sair</span>
+                        </a>
+                    </div>
+                    @else
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                         <!-- item-->
                         <a href="{{ url('/logout') }}" class="dropdown-item notify-item">
                             <i class="fe-log-out"></i>
-                            <span>Logout</span>
+                            <span>Sair</span>
                         </a>
-
                     </div>
+                    @endif
                 </li>
 
             </ul>

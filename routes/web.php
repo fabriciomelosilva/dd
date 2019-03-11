@@ -23,13 +23,10 @@ Route::get('login', [
     'as' => '',
     'uses' => 'Auth\LoginController@login'
   ]);
-  Route::post('logout', [
-    'as' => 'logout',
-    'uses' => 'Auth\LoginController@logout'
-  ]);
+
 
   Route::get('/logout', 'Auth\LoginController@logout');
-
+  Route::get('/logoutAssinante', 'AuthAssinantes\LoginAssinanteController@logout');
 
 
   Route::group(['middleware' => ['auth', 'role:admin']], function() {
