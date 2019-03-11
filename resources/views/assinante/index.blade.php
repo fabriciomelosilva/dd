@@ -12,6 +12,7 @@
 		</div>
 	</div>
 	<!-- end page title --> 
+    
 	
 	<div class="bg-white">
 		<div class="row">

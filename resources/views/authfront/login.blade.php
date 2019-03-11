@@ -14,6 +14,8 @@
 		</nav>
 		<!-- /navbar -->
 
+
+
 		<div class="row">
 			<div class="col-md-6">
 				<h1 class="jumbotron-heading text-white">Direto. Claro. Simples</h1>
@@ -23,20 +25,24 @@
 			<div class="col-md-6">
 				<div class="card shadow bg-white rounded p-4">
 					<div class="bg-white border-0 card-header">
-						<p class="font-weight-bold m-0 text-uppercase">Acesso do assinate</p>
+						<p class="font-weight-bold m-0 text-uppercase">Acesso do assinante</p>
 					</div>
 					<div class="card-body">
+          @if (session()->has('flash.message'))
+          <div class="alert alert-danger" role="alert">		
+              {{ session('flash.message') }}
+	        </div>
+          @endif
 						<form method="post" action="{{ route('loginAssinante') }}">
             {{csrf_field()}}
 							<div class="form-group">
 								<label for="">Digite o CPF do assinante</label>
 								<input type="text" name="cpf" class="form-control" value="{{ old('cpf') }}" id="cpf" placeholder="000.000.000-00">
-								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 							</div>
 
 							<div class="mt-4">
 								<button type="submit" class="btn btn-primary btn-lg">Acessar</button>
-								<button class="btn btn-primary btn-lg">Solicitar degustação</button>
+								<a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" target="_blank" class="btn btn-primary btn-lg">Solicitar degustação</a>
 							</div>
 						</form>
 					</div>

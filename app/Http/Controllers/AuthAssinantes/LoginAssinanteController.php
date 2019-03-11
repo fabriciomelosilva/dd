@@ -108,7 +108,9 @@ class LoginAssinanteController extends Controller
 
             $user->update();
         }
-           return "usuário não possui assinatura";
+           //return "usuário não possui assinatura";
+
+           return redirect()->route('loginAssinante')->with('flash.message', 'Usuário não possui assinatura.')->with('flash.class', 'danger');
        }
 
 

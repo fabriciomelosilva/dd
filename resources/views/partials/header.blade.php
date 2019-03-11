@@ -156,6 +156,7 @@
                 <ul class="navigation-menu">
 
 					@if(Auth::guard('web')->check())
+                        @if (!\Request::is('assinante'))  
 						<li class="has-submenu">
 							<a href="{{ route('edicaoGet') }}">
 								<i class="fe-airplay"></i>Cadastrar Edição
@@ -171,6 +172,7 @@
 								<i class="fe-airplay"></i>Usuários
 							</a>
 						</li>
+                        @endif
 					@endif
 
                 </ul>
