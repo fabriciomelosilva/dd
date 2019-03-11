@@ -84,11 +84,11 @@ Route::get('login', [
 
 });
 //área do assinante
-//Route::group(['middleware' => ['auth', 'role:assinante']], function() {
+Route::group(['middleware' => ['auth', 'role:assinante']], function() {
 
   Route::get('/assinante', 'AssinanteController@index');
 
-//});
+});
 
 //Rotas login assinante
 Route::get('loginAssinante', [
@@ -97,6 +97,6 @@ Route::get('loginAssinante', [
 ]);
 
 Route::post('loginAssinante', [
-  'as' => '',
+  'as' => 'loginAssinante',
   'uses' => 'AuthAssinantes\LoginAssinanteController@login'
 ]);

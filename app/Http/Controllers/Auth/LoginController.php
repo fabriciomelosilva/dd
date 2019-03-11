@@ -36,4 +36,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    public function logout(){
+        \Session::flush();
+        \Session::forget('laravel_session'); 
+
+        \Auth::logout();
+
+        return \Redirect::to('login');
+    }
 }

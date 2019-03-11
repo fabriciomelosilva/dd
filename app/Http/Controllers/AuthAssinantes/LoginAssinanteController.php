@@ -39,7 +39,7 @@ class LoginAssinanteController extends Controller
      */
     public function __construct()
     {       
-        $this->middleware('guest', ['except' => 'logout']);
+        //$this->middleware('guest', ['except' => 'logout']);
     }
 
     public function connectWS($cpfcnpj)
@@ -79,9 +79,11 @@ class LoginAssinanteController extends Controller
 
     }
 
-
     public function showLoginForm()
     {
+        if(\Auth::check()) {
+            return redirect('assinante');
+        }
         return view('authfront.login');
     }
 
