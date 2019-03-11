@@ -27,7 +27,11 @@
 					</div>
 					<div class="card-body">
 						<form method="post" action="{{ route('loginAssinante') }}">
+<<<<<<< HEAD
             {{csrf_field()}}
+=======
+							{{ csrf_field() }}
+>>>>>>> 7b9755dc076ebbbe35eb83dafbeaca7a5b179910
 							<div class="form-group">
 								<label for="">Digite o CPF do assinante</label>
 								<input type="text" name="cpf" class="form-control" value="{{ old('cpf') }}" id="cpf" placeholder="000.000.000-00">
@@ -43,7 +47,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </section>
 

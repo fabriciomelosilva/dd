@@ -38,7 +38,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h4 class="header-title">Nova edição</h4>
-			
+
                 <form class="form" id="formulario" action="{{route('editarEdicaoPost', ['edicao'=>$edicao->id])}}" method="post" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<div class="form-group row">
