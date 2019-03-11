@@ -52,7 +52,6 @@ class EdicaoController extends Controller
                     $file = $request->edicao;
                     $caderno = $file[$key];
                     $tempPdf = $caderno->store('pdfs');
-
                     $removePdf[] = $tempPdf;
                     $cont++;
                 
@@ -166,6 +165,8 @@ class EdicaoController extends Controller
                 $file = $request->edicao;
                 $caderno = $file[$key];
                 $tempPdf = $caderno->store('pdfs');
+                $removePdf[] = $tempPdf;
+
                 $cont++;
 
                 //$output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
@@ -192,6 +193,10 @@ class EdicaoController extends Controller
                     $pdfFinal = "ed_".$day."_".uniqid();
                   
                     $pdf->merge('file', storage_path("app/edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf"));
+
+                    foreach($removePdf as $pdf){
+                        unlink(storage_path('app/'.$pdf));
+                    }
 
                     $edicao->ed_year = $year;
                     $edicao->ed_mounth = $month;
