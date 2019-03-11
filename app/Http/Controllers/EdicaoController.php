@@ -71,7 +71,7 @@ class EdicaoController extends Controller
                     }             
                     if ($cont == 1){
                         $capa = "capa_".uniqid();
-                        $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                        $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
                     }
                     if ($cont == $qtdFiles){
                         $pdfFinal = "ed_".$day."_".uniqid();
@@ -88,13 +88,14 @@ class EdicaoController extends Controller
 
                         $this->edicao->save();
 
-                        return redirect()->route('edicaoGet')->with('flash.message', 'Edição criada!')->with('flash.class', 'success');
+                        return redirect()->route('edicaoGet')->with('sucess.message', 'Edição criada!');
 
                     }
                 }
             }
         }else{
-            return redirect()->route('edicaoGet')->with('flash.message', 'Edição já existe!')->with('flash.class', 'danger');
+
+            return redirect()->route('edicaoGet')->with('error.message', 'Edição já existe!');
         }   
     } 
 
@@ -177,7 +178,7 @@ class EdicaoController extends Controller
     
                 if ($cont == 1){
                     $capa = "capa_".uniqid();
-                    $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                    $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
                 }
     
                 if ($cont == $qtdFiles){
@@ -195,14 +196,15 @@ class EdicaoController extends Controller
 
                     $edicao->update();
 
-                    return redirect()->route('editarEdicaoGet',[$edicao])->with('flash.message', 'Edição atualizada!')->with('flash.class', 'success');;
-
+                    return redirect()->route('editarEdicaoGet',[$edicao])->with('sucess.message', 'Edição atualizada!');
+                
                 }
             }
         }   
     
     }else{
-        return redirect()->route('editarEdicaoGet',[$edicao])->with('flash.message', 'Edição já existe!')->with('flash.class', 'danger');
+   
+        return redirect()->route('editarEdicaoGet',[$edicao])->with('error.message', 'Edição já existe!');
     }
     }
 }

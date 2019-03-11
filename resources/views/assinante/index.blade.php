@@ -1,3 +1,20 @@
+<?php
+/*
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+//print_r($menu);
+foreach($menu as $key => $value){
+    $year = $key;
+    echo '<div>'.$year.'</div>';
+        foreach($value as $month){
+            $month = date(mktime(0, 0, 0, $month));
+            $month = ucwords(strftime('%B',$month));
+            echo '<div>'.$month.'</div>';
+        }
+}*/
+//print_r($edicao);
+?>
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -52,62 +69,27 @@
 			</div>
 		</div>
 
-		<div class="row p-4">
-			<div class="col-lg-6 col-xl-3">
-				<a href="#" class="card">
-					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
-					<div class="card-body">
-						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
-					</div>
-				</a>
-			</div>
 
-			<div class="col-lg-6 col-xl-3">
-				<a href="#" class="card m-0">
-					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
-					<div class="card-body">
-						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
-					</div>
-				</a>
-			</div>
+        @foreach ($edicao as $value)
 
-			<div class="col-lg-6 col-xl-3">
-				<div class="card m-0">
-					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
-					<div class="card-body">
-						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
-					</div>
-				</div>
-			</div>
+        {{ !$year = (string) $value->ed_year}}
+        {{ !$mounth = (string) $value->ed_mounth}}
+        {{ !$day = (string) $value->ed_day}}
+        {{ !$file_name = (string) $value->ed_file_name}}
 
-			<div class="col-lg-6 col-xl-3">
-				<div class="card m-0">
-					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
-					<div class="card-body">
-						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
-					</div>
-				</div>
-			</div>
+            <div class="row p-4">
+                <div class="col-lg-6 col-xl-2">
+                    <a href="#" class="card">
+                        <img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="font-14 m-0 text-center text-muted">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</p>
+                        </div>
+                    </a>
+                </div>
 
-			<div class="col-lg-6 col-xl-3">
-				<div class="card m-0">
-					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
-					<div class="card-body">
-						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
-					</div>
-				</div>
-			</div>
+            </div>
+        @endforeach
 
-			<div class="col-lg-6 col-xl-3">
-				<div class="card m-0">
-					<img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
-					<div class="card-body">
-						<p class="font-14 m-0 text-center text-muted">24/04/2019</p>
-					</div>
-				</div>
-			</div>
-
-		</div>
 		<nav class="p-4">
 			<ul class="pagination justify-content-center  m-0">
 				<li class="page-item disabled">

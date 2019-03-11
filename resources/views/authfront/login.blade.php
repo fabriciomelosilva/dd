@@ -28,13 +28,13 @@
 						<p class="font-weight-bold m-0 text-uppercase">Acesso do assinante</p>
 					</div>
 					<div class="card-body">
-          @if (session()->has('flash.message'))
-          <div class="alert alert-danger" role="alert">		
-              {{ session('flash.message') }}
-	        </div>
-          @endif
+						@if (session()->has('flash.message'))
+						<div class="alert alert-danger" role="alert">		
+							{{ session('flash.message') }}
+							</div>
+						@endif
 						<form method="post" action="{{ route('loginAssinante') }}">
-            {{csrf_field()}}
+            				{{csrf_field()}}
 							<div class="form-group">
 								<label for="">Digite o CPF do assinante</label>
 								<input type="text" name="cpf" class="form-control" value="{{ old('cpf') }}" id="cpf" placeholder="000.000.000-00">

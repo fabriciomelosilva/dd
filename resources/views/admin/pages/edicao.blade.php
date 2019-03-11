@@ -1,28 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<!-- start error -->
-@if ($errors->any())
-<div class="alert alert-primary alert-dismissible bg-danger text-white border-0 fade show mt-2" role="alert">
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		<span aria-hidden="true">×</span>
-	</button>
-	@foreach ($errors->all() as $error)
-		{{ $error }}
-	@endforeach
-
-</div>
-
-@endif
-
-@if (session()->has('flash.message'))
-	<div class="alert alert-primary alert-dismissible bg-sucess text-white border-0 fade show mt-2" role="alert">
-		{{ session('flash.message') }}
-	</div>
-@endif
-<!-- end error -->
-
-<!-- start page title -->
 <div class="row">
 	<div class="col-12">
 		<div class="page-title-box">
@@ -31,8 +9,18 @@
 	</div>
 </div>
 
+@if (session()->has('sucess.message'))
+	<div class="alert alert-success" role="alert">
+		{{ session('sucess.message') }}
+	</div>
+@endif
 
-<!-- end page title -->
+@if (session()->has('error.message'))
+	<div class="alert alert-danger" role="alert">
+		{{ session('error.message') }}
+	</div>
+@endif
+
 <div class="row">
 	<div class="col-12">
 		<div class="card">
