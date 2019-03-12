@@ -9,15 +9,8 @@ use Illuminate\Http\Request;
 class AssinanteController extends Controller
 {
 
-    /*public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role:assinante');
-    }*/
-
-
     public function index()
-    {
+    {  
 
         date_default_timezone_set("America/Fortaleza");
         $dateNow = getdate();
