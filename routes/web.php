@@ -97,3 +97,5 @@ Route::post('loginAssinante', [
   'as' => 'loginAssinante',
   'uses' => 'AuthAssinantes\LoginAssinanteController@login'
 ]);
+
+Route::get('/acessonegado', 'UserController@getPermissao');
