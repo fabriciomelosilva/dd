@@ -14,7 +14,6 @@ foreach($menu as $key => $value){
 //print_r($edicao);
 ?>
 
-
 @extends('layouts.app')
 
 @section('content')
@@ -69,43 +68,39 @@ foreach($menu as $key => $value){
 			</div>
 		</div>
 
+		<div class="row p-4">
+			@foreach ($edicao as $value)
 
-        @foreach ($edicao as $value)
+			{{ !$year = (string) $value->ed_year}}
+			{{ !$mounth = (string) $value->ed_mounth}}
+			{{ !$day = (string) $value->ed_day}}
+			{{ !$file_name = (string) $value->ed_file_name}}
+	
+				<div class="col-lg-6 col-xl-2">				
+					<form class="form" action="edicaoAssinante" method="post" target="_blank">
+							{{csrf_field()}}
+							<input name="year" type="hidden" value="{{$year}}">
+							<input name="mounth" type="hidden" value="{{$mounth}}">
+							<input name="day" type="hidden" value="{{$day}}">
+							<input name="file_name" type="hidden" value="{{$file_name}}">
+		
+							<button type="submit" class="bg-white border-0 m-0 p-0 shadow-sm">
+								<img class="img-fluid" src="{{ url('/uploadsThumbAssinante/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="Card image cap">
+								<div class="d-block p-4">
+									<p class="font-14 m-0 text-center text-muted">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</p>
+								</div>
+							</button>
+					</form>
+				</div>
+	
+			@endforeach
 
-        {{ !$year = (string) $value->ed_year}}
-        {{ !$mounth = (string) $value->ed_mounth}}
-        {{ !$day = (string) $value->ed_day}}
-        {{ !$file_name = (string) $value->ed_file_name}}
+		</div>
 
-            <div class="row p-4">
-                <div class="col-lg-6 col-xl-2">
-                    <a href="#" class="card">
-                        <img class="card-img-top img-fluid" src="http://via.placeholder.com/300x425" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="font-14 m-0 text-center text-muted">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</p>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        @endforeach
-
-		<nav class="p-4">
-			<ul class="pagination justify-content-center  m-0">
-				<li class="page-item disabled">
-					<a class="page-link" href="#" tabindex="-1">
-						<i class="dripicons-arrow-thin-left"></i>
-					</a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-					<a class="page-link" href="#">
-						<i class="dripicons-arrow-thin-right"></i>
-					</a>
-				</li>
-			</ul>
+		<nav class="d-flex justify-content-center">
+				<ul class="pagination ">
+					{{$edicao->links()}}
+				</ul>
 		</nav>
 	
 	</div>

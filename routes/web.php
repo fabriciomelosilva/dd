@@ -28,7 +28,6 @@ Route::get('login', [
   Route::get('/logout', 'Auth\LoginController@logout');
   Route::get('/logoutAssinante', 'AuthAssinantes\LoginAssinanteController@logout');
 
-
   Route::group(['middleware' => ['auth', 'role:admin']], function() {
 
     Route::get('/', function () {
@@ -82,8 +81,10 @@ Route::get('login', [
 });
 //área do assinante
 Route::group(['middleware' => ['auth', 'role:assinante']], function() {
-
   Route::get('/assinante', 'AssinanteController@index');
+  Route::post("edicaoAssinante","EdicaoController@listFrontAssinante")->name('edicaoAssinante');
+  Route::get("uploadsAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsAssinante');
+  Route::get("uploadsThumbAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumbAssinante');
 
 });
 

@@ -56,7 +56,6 @@ class EdicaoController extends Controller
                     $cont++;
                 
                     //$output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
-        
                     //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
 
                     $pdf->addPDF(storage_path("app/".$tempPdf));
@@ -73,7 +72,14 @@ class EdicaoController extends Controller
                     }             
                     if ($cont == 1){
                         $capa = "capa_".uniqid();
-                        $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                      
+                        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                        //windows
+                            $output = shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                        }else{
+                        //unix
+                            $output = shell_exec('/usr/local/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                        }
                     }
                     if ($cont == $qtdFiles){
                         $pdfFinal = "ed_".$day."_".uniqid();
@@ -120,6 +126,16 @@ class EdicaoController extends Controller
         $file_name    = $request->input('file_name');
             
         return view("flip-page.front", compact('year','mounth','day','file_name'));
+
+    }
+    public function listFrontAssinante(Request $request)
+    {
+        $year   = $request->input('year');
+        $mounth = $request->input('mounth');
+        $day    = $request->input('day');
+        $file_name    = $request->input('file_name');
+            
+        return view("flip-page-assinante.front", compact('year','mounth','day','file_name'));
 
     }
 
@@ -186,7 +202,14 @@ class EdicaoController extends Controller
     
                 if ($cont == 1){
                     $capa = "capa_".uniqid();
-                    $output =  shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+
+                    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                    //windows
+                        $output = shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                    }else{
+                    //unix
+                        $output = shell_exec('/usr/local/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                    }
                 }
     
                 if ($cont == $qtdFiles){

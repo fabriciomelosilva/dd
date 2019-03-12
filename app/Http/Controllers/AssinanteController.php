@@ -43,7 +43,7 @@ class AssinanteController extends Controller
 
     public function getEditions($mounth, $year){
 
-        $edicao = \DB::table('edicaos')->where('ed_year', $year)->where('ed_mounth', $mounth)->get();
+        $edicao = \DB::table('edicaos')->where('ed_year', $year)->where('ed_mounth', $mounth)->paginate(12);
 
        return $edicao;
 

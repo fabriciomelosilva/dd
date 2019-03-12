@@ -14,8 +14,6 @@
 		</nav>
 		<!-- /navbar -->
 
-
-
 		<div class="row">
 			<div class="col-md-6">
 				<h1 class="jumbotron-heading text-white">Direto. Claro. Simples</h1>
