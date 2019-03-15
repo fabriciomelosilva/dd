@@ -48,6 +48,11 @@
 	@endforeach
 
 	<script type="text/javascript">
+
+		var options = {
+	
+		};
+
 		var template = {
 			html: './templates/default-book-view.html',
 			styles: [
@@ -63,9 +68,23 @@
 			var booksOptions = {
 					edicao: {
 						pdf: pdf,
-						template: template
+						template: template,
+						controlsProps: { 
+							actions: {
+								cmdBackward: {
+									code: 37
+								},
+								cmdForward: {
+									code: 39
+								},
+								cmdSinglePage: {
+								activeForMobile: true
+								}		 
+							}
+						}
 					},
 			};
+
 			var instance = {
 				scene: undefined,
 				options: undefined,
@@ -78,7 +97,6 @@
 					instance.scene = instance.node.FlipBook(instance.options);
 				});
 				if(e.target.id) {
-					console.log(booksOptions[e.target.id]);
 					instance.options = booksOptions[e.target.id];
 					$('#flip-book-window').modal('show');
 				}
