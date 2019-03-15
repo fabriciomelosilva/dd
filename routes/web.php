@@ -80,12 +80,12 @@ Route::get('login', [
 
 });
 //área do assinante
-Route::group(['middleware' => ['auth', 'role:assinante']], function() {
+//Route::group(['middleware' => ['auth', 'role:assinante']], function() {
   Route::get('/assinante', 'AssinanteController@index');
   Route::post("edicaoAssinante","EdicaoController@listFrontAssinante")->name('edicaoAssinante');
   Route::get("uploadsAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsAssinante');
   Route::get("uploadsThumbAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumbAssinante');
-});
+//});
 
 //Rotas login assinante
 Route::get('loginAssinante', [
