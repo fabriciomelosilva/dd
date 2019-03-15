@@ -19,78 +19,76 @@
     <div class="container">
       <div class="content">
       
-<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-      <div class="modal-body">
-        <div class="mount-node">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+		<div class="modal-body">
+			<div class="mount-node">
+			</div>
+		</div>
+		</div>
+	</div>
+	</div>
 
-<div class="books">
-  <h2>PDFs</h2>
-  <div class="thumb">
-    <img id="edicao" src="images/condoLiving.jpg" class="btn" alt="Condo Living - Party in your place" />
-    <div class="caption">
-      PDF magazine as a 3D FlipBook.
-    </div>
-  </div>
-</div>
-
-<script src="./js/html2canvas.min.js"></script>
+	<script src="./js/html2canvas.min.js"></script>
 <script src="./js/three.min.js"></script>
 <script src="./js/pdf.min.js"></script>
 <script src="./js/3dflipbook.min.js"></script>
 
-<script type="text/javascript">
-  var template = {
-    html: './templates/default-book-view.html',
-    styles: [
-      './css/font-awesome.min.css',
-      './css/short-white-book-view.css'
-    ],
-    script: './js/default-book-view.js'
-  };
+	@foreach ($edicao as $value)
 
-  var booksOptions = {
+	
+	<div class="books">
+			<div class="thumb" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_mounth,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}">
+				<img id="edicao" src="{{ url('/uploadsThumbAssinante/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" class="btn" alt="Condo Living - Party in your place" />
+				<div class="caption">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</div>
+			</div>
+			</div>
+	@endforeach
+
+	<script type="text/javascript">
+		var template = {
+			html: './templates/default-book-view.html',
+			styles: [
+			'./css/font-awesome.min.css',
+			'./css/short-white-book-view.css'
+			],
+			script: './js/default-book-view.js'
+		};
+
+		$(".thumb").click(function(e){
+			var pdf = $(this).attr('data-route');
+
+			var booksOptions = {
+					edicao: {
+						pdf: pdf,
+						template: template
+					},
+			};
+			var instance = {
+				scene: undefined,
+				options: undefined,
+				node: $('#flip-book-window').find('.mount-node')
+				};
+				$('#flip-book-window').on('hidden.bs.modal',  function() {
+					instance.scene.dispose();
+				});
+				$('#flip-book-window').on('shown.bs.modal', function() {
+					instance.scene = instance.node.FlipBook(instance.options);
+				});
+				if(e.target.id) {
+					console.log(booksOptions[e.target.id]);
+					instance.options = booksOptions[e.target.id];
+					$('#flip-book-window').modal('show');
+				}
+		})
+	</script>
+	
 
 
-    edicao: {
-      pdf: 'http://localhost/flipbook/demo/assets/pdf/magazine.pdf',
-      downloadURL: 'http://localhost/flipbook/demo/assets/pdf/magazine.pdf',
-      template: template
-    },
-
-  };
-
-  var instance = {
-    scene: undefined,
-    options: undefined,
-    node: $('#flip-book-window').find('.mount-node')
-  };
-  $('#flip-book-window').on('hidden.bs.modal',  function() {
-    instance.scene.dispose();
-  });
-  $('#flip-book-window').on('shown.bs.modal', function() {
-    instance.scene = instance.node.FlipBook(instance.options);
-  });
-
-  $('.books').find('img').click(function(e) {
-    if(e.target.id) {
-      instance.options = booksOptions[e.target.id];
-      $('#flip-book-window').modal('show');
-    }
-  });
-
-</script>
       </div>
 
     </div>
-
-    
   </body>
 </html>
