@@ -209,7 +209,6 @@
 }
 .ctrl .fnavbar .fnav .dropdown .menu {
   top: 100%;
-  right: 0;
   box-shadow: 3px 0 3px #222;
 }
 .ctrl .fnavbar .fnav .icon-caret {
@@ -238,7 +237,6 @@
   background-color: #222;
   z-index: 10;
   min-width: 160px;
-  right: 0;
 }
 .ctrl .fnavbar .menu li {
   display: block;
