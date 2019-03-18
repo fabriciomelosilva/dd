@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name' => 'Administrador',
             'email' => 'fabricio.melo@geq.com.br',
-            'password' => bcrypt('fab87144551'),
+            'password' => bcrypt('svmdes9605'),
             'status_assinante' => 'false',
             'cpf' => '00000000000',
             'type' => 'admin',
