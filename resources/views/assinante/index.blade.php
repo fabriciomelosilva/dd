@@ -17,15 +17,15 @@
       		<div class="content">
 
 				<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-					<div class="modal-body">
-						<div class="mount-node">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+						<div class="modal-body">
+							<div class="mount-node">
+							</div>
+						</div>
 						</div>
 					</div>
-					</div>
-				</div>
 				</div>
 
 			<script src="./js/html2canvas.min.js"></script>

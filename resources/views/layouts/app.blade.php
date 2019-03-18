@@ -5,8 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Diário Digital</title>
 
-
-
 		<link href="./simulor/admin/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="./simulor/admin/dist/css/app.css" rel="stylesheet">
 		<link href="./simulor/admin/dist/css/icons.min.css" rel="stylesheet">
@@ -20,8 +18,6 @@
 		<script src="./js/jquery-1.8.2.js"></script>
 		<script src="./js/jquery-ui.js"></script>
 		<script src="./js/custom.js"></script>
-
-
 
 	</head>
 
