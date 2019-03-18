@@ -65,9 +65,13 @@ class LoginAssinanteController extends Controller
 
             $dia_atual = strtoupper(strftime('%a', strtotime('today')));
 
-            $dias_assinante = explode(";", $dados->Dados->DiasSemana);
+            if ($dia_atual == "SáB"){
+                $dia_atual = "SAB";
+            }
 
-            foreach ($dias_assinante as $dia_assinante) {
+            $dias_assinante = explode(";", $dados->Dados->DiasSemana);
+    
+            foreach ($dias_assinante as $dia_assinante) { //Verifica se o assinante possui assinatura para o dia atual.
                 if ($dia_atual == $dia_assinante){
                     return "True";
                 }
