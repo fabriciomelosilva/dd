@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Diário Digital</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Diário Digital</title>
 
-	<link rel="stylesheet" href="./css/bootstrap.min.css">
-	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-  </head>
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="./css/style.css">
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/bootstrap.min.js"></script>
+	</head>
 
-  <body>
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Project name</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="../navbar/">Default</a></li>
+					<li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
+					<li><a href="../navbar-fixed-top/">Fixed top</a></li>
+				</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+			</nav>
 
-		<div class="container-fluid">
+		<div class="container">
 			<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -27,13 +48,39 @@
 				</div>
 			</div>
 			
-		
+			<ul class="nav nav-pills">
+				
+				<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Março<span class="caret"></span>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="#">01 - Janeiro</a></li>
+						<li><a href="#">02 - Fevereiro</a></li>
+						<li><a href="#">03 - Março</a></li>
+					</ul>
+
+				</li>
+
+				<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					2019 <span class="caret"></span>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="#">2019</a></li>
+						<li><a href="#">2018</a></li>
+					</ul>
+
+				</li>			
+			</ul>
 			<div class="row">
 				@foreach ($edicao as $value)
 				<div class="col-xs-6 col-md-3">
-					<div class="thumb-edicao" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_mounth,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
+					<div class="thumbnail js-thumbnail-target" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_mounth,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
 						<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" class="btn" alt="" height="350" width="250"/>
-						<div style="text-align: center;" class="caption">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</div>
+						<div class="caption text-center text-muted">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</div>
 					</div>
 				</div>
 				@endforeach
@@ -45,8 +92,8 @@
 				</ul>
 			</nav>
 		
-        </div>
-	
+		</div>
+
 
 		<script src="./js/html2canvas.min.js"></script>
 		<script src="./js/three.min.js"></script>
@@ -64,7 +111,7 @@
 				script: './js/default-book-view.js'
 			};
 
-			$(".thumb-edicao").click(function(e){
+			$(".js-thumbnail-target").click(function(e){
 				var pdf = $(this).attr('data-route');
 
 				var booksOptions = {
@@ -104,9 +151,5 @@
 					}
 			})
 		</script>
-
-			
-
-
-  </body>
+	</body>
 </html>
