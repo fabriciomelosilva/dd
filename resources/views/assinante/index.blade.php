@@ -33,7 +33,7 @@
 				</ul>
 				</div>
 			</div>
-			</nav>
+		</nav>
 
 		<div class="container">
 			<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
