@@ -169,7 +169,7 @@
 						</li>
 						<li class="has-submenu">
 							<a href="{{ route('register') }}">
-								<i class="fe-airplay"></i>Usuários
+								<i class="fe-airplay"></i>Cadastrar Usuários
 							</a>
 						</li>
                         @endif
