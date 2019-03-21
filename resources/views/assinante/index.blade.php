@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="./css/style.css">
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/bootstrap.min.js"></script>
+		<link href="./simulor/admin/dist/css/icons.min.css" rel="stylesheet">
+
 	</head>
 
 	<body>
@@ -27,11 +29,9 @@
 				<div id="navbar" class="navbar-collapse collapse">
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="../navbar/">Default</a></li>
-					<li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-					<li><a href="../navbar-fixed-top/">Fixed top</a></li>
+					<li><a href="{{ url('/logoutAssinante') }}">Sair</a></li>
 				</ul>
-				</div><!--/.nav-collapse -->
+				</div>
 			</div>
 			</nav>
 
@@ -70,7 +70,6 @@
 
 					<ul class="dropdown-menu">
 						<li><a href="#">2019</a></li>
-						<li><a href="#">2018</a></li>
 					</ul>
 
 				</li>			
@@ -83,7 +82,7 @@
 						<div class="caption text-center text-muted">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</div>
 					</div>
 				</div>
-				@endforeach
+				@endforeach 
 			</div>
 
 			<nav class="d-flex justify-content-center">
@@ -151,5 +150,7 @@
 					}
 			})
 		</script>
+
+
 	</body>
 </html>
