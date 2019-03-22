@@ -52,7 +52,7 @@
 
 <section class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 	<div class="container">
-		<h1 class="display-5">Quero Assinar</h1>
+		<h1 class="display-5"><a href="http://centraldoassinante.diariodonordeste.com.br/assinar" target="_blank">Quero Assinar</a></h1>
 		<p class="lead">Vantagens de ser assinante impresso + digital</p>
 
 		<div class="row">
