@@ -4,16 +4,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Diário Digital</title>
-		<link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
-
-
-		<link rel="stylesheet" href="./css/bootstrap.min.css">
-		<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="./css/style.css">
-		<script src="./js/jquery.min.js"></script>
-		<script src="./js/bootstrap.min.js"></script>
-		<link href="./simulor/admin/dist/css/icons.min.css" rel="stylesheet">
-
+		<link rel="shortcut icon" type="image/ico" href="{{ asset('/images/favicon.ico') }}"/>
+		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+		<script src="{{ asset('/js/jquery.min.js') }}"></script>
+		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+		<link href=	"{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
 	</head>
 
 	<body>
@@ -96,12 +93,11 @@
 		
 		</div>
 
+		<script src="{{ asset('/js/html2canvas.min.js') }}"></script>
+		<script src="{{ asset('/js/three.min.js') }}"></script>
+		<script src="{{ asset('/js/pdf.min.js') }}"></script>
+		<script src="{{ asset('/js/3dflipbook.min.js') }}"></script>					
 
-		<script src="./js/html2canvas.min.js"></script>
-		<script src="./js/three.min.js"></script>
-		<script src="./js/pdf.min.js"></script>
-		<script src="./js/3dflipbook.min.js"></script>
-		
 		<script type="text/javascript">
 
 			var template = {
