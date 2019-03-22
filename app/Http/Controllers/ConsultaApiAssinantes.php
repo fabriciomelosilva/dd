@@ -16,7 +16,6 @@ class ConsultaApiAssinantes extends Controller
         if( $this->client_soap == null )
             $this->client_soap = new \SoapClient( $this->server_url );
 
-        //$this->request_result = $this->client_soap->DNDeg( $this->getParamsRequest() );
         $this->request_result = $this->client_soap->AssinanteDN( $params );
 
         if( !$this->request_result || $this->request_result == null )
