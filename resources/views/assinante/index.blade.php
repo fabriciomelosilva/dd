@@ -4,6 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Diário Digital</title>
+		<link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
+
 
 		<link rel="stylesheet" href="./css/bootstrap.min.css">
 		<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
