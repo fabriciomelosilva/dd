@@ -50,7 +50,6 @@ class LoginAssinanteController extends Controller
         $responseXML = $assinante->requestAssinante($params_request);
 
         return $responseXML;
-
     }
 
     public function isAssinante($cpfcnpj)
@@ -93,13 +92,15 @@ class LoginAssinanteController extends Controller
 
     public function login(Request $request)
     {
-
        $cpf = $request->input('cpf');
 
-       $apiResponse = $this->isAssinante($cpf);
+       try{
+            $apiResponse = $this->isAssinante($cpf);
+        }catch(\Exception $e){
+            return redirect()->route('loginAssinante')->with('flash.message', 'Estamos com problemas técnicos. Tente novamente em alguns instantes. Caso não consiga, entre em contato no e-mail: desenvolvimento@verdesmares.com.br')->with('flash.class', 'danger');
+       }
 
        $request->request->add(['password' => 'svmdes9605']);
-
        $userExist = User::where('name', $cpf)-> first();
 
        if ($apiResponse == 'False') {
@@ -112,10 +113,9 @@ class LoginAssinanteController extends Controller
 
             $user->update();
         }
-           //return "usuário não possui assinatura";
-
            return redirect()->route('loginAssinante')->with('flash.message', 'Usuário não possui assinatura.')->with('flash.class', 'danger');
        }
+       
 
 
        if (($apiResponse == 'True') && ($userExist === null)) {
