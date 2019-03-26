@@ -21,14 +21,8 @@ class EdicaoController extends Controller
 
     public function store (Request $request){
         
-        $this->validate($request,[
-            "data_edicao"=>"required"
-        ],[
-            "data_edicao.required" => "O campo data é obrigatório!"
-        ]);
-        
+        $this->validate($request,["data_edicao"=>"required"],["data_edicao.required" => "O campo data é obrigatório!"]); 
         $pdf = new \PdfMerger;
-        
         $cont = 0;
         $data_edicao = $request->input('data_edicao');
 
@@ -60,7 +54,6 @@ class EdicaoController extends Controller
 
                     $pdf->addPDF(storage_path("app/".$tempPdf));
 
-              
                     if(!\File::exists(storage_path("app/edicao/".$year))) {
                         \File::makeDirectory(storage_path("app/edicao/".$year));
                     }
@@ -72,7 +65,7 @@ class EdicaoController extends Controller
                     }             
                     if ($cont == 1){
                         $capa = "capa_".uniqid();
-                      
+                    
                         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                         //windows
                             $output = shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
@@ -85,11 +78,11 @@ class EdicaoController extends Controller
                         $pdfFinal = "ed_".$day."_".uniqid();
                     
                         $pdf->merge('file', storage_path("app/edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf"));
-                             
+                            
                         foreach($removePdf as $pdf){
                             unlink(storage_path('app/'.$pdf));
                         }
-
+                        
                         $this->edicao->ed_year = $year;
                         $this->edicao->ed_mounth = $month;
                         $this->edicao->ed_day = $day;
@@ -106,7 +99,6 @@ class EdicaoController extends Controller
                 }
             }
         }else{
-
             return redirect()->route('edicaoGet')->with('error.message', 'Edição já existe!');
         }   
     } 
@@ -114,7 +106,6 @@ class EdicaoController extends Controller
     public function listEdicao()
     {
         $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->paginate(8);
-        
         return view('admin.pages.edicaolist', compact('edicao'));
     }
     
@@ -171,75 +162,74 @@ class EdicaoController extends Controller
 
         if (!$findEdicao || ($new_data == $data_atual)){     
 
-        if ($request->hasFile('edicao')){
-            $files = $request->file('edicao');
-            
-            $cont = 0;
-            $qtdFiles = count($files);
-
-            foreach ($files as $key => $file) {
-                $file = $request->edicao;
-                $caderno = $file[$key];
-                $tempPdf = $caderno->store('pdfs');
-                $removePdf[] = $tempPdf;
-
-                $cont++;
-
-                //$output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
-                //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
-
-                $pdf->addPDF(storage_path("app/".$tempPdf));
-
-                if(!\File::exists(storage_path("app/edicao/".$year))) {
-                    \File::makeDirectory(storage_path("app/edicao/".$year));
-                }
-                if(!\File::exists(storage_path("app/edicao/".$year."/".$month))) {
-                    \File::makeDirectory(storage_path("app/edicao/".$year."/".$month));
-                }
-                if(!\File::exists(storage_path("app/edicao/".$year."/".$month."/".$day))) {
-                    \File::makeDirectory(storage_path("app/edicao/".$year."/".$month."/".$day));
-                }
-    
-                if ($cont == 1){
-                    $capa = "capa_".uniqid();
-
-                    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-                    //windows
-                        $output = shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
-                    }else{
-                    //unix
-                        $output = shell_exec('/usr/local/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
-                    }
-                }
-    
-                if ($cont == $qtdFiles){
-                    $pdfFinal = "ed_".$day."_".uniqid();
-                  
-                    $pdf->merge('file', storage_path("app/edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf"));
-
-                    foreach($removePdf as $pdf){
-                        unlink(storage_path('app/'.$pdf));
-                    }
-
-                    $edicao->ed_year = $year;
-                    $edicao->ed_mounth = $month;
-                    $edicao->ed_day = $day;
-                    $edicao->ed_file_name = $pdfFinal.".pdf";
-                    $edicao->ed_status = 0;
-                    $edicao->ed_capa = $capa.".jpg";
-                    $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
-
-                    $edicao->update();
-
-                    return redirect()->route('editarEdicaoGet',[$edicao])->with('sucess.message', 'Edição atualizada!');
+            if ($request->hasFile('edicao')){
+                $files = $request->file('edicao');
                 
+                $cont = 0;
+                $qtdFiles = count($files);
+
+                foreach ($files as $key => $file) {
+                    $file = $request->edicao;
+                    $caderno = $file[$key];
+                    $tempPdf = $caderno->store('pdfs');
+                    $removePdf[] = $tempPdf;
+
+                    $cont++;
+
+                    //$output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
+                    //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
+
+                    $pdf->addPDF(storage_path("app/".$tempPdf));
+
+                    if(!\File::exists(storage_path("app/edicao/".$year))) {
+                        \File::makeDirectory(storage_path("app/edicao/".$year));
+                    }
+                    if(!\File::exists(storage_path("app/edicao/".$year."/".$month))) {
+                        \File::makeDirectory(storage_path("app/edicao/".$year."/".$month));
+                    }
+                    if(!\File::exists(storage_path("app/edicao/".$year."/".$month."/".$day))) {
+                        \File::makeDirectory(storage_path("app/edicao/".$year."/".$month."/".$day));
+                    }
+        
+                    if ($cont == 1){
+                        $capa = "capa_".uniqid();
+
+                        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                        //windows
+                            $output = shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                        }else{
+                        //unix
+                            $output = shell_exec('/usr/local/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                        }
+                    }
+        
+                    if ($cont == $qtdFiles){
+                        $pdfFinal = "ed_".$day."_".uniqid();
+                    
+                        $pdf->merge('file', storage_path("app/edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf"));
+
+                        foreach($removePdf as $pdf){
+                            unlink(storage_path('app/'.$pdf));
+                        }
+
+                        $edicao->ed_year = $year;
+                        $edicao->ed_mounth = $month;
+                        $edicao->ed_day = $day;
+                        $edicao->ed_file_name = $pdfFinal.".pdf";
+                        $edicao->ed_status = 0;
+                        $edicao->ed_capa = $capa.".jpg";
+                        $edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
+
+                        $edicao->update();
+
+                        return redirect()->route('editarEdicaoGet',[$edicao])->with('sucess.message', 'Edição atualizada!');
+                    
+                    }
                 }
-            }
-        }   
-    
-    }else{
-   
-        return redirect()->route('editarEdicaoGet',[$edicao])->with('error.message', 'Edição já existe!');
-    }
+            }   
+        
+        }else{
+            return redirect()->route('editarEdicaoGet',[$edicao])->with('error.message', 'Edição já existe!');
+        }
     }
 }
