@@ -76,7 +76,7 @@ class LoginAssinanteController extends Controller
                 }
             }
             return "False";
-        }else {
+        } else {
             return "False";
         }
 
@@ -113,10 +113,8 @@ class LoginAssinanteController extends Controller
 
             $user->update();
         }
-           return redirect()->route('loginAssinante')->with('flash.message', 'Usuário não possui assinatura.')->with('flash.class', 'danger');
+           return redirect()->route('loginAssinante')->with('flash.message', 'Usuário não possui assinatura')->with('flash.class', 'danger');
        }
-       
-
 
        if (($apiResponse == 'True') && ($userExist === null)) {
             $user = User::create([
