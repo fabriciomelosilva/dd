@@ -139,7 +139,25 @@ class EdicaoController extends Controller
         $status = $request->input('status');
         $edicao = Edicao::findOrFail($id);
         $edicao->ed_status = $status;
-        $edicao->save();
+
+        if ($edicao->ed_status == "1"){
+
+            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                //windows
+                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
+                $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
+                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name;
+        
+            }else{
+                //unix
+                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
+                $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
+                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/".$edicao->ed_file_name;
+        
+            }     
+        }
+       
+        $edicao->update();
         return redirect()->route('lista_edicao');
 
     }
@@ -199,7 +217,7 @@ class EdicaoController extends Controller
                             $output = shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
                         }else{
                         //unix
-                            $output = shell_exec('/usr/local/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
+                            $output = shell_exec('/usr/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
                         }
                     }
         
