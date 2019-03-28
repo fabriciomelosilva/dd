@@ -41,7 +41,31 @@
   cursor: pointer;
 }
 
+/*************************
+	NAVIGATION
+*********/
 
+.navbar-primary {
+	background: #FFF;
+	border-bottom: 1px solid #4a5661;
+}
+
+.navbar-static-top {
+	-webkit-box-shadow: 0 1px 3px rgba(26,26,26,.14), 0 1px 3px rgba(26,26,26,.24);
+    -moz-box-shadow: 0 1px 3px rgba(26,26,26,.14),0 1px 3px rgba(26,26,26,.24);
+    -ms-box-shadow: 0 1px 3px rgba(26,26,26,.14),0 1px 3px rgba(26,26,26,.24);
+    -o-box-shadow: 0 1px 3px rgba(26,26,26,.14),0 1px 3px rgba(26,26,26,.24);
+    box-shadow: 0 1px 3px rgba(26,26,26,.14), 0 1px 3px rgba(26,26,26,.24);
+    transition: box-shadow .3s ease-in-out;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    -moz-transition: box-shadow .3s ease-in-out;
+    -ms-transition: box-shadow .3s ease-in-out;
+    -o-transition: box-shadow .3s ease-in-out;
+}
+
+.navbar {
+	min-height: 70px;
+}
 
 .images {
   text-align: center;
