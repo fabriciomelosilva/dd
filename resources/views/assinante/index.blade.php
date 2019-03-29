@@ -14,7 +14,8 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-primary navbar-static-top">
+		<nav class="navbar navbar-primary navbar-static-top" style="
+    margin-bottom: 40px;">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -49,33 +50,7 @@
 				</div>
 			</div>
 			
-			<ul class="nav nav-pills">
-				
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-					2019<span class="caret"></span>
-					</a>
 
-					<ul class="dropdown-menu">
-						<li><a href="#">2019</a></li>
-					</ul>
-			
-
-				</li>
-
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-					Março <span class="caret"></span>
-					</a>
-
-					<ul class="dropdown-menu">
-						<li><a href="#">01 - Janeiro</a></li>
-						<li><a href="#">02 - Fevereiro</a></li>
-						<li><a href="#">03 - Março</a></li>
-					</ul>
-
-				</li>			
-			</ul>
 			<div class="row">
 				@foreach ($edicao as $value)
 				<div class="col-xs-6 col-md-3">
@@ -87,7 +62,7 @@
 				@endforeach 
 			</div>
 
-			<nav class="d-flex justify-content-center">
+			<nav class="d-flex justify-content-center text-center">
 				<ul class="pagination ">
 					{{$edicao->links()}}
 				</ul>
