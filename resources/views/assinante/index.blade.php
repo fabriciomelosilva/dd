@@ -19,12 +19,39 @@
 		  gtag('js', new Date());
 		  gtag('config', 'UA-137234529-1');
 		</script>
-		
+
+		<script type='text/javascript'>
+			(function() {
+				var useSSL = 'https:' == document.location.protocol;
+				var src = (useSSL ? 'https:' : 'http:') +
+				'//www.googletagservices.com/tag/js/gpt.js';
+				document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+			})();
+		</script>
+
+		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+
+		<script type='text/javascript'>
+			var googletag = googletag || {};
+			googletag.cmd = googletag.cmd || [];
+
+			var mapping1 = googletag.sizeMapping().
+			addSize([1440, 200], [[1100,275],[1100,110],[728,90],[1,1]]).
+			addSize([1024, 200], [[720,180]]).
+			addSize([0000, 000], [[320,80]]).
+			build();
+
+			googletag.cmd.push(function() {
+				googletag.defineSlot('/1028625/SLB1', [[1100, 110], [320, 80], [720, 180], [1100, 275]], 'div-gpt-ad-1538588809041-0').defineSizeMapping(mapping1).addService(googletag.pubads());
+				googletag.pubads().enableSingleRequest();
+				googletag.pubads().collapseEmptyDivs();
+				googletag.enableServices();
+			});
+		</script>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-primary navbar-static-top" style="
-    margin-bottom: 40px;">
+		<nav class="navbar navbar-primary navbar-static-top">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -45,8 +72,13 @@
 				</div>
 			</div>
 		</nav>
-
 		<div class="container">
+			<!-- /1028625/SLB1 -->
+			<div id='div-gpt-ad-1538588809041-0' style="text-align:center; margin: 32px 0;">
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1538588809041-0'); });
+				</script>
+			</div>
 			<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
