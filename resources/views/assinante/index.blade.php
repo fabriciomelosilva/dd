@@ -11,30 +11,70 @@
 		<script src="{{ asset('/js/jquery.min.js') }}"></script>
 		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 		<link href=	"{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
+		
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137234529-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'UA-137234529-1');
+		</script>
+
+		<script type='text/javascript'>
+			(function() {
+				var useSSL = 'https:' == document.location.protocol;
+				var src = (useSSL ? 'https:' : 'http:') +
+				'//www.googletagservices.com/tag/js/gpt.js';
+				document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+			})();
+		</script>
+
+		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+
+		<script type='text/javascript'>
+			var googletag = googletag || {};
+			googletag.cmd = googletag.cmd || [];
+
+			var mapping1 = googletag.sizeMapping().
+			addSize([1440, 200], [[1100,275],[1100,110],[728,90],[1,1]]).
+			addSize([1024, 200], [[720,180]]).
+			addSize([0000, 000], [[320,80]]).
+			build();
+
+			googletag.cmd.push(function() {
+				googletag.defineSlot('/1028625/SLB1', [[1100, 110], [320, 80], [720, 180], [1100, 275]], 'div-gpt-ad-1538588809041-0').defineSizeMapping(mapping1).addService(googletag.pubads());
+				googletag.pubads().enableSingleRequest();
+				googletag.pubads().collapseEmptyDivs();
+				googletag.enableServices();
+			});
+		</script>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-default navbar-static-top">
+		<nav class="navbar navbar-primary navbar-static-top">
 			<div class="container">
 				<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Diário Digital</a>
+					
+					<div class="navbar-logout">
+						<a type="button" class="btn btn-default" href="{{ url('/logoutAssinante') }}">Sair</a></li>
+					</div>
+
+					<a class="navbar-brand" href="#">
+						<img src="{{ asset('/assets/images/diario-logo.svg') }}" alt="Marca">
+					</a>
 				</div>
-				<div id="navbar" class="navbar-collapse collapse">
+
 				
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{ url('/logoutAssinante') }}">Sair</a></li>
-				</ul>
-				</div>
+				
 			</div>
 		</nav>
-
 		<div class="container">
+			<!-- /1028625/SLB1 -->
+			<div id='div-gpt-ad-1538588809041-0' style="text-align:center; margin: 32px 0;">
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1538588809041-0'); });
+				</script>
+			</div>
 			<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -47,33 +87,7 @@
 				</div>
 			</div>
 			
-			<ul class="nav nav-pills">
-				
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-					2019<span class="caret"></span>
-					</a>
 
-					<ul class="dropdown-menu">
-						<li><a href="#">2019</a></li>
-					</ul>
-			
-
-				</li>
-
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-					Março <span class="caret"></span>
-					</a>
-
-					<ul class="dropdown-menu">
-						<li><a href="#">01 - Janeiro</a></li>
-						<li><a href="#">02 - Fevereiro</a></li>
-						<li><a href="#">03 - Março</a></li>
-					</ul>
-
-				</li>			
-			</ul>
 			<div class="row">
 				@foreach ($edicao as $value)
 				<div class="col-xs-6 col-md-3">
@@ -85,7 +99,7 @@
 				@endforeach 
 			</div>
 
-			<nav class="d-flex justify-content-center">
+			<nav class="d-flex justify-content-center text-center">
 				<ul class="pagination ">
 					{{$edicao->links()}}
 				</ul>
