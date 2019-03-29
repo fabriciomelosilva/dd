@@ -36,7 +36,7 @@ class AssinanteController extends Controller
 
     public function getEditions($mounth, $year){
 
-        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->where('ed_year', $year)->where('ed_mounth', $mounth)->where('ed_status', '1')->paginate(8);
+        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->where('ed_status', '1')->paginate(8);
 
        return $edicao;
 
