@@ -41,7 +41,47 @@
   cursor: pointer;
 }
 
+/*************************
+	NAVIGATION
+*********/
+.navbar-header {
+  width: 100%;
+  height: 70px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  position: relative;
+}
 
+.navbar-primary {
+	background: #FFF;
+	border-bottom: 1px solid #4a5661;
+}
+
+.navbar-logout {
+  position: absolute;
+  right: 0;
+  top: 16px;
+}
+.navbar-static-top {
+	-webkit-box-shadow: 0 1px 3px rgba(26,26,26,.14), 0 1px 3px rgba(26,26,26,.24);
+    -moz-box-shadow: 0 1px 3px rgba(26,26,26,.14),0 1px 3px rgba(26,26,26,.24);
+    -ms-box-shadow: 0 1px 3px rgba(26,26,26,.14),0 1px 3px rgba(26,26,26,.24);
+    -o-box-shadow: 0 1px 3px rgba(26,26,26,.14),0 1px 3px rgba(26,26,26,.24);
+    box-shadow: 0 1px 3px rgba(26,26,26,.14), 0 1px 3px rgba(26,26,26,.24);
+    transition: box-shadow .3s ease-in-out;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    -moz-transition: box-shadow .3s ease-in-out;
+    -ms-transition: box-shadow .3s ease-in-out;
+    -o-transition: box-shadow .3s ease-in-out;
+}
+
+.navbar {
+	min-height: 70px;
+}
+
+.btn-link {
+	color: #169990;
+}
 
 .images {
   text-align: center;
@@ -164,8 +204,7 @@
 
 
 p {
-  text-indent: 25px;
-  font-size: 12pt;
+	font-size: 12pt;
 }
 
 .no-indent {

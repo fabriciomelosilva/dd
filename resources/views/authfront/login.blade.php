@@ -8,7 +8,7 @@
 		<nav class="navbar navbar-main navbar-expand-lg navbar-transparent p-0 mb-4" id="navbar-main">
 			<div class="container px-lg-0">
 				<a class="navbar-brand mr-lg-5" href="index.html">
-					<img alt="Image placeholder" src="./images/diario-logo.svg" id="navbar-logo" style="height: 50px;">
+					<img alt="Image placeholder" src="{{ asset('/assets/images/diario-logo-light.svg') }}" id="navbar-logo" style="height: 50px;">
 				</a>
 			</div>
 		</nav>
@@ -21,26 +21,26 @@
 			</div>
 
 			<div class="col-md-6">
-				<div class="card shadow bg-white rounded p-4">
+				<div class="card shadow bg-white rounded p-lg-4">
 					<div class="bg-white border-0 card-header">
 						<p class="font-weight-bold m-0 text-uppercase">Acesso do assinante</p>
 					</div>
 					<div class="card-body">
 						@if (session()->has('flash.message'))
-						<div class="alert alert-danger" role="alert">		
+						<div class="alert alert-danger" role="alert">
 							{{ session('flash.message') }}
 							</div>
 						@endif
 						<form method="post" action="{{ route('loginAssinante') }}">
             				{{csrf_field()}}
 							<div class="form-group">
-								<label for="">Digite o CPF ou o CNPJ do assinante</label>
+								<label for="" class="text-uppercase">Digite o CPF ou CNPJ do assinante</label>
 								<input type="text" name="cpf" class="form-control" value="{{ old('cpf') }}" id="cpf" placeholder="000.000.000-00" required>
 							</div>
 
 							<div class="mt-4">
-								<button type="submit" class="btn btn-primary btn-lg">Acessar</button>
-								<a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" target="_blank" class="btn btn-primary btn-lg">Solicitar degustação</a>
+								<button type="submit" class="btn btn-primary">Acessar</button>
+								<a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" target="_blank" class="btn btn-link">Degustação</a>
 							</div>
 						</form>
 					</div>
