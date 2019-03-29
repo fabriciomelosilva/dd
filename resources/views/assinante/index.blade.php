@@ -54,22 +54,18 @@
 		<nav class="navbar navbar-primary navbar-static-top">
 			<div class="container">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
+					
+					<div class="navbar-logout">
+						<a type="button" class="btn btn-default" href="{{ url('/logoutAssinante') }}">Sair</a></li>
+					</div>
 
 					<a class="navbar-brand" href="#">
 						<img src="{{ asset('/assets/images/diario-logo.svg') }}" alt="Marca">
 					</a>
 				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a type="button" class="btn btn-default navbar-btn" href="{{ url('/logoutAssinante') }}">Sair</a></li>
-					</ul>
-				</div>
+
+				
+				
 			</div>
 		</nav>
 		<div class="container">
