@@ -59,26 +59,7 @@ class LoginAssinanteController extends Controller
         $dados = simplexml_load_string($responseXML->AssinanteDNResult);
 
         if ($dados->Dados->Assinante == "True"){
-            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-            date_default_timezone_set('America/Sao_Paulo');
-
-            $dia_atual = strtoupper(strftime('%a', strtotime('today')));
-
-            var_dump($dia_atual);
-            exit();
-
-            if ($dia_atual == "SáB"){
-                $dia_atual = "SAB";
-            }
-
-            $dias_assinante = explode(";", $dados->Dados->DiasSemana);
-    
-            foreach ($dias_assinante as $dia_assinante) { //Verifica se o assinante possui assinatura para o dia atual.
-                if ($dia_atual == $dia_assinante){
-                    return "True";
-                }
-            }
-            return "False";
+            return "True";
         } else {
             return "False";
         }
