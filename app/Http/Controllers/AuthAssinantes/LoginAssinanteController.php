@@ -64,6 +64,9 @@ class LoginAssinanteController extends Controller
 
             $dia_atual = strtoupper(strftime('%a', strtotime('today')));
 
+            var_dump($dia_atual);
+            exit();
+
             if ($dia_atual == "SáB"){
                 $dia_atual = "SAB";
             }
