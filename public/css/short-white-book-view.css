@@ -922,7 +922,7 @@
 .flip-book .float-wnd .header .close {
   top: 5px;
   right: 8px;
-  font-size: 14px;
+  font-size: 20px;
   position: absolute;
   color: #777;
 }
@@ -931,7 +931,7 @@
   color: #000;
 }
 .flip-book .float-wnd .header .close:active {
-  font-size: 12px;
+  font-size: 20px;
   padding-top: 1px;
   padding-right: 1px;
 }
@@ -1156,12 +1156,17 @@
 }
 
 .ctrl .search .query {
-  padding: 0 10px;
-  padding-bottom: 10px;
+  padding: 20px;
+  height: 22px;
+  padding-left: 10px;
+
 }
 
 .ctrl .search .query input {
+  position: fixed;
   width: 100%;
+  max-width: 270px;
+
 }
 
 .ctrl .search .status {

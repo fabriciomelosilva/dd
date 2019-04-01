@@ -130,7 +130,10 @@
 						edicaos: {
 							pdf: pdf,
 							template: template,
-							controlsProps: { 
+							controlsProps: {
+								
+								downloadURL: pdf,
+ 
 								actions: {
 									cmdBackward: {
 										code: 37
@@ -138,13 +141,21 @@
 									cmdForward: {
 										code: 39
 									},
+									cmdZoomIn: {
+       								 	code: 38
+       								},
+       								cmdZoomOut: {
+       								 	code: 40
+        							}, 
 									cmdSinglePage: {
 									activeForMobile: true
-									}		 
+									}
+											 
 								}
 							}
 						},
 				};
+
 
 				var instance = {
 					scene: undefined,
