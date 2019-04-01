@@ -141,6 +141,12 @@
 									cmdForward: {
 										code: 39
 									},
+									cmdZoomIn: {
+       								 	code: 38
+       								},
+       								cmdZoomOut: {
+       								 	code: 40
+        							}, 
 									cmdSinglePage: {
 									activeForMobile: true
 									}
