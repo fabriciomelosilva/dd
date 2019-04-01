@@ -1156,12 +1156,17 @@
 }
 
 .ctrl .search .query {
-  padding: 0 10px;
-  padding-bottom: 10px;
+  padding: 20px;
+  height: 22px;
+  padding-left: 10px;
+
 }
 
 .ctrl .search .query input {
+  position: fixed;
   width: 100%;
+  max-width: 270px;
+
 }
 
 .ctrl .search .status {
