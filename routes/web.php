@@ -85,6 +85,8 @@ Route::group(['middleware' => ['auth', 'role:assinante']], function() {
   Route::post("edicaoAssinante","EdicaoController@listFrontAssinante")->name('edicaoAssinante');
   Route::get("uploadsAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsAssinante');
   Route::get("uploadsThumbAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumbAssinante');
+  Route::post('/getMounths', 'AssinanteController@getMounthsByYear')->name('getMounthsByYear');
+
 });
 
 //Rotas login assinante
@@ -99,3 +101,7 @@ Route::post('loginAssinante', [
 ]);
 
 Route::get('/acessonegado', 'UserController@getPermissao');
+
+
+
+

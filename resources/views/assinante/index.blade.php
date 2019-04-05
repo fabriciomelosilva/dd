@@ -87,6 +87,59 @@
 				</div>
 			</div>
 			
+			<?php
+
+				function convertNumberToLetter($mounth){
+
+					setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+					date_default_timezone_set("America/Fortaleza");
+					
+					$month_name = date(mktime(0, 0, 0, $mounth));
+					return ucwords(strftime('%B',$month_name));
+
+				}
+			
+				foreach($years as $year){
+					foreach($year as $ano){
+						$anos[] = $ano;
+					}	
+				}
+
+				foreach($mounths as $mounth){
+					foreach($mounth as $mes){
+						$teste[] = $mes;
+					}	
+				}
+							
+			?>
+
+			<form id="menu">
+				{{csrf_field()}}
+				<ul class="nav nav-pills">
+					<select name="year" id="year">
+						<?php 
+							foreach($anos as $ano){
+								echo '<option value='.$ano.'>'.$ano.'</option>';
+							}
+						?>
+					</select>
+
+					<select name="mounth" id="mounth">
+						<?php	
+
+							foreach($teste as $teste){
+								echo '<option value='.$teste.'>'.convertNumberToLetter($teste).'</option>';
+							}
+	
+							//foreach($meses as $meses){
+								//foreach($meses as $other_data){
+									//echo '<option value='.$other_data.'>'.$other_data.'</option>';
+								//}
+							//}
+						?>
+					</select>
+				</ul>
+			<form>
 
 			<div class="row">
 				@foreach ($edicao as $value)
@@ -175,6 +228,28 @@
 			})
 		</script>
 
+			<script>
+				$("#year").change(function(e) {
+					var urlMounths = "{{ route('getMounthsByYear') }}"
+					e.preventDefault();
+
+					$.ajax({
+						type: "POST",
+						url: urlMounths,
+						data: $("#menu").serialize(),
+						success: function(data) {
+							$("#mounth").empty();
+
+							$.each(data, function(i, data){
+								
+          						$('#mounth').append("<option value='"+data+"'>"+data+"</option>");
+        					});
+
+						}
+					})
+
+				});
+			</script>
 
 	</body>
 </html>
