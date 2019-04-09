@@ -75,40 +75,35 @@ class AssinanteController extends Controller
             ->where('ed_status', '1')
             ->groupBy('ed_mounth')
             ->get();
-
-        foreach($mounths as $mounth){
-            $month_name = date(mktime(0, 0, 0, $mounth->ed_mounth));
-            $month_name = ucwords(strftime('%B',$month_name));
-            $meses[] = $month_name;
-        }
-
       
-        return $meses;
+        return $mounths;
     }
 
     public function index()
     {  
-
        $year = $this->getYear();
        $years = $this->getYears();
   
        $mounths = $this->getMounths($year);
-
-        $edicao_ano = \DB::table('edicaos')->select('ed_year')->groupBy('ed_year')->orderBy('ed_year', 'desc')->get();
-            
-            //$menu = array();
-            //foreach($edicao_ano as $ano){
-                //$edicao_mes = \DB::table('edicaos')->select('ed_mounth')->groupBy('ed_mounth')->where('ed_year', $ano->ed_year)->get();
-                //foreach($edicao_mes as $mes){
-                     //$menu[$ano->ed_year][] = $mes->ed_mounth;
-                //}
-            //}
-
-            $edicao = $this->getEditions($year);
-
-            return view("assinante.index", compact('edicao','year','mounth','years','mounths'));
+       
+       $edicao_ano = \DB::table('edicaos')->select('ed_year')->groupBy('ed_year')->orderBy('ed_year', 'desc')->get();
+       
+       $edicao = $this->getEditions($year);
+       
+       return view("assinante.index", compact('edicao','year','mounth','years','mounths'));
     }
 
+    public function getEditionsByYearMounth(Request $request)
+    {
 
+        $year = $request->input('year');
+        $mounth = $request->input('mounth');
 
+        $years = $this->getYears();
+        $mounths = $this->getMounths($year);
+
+        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->where('ed_year', $year)->where('ed_mounth', $mounth)->where('ed_status', '1')->paginate(8);
+                
+        return view("assinante.index", compact('edicao','year','mounth','years','mounths'));
+    }
 }

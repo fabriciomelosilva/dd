@@ -107,13 +107,13 @@
 
 				foreach($mounths as $mounth){
 					foreach($mounth as $mes){
-						$teste[] = $mes;
+						$meses[] = $mes;
 					}	
 				}
 							
 			?>
 
-			<form id="menu">
+			<form id="menu" action="{{ route('buscaEdicao') }}" method="POST">
 				{{csrf_field()}}
 				<ul class="nav nav-pills">
 					<select name="year" id="year">
@@ -127,17 +127,14 @@
 					<select name="mounth" id="mounth">
 						<?php	
 
-							foreach($teste as $teste){
-								echo '<option value='.$teste.'>'.convertNumberToLetter($teste).'</option>';
+							foreach($meses as $mes){
+								echo '<option value='.$mes.'>'.convertNumberToLetter($mes).'</option>';
 							}
-	
-							//foreach($meses as $meses){
-								//foreach($meses as $other_data){
-									//echo '<option value='.$other_data.'>'.$other_data.'</option>';
-								//}
-							//}
+						
 						?>
 					</select>
+
+					<button type="submit" id="filtrar">Filtrar</button> 
 				</ul>
 			<form>
 
@@ -201,7 +198,7 @@
        								 	code: 40
         							}, 
 									cmdSinglePage: {
-									activeForMobile: true
+										activeForMobile: true
 									}
 											 
 								}
@@ -232,7 +229,6 @@
 				$("#year").change(function(e) {
 					var urlMounths = "{{ route('getMounthsByYear') }}"
 					e.preventDefault();
-
 					$.ajax({
 						type: "POST",
 						url: urlMounths,
@@ -241,14 +237,18 @@
 							$("#mounth").empty();
 
 							$.each(data, function(i, data){
-								
-          						$('#mounth').append("<option value='"+data+"'>"+data+"</option>");
+
+								const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+									"Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+								];
+          						$('#mounth').append("<option value='"+data.ed_mounth+"'>"+monthNames[data.ed_mounth-1]+"</option>");
         					});
 
 						}
 					})
 
 				});
+	
 			</script>
 
 	</body>
