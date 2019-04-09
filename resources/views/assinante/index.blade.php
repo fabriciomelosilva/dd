@@ -113,8 +113,7 @@
 							
 			?>
 
-			<form id="menu" action="{{ route('buscaEdicao') }}" method="POST">
-				{{csrf_field()}}
+			<form id="menu" action="{{ route('buscaEdicao') }}" method="GET">
 				<ul class="nav nav-pills">
 					<select name="year" id="year">
 						<?php 
@@ -230,7 +229,7 @@
 					var urlMounths = "{{ route('getMounthsByYear') }}"
 					e.preventDefault();
 					$.ajax({
-						type: "POST",
+						type: "GET",
 						url: urlMounths,
 						data: $("#menu").serialize(),
 						success: function(data) {
