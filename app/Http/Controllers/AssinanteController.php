@@ -85,6 +85,8 @@ class AssinanteController extends Controller
        $years = $this->getYears();
   
        $mounths = $this->getMounths($year);
+       var_dump($year);
+       //exit();
        
        $edicao_ano = \DB::table('edicaos')->select('ed_year')->groupBy('ed_year')->orderBy('ed_year', 'desc')->get();
        

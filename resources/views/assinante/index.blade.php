@@ -150,7 +150,7 @@
 
 			<nav class="d-flex justify-content-center text-center">
 				<ul class="pagination ">
-					{{$edicao->links()}}
+					{{$edicao->appends(request()->except('page'))->links()}}
 				</ul>
 			</nav>
 		
