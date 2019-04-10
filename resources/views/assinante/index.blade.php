@@ -89,15 +89,6 @@
 			
 			<?php
 
-				function convertNumberToLetter($mounth){
-
-					setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-					date_default_timezone_set("America/Fortaleza");
-					
-					$month_name = date(mktime(0, 0, 0, $mounth));
-					return ucwords(strftime('%B',$month_name));
-
-				}
 			
 				foreach($years as $year){
 					foreach($year as $ano){
@@ -126,7 +117,7 @@
 					<select name="mounth" id="mounth">
 						<?php	
 
-						   $monthNames = array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",	"Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
+						   $monthNames = array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
 
 							foreach($meses as $mes){
 								echo '<option value='.$mes.'>'.$monthNames[$mes-1].'</option>';
