@@ -81,10 +81,14 @@ Route::get('login', [
 });
 //área do assinante
 Route::group(['middleware' => ['auth', 'role:assinante']], function() {
-  Route::get('/assinante', 'AssinanteController@index');
+
+  Route::get('/assinante', 'AssinanteController@index')->name('assinante');
   Route::post("edicaoAssinante","EdicaoController@listFrontAssinante")->name('edicaoAssinante');
   Route::get("uploadsAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsAssinante');
   Route::get("uploadsThumbAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumbAssinante');
+  Route::get('/getMounths', 'AssinanteController@getMounthsByYear')->name('getMounthsByYear');
+  Route::get('/buscaEdicao', 'AssinanteController@getEditionsByYearMounth')->name('buscaEdicao');
+
 });
 
 //Rotas login assinante
@@ -99,3 +103,7 @@ Route::post('loginAssinante', [
 ]);
 
 Route::get('/acessonegado', 'UserController@getPermissao');
+
+
+
+

@@ -87,6 +87,48 @@
 				</div>
 			</div>
 			
+			<?php
+
+			
+				foreach($years as $year){
+					foreach($year as $ano){
+						$anos[] = $ano;
+					}	
+				}
+
+				foreach($mounths as $mounth){
+					foreach($mounth as $mes){
+						$meses[] = $mes;
+					}	
+				}
+							
+			?>
+
+			<!--<form id="menu" action="{{ route('buscaEdicao') }}" method="GET">
+				<ul class="nav nav-pills">
+					<select name="year" id="year">
+						<?php 
+							foreach($anos as $ano){
+								echo '<option value='.$ano.'>'.$ano.'</option>';
+							}
+						?>
+					</select>
+
+					<select name="mounth" id="mounth">
+						<?php	
+
+						   $monthNames = array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
+
+							foreach($meses as $mes){
+								echo '<option value='.$mes.'>'.$monthNames[$mes-1].'</option>';
+							}
+						
+						?>
+					</select>
+
+					<button type="submit" id="filtrar">Filtrar</button> 
+				</ul>
+			<form>-->
 
 			<div class="row">
 				@foreach ($edicao as $value)
@@ -101,7 +143,7 @@
 
 			<nav class="d-flex justify-content-center text-center">
 				<ul class="pagination ">
-					{{$edicao->links()}}
+					{{$edicao->appends(request()->except('page'))->links()}}
 				</ul>
 			</nav>
 		
@@ -148,7 +190,7 @@
        								 	code: 40
         							}, 
 									cmdSinglePage: {
-									activeForMobile: true
+										activeForMobile: true
 									}
 											 
 								}
@@ -175,6 +217,31 @@
 			})
 		</script>
 
+			<script>
+				$("#year").change(function(e) {
+					var urlMounths = "{{ route('getMounthsByYear') }}"
+					e.preventDefault();
+					$.ajax({
+						type: "GET",
+						url: urlMounths,
+						data: $("#menu").serialize(),
+						success: function(data) {
+							$("#mounth").empty();
+
+							$.each(data, function(i, data){
+
+								const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+									"Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+								];
+          						$('#mounth').append("<option value='"+data.ed_mounth+"'>"+monthNames[data.ed_mounth-1]+"</option>");
+        					});
+
+						}
+					})
+
+				});
+	
+			</script>
 
 	</body>
 </html>
