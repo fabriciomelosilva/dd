@@ -3,6 +3,7 @@
 - composer install
 - php artisan migrate
 - php artisan db:seed
+- Realizar o comando no banco de dados: INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES (NULL, '1', '1', NULL, NULL);
 - php artisan key:generate
 - criar as pastas: dentro de storage(edicao, pdfs)
 
