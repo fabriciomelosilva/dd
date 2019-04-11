@@ -104,7 +104,7 @@
 							
 			?>
 
-			<form id="menu" action="{{ route('buscaEdicao') }}" method="GET">
+			<!--<form id="menu" action="{{ route('buscaEdicao') }}" method="GET">
 				<ul class="nav nav-pills">
 					<select name="year" id="year">
 						<?php 
@@ -128,7 +128,7 @@
 
 					<button type="submit" id="filtrar">Filtrar</button> 
 				</ul>
-			<form>
+			<form>-->
 
 			<div class="row">
 				@foreach ($edicao as $value)
