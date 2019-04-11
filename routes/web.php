@@ -44,7 +44,6 @@ Route::get('login', [
     Route::get("uploads/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploads');
     Route::get("uploadsThumb/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumb');
 
-
     //editar
     Route::post("editar/{id}","EdicaoController@update")->name('editarEdicaoPost');
     Route::get("editar/{edicao} ","EdicaoController@editEdicaoGet")->name('editarEdicaoGet');
