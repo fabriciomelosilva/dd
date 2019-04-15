@@ -1,3 +1,36 @@
+/*************************
+	WEBSITE BODY
+*********/
+html{
+    height:100%;
+}
+
+body{
+    min-height:100%;
+    padding:0;
+    margin:0;
+    position:relative;
+}
+
+body::after{
+    content:'';
+    display:block;
+    height:100px;
+}
+
+/*************************
+	WEBFONTS
+*********/
+@font-face {
+  font-family: 'roboto-condesed-regular';
+  src: url('../fonts/roboto-condensed-normal/robotocondensed-regular-webfont.woff2') format('woff2'),
+  url('../fonts/roboto-condensed-normal/robotocondensed-regular-webfont.woff') format('woff'),
+  url('../fonts/roboto-condensed-normal/RobotoCondensed-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+/*************************/
+
 #modal-wnd .modal-dialog {
   position: relative;
 }
@@ -41,6 +74,112 @@
   cursor: pointer;
 }
 
+/*************************
+	TOP BAR MENU
+*********/
+.topbar-menu {
+  background-color: #169990;
+}
+
+#topnav {
+  background-color: #169990;
+}
+
+#topnav .navigation-menu > li > a {
+  color: rgba(255, 255, 255, 1);
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+#topnav .navigation-menu > li > a:first-child {
+  padding-left: 25px;
+}
+
+#topnav .navigation-menu > li > a:hover, 
+#topnav .navigation-menu > li > a:focus, 
+#topnav .navigation-menu > li > a:active {
+  background: #007563;
+}
+
+/*************************
+	CADASTRO BODY
+*********/
+.page-title-box {
+  text-align: center;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+}
+
+.card-body {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
+  padding: 50px 15px;
+}
+
+.page-title-box .page-title {
+  color: #169990;
+  text-transform: uppercase;
+  font-size: 2em;
+}
+
+.form-control {
+  border-color: #169990;
+  min-height: 50px;
+  padding: 11px 15px;
+  font-family: Muli,sans-serif;
+}
+
+.form-group label {
+  color: #373737;
+  font-weight: bold;
+}
+
+.form-group label {
+  padding-left: 0;
+}
+
+.col-form-label {
+  padding-top: 10px;
+  padding-bottom: 4px;
+  font-family: Muli,sans-serif;
+}
+
+.btn-novocaderno {
+  border: 1px solid #169990;
+  color: #2D2D2D;
+  font-family: Muli,sans-serif;
+  border-radius: 5px;
+}
+
+.btn-novocaderno:hover {
+  background: #169990;
+  color: #ffffff;
+}
+
+.btn-edicao {
+  background: #169990;
+  color: #ffffff;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  padding: 10px 35px;
+  border-radius: 5px;
+}
+
+.btn-edicao:hover {
+  background: #007563;
+  color: #fff;
+}
+
+.remover_campo {
+  font-family: roboto-condesed-regular, arial, sans-serif;
+  padding-top: 5px;
+  color: #c0392b;
+}
+
+.remover_campo:hover {
+  color: #000;
+}
 /*************************
 	NAVIGATION
 *********/
@@ -200,6 +339,16 @@
 .navbar-nav>.open>a.download:hover, .navbar-nav>.open>a.download:focus, .navbar-nav>.open>a.download:active {
   background-color: #3368a5;
   color: #fff;
+}
+
+.profile-dropdown {
+    width: auto !important;
+}
+
+.dropdown-menu .dropdown-item,
+.dropdown-menu .dropdown-item i,
+.dropdown-menu .dropdown-item:hover {
+  color: #8e99a2 !important;
 }
 
 
@@ -567,4 +716,14 @@ body::before {
 
 .dark .mount-container.fullscreen {
   background-image: url('../images/texture.jpg');
+}
+
+/*************************
+	FOOTER
+*********/
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height: 55px;
 }

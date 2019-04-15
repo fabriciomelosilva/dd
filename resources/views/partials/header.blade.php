@@ -158,18 +158,43 @@
 					@if(Auth::guard('web')->check())
                         @if (!\Request::is('assinante'))  
 						<li class="has-submenu">
-							<a href="{{ route('edicaoGet') }}">
-								<i class="fe-airplay"></i>Cadastrar Edição
+							<a data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<i class="fe-plus-circle"></i>Cadastrar <i class="fe-chevron-down"></i>
 							</a>
+
+                            <div class="dropdown-menu dropdown-menu-left dropdown-menu-animated profile-dropdown ">
+                                <!-- item-->
+                                <a href="{{ route('edicaoGet') }}" class="dropdown-item notify-item">
+                                    <i class="fe-plus-circle"></i> Cadastrar Edição
+                                </a>
+                                <!-- item-->
+                                <a href="{{ route('edicaoGet') }}" class="dropdown-item notify-item">
+                                    <i class="fe-plus-circle"></i> Cadastrar Classificado
+                                </a>
+                            </div>
+
 						</li>
+
+
 						<li class="has-submenu">
-							<a href="{{ route('lista_edicao') }}">
-								<i class="fe-airplay"></i>Lista de Edições
+							<a data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<i class="fe-list"></i>Listagens <i class="fe-chevron-down"></i>
 							</a>
+
+                            <div class="dropdown-menu dropdown-menu-left dropdown-menu-animated profile-dropdown ">
+                                <!-- item-->
+                                <a href="{{ route('lista_edicao') }}" class="dropdown-item notify-item">
+                                    <i class="fe-list"></i> Listar Edições
+                                </a>
+                                <!-- item-->
+                                <a href="{{ route('lista_edicao') }}" class="dropdown-item notify-item">
+                                    <i class="fe-list"></i> Listar Classificados
+                                </a>
+                            </div>
 						</li>
 						<li class="has-submenu">
 							<a href="{{ route('register') }}">
-								<i class="fe-airplay"></i>Cadastrar Usuários
+								<i class="fe-user-plus"></i>Cadastrar Usuários
 							</a>
 						</li>
                         @endif

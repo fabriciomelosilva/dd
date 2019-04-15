@@ -16,9 +16,9 @@ jQuery(document).ready(function() {
 		$('#novaEdicao').click(function(e) {
 			e.preventDefault();     //prevenir novos clicks
 			if (x < campos_max) {
-				$('#cadernos').append('<div id="parent" class="form-group row"><label class="col-sm-2 col-form-label">Upload do caderno '+ x +'</label>\<div class="col-sm-10">\
+				$('#cadernos').append('<div id="parent" class="form-group row"><div class="col-sm-10 offset-sm-1">\<label class="col-sm-12 col-form-label">Upload do caderno '+ x +'</label>\
 						<input class="form-control" type="file" name="edicao[]">\
-						<a href="#" class="remover_campo">Remover</a>\
+						<a href="#" class="remover_campo"><i class="fe-x-circle"></i>Remover</a>\
 					<\div>');
 				x++;
 			}
