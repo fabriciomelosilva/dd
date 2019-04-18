@@ -48,15 +48,16 @@
 				googletag.enableServices();
 			});
 		</script>
+
 	</head>
 
 	<body>
-		<nav class="navbar navbar-primary navbar-static-top">
+		<nav class="navbar navbarassinante">
 			<div class="container">
 				<div class="navbar-header">
 					
 					<div class="navbar-logout">
-						<a type="button" class="btn btn-default" href="{{ url('/logoutAssinante') }}">Sair</a></li>
+						<a type="button" class="btn btn-pattern" href="{{ url('/logoutAssinante') }}">Sair</a></li>
 					</div>
 
 					<a class="navbar-brand" href="#">
@@ -70,7 +71,7 @@
 		</nav>
 		<div class="container">
 			<!-- /1028625/SLB1 -->
-			<div id='div-gpt-ad-1538588809041-0' style="text-align:center; margin: 32px 0;">
+			<div id='div-gpt-ad-1538588809041-0' class="main-ad">
 				<script>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1538588809041-0'); });
 				</script>
@@ -130,16 +131,81 @@
 				</ul>
 			<form>-->
 
+			<!-- SELECIONE O PERIODO -->
 			<div class="row">
-				@foreach ($edicao as $value)
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail js-thumbnail-target" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_mounth,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
-						<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" class="btn" alt="" height="350" width="250"/>
-						<div class="caption text-center text-muted">{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}</div>
+				<div class="col-xs-12">
+
+					<div class="periodselect">
+						<div class="col-xs-12 col-sm-3">
+							<div class="periodselect-title">Selecione o período</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-9">
+							<form class="form-inline periodselect__right">
+								<div class="form-group">
+                                    <div class="formitem periodselect-mobile">
+										<i class="fe-calendar"></i>&nbsp;
+									    <input type="text" name="daterange" class="datarangerform" value="01/01/2018 | 01/15/2018" />
+                                    </div>
+
+								<div class="formitem periodselect-mobile periodselect-mobile__smaller">
+									<div class="form-group">
+                                        <select name="categoria">
+                                            <option value="classificados" selected>Classificados</option>
+                                            <option value="edicoes">Edições</option>
+                                            <option value="todos">Todos</option>
+                                        </select>
+                                    </div>
+								</div>
+
+                                <div class="formitem formitem__last">
+                                    <button type="submit" class="btn">
+                                        <i class="fe-search"></i>
+                                    </button>
+                                </div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- SELECIONE O PERIODO -->
+
+			<!-- TITULO E VISUALIZAÇÃO -->
+            <div class="row classificadoslista">
+                <div class="col-xs-7 col-sm-6">
+                    <div class="classificadoslista-title">Classificados</div>
+                </div>
+				<div class="col-xs-5 col-sm-6">
+					<div class="pull-right classificadoslista-buttons">
+						<ul>
+							<li>
+                                <button class="classificadoslista-buttons buttonvisualizacao-grid"><i class="fe-grid"></i></button>
+							</li>
+							<li>
+								<button class="classificadoslista-buttons buttonvisualizacao-lista"><i class="fe-list"></i></button>
+							</li>
+						</ul>
 					</div>
 				</div>
-				@endforeach 
+            </div>
+			<!-- TITULO E VISUALIZAÇÃO -->
+
+			@foreach ($edicao as $value)
+			<div class="col-xs-6 col-sm-4 col-md-3">
+				<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_mounth,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
+					<div class="thumbnail-date">
+						{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}
+						<hr />
+						<div class="readmore"><a id="edicaos" href="#">Leia Mais <i class="fe-chevron-right"></i></a></div>
+					</div>
+
+					<div class="capazoom">
+						<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
+					</div>
+				</div>
 			</div>
+			@endforeach
 
 			<nav class="d-flex justify-content-center text-center">
 				<ul class="pagination ">
@@ -242,6 +308,54 @@
 				});
 	
 			</script>
+
+		<!-- SELECIONAR O PERIODO -->
+		<script type="text/javascript" src="{{ asset('/js/datapicker/moment.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('/js/datapicker/daterangepicker.js') }}"></script>
+		<link rel="stylesheet" type="text/css" href="{{ asset('/css/daterangepicker.css') }}" />
+		<script>
+            $(function() {
+                $('input[name="daterange"]').daterangepicker({
+                    opens: 'left'
+                }, function(start, end, label) {
+                    console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
+                });
+            });
+		</script>
+		<!-- SELECIONAR O PERIODO -->
+
+		<!-- VISUALIZAÇÃO CLASSIFICADOS-->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+		<script>
+            $( function() {
+                $( ".buttonvisualizacao-lista" ).on( "click", function() {
+                    $( ".thumbnail-style" ).switchClass( "thumbnail-style", "list-style" );
+                    $.removeCookie('grid-list-style');
+                    $.cookie('grid-list-style', true, { expires: 1 });
+                });
+                $( ".buttonvisualizacao-grid" ).on( "click", function() {
+                    $( ".list-style" ).switchClass( "list-style", "thumbnail-style" );
+                    $.removeCookie('grid-list-style'); // => true
+                    $.cookie('grid-list-style', false, { expires: 1 });
+                });
+
+                if( $.cookie('grid-list-style') == "true"){
+                    $( ".buttonvisualizacao-lista" ).addClass('selected')
+                    $( ".js-thumbnail-target" ).addClass("list-style").removeClass("thumbnail-style" );
+                }else{
+                    $( ".buttonvisualizacao-grid" ).addClass('selected')
+                    $( ".js-thumbnail-target" ).addClass("thumbnail-style").removeClass("list-style" );
+                }
+            } );
+		</script>
+		<script>
+            $('button').on('click', function(){
+                $('button').removeClass('selected');
+                $(this).addClass('selected');
+            });
+		</script>
+		<!-- VISUALIZAÇÃO CLASSIFICADOS-->
 
 	</body>
 </html>
