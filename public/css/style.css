@@ -30,52 +30,11 @@ body::after{
 }
 /*************************/
 
-#modal-wnd .modal-dialog {
-  position: relative;
-}
-
-#modal-wnd .modal-dialog .close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-#modal-wnd .modal-dialog .modal-content {
-  padding: 15px;
-}
-
-#modal-wnd .modal-content img, .test-img-size img {
-  max-width: 90vw;
-}
-
-.test-img-size {
-  visibility: hidden;
-  position: fixed;
-}
-
-.doc-image {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.doc-image img {
-  max-width: 400px;
-  max-height: 400px;
-}
-
-.doc-image img:hover {
-  box-shadow: 0 0 10px 1px #ccc;
-  cursor: pointer;
-}
-
-.doc-image img:active {
-  box-shadow: 0 0 5px 1px #aaa;
-  cursor: pointer;
-}
-
 /*************************
-	TOP BAR MENU
+	HEADER
 *********/
+
+/* LOGO VISAO ASSINANTE */
 .navbar-header img {
   max-width: 100%;
   height: auto;
@@ -103,8 +62,8 @@ body::after{
   padding-left: 25px;
 }
 
-#topnav .navigation-menu > li > a:hover, 
-#topnav .navigation-menu > li > a:focus, 
+#topnav .navigation-menu > li > a:hover,
+#topnav .navigation-menu > li > a:focus,
 #topnav .navigation-menu > li > a:active {
   background: #007563;
 }
@@ -130,8 +89,10 @@ body::after{
 }
 
 /*************************
-	SELECIONAR PERIODO
+	CONTENT
 *********/
+
+/** SELECIONAR PERIODO **/
 
 .periodselect {
   width: 100%;
@@ -206,11 +167,9 @@ body::after{
   padding-top: 7px;
   font-family: roboto-condesed-regular, arial, sans-serif;
 }
-/*************************/
 
-/*************************
-	LISTA DE CLASSIFICADOS
-*********/
+
+/** LISTA DE CLASSIFICADOS **/
 
 .classificadoslista {
   margin: 30px 0 15px;
@@ -267,12 +226,14 @@ body::after{
   border: 1px solid #169990;
 }
 
+/* TIPO THUMBNAIL */
 .thumbnail-style {
   border-bottom: 4px solid #169990;
   padding: 15px;
   -webkit-box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
   box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
   margin: 15px 0;
+  min-height: 414px;
 }
 
 .thumbnail-date {
@@ -333,12 +294,14 @@ body::after{
   transform: scale(1.1);
 }
 
+/* TIPO LISTA */
 .list-style {
   border-bottom: 4px solid #169990;
   padding: 0;
   -webkit-box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
   box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
   margin: 15px 0;
+  min-height: 135px;
 }
 
 .list-style .capazoom {
@@ -358,10 +321,9 @@ body::after{
 .list-style .thumbnail-date .readmore {
   display: block;
 }
-/*************************/
 
 /*************************
-	CADASTRO BODY
+	CADASTRO DE CLASSIFICADOS CONTENT
 *********/
 .page-title-box {
   text-align: center;
@@ -441,7 +403,7 @@ body::after{
 }
 
 /*************************
-	PAGINATION
+	PAGINAÇÃO
 *********/
 .pagination {
   font-family: roboto-condesed-regular, arial, sans-serif;
@@ -483,6 +445,184 @@ body::after{
 .pagination>li:first-child>a, .pagination>li:first-child>span {
   border: 0;
   padding: 8px 10px 5px;
+}
+
+/*************************
+	FOOTER
+*********/
+footer{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height: 55px;
+}
+
+/*************************
+	QUERIES
+*********/
+
+/* TABLET - Portrait and Landscape */
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (-webkit-min-device-pixel-ratio: 1) {
+
+  .thumbnail-style {
+    min-height: 351px;
+  }
+
+  .periodselect {
+    padding: 10px 0px 0 15px;
+  }
+
+  .formitem {
+    padding: 0 14px;
+  }
+
+  .list-style {
+    min-height: 114px;
+  }
+
+  .list-style .thumbnail-date {
+    width: 59%;
+    margin-top: 25px;
+  }
+
+}
+
+/* CELULAR - Portrait and Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+  .navbar-header img {
+    max-width: 84%;
+  }
+
+  .periodselect {
+    background: none;
+    padding: 0;
+    margin: 15px 0 30px;
+    min-height: 150px;
+  }
+
+  .periodselect .col-xs-12 {
+    padding: 0;
+  }
+
+  .formitem {
+    padding: 0;
+    border-right: 0;
+    height: auto;
+  }
+
+  .formitem select {
+    width: 85%;
+  }
+
+  .periodselect__right {
+    float: none;
+  }
+
+  .periodselect-mobile {
+    width: 100%;
+    padding: 0 0 8px;
+    border-radius: 5px;
+    text-align: center;
+    background: #F3F3F3;
+    margin-bottom: 15px;
+  }
+
+  .periodselect-mobile .form-group {
+    margin-bottom: 0;
+  }
+
+  .periodselect-mobile__smaller {
+    width: 80.6%;
+  }
+
+  .periodselect button {
+    background: #169990;
+    color: #fff;
+    margin-left: 15px;
+  }
+
+  .classificadoslista-title {
+    font-size: 1.6em;
+    padding-top: 13px;
+  }
+
+  .thumbnail-style {
+    min-height: 249px;
+  }
+
+  .thumbnail-date {
+    font-size: 1em;
+  }
+
+  .list-style .thumbnail-date {
+    width: 60%;
+    margin-right: 7px;
+    margin-top: 11px;
+  }
+
+  .thumbnail-date hr {
+    margin: 2px 0;
+  }
+
+  .list-style {
+    min-height: 84px;
+  }
+
+  .list-style .thumbnail-date {
+    margin-top: 18px;
+  }
+
+}
+/***************/
+
+#modal-wnd .modal-dialog {
+  position: relative;
+}
+
+#modal-wnd .modal-dialog .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#modal-wnd .modal-dialog .modal-content {
+  padding: 15px;
+}
+
+#modal-wnd .modal-content img, .test-img-size img {
+  max-width: 90vw;
+}
+
+.test-img-size {
+  visibility: hidden;
+  position: fixed;
+}
+
+.doc-image {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.doc-image img {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.doc-image img:hover {
+  box-shadow: 0 0 10px 1px #ccc;
+  cursor: pointer;
+}
+
+.doc-image img:active {
+  box-shadow: 0 0 5px 1px #aaa;
+  cursor: pointer;
 }
 
 /*************************
@@ -1022,113 +1162,4 @@ body::before {
 
 .dark .mount-container.fullscreen {
   background-image: url('../images/texture.jpg');
-}
-
-/*************************
-	FOOTER
-*********/
-footer{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height: 55px;
-}
-
-/*************************
-	QUERIES
-*********/
-
-/* Portrait and Landscape */
-@media only screen
-and (min-device-width: 768px)
-and (max-device-width: 1024px)
-and (-webkit-min-device-pixel-ratio: 1) {
-
-  .periodselect {
-    padding: 10px 0px 0 15px;
-  }
-
-  .formitem {
-    padding: 0 14px;
-  }
-
-}
-
-/* Portrait and Landscape */
-@media only screen
-and (min-device-width: 320px)
-and (max-device-width: 480px)
-and (-webkit-min-device-pixel-ratio: 2) {
-
-  .navbar-header img {
-    max-width: 84%;
-  }
-
-  .periodselect {
-    background: none;
-    padding: 0;
-    margin: 15px 0 30px;
-    min-height: 150px;
-  }
-
-  .periodselect .col-xs-12 {
-    padding: 0;
-  }
-
-  .formitem {
-    padding: 0;
-    border-right: 0;
-    height: auto;
-  }
-
-  .formitem select {
-    width: 85%;
-  }
-
-  .periodselect__right {
-    float: none;
-  }
-
-  .periodselect-mobile {
-    width: 100%;
-    padding: 0 0 8px;
-    border-radius: 5px;
-    text-align: center;
-    background: #F3F3F3;
-    margin-bottom: 15px;
-  }
-
-  .periodselect-mobile .form-group {
-    margin-bottom: 0;
-  }
-
-  .periodselect-mobile__smaller {
-    width: 80.6%;
-  }
-
-  .periodselect button {
-    background: #169990;
-    color: #fff;
-    margin-left: 15px;
-  }
-
-  .classificadoslista-title {
-    font-size: 1.6em;
-    padding-top: 13px;
-  }
-
-  .thumbnail-date {
-    font-size: 1em;
-  }
-
-  .list-style .thumbnail-date {
-    width: 60%;
-    margin-right: 7px;
-    margin-top: 11px;
-  }
-
-  .thumbnail-date hr {
-    margin: 2px 0;
-  }
-
 }

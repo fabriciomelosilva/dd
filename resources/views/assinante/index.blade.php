@@ -191,6 +191,7 @@
             </div>
 			<!-- TITULO E VISUALIZAÇÃO -->
 
+			<!-- CLASSIFICADOS E EDICOES -->
 			@foreach ($edicao as $value)
 			<div class="col-xs-6 col-sm-4 col-md-3">
 				<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_mounth,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
@@ -206,13 +207,16 @@
 				</div>
 			</div>
 			@endforeach
+		<!-- CLASSIFICADOS E EDICOES -->
 
+		</div>
+
+		<div class="row">
 			<nav class="d-flex justify-content-center text-center">
 				<ul class="pagination ">
 					{{$edicao->appends(request()->except('page'))->links()}}
 				</ul>
 			</nav>
-		
 		</div>
 
 		<script src="{{ asset('/js/html2canvas.min.js') }}"></script>
