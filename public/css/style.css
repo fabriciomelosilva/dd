@@ -34,7 +34,7 @@ body::after{
 	HEADER
 *********/
 
-/* LOGO VISAO ASSINANTE */
+/* LOGO */
 .navbar-header img {
   max-width: 100%;
   height: auto;
@@ -838,6 +838,10 @@ body {
 body .navbar {
   margin-bottom: 0;
 }
+
+/*************************
+	FLIPBOOK STYLE
+*********/
 
 #flip-book-window .modal-content {
   height: 100%;

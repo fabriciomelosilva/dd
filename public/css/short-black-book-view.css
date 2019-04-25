@@ -149,14 +149,7 @@
   padding: 0;
 }
 .ctrl .fnavbar {
-  text-align: center;
-  background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
-  background-repeat: repeat-x;
-  padding: 3px;
-  overflow: visible;
-  background-color: #3c3c3c;
 
-  border-radius: 4px;
 }
 .ctrl .fnavbar a {
   text-decoration: none;
