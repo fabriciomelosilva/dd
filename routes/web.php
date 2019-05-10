@@ -16,19 +16,19 @@
 
 // Authentication Routes...
 Route::get('login', [
-    'as' => 'login',
-    'uses' => 'Auth\LoginController@showLoginForm'
-  ]);
-  Route::post('login', [
-    'as' => '',
-    'uses' => 'Auth\LoginController@login'
-  ]);
+  'as' => 'login',
+  'uses' => 'Auth\LoginController@showLoginForm'
+]);
+Route::post('login', [
+  'as' => '',
+  'uses' => 'Auth\LoginController@login'
+]);
 
 
-  Route::get('/logout', 'Auth\LoginController@logout');
-  Route::get('/logoutAssinante', 'AuthAssinantes\LoginAssinanteController@logout');
+Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/logoutAssinante', 'AuthAssinantes\LoginAssinanteController@logout');
 
-  Route::group(['middleware' => ['auth', 'role:admin']], function() {
+Route::group(['middleware' => ['auth', 'role:admin']], function() {
 
     Route::get('/', function () {
         return view('dashboard');
@@ -86,6 +86,7 @@ Route::group(['middleware' => ['auth', 'role:assinante']], function() {
   Route::get("uploadsAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsAssinante');
   Route::get("uploadsThumbAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumbAssinante');
   Route::get('/getMounths', 'AssinanteController@getMounthsByYear')->name('getMounthsByYear');
+  
   Route::get('/buscaEdicao', 'AssinanteController@getEditionsByYearMounth')->name('buscaEdicao');
 
 });

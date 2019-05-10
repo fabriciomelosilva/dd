@@ -1,25 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Diário Digital</title>
-		<link rel="shortcut icon" type="image/ico" href="{{ asset('/images/favicon.ico') }}"/>
-		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-		<script src="{{ asset('/js/jquery.min.js') }}"></script>
-		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-		<link href=	"{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
-		
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137234529-1"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		  gtag('config', 'UA-137234529-1');
-		</script>
-
 		<script type='text/javascript'>
 			(function() {
 				var useSSL = 'https:' == document.location.protocol;
@@ -27,6 +9,33 @@
 				'//www.googletagservices.com/tag/js/gpt.js';
 				document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
 			})();
+		</script>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+
+		<title>Diário Digital</title>
+		
+		<link rel="shortcut icon" type="image/ico" href="{{ asset('/images/favicon.ico') }}"/>
+
+		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+
+		<link href=	"{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
+		
+		<!-- SELECIONAR O PERIODO -->
+		<link rel="stylesheet" type="text/css" href="{{ asset('/css/daterangepicker.css') }}" />
+		
+		
+		<script src="{{ asset('/js/jquery.min.js') }}"></script>
+		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'UA-137234529-1');
 		</script>
 
 		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
@@ -48,14 +57,12 @@
 				googletag.enableServices();
 			});
 		</script>
-
 	</head>
 
 	<body>
 		<nav class="navbar navbarassinante">
 			<div class="container">
 				<div class="navbar-header">
-					
 					<div class="navbar-logout">
 						<a type="button" class="btn btn-pattern" href="{{ url('/logoutAssinante') }}">Sair</a></li>
 					</div>
@@ -64,9 +71,6 @@
 						<img src="{{ asset('/assets/images/diario-logo.svg') }}" alt="Marca">
 					</a>
 				</div>
-
-				
-				
 			</div>
 		</nav>
 		<div class="container">
@@ -90,7 +94,7 @@
 			
 			<?php
 
-			
+			/*
 				foreach($years as $year){
 					foreach($year as $ano){
 						$anos[] = $ano;
@@ -102,13 +106,13 @@
 						$meses[] = $mes;
 					}	
 				}
-							
+						
 			?>
 
-			<!--<form id="menu" action="{{ route('buscaEdicao') }}" method="GET">
+			<form id="menu" action="{{ route('buscaEdicao') }}" method="GET">
 				<ul class="nav nav-pills">
 					<select name="year" id="year">
-						<?php 
+						<?php
 							foreach($anos as $ano){
 								echo '<option value='.$ano.'>'.$ano.'</option>';
 							}
@@ -116,25 +120,24 @@
 					</select>
 
 					<select name="mounth" id="mounth">
-						<?php	
-
+						<?php
 						   $monthNames = array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
 
 							foreach($meses as $mes){
 								echo '<option value='.$mes.'>'.$monthNames[$mes-1].'</option>';
 							}
-						
 						?>
 					</select>
 
 					<button type="submit" id="filtrar">Filtrar</button> 
 				</ul>
-			<form>-->
+			<form>
+				*/			
+			?>
 
 			<!-- SELECIONE O PERIODO -->
 			<div class="row">
 				<div class="col-xs-12">
-
 					<div class="periodselect">
 						<div class="col-xs-12 col-sm-3">
 							<div class="periodselect-title">Selecione o período</div>
@@ -145,28 +148,28 @@
 								<div class="form-group">
                                     <div class="formitem periodselect-mobile">
 										<i class="fe-calendar"></i>&nbsp;
-									    <input type="text" name="daterange" class="datarangerform" value="01/01/2018 | 01/15/2018" />
+									    <input type="text" name="daterange" class="datarangerform" />
                                     </div>
 
-								<div class="formitem periodselect-mobile periodselect-mobile__smaller">
-									<div class="form-group">
-                                        <select name="categoria">
-                                            <option value="classificados" selected>Classificados</option>
-                                            <option value="edicoes">Edições</option>
-                                            <option value="todos">Todos</option>
-                                        </select>
-                                    </div>
-								</div>
+									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
+										<div class="form-group">
+	                                        <select name="categoria">
+	                                            <option value="todos" selected>Todos</option>
+	                                            <option value="edicoes">Edições</option>
+	                                            <option value="classificados">Classificados</option>
+	                                        </select>
+	                                    </div>
+									</div>
 
-                                <div class="formitem formitem__last">
-                                    <button type="submit" class="btn">
-                                        <i class="fe-search"></i>
-                                    </button>
-                                </div>
+	                                <div class="formitem formitem__last">
+	                                    <button type="button" class="btn search-button">
+	                                        <i class="fe-search"></i>
+	                                    </button>
+	                                </div>
+	                            </div>
 							</form>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<!-- SELECIONE O PERIODO -->
@@ -180,10 +183,10 @@
 					<div class="pull-right classificadoslista-buttons">
 						<ul>
 							<li>
-                                <button class="classificadoslista-buttons buttonvisualizacao-grid"><i class="fe-grid"></i></button>
+                                <button class="buttonvisualizacao-grid"><i class="fe-grid"></i></button>
 							</li>
 							<li>
-								<button class="classificadoslista-buttons buttonvisualizacao-lista"><i class="fe-list"></i></button>
+								<button class="buttonvisualizacao-lista"><i class="fe-list"></i></button>
 							</li>
 						</ul>
 					</div>
@@ -207,8 +210,7 @@
 				</div>
 			</div>
 			@endforeach
-		<!-- CLASSIFICADOS E EDICOES -->
-
+			<!-- CLASSIFICADOS E EDICOES -->
 		</div>
 
 		<div class="row">
@@ -218,13 +220,25 @@
 				</ul>
 			</nav>
 		</div>
-
+		
+		<!-- FLIPBOOK -->
 		<script src="{{ asset('/js/html2canvas.min.js') }}"></script>
 		<script src="{{ asset('/js/three.min.js') }}"></script>
 		<script src="{{ asset('/js/pdf.min.js') }}"></script>
-		<script src="{{ asset('/js/3dflipbook.min.js') }}"></script>					
+		<script src="{{ asset('/js/3dflipbook.min.js') }}"></script>
 
-		<script type="text/javascript">
+		<!-- SELECIONAR O PERIODO -->
+		<script type="text/javascript" src="{{ asset('/js/datapicker/moment.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('/js/datapicker/daterangepicker.js') }}"></script>
+
+		<!-- VISUALIZAÇÃO CLASSIFICADOS -->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+		<script>
+			//// FLIPBOOK
+			//// FLIPBOOK
+			//// FLIPBOOK
 
 			var template = {
 				html: './templates/default-book-view.html',
@@ -239,35 +253,34 @@
 				var pdf = $(this).attr('data-route');
 
 				var booksOptions = {
-						edicaos: {
-							pdf: pdf,
-							template: template,
-							controlsProps: {
-								
-								downloadURL: pdf,
- 
-								actions: {
-									cmdBackward: {
-										code: 37
-									},
-									cmdForward: {
-										code: 39
-									},
-									cmdZoomIn: {
-       								 	code: 38
-       								},
-       								cmdZoomOut: {
-       								 	code: 40
-        							}, 
-									cmdSinglePage: {
-										activeForMobile: true
-									}
-											 
-								}
-							}
-						},
-				};
+					edicaos: {
+						pdf: pdf,
+						template: template,
+						controlsProps: {
+							
+							downloadURL: pdf,
 
+							actions: {
+								cmdBackward: {
+									code: 37
+								},
+								cmdForward: {
+									code: 39
+								},
+								cmdZoomIn: {
+   								 	code: 38
+   								},
+   								cmdZoomOut: {
+   								 	code: 40
+    							}, 
+								cmdSinglePage: {
+									activeForMobile: true
+								}
+										 
+							}
+						}
+					},
+				};
 
 				var instance = {
 					scene: undefined,
@@ -284,54 +297,35 @@
 						instance.options = booksOptions[e.target.id];
 						$('#flip-book-window').modal('show');
 					}
-			})
-		</script>
+			});
 
-			<script>
-				$("#year").change(function(e) {
-					var urlMounths = "{{ route('getMounthsByYear') }}"
-					e.preventDefault();
-					$.ajax({
-						type: "GET",
-						url: urlMounths,
-						data: $("#menu").serialize(),
-						success: function(data) {
-							$("#mounth").empty();
+			//// PESQUISA
+			//// PESQUISA
+			//// PESQUISA
 
-							$.each(data, function(i, data){
-
-								const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-									"Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-								];
-          						$('#mounth').append("<option value='"+data.ed_mounth+"'>"+monthNames[data.ed_mounth-1]+"</option>");
-        					});
-
-						}
-					})
-
-				});
-	
-			</script>
-
-		<!-- SELECIONAR O PERIODO -->
-		<script type="text/javascript" src="{{ asset('/js/datapicker/moment.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('/js/datapicker/daterangepicker.js') }}"></script>
-		<link rel="stylesheet" type="text/css" href="{{ asset('/css/daterangepicker.css') }}" />
-		<script>
-            $(function() {
+			$(function() {
                 $('input[name="daterange"]').daterangepicker({
                     opens: 'left'
                 }, function(start, end, label) {
                     console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
+                    search();
                 });
             });
-		</script>
-		<!-- SELECIONAR O PERIODO -->
 
-		<!-- VISUALIZAÇÃO CLASSIFICADOS-->
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-		<script>
+            $('.search-button').on('click', function(){
+            	search();
+            });
+
+            function search(){
+            	console.log("Executar Pesquisa");
+                console.log("Executar Pesquisa");
+                console.log("Executar Pesquisa");
+            }
+
+			//// VISUALIZAÇÃO CLASSIFICADOS
+			//// VISUALIZAÇÃO CLASSIFICADOS
+			//// VISUALIZAÇÃO CLASSIFICADOS
+
             $( function() {
                 $( ".buttonvisualizacao-lista" ).on( "click", function() {
                     $( ".thumbnail-style" ).switchClass( "thumbnail-style", "list-style" );
@@ -352,14 +346,11 @@
                     $( ".js-thumbnail-target" ).addClass("thumbnail-style").removeClass("list-style" );
                 }
             } );
-		</script>
-		<script>
+
             $('button').on('click', function(){
                 $('button').removeClass('selected');
                 $(this).addClass('selected');
             });
 		</script>
-		<!-- VISUALIZAÇÃO CLASSIFICADOS-->
-
 	</body>
 </html>
