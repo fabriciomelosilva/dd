@@ -28,51 +28,51 @@ class AssinanteController extends Controller
         return $years;
     }
 
-    // getMounth -- retorna o mês atual
-    public function getMounth() {
+    // getMonth -- retorna o mês atual
+    public function getMonth() {
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         date_default_timezone_set("America/Fortaleza");
         $dateNow = getdate();
-        $mounth = $dateNow['mon'];
+        $month = $dateNow['mon'];
 
-        $month_name = date(mktime(0, 0, 0, $mounth));
+        $month_name = date(mktime(0, 0, 0, $month));
 
         return ucwords(strftime('%B',$month_name));
     }
 
-    // getMounths -- retorna os meses presentes no Banco de Dados
-    public function getMounths($year) {
-        $mounths = \DB::table('edicaos')
-            ->select('ed_mounth')
+    // getMonths -- retorna os meses presentes no Banco de Dados
+    public function getMonths($year) {
+        $months = \DB::table('edicaos')
+            ->select('ed_month')
             ->where('ed_year', $year)
             ->where('ed_status', '1') // Status: Ativo
-            ->groupBy('ed_mounth')
+            ->groupBy('ed_month')
             ->get();
         
-        return $mounths;
+        return $months;
     }
 
     public function getEditions($where = null){
-        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->where('ed_status', '1')->paginate(8);
+        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')->where('ed_status', '1')->paginate(8);
 
         return $edicao;
     }
 
-    public function getMounthsByYear(Request $request){
+    public function getMonthsByYear(Request $request){
 
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         date_default_timezone_set("America/Fortaleza");
         $year = $request->input('year');
 
   
-        $mounths = \DB::table('edicaos')
-            ->select('ed_mounth')
+        $months = \DB::table('edicaos')
+            ->select('ed_month')
             ->where('ed_year', $year)
             ->where('ed_status', '1')
-            ->groupBy('ed_mounth')
+            ->groupBy('ed_month')
             ->get();
       
-        return $mounths;
+        return $months;
     }
 
     public function index()
@@ -85,17 +85,36 @@ class AssinanteController extends Controller
        return view("assinante.index", compact('edicao'));
     }
 
-    public function getEditionsByYearMounth(Request $request)
+    public function getEditionsByYearMonth(Request $request)
     {
 
         $year = $request->input('year');
-        $mounth = $request->input('mounth');
+        $month = $request->input('month');
 
         $years = $this->getYears();
-        $mounths = $this->getMounths($year);
+        $months = $this->getMonths($year);
 
-        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->where('ed_year', $year)->where('ed_mounth', $mounth)->where('ed_status', '1')->paginate(8);
-                //$conteudo = $edicao;
-        return view("assinante.index", compact('edicao','year','mounth','years','mounths'));
+        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')->where('ed_year', $year)->where('ed_month', $month)->where('ed_status', '1')->paginate(8);
+
+        return view("assinante.index", compact('edicao','year','month','years','months'));
+    }
+
+    public function getPublicationsFilter(Request $request)
+    {
+        $startDate = date($request->input('startDate'));
+        $endDate = date($request->input('endDate'));
+        $category = $request->input('category');
+
+        $edicao = $this->getEditions();
+        $edicao = \DB::table('edicaos')
+            ->orderBy('ed_year', 'desc')
+            ->orderBy('ed_month', 'desc')
+            ->orderBy('ed_day', 'desc')
+
+            ->whereBetween('ed_date', [$startDate, $endDate])
+
+            ->where('ed_status', '1')->paginate(8);
+
+        return view("assinante.index", compact('edicao'));
     }
 }

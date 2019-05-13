@@ -35,7 +35,7 @@
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">Data</label>
 								<div class="col-sm-10">
-									<input value="<?php echo $edicao->ed_day."/".$edicao->ed_mounth."/".$edicao->ed_year; ?>" class="form-control" name="data_edicao" type="text" id="calendario">
+									<input value="<?php echo $edicao->ed_day."/".$edicao->ed_month."/".$edicao->ed_year; ?>" class="form-control" name="data_edicao" type="text" id="calendario">
 								</div>
 							</div>
 							<div id="cadernos">

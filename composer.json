@@ -6,11 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "doctrine/dbal": "^2.9",
         "intervention/image": "dev-master",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-		"lynx39/lara-pdf-merger": "1.0.*",
-		"skydiver/laravel-materialize-css": "dev-master"
+        "lynx39/lara-pdf-merger": "1.0.*",
+        "skydiver/laravel-materialize-css": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

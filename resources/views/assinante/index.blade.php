@@ -101,8 +101,8 @@
 					}	
 				}
 
-				foreach($mounths as $mounth){
-					foreach($mounth as $mes){
+				foreach($months as $month){
+					foreach($month as $mes){
 						$meses[] = $mes;
 					}	
 				}
@@ -119,7 +119,7 @@
 						?>
 					</select>
 
-					<select name="mounth" id="mounth">
+					<select name="month" id="month">
 						<?php
 						   $monthNames = array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
 
@@ -173,52 +173,54 @@
 				</div>
 			</div>
 			<!-- SELECIONE O PERIODO -->
+			
+			<div id="results-wrapper" class="results-wrapper">
+				<!-- TITULO E VISUALIZAÇÃO -->
+	            <div class="row classificadoslista">
+	                <div class="col-xs-7 col-sm-6">
+	                    <div class="classificadoslista-title">Classificados</div>
+	                </div>
+					<div class="col-xs-5 col-sm-6">
+						<div class="pull-right classificadoslista-buttons">
+							<ul>
+								<li>
+	                                <button class="buttonvisualizacao buttonvisualizacao-grid"><i class="fe-grid"></i></button>
+								</li>
+								<li>
+									<button class="buttonvisualizacao buttonvisualizacao-lista"><i class="fe-list"></i></button>
+								</li>
+							</ul>
+						</div>
+					</div>
+	            </div>
+				<!-- TITULO E VISUALIZAÇÃO -->
 
-			<!-- TITULO E VISUALIZAÇÃO -->
-            <div class="row classificadoslista">
-                <div class="col-xs-7 col-sm-6">
-                    <div class="classificadoslista-title">Classificados</div>
-                </div>
-				<div class="col-xs-5 col-sm-6">
-					<div class="pull-right classificadoslista-buttons">
-						<ul>
-							<li>
-                                <button class="buttonvisualizacao-grid"><i class="fe-grid"></i></button>
-							</li>
-							<li>
-								<button class="buttonvisualizacao-lista"><i class="fe-list"></i></button>
-							</li>
-						</ul>
+				<!-- CLASSIFICADOS E EDICOES -->
+				@foreach ($edicao as $value)
+				<div class="col-xs-6 col-sm-4 col-md-3">
+					<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_month,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
+						<div class="thumbnail-date">
+							{{$value->ed_day}}/{{$value->ed_month}}/{{$value->ed_year}}
+							<hr />
+							<div class="readmore"><a id="edicaos" href="#">Leia Mais <i class="fe-chevron-right"></i></a></div>
+						</div>
+
+						<div class="capazoom">
+							<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/edicao/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
+						</div>
 					</div>
 				</div>
-            </div>
-			<!-- TITULO E VISUALIZAÇÃO -->
+				@endforeach
+				<!-- CLASSIFICADOS E EDICOES -->
 
-			<!-- CLASSIFICADOS E EDICOES -->
-			@foreach ($edicao as $value)
-			<div class="col-xs-6 col-sm-4 col-md-3">
-				<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_mounth,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
-					<div class="thumbnail-date">
-						{{$value->ed_day}}/{{$value->ed_mounth}}/{{$value->ed_year}}
-						<hr />
-						<div class="readmore"><a id="edicaos" href="#">Leia Mais <i class="fe-chevron-right"></i></a></div>
-					</div>
-
-					<div class="capazoom">
-						<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/edicao/'.$value->ed_year.'/'.$value->ed_mounth.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
-					</div>
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<nav class="d-flex justify-content-center text-center">
+						<ul class="pagination results-wrapper" id="pagination-wrapper">
+							{{$edicao->appends(request()->except('page'))->links()}}
+						</ul>
+					</nav>
 				</div>
 			</div>
-			@endforeach
-			<!-- CLASSIFICADOS E EDICOES -->
-		</div>
-
-		<div class="row">
-			<nav class="d-flex justify-content-center text-center">
-				<ul class="pagination ">
-					{{$edicao->appends(request()->except('page'))->links()}}
-				</ul>
-			</nav>
 		</div>
 		
 		<!-- FLIPBOOK -->
@@ -249,7 +251,7 @@
 				script: './js/default-book-view.js'
 			};
 
-			$(".js-thumbnail-target").click(function(e){
+			$(document).on('click', '.js-thumbnail-target', function(e){
 				var pdf = $(this).attr('data-route');
 
 				var booksOptions = {
@@ -317,40 +319,66 @@
             });
 
             function search(){
-            	console.log("Executar Pesquisa");
-                console.log("Executar Pesquisa");
-                console.log("Executar Pesquisa");
+                var get = '?';
+
+                get += 'startDateYear=' + $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY');
+                get += '&startDateMonth=' + $('input[name="daterange"]').data('daterangepicker').startDate.format('MM');
+                get += '&startDateDay=' + $('input[name="daterange"]').data('daterangepicker').startDate.format('DD');
+
+                get += '&endDateYear=' + $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY');
+                get += '&endDateMonth=' + $('input[name="daterange"]').data('daterangepicker').endDate.format('MM');
+                get += '&endDateDay=' + $('input[name="daterange"]').data('daterangepicker').endDate.format('DD');
+
+                get += '&startDate=' + $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
+                get += '&endDate=' + $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
+                get += '&category=' + $('select[name="categoria"]').val();
+
+                $('#results-wrapper').load("{{ route('buscaEdicao') }}" + get + " #results-wrapper", function() {
+		        	atualizarButtonVisualizacao();
+				});
             }
 
+            // PAGINAÇÃO CONTEÚDO
+		    $(document).on('click', '#pagination-wrapper a', function(e){
+		        e.preventDefault();
+		        $('#results-wrapper').load($(this).attr('href') + ' #results-wrapper', function() {
+		        	atualizarButtonVisualizacao();
+				});
+		    });
+
 			//// VISUALIZAÇÃO CLASSIFICADOS
 			//// VISUALIZAÇÃO CLASSIFICADOS
 			//// VISUALIZAÇÃO CLASSIFICADOS
 
-            $( function() {
-                $( ".buttonvisualizacao-lista" ).on( "click", function() {
-                    $( ".thumbnail-style" ).switchClass( "thumbnail-style", "list-style" );
-                    $.removeCookie('grid-list-style');
-                    $.cookie('grid-list-style', true, { expires: 1 });
-                });
-                $( ".buttonvisualizacao-grid" ).on( "click", function() {
-                    $( ".list-style" ).switchClass( "list-style", "thumbnail-style" );
-                    $.removeCookie('grid-list-style'); // => true
-                    $.cookie('grid-list-style', false, { expires: 1 });
-                });
+            $(document).on('click', '.buttonvisualizacao-lista', function() {
+                $( ".thumbnail-style" ).switchClass( "thumbnail-style", "list-style" );
+                $.removeCookie('grid-list-style');
+                $.cookie('grid-list-style', true, { expires: 1 });
 
-                if( $.cookie('grid-list-style') == "true"){
-                    $( ".buttonvisualizacao-lista" ).addClass('selected')
-                    $( ".js-thumbnail-target" ).addClass("list-style").removeClass("thumbnail-style" );
-                }else{
-                    $( ".buttonvisualizacao-grid" ).addClass('selected')
-                    $( ".js-thumbnail-target" ).addClass("thumbnail-style").removeClass("list-style" );
-                }
-            } );
-
-            $('button').on('click', function(){
-                $('button').removeClass('selected');
+                $('.buttonvisualizacao-grid').removeClass('selected');
                 $(this).addClass('selected');
             });
+
+            $(document).on('click', '.buttonvisualizacao-grid', function() {
+                $( ".list-style" ).switchClass( "list-style", "thumbnail-style" );
+                $.removeCookie('grid-list-style'); // => true
+                $.cookie('grid-list-style', false, { expires: 1 });
+
+                $('.buttonvisualizacao-lista').removeClass('selected');
+                $(this).addClass('selected');
+            });
+
+            function atualizarButtonVisualizacao(){
+	            if( $.cookie('grid-list-style') == "true"){
+	                $( ".buttonvisualizacao-lista" ).addClass('selected')
+	                $( ".js-thumbnail-target" ).addClass("list-style").removeClass("thumbnail-style" );
+	            }else{
+	                $( ".buttonvisualizacao-grid" ).addClass('selected')
+	                $( ".js-thumbnail-target" ).addClass("thumbnail-style").removeClass("list-style" );
+	            }
+            }
+            
+            atualizarButtonVisualizacao();
 		</script>
 	</body>
 </html>

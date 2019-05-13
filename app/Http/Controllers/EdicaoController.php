@@ -32,7 +32,9 @@ class EdicaoController extends Controller
         $month  = $data_edicao[1];
         $year   = $data_edicao[2];
 
-        $findEdicao = Edicao::where('ed_year', $year)->where('ed_mounth', $month)->where('ed_day', $day)->first();        
+        $data_edicao_string = $year .'-'. $month .'-'. $day;
+
+        $findEdicao = Edicao::where('ed_year', $year)->where('ed_month', $month)->where('ed_day', $day)->first();        
 
         if (!$findEdicao){     
 
@@ -74,18 +76,20 @@ class EdicaoController extends Controller
                             $output = shell_exec('/usr/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/".$capa.".jpg ").storage_path("app/".$tempPdf));
                         }
                     }
+                    
                     if ($cont == $qtdFiles){
                         $pdfFinal = "ed_".$day."_".uniqid();
-                    
+
                         $pdf->merge('file', storage_path("app/edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf"));
-                            
+
                         foreach($removePdf as $pdf){
                             unlink(storage_path('app/'.$pdf));
                         }
                         
                         $this->edicao->ed_year = $year;
-                        $this->edicao->ed_mounth = $month;
+                        $this->edicao->ed_month = $month;
                         $this->edicao->ed_day = $day;
+                        $this->edicao->ed_date = $data_edicao_string;
                         $this->edicao->ed_file_name = $pdfFinal.".pdf";
                         $this->edicao->ed_status = 0;
                         $this->edicao->ed_capa = $capa.".jpg";
@@ -94,39 +98,38 @@ class EdicaoController extends Controller
                         $this->edicao->save();
 
                         return redirect()->route('edicaoGet')->with('sucess.message', 'Edição criada!');
-
                     }
                 }
             }
         }else{
-            return redirect()->route('edicaoGet')->with('error.message', 'Edição já existe!');
+            return redirect()->route('edicaoGet')->with('error.message', 'Edição deste dia já existe!');
         }   
     } 
 
     public function listEdicao()
     {
-        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_mounth', 'desc')->orderBy('ed_day', 'desc')->paginate(8);
+        $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')->paginate(8);
         return view('admin.pages.edicaolist', compact('edicao'));
     }
     
     public function listFront(Request $request)
     {
         $year   = $request->input('year');
-        $mounth = $request->input('mounth');
+        $month = $request->input('month');
         $day    = $request->input('day');
         $file_name    = $request->input('file_name');
             
-        return view("flip-page.front", compact('year','mounth','day','file_name'));
+        return view("flip-page.front", compact('year','month','day','file_name'));
 
     }
     public function listFrontAssinante(Request $request)
     {
         $year   = $request->input('year');
-        $mounth = $request->input('mounth');
+        $month = $request->input('month');
         $day    = $request->input('day');
         $file_name    = $request->input('file_name');
             
-        return view("flip-page-assinante.front", compact('year','mounth','day','file_name'));
+        return view("flip-page-assinante.front", compact('year','month','day','file_name'));
 
     }
 
@@ -144,15 +147,15 @@ class EdicaoController extends Controller
 
             if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                 //windows
-                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
+                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
                 $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
-                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name;
+                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name;
         
             }else{
                 //unix
-                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
+                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
                 $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
-                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_mounth."/".$edicao->ed_day."/".$edicao->ed_file_name;
+                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/".$edicao->ed_file_name;
         
             }     
         }
@@ -173,9 +176,11 @@ class EdicaoController extends Controller
         $month  = $data_edicao[1];
         $year   = $data_edicao[2];
 
-        $findEdicao = Edicao::where('ed_year', $year)->where('ed_mounth', $month)->where('ed_day', $day)->first();   
+        $data_edicao_string = $year .'-'. $month .'-'. $day;
+
+        $findEdicao = Edicao::where('ed_year', $year)->where('ed_month', $month)->where('ed_day', $day)->first();   
         
-        $data_atual =  $edicao->ed_year.$edicao->ed_mounth.$edicao->ed_day;
+        $data_atual =  $edicao->ed_year.$edicao->ed_month.$edicao->ed_day;
         $new_data = $year.$month.$day;
 
         if (!$findEdicao || ($new_data == $data_atual)){     
@@ -231,8 +236,9 @@ class EdicaoController extends Controller
                         }
 
                         $edicao->ed_year = $year;
-                        $edicao->ed_mounth = $month;
+                        $edicao->ed_month = $month;
                         $edicao->ed_day = $day;
+                        $edicao->ed_date = $data_edicao_string;
                         $edicao->ed_file_name = $pdfFinal.".pdf";
                         $edicao->ed_status = 0;
                         $edicao->ed_capa = $capa.".jpg";

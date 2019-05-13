@@ -15,18 +15,20 @@
 
 
 // Authentication Routes...
-Route::get('login', [
-  'as' => 'login',
-  'uses' => 'Auth\LoginController@showLoginForm'
-]);
-Route::post('login', [
-  'as' => '',
-  'uses' => 'Auth\LoginController@login'
-]);
 
-
+//Rotas login admin
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout');
+
+//Rotas login assinante
+Route::get('loginAssinante', 'AuthAssinantes\LoginAssinanteController@showLoginForm')->name('loginAssinante');
+Route::post('loginAssinante', 'AuthAssinantes\LoginAssinanteController@login')->name('loginAssinante');
 Route::get('/logoutAssinante', 'AuthAssinantes\LoginAssinanteController@logout');
+
+//Acesso Negado
+Route::get('/acessonegado', 'UserController@getPermissao');
+
 
 Route::group(['middleware' => ['auth', 'role:admin']], function() {
 
@@ -78,32 +80,17 @@ Route::group(['middleware' => ['auth', 'role:admin']], function() {
     ]);
 
 });
-//área do assinante
+
+
+//Área do Assinante
 Route::group(['middleware' => ['auth', 'role:assinante']], function() {
 
   Route::get('/assinante', 'AssinanteController@index')->name('assinante');
   Route::post("edicaoAssinante","EdicaoController@listFrontAssinante")->name('edicaoAssinante');
   Route::get("uploadsAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsAssinante');
   Route::get("uploadsThumbAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumbAssinante');
-  Route::get('/getMounths', 'AssinanteController@getMounthsByYear')->name('getMounthsByYear');
+  Route::get('/getMonths', 'AssinanteController@getMonthsByYear')->name('getMonthsByYear');
   
-  Route::get('/buscaEdicao', 'AssinanteController@getEditionsByYearMounth')->name('buscaEdicao');
+  Route::get('/buscaEdicao', 'AssinanteController@getPublicationsFilter')->name('buscaEdicao');
 
 });
-
-//Rotas login assinante
-Route::get('loginAssinante', [
-  'as' => 'loginAssinante',
-  'uses' => 'AuthAssinantes\LoginAssinanteController@showLoginForm'
-]);
-
-Route::post('loginAssinante', [
-  'as' => 'loginAssinante',
-  'uses' => 'AuthAssinantes\LoginAssinanteController@login'
-]);
-
-Route::get('/acessonegado', 'UserController@getPermissao');
-
-
-
-
