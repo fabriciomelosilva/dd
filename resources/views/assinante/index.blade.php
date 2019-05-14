@@ -91,49 +91,6 @@
 					</div>
 				</div>
 			</div>
-			
-			<?php
-
-			/*
-				foreach($years as $year){
-					foreach($year as $ano){
-						$anos[] = $ano;
-					}	
-				}
-
-				foreach($months as $month){
-					foreach($month as $mes){
-						$meses[] = $mes;
-					}	
-				}
-						
-			?>
-
-			<form id="menu" action="{{ route('buscaEdicao') }}" method="GET">
-				<ul class="nav nav-pills">
-					<select name="year" id="year">
-						<?php
-							foreach($anos as $ano){
-								echo '<option value='.$ano.'>'.$ano.'</option>';
-							}
-						?>
-					</select>
-
-					<select name="month" id="month">
-						<?php
-						   $monthNames = array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
-
-							foreach($meses as $mes){
-								echo '<option value='.$mes.'>'.$monthNames[$mes-1].'</option>';
-							}
-						?>
-					</select>
-
-					<button type="submit" id="filtrar">Filtrar</button> 
-				</ul>
-			<form>
-				*/			
-			?>
 
 			<!-- SELECIONE O PERIODO -->
 			<div class="row">
@@ -150,17 +107,17 @@
 										<i class="fe-calendar"></i>&nbsp;
 									    <input type="text" name="daterange" class="datarangerform" />
                                     </div>
-
+<?php /*
 									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
 										<div class="form-group">
 	                                        <select name="categoria">
-	                                            <option value="todos" selected>Todos</option>
-	                                            <option value="edicoes">Edições</option>
-	                                            <option value="classificados">Classificados</option>
+	                                            <option value="3" selected>Todos</option>
+	                                            <option value="1">Edições</option>
+	                                            <option value="2">Classificados</option>
 	                                        </select>
 	                                    </div>
 									</div>
-
+*/?>
 	                                <div class="formitem formitem__last">
 	                                    <button type="button" class="btn search-button">
 	                                        <i class="fe-search"></i>
@@ -178,7 +135,7 @@
 				<!-- TITULO E VISUALIZAÇÃO -->
 	            <div class="row classificadoslista">
 	                <div class="col-xs-7 col-sm-6">
-	                    <div class="classificadoslista-title">Classificados</div>
+	                    <div class="classificadoslista-title">{{$titlePublications}}</div>
 	                </div>
 					<div class="col-xs-5 col-sm-6">
 						<div class="pull-right classificadoslista-buttons">
@@ -196,7 +153,7 @@
 				<!-- TITULO E VISUALIZAÇÃO -->
 
 				<!-- CLASSIFICADOS E EDICOES -->
-				@foreach ($edicao as $value)
+				@foreach ($publications as $value)
 				<div class="col-xs-6 col-sm-4 col-md-3">
 					<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_month,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
 						<div class="thumbnail-date">
@@ -216,7 +173,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<nav class="d-flex justify-content-center text-center">
 						<ul class="pagination results-wrapper" id="pagination-wrapper">
-							{{$edicao->appends(request()->except('page'))->links()}}
+							{{$publications->appends(request()->except('page'))->links()}}
 						</ul>
 					</nav>
 				</div>

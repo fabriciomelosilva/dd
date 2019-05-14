@@ -52,10 +52,21 @@ class AssinanteController extends Controller
         return $months;
     }
 
-    public function getEditions($where = null){
-        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')->where('ed_status', '1')->paginate(8);
+    public function getPublications(Request $where = null){
+        if($where){
+            $publications = \DB::table('edicaos')
+                ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
+                ->where('ed_status', '1') // Status: Ativo
+                ->whereBetween('ed_date', [$where->input('startDate'), $where->input('endDate')])
+                ->where('ed_status', '1')->paginate(8);
+        }else{
+            $publications = \DB::table('edicaos')
+                ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
+                ->where('ed_status', '1') // Status: Ativo
+                ->paginate(8);
+        }
 
-        return $edicao;
+        return $publications;
     }
 
     public function getMonthsByYear(Request $request){
@@ -76,13 +87,11 @@ class AssinanteController extends Controller
     }
 
     public function index()
-    {  
-       $edicao = $this->getEditions();
-       //$classificado = $this->getClassificados();
-
-       //$conteudo = $edicao;
-       
-       return view("assinante.index", compact('edicao'));
+    {
+        $publications = $this->getPublications();
+            
+        $titlePublications = 'Edições';
+        return view("assinante.index", compact('publications', 'titlePublications'));
     }
 
     public function getEditionsByYearMonth(Request $request)
@@ -94,27 +103,32 @@ class AssinanteController extends Controller
         $years = $this->getYears();
         $months = $this->getMonths($year);
 
-        $edicao = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')->where('ed_year', $year)->where('ed_month', $month)->where('ed_status', '1')->paginate(8);
+        $publications = \DB::table('edicaos')->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')->where('ed_year', $year)->where('ed_month', $month)->where('ed_status', '1')->paginate(8);
+            
+        $titlePublications = 'Edições';
 
-        return view("assinante.index", compact('edicao','year','month','years','months'));
+        return view("assinante.index", compact('publications', 'titlePublications'));
     }
 
     public function getPublicationsFilter(Request $request)
     {
-        $startDate = date($request->input('startDate'));
-        $endDate = date($request->input('endDate'));
-        $category = $request->input('category');
+        switch ($request->input('category')) {
+            case 3:
+                $titlePublications = 'Todos';
+                break;
+            case 1:
+                $titlePublications = 'Edições';
+                break;
+            case 2:
+                $titlePublications = 'Classificados';
+                break;
+            default:
+                $titlePublications = 'Edições';
+                break;
+        }
 
-        $edicao = $this->getEditions();
-        $edicao = \DB::table('edicaos')
-            ->orderBy('ed_year', 'desc')
-            ->orderBy('ed_month', 'desc')
-            ->orderBy('ed_day', 'desc')
+        $publications = $this->getPublications($request);
 
-            ->whereBetween('ed_date', [$startDate, $endDate])
-
-            ->where('ed_status', '1')->paginate(8);
-
-        return view("assinante.index", compact('edicao'));
+        return view("assinante.index", compact('publications', 'titlePublications'));
     }
 }
