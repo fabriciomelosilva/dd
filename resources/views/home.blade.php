@@ -1,20 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+<div class="wrapper">
+    <div class="container-fluid">
 
-                <div class="panel-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <h4 class="page-title"><img src="{{ asset('/assets/images/diario-logo.svg') }}" alt="Marca" width="30%"></h4>
                 </div>
             </div>
         </div>

@@ -34,14 +34,15 @@
 							<div class="form-group row">
 								<div class="col-sm-10 offset-sm-1">
 									<label class="col-sm-12 col-form-label">Data</label>
-									<input class="form-control" name="data_edicao" type="text" id="calendario">
+									<input required class="form-control" name="data_edicao" type="text" id="calendario" autocomplete="off"/>
 								</div>
 							</div>
+							
 							<div id="cadernos">
 								<div class="form-group row">
 									<div class="col-sm-10 offset-sm-1">
 										<label class="col-sm-12 col-form-label">Upload do caderno 1 </label>
-										<input type="file" class="form-control" name="edicao[]">
+										<input required type="file" class="form-control" name="edicao[]">
 									</div>
 								</div>
 							</div>
@@ -53,18 +54,16 @@
 										<i class="fe-plus"></i>
 										Novo carderno
 									</button>
-
 								</div>
 							</div>
 
-								<div class="text-right d-print-none">
-									<div class="col-sm-10 offset-sm-1">
-										<button type="submit" class="btn btn-edicao">
-											Criar edição
-										</button>
-									</div>
+							<div class="text-right d-print-none">
+								<div class="col-sm-10 offset-sm-1">
+									<button type="submit" class="btn btn-edicao">
+										Criar edição
+									</button>
 								</div>
-
+							</div>
 						</form>
 					</div>
 				</div>

@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Edicao;
 
-
 class EdicaoController extends Controller
 {
-
     private $edicao;
 
     function __construct(){
@@ -20,7 +18,6 @@ class EdicaoController extends Controller
     } 
 
     public function store (Request $request){
-        
         $this->validate($request,["data_edicao"=>"required"],["data_edicao.required" => "O campo data é obrigatório!"]); 
         $pdf = new \PdfMerger;
         $cont = 0;
@@ -50,9 +47,6 @@ class EdicaoController extends Controller
                     $tempPdf = $caderno->store('pdfs');
                     $removePdf[] = $tempPdf;
                     $cont++;
-                
-                    //$output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
-                    //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
 
                     $pdf->addPDF(storage_path("app/".$tempPdf));
 
@@ -91,13 +85,13 @@ class EdicaoController extends Controller
                         $this->edicao->ed_day = $day;
                         $this->edicao->ed_date = $data_edicao_string;
                         $this->edicao->ed_file_name = $pdfFinal.".pdf";
-                        $this->edicao->ed_status = 0;
+                        $this->edicao->ed_status = 0; // Em Rascunho
                         $this->edicao->ed_capa = $capa.".jpg";
                         $this->edicao->url = "edicao/".$year."/".$month."/".$day."/".$pdfFinal.".pdf";
 
                         $this->edicao->save();
 
-                        return redirect()->route('edicaoGet')->with('sucess.message', 'Edição criada!');
+                        return redirect()->route('edicaoGet')->with('sucess.message', "Edição de $day / $month / $year criada!");
                     }
                 }
             }
@@ -112,16 +106,16 @@ class EdicaoController extends Controller
         return view('admin.pages.edicaolist', compact('edicao'));
     }
     
-    public function listFront(Request $request)
+    public function toView(Request $request)
     {
         $year   = $request->input('year');
-        $month = $request->input('month');
+        $month  = $request->input('month');
         $day    = $request->input('day');
         $file_name    = $request->input('file_name');
             
         return view("flip-page.front", compact('year','month','day','file_name'));
-
     }
+
     public function listFrontAssinante(Request $request)
     {
         $year   = $request->input('year');
@@ -130,43 +124,13 @@ class EdicaoController extends Controller
         $file_name    = $request->input('file_name');
             
         return view("flip-page-assinante.front", compact('year','month','day','file_name'));
-
     }
 
     public function editEdicaoGet(Edicao $edicao){
         return view("admin.pages.edicaoedit", compact('edicao'));
-    } 
-
-    public function alterarStatus(Request $request, $id){
-
-        $status = $request->input('status');
-        $edicao = Edicao::findOrFail($id);
-        $edicao->ed_status = $status;
-
-        if ($edicao->ed_status == "1"){
-
-            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-                //windows
-                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
-                $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
-                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name;
-        
-            }else{
-                //unix
-                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
-                $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
-                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/".$edicao->ed_file_name;
-        
-            }     
-        }
-       
-        $edicao->update();
-        return redirect()->route('lista_edicao');
-
     }
 
-    public function update (Request $request, $id){
-
+    public function update(Request $request, $id){
         $pdf = new \PdfMerger;
         $edicao = Edicao::findOrFail($id);
         $cont = 0;
@@ -183,7 +147,7 @@ class EdicaoController extends Controller
         $data_atual =  $edicao->ed_year.$edicao->ed_month.$edicao->ed_day;
         $new_data = $year.$month.$day;
 
-        if (!$findEdicao || ($new_data == $data_atual)){     
+        if (!$findEdicao || ($new_data == $data_atual)){   
 
             if ($request->hasFile('edicao')){
                 $files = $request->file('edicao');
@@ -198,9 +162,6 @@ class EdicaoController extends Controller
                     $removePdf[] = $tempPdf;
 
                     $cont++;
-
-                    //$output = shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile='.storage_path("app/pdfs/".$cont.".pdf ").storage_path("app/".$tempPdf));
-                    //$pdf->addPDF(storage_path("app/pdfs/".$cont.".pdf"));
 
                     $pdf->addPDF(storage_path("app/".$tempPdf));
 
@@ -246,14 +207,37 @@ class EdicaoController extends Controller
 
                         $edicao->update();
 
-                        return redirect()->route('editarEdicaoGet',[$edicao])->with('sucess.message', 'Edição atualizada!');
-                    
+                        return redirect()->route('lista_edicao')->with('sucess.message', 'Edição atualizada!');
                     }
                 }
-            }   
-        
+            }
         }else{
-            return redirect()->route('editarEdicaoGet',[$edicao])->with('error.message', 'Edição já existe!');
+            return redirect()->route('editarEdicaoGet',[$edicao])->with('error.message', 'Edição já existe! Data selecionada ocupada.');
         }
+    }
+
+    public function alterarStatus(Request $request, $id){
+        $status = $request->input('status');
+        $edicao = Edicao::findOrFail($id);
+        $edicao->ed_status = $status;
+
+        if ($edicao->ed_status == "1"){
+
+            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                //windows
+                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
+                $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
+                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name;
+        
+            }else{
+                //unix
+                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
+                $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
+                $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/".$edicao->ed_file_name;
+            }     
+        }
+       
+        $edicao->update();
+        return redirect()->route('lista_edicao');
     }
 }

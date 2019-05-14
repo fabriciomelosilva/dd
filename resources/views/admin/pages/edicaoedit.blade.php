@@ -4,7 +4,6 @@
 <div class="wrapper">
 	<div class="container-fluid">
 
-		<!-- start page title -->
 		<div class="row">
 			<div class="col-12">
 				<div class="page-title-box">
@@ -26,40 +25,40 @@
 		@endif
 
 		<div class="row">
-			<div class="col-12">
+			<div class="col-xs-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
 				<div class="card">
 					<div class="card-body">
 
-						<form class="form" id="formulario" action="{{route('editarEdicaoPost', ['edicao'=>$edicao->id])}}" method="post" enctype="multipart/form-data">
+						<form class="form-horizontal" id="formulario" action="{{route('editarEdicaoPost', ['edicao'=>$edicao->id])}}" method="post" enctype="multipart/form-data">
 							{{csrf_field()}}
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Data</label>
-								<div class="col-sm-10">
-									<input value="<?php echo $edicao->ed_day."/".$edicao->ed_month."/".$edicao->ed_year; ?>" class="form-control" name="data_edicao" type="text" id="calendario">
+								<div class="col-sm-10 offset-sm-1">
+									<label class="col-sm-12 col-form-label">Data</label>
+									<input value="<?php echo $edicao->ed_day."/".$edicao->ed_month."/".$edicao->ed_year; ?>" class="form-control" name="data_edicao" type="text" id="calendario" autocomplete="off"/>
 								</div>
 							</div>
+
 							<div id="cadernos">
 								<div class="form-group row">
-									<label class="col-sm-2 col-form-label">Upload do caderno 1 </label>
-									<div class="col-sm-10">
+									<div class="col-sm-10 offset-sm-1">
+										<label class="col-sm-12 col-form-label">Upload do caderno 1 </label>
 										<input type="file" class="form-control" name="edicao[]">
 									</div>
 								</div>
 							</div>
 
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label"></label>
+								<label class="col-sm-1 col-form-label"></label>
 								<div class="col-sm-10">
 									<button id="novaEdicao" type="button"  class="btn btn-light btn-sm btn-rounded">
 										<i class="fe-plus"></i>
 										Novo carderno
 									</button>
-
 								</div>
 							</div>
-
-							<div class="mt-4 mb-1">
-								<div class="text-right d-print-none">
+							
+							<div class="text-right d-print-none">
+								<div class="col-sm-10 offset-sm-1">
 									<button type="submit" class="btn btn-primary btn-rounded">
 										<i class="fe-upload-cloud"></i>
 										Editar edição
@@ -73,5 +72,4 @@
 		</div>
 	</div>
 </div>
-
 @stop
