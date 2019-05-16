@@ -168,8 +168,8 @@
                                     <i class="fe-plus-circle"></i> Cadastrar Edição
                                 </a>
                                 <!-- item-->
-                                <a href="{{ route('edicaoGet') }}" class="dropdown-item notify-item">
-                                    <i class="fe-plus-circle"></i> Cadastrar Classificado
+                                <a href="{{ route('classificadoGet') }}" class="dropdown-item notify-item">
+                                    <i class="fe-plus-circle"></i> Cadastrar Classificados
                                 </a>
                             </div>
 
@@ -187,7 +187,7 @@
                                     <i class="fe-list"></i> Listar Edições
                                 </a>
                                 <!-- item-->
-                                <a href="{{ route('lista_edicao') }}" class="dropdown-item notify-item">
+                                <a href="{{ route('lista_classificado') }}" class="dropdown-item notify-item">
                                     <i class="fe-list"></i> Listar Classificados
                                 </a>
                             </div>

@@ -107,17 +107,17 @@
 										<i class="fe-calendar"></i>&nbsp;
 									    <input type="text" name="daterange" class="datarangerform" />
                                     </div>
-<?php /*
+                                    
 									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
 										<div class="form-group">
 	                                        <select name="categoria">
-	                                            <option value="3" selected>Todos</option>
+	                                            <option selected>Selecione um Caderno</option>-->
 	                                            <option value="1">Edições</option>
 	                                            <option value="2">Classificados</option>
 	                                        </select>
 	                                    </div>
 									</div>
-*/?>
+
 	                                <div class="formitem formitem__last">
 	                                    <button type="button" class="btn search-button">
 	                                        <i class="fe-search"></i>
@@ -163,7 +163,7 @@
 						</div>
 
 						<div class="capazoom">
-							<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/edicao/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
+							<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/'.$publicationType.'/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
 						</div>
 					</div>
 				</div>

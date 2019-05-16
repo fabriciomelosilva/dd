@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="page-title-box">
-					<h4 class="page-title">Edições</h4>
+					<h4 class="page-title">Classificados</h4>
 				</div>
 			</div>
 		</div>
@@ -26,7 +26,7 @@
 
 		<div class="row">
 
-			@foreach ($edicao as $value)
+			@foreach ($classificado as $value)
 
 			{{ !$year = (string) $value->ed_year}}
 			{{ !$month = (string) $value->ed_month}}
@@ -48,7 +48,7 @@
 						</h6>
 					</div>
 
-					<div class="img-fluid" style="height:200pt; background-image: url('{{ url('/uploadsThumb/app/edicao/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}'); background-size: 100%;"></div>
+					<div class="img-fluid" style="height:200pt; background-image: url('{{ url('/uploadsThumb/app/classificado/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}'); background-size: 100%;"></div>
 
 					<div class="card-footer">
 						<div class="d-flex justify-content-end">
@@ -62,9 +62,9 @@
 								<button type="submit" class="btn btn-link">Visualizar</button>
 							</form>
 
-							<a href="{{ route('editarEdicaoGet', ['edicao' => $value]) }}" class="btn btn-link">Editar</a>
+							<a href="{{ route('editarClassificadoGet', ['classificado' => $value]) }}" class="btn btn-link">Editar</a>
 
-							<form class="form" action="{{route('alterarEdicaoStatusPost', ['id'=>$value->id])}}" method="post">
+							<form class="form" action="{{route('alterarClassificadoStatusPost', ['id'=>$value->id])}}" method="post">
 								{{csrf_field()}}
 								@if ($value->ed_status == 0)
 									<input name="status" type="hidden" value="1">
@@ -84,7 +84,7 @@
 
 		<nav class="d-flex justify-content-center" style="z-index: 0">
 			<div style="z-index: 10">
-				{{$edicao->links()}}
+				{{$classificado->links()}}
 			</div>
 		</nav>
 	</div>

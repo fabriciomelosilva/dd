@@ -98,32 +98,12 @@ class EdicaoController extends Controller
         }else{
             return redirect()->route('edicaoGet')->with('error.message', 'Edição deste dia já existe!');
         }   
-    } 
+    }
 
     public function listEdicao()
     {
         $edicao = Edicao::orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')->paginate(8);
         return view('admin.pages.edicaolist', compact('edicao'));
-    }
-    
-    public function toView(Request $request)
-    {
-        $year   = $request->input('year');
-        $month  = $request->input('month');
-        $day    = $request->input('day');
-        $file_name    = $request->input('file_name');
-            
-        return view("flip-page.front", compact('year','month','day','file_name'));
-    }
-
-    public function listFrontAssinante(Request $request)
-    {
-        $year   = $request->input('year');
-        $month = $request->input('month');
-        $day    = $request->input('day');
-        $file_name    = $request->input('file_name');
-            
-        return view("flip-page-assinante.front", compact('year','month','day','file_name'));
     }
 
     public function editEdicaoGet(Edicao $edicao){
