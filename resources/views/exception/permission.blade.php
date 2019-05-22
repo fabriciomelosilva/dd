@@ -35,10 +35,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<h1><span style="font-size: 5em">401</span>Acesso Negado!</h1>
-					<h3>
-						<a type="button" class="btn btn-pattern" href="{{ url('/logoutAssinante') }}">Retorne ao <strong>ACESSO DO ASSINANTE</strong></a></li>
-					</h3>
+					<div class="warningcontainer">
+						<h1>Acesso Negado</h1>
+						<span>401</span>
+
+						<h3>
+							<a type="button" class="btn btn-pattern" href="<?php echo e(url('/logoutAssinante')); ?>">Retorne ao <strong>ACESSO DO ASSINANTE</strong></a></li>
+						</h3>
+					</div>
 				</div>
 			</div>
 		</div>
