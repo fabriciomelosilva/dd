@@ -88,7 +88,7 @@ Route::group(['middleware' => ['auth', 'role:assinante']], function() {
 
   Route::get('/assinante', 'AssinanteController@index')->name('assinante');
   Route::post("/edicaoAssinante","FileController@listFrontAssinante")->name('edicaoAssinante');
-  Route::get("/uploadsAssinante/app/edicao/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsAssinante');
+  Route::get("/uploadsAssinante/app/{tipo}/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsAssinante');
   Route::get("/uploadsThumbAssinante/app/{tipo}/{ano}/{mes}/{dia}/{arquivo}/","FileController@show")->name('uploadsThumbAssinante');
   Route::get('/getMonths', 'AssinanteController@getMonthsByYear')->name('getMonthsByYear');
   

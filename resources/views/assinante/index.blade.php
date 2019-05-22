@@ -155,7 +155,7 @@
 				<!-- CLASSIFICADOS E EDICOES -->
 				@foreach ($publications as $value)
 				<div class="col-xs-6 col-sm-4 col-md-3">
-					<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['ano' => $value->ed_year, 'mes' =>  $value->ed_month,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
+					<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['type' => $publicationType, 'ano' => $value->ed_year, 'mes' =>  $value->ed_month,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
 						<div class="thumbnail-date">
 							{{$value->ed_day}}/{{$value->ed_month}}/{{$value->ed_year}}
 							<hr />

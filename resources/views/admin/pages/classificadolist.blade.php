@@ -58,6 +58,7 @@
 								<input name="month" type="hidden" value="{{$month}}">
 								<input name="day" type="hidden" value="{{$day}}">
 								<input name="file_name" type="hidden" value="{{$file_name}}">
+								<input name="type" type="hidden" value="classificado">
 
 								<button type="submit" class="btn btn-link">Visualizar</button>
 							</form>
