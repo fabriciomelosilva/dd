@@ -2,7 +2,8 @@
 	WEBSITE BODY
 *********/
 html{
-    height:100%;
+    min-height: 100% !important;
+    height: 100%;
 }
 
 body{
@@ -15,6 +16,11 @@ body{
 body::after{
     content:'';
     display:block;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
 }
 
 /*************************
@@ -92,6 +98,143 @@ body::after{
 	CONTENT
 *********/
 
+/*************************
+  LOGIN ASSINANTE
+*********/
+.loginside {
+  color: #fff;
+  background: #009992;
+  width: 50%;
+  height: 100%;
+  padding: 0 6.5%;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+}
+
+#vertical {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loginside .contentlogin {
+  height: 452px;
+}
+
+.loginside h2 {
+  margin-top: 40px;
+}
+
+.loginside p {
+  margin-bottom: 40px;
+}
+
+.loginside img {
+  max-width: 100%;
+  height: auto;
+}
+
+.loginside input {
+  min-height: 80px;
+  font-size: 1.3em;
+  color: #009992;
+  padding: 12px 25px;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+}
+
+.loginside .form-group {
+  text-align: left;
+}
+
+.loginside .form-group label {
+  color: #fff;
+  font-weight: normal;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.loginside .btn {
+  width: 100%;
+  border: 1px solid #fff;
+  padding: 15px;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  height: 80px;
+}
+
+.loginside .btn:hover {
+  background: #C7E9E7;
+  color: #009992;
+  border-color: transparent;
+}
+
+.loginright {
+  color: #000;
+  float: right;
+  width: 50%;
+  height: 100%;
+  padding: 0 6.5% 0;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+}
+
+.loginright h2 {
+  color: #009992;
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.loginright .description {
+  font-size: 1.3em;
+  margin-bottom: 25;
+}
+
+.loginright h3 {
+  color: #009992;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+.loginright .argument {
+    text-align: center;
+}
+
+.loginright .argument img {
+  max-width: 100%;
+  height: auto;
+}
+
+.loginright .btndegustacao {
+  color: #fff;
+  background-color: #009992;
+  padding: 20px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 1.6em;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 25px;
+  transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -webkit-transition: .25s ease-in-out;
+}
+
+.loginright .btndegustacao:hover {
+  background: #C7E9E7;
+  color: #009992;
+  border-color: transparent;
+}
+
+.loginfooter footer {
+  display: none;
+}
+
+/*************************
+  LISTAGEM DOS CLASSIFICADOS
+*********/
 /** SELECIONAR PERIODO **/
 
 .periodselect {
@@ -205,9 +348,10 @@ body::after{
 .classificadoslista-buttons ul li button {
   border: 1px solid #000;
   background: #fff;
+  font-size: 1.2em;
   color: #000;
   border-radius: 5px;
-  padding: 8px 11px;
+  padding: 5px 9px;
   -moz-transition: background .25s ease-in-out;
   -webkit-transition: background .25s ease-in-out;
 }
@@ -402,6 +546,29 @@ body::after{
   color: #000;
 }
 
+.welcomepage {
+  color: #2D2D2D;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+  margin: 40px auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.welcomepage h2 {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.welcomepage span {
+  background: #C7E9E7;
+}
+
+.welcomepage p {
+  font-size: 1.3em;
+}
+
 /*************************
 	PAGINAÇÃO
 *********/
@@ -448,6 +615,44 @@ body::after{
 }
 
 /*************************
+  WARNING PAGES
+*********/
+
+/* 401 */
+.warningcontainer {
+  width: 500px;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.warningcontainer h1 {
+  color: #169990;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2em;
+  padding-top: 115px;
+}
+
+.warningcontainer span {
+  position: relative;
+  z-index: 1;
+  font-size: 14em;
+  font-weight: bold;
+  color: #F3F3F3;
+}
+
+/*************************
 	FOOTER
 *********/
 footer{
@@ -462,6 +667,8 @@ footer{
 *********/
 
 /* TABLET - Portrait and Landscape */
+/* Portrait */
+
 @media only screen
 and (min-device-width: 768px)
 and (max-device-width: 1024px)
@@ -488,6 +695,63 @@ and (-webkit-min-device-pixel-ratio: 1) {
     margin-top: 25px;
   }
 
+  .welcomepage {
+    left: auto;
+    transform: none;
+  }
+
+  .loginside {
+    padding: 0 25px;
+  }
+
+  .loginright {
+    padding: 0 25px 0;
+  }
+}
+
+/* IPAD PRO */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-height: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+
+
+}
+
+/* Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-height: 1366px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+  .loginside {
+      padding: 258px 25px;
+  }
+
+  .loginright {
+      padding: 227px 25px 0;
+  }
+}
+
+/* Landscape - IPAD */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  .loginside {
+      padding: 130px 25px;
+  }
+
+  .loginright {
+      padding: 65px 24px 0;
+  }
+
+  #vertical {
+    top: 0;
+    transform: none;
+  }
 }
 
 /* CELULAR - Portrait and Landscape */
@@ -579,7 +843,69 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-top: 18px;
   }
 
+  .welcomepage {
+    left: 0;
+    transform: translate(0%, -50%);
+    text-align: center;
+  }
+
+ .welcomepage img {
+  max-width: 40%;
+ }
+
+  #vertical {
+    top: 0;
+    transform: none;
+  }
+
+ .loginside {
+    width: 100%;
+    height: auto;
+    padding: 70px 15px 85px;
+ }
+
+ .loginright {
+  float: none;
+  width: 100%;
+  height: auto;
+  padding: 30px 15px;
+ }
+
+ .loginright .btndegustacao {
+  padding: 15px;
+  font-size: 1.4em;
+ }
 }
+
+/* MIDDLE 
+@media only screen
+and (min-device-width: 480px)
+and (max-device-width: 768px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+  #vertical {
+    top: 0;
+    transform: none;
+  }
+
+  .loginside {
+    padding: 50px 15px 70px;
+    width: 100%;
+    height: auto;
+  }
+
+  .loginright {
+    padding: 30px 15px 0;
+    width: 100%;
+    height: auto;
+    float: none;
+  }
+
+  .loginright .btndegustacao {
+    margin-bottom: 30px;
+  }
+}*/
+
 /***************/
 
 #modal-wnd .modal-dialog {

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="wrapper">
-    <div class="container-fluid">
+    <div class="container">
 
         <div class="row">
             <div class="col-12">
@@ -12,8 +12,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h4 class="page-title"><img src="{{ asset('/assets/images/diario-logo.svg') }}" alt="Marca" width="30%"></h4>
                 </div>
+            </div>
+        </div>
+
+        <div class="row welcomepage">
+            <div class="col-xs-12 col-sm-2">
+                <img src="{{ asset('/assets/images/journal-2-icon.png') }}" class="img-responsive">
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <h2>Bem-vindo(a) ao painel administrativo do Diário digital</h2>
+                <p>
+                    Para adicionar ou editar cadernos e gerenciar usuários <span>utilize a navegação do menu superior.</span>
+                </p>
             </div>
         </div>
     </div>
