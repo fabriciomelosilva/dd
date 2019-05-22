@@ -23,8 +23,9 @@ class FileController extends Controller
         $month  = $request->input('month');
         $day    = $request->input('day');
         $file_name    = $request->input('file_name');
+        $type    = $request->input('type');
             
-        return view("flip-page.front", compact('year','month','day','file_name'));
+        return view("flip-page.front", compact('year','month','day','file_name','type'));
     }
 
     public function listFrontAssinante(Request $request)

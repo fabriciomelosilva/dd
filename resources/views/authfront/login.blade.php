@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <section class="jumbotron">
 	<div class="container">
 		<!-- navbar -->
