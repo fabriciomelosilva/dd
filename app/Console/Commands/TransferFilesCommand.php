@@ -13,7 +13,7 @@ class TransferFilesCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'TransferFilesCommand {diretorio} {publicacao} {edicao} {ano?} {mes?} {dia?}';
+    protected $signature = 'TransferFilesCommand {diretorio} {ano?} {mes?} {dia?}';
 
     /**
      * The console command description.
@@ -39,9 +39,11 @@ class TransferFilesCommand extends Command
      */
     public function handle()
     {
+        ini_set('memory_limit', '1024M');
+
         $dir = $this->argument('diretorio'); // 'C:\Users\610782341\Documents\pdfs';
-        $publicacao = $this->argument('publicacao');
-        $edicaoTxt = $this->argument('edicao');
+
+        $nameCapa = "PRIMEIRA";
 
         $ano = ($this->argument('ano'))? $this->argument('ano') : date("Y");
         $mesSelc = ($this->argument('mes'))? $this->argument('mes') : null;
@@ -80,45 +82,60 @@ class TransferFilesCommand extends Command
                 if(\File::exists( $dirPdf )){
                     $this->info('Diretorio Existe '.$dirPdf);
 
-                    $filePDF = $dirPdf."\\".$ano.$mesTxt.$diaTxt."_".$publicacao."_".$edicaoTxt."_1.pdf";
-                    if(\File::exists($filePDF)){
-                        $this->info('Arquivo Existe '.$filePDF);
-                        
+                    $files = \File::allFiles( $dirPdf );
+                    $this->info('Diretorio Possui '.count($files).' elementos');
+
+                    if(count($files) > 0){
                         $findEdicao = Edicao::where('ed_year', $ano)->where('ed_month', $mes)->where('ed_day', $dia)->first();
 
                         if (!$findEdicao){
-                            // quantidade de pdf's de uma edição
-                            // quantidade de pdf's de uma edição
-                            // quantidade de pdf's de uma edição
-                            // quantidade de pdf's de uma edição
-                            // quantidade de pdf's de uma edição
-                            //Só exibi imagem após publicar
-                            //Só exibi imagem após publicar
-                            //Só exibi imagem após publicar
-                            //Só exibi imagem após publicar
-                            $qtdFiles = 1;  // quantidade de pdf's de uma edição
+                            
+                            if(!\File::exists(storage_path("app/edicao/".$ano))) {
+                                \File::makeDirectory(storage_path("app/edicao/".$ano));
+                            }
+                            if(!\File::exists(storage_path("app/edicao/".$ano."/".$mes))) {
+                                \File::makeDirectory(storage_path("app/edicao/".$ano."/".$mes));
+                            }
+                            if(!\File::exists(storage_path("app/edicao/".$ano."/".$mes."/".$dia))) {
+                                \File::makeDirectory(storage_path("app/edicao/".$ano."/".$mes."/".$dia));
+                            }
+                            if(!\File::exists(storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress"))) {
+                                \File::makeDirectory(storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress"));
+                            }
+                            
+                            $pdf = new \PdfMerger;
+                            
+                            $this->info("Compressao de Arquivos");
+                            foreach ($files as $file) {
+                                $caminhoPdf = str_replace("\\", "/", $file);
+                                $this->info($file->getBasename());
 
-                            $tempPdf = \File::get($filePDF);
+                                $capa = strpos($file->getBasename(), $nameCapa);
+                                if($capa == false){
+                                    $namePdf = "compress_".$file->getBasename();
+                                }else{
+                                    $namePdf = "capa_compress_".$file->getBasename();
+                                }
 
-                            for($sequencia = 1; $sequencia <= $qtdFiles; $sequencia++){
+                                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                                    //windows
+                                    shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                            //-sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r256 -dAutoRotatePages=/None
+                                }else{
+                                    //unix
+                                    shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                }
+                            }
 
-                                $filePDF = $dirPdf."\\".$ano.$mesTxt.$diaTxt."_".$publicacao."_".$edicaoTxt."_".$sequencia.".pdf";
-                                $caminhoPdf = str_replace("\\", "/", $filePDF);
+                            $files = \File::allFiles( storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress") );
 
-                                $pdf = new \PdfMerger;
+                            $this->info("Uniao de Arquivos - Criacao da Edicao");
+                            foreach ($files as $file) {
+                                $caminhoPdf = str_replace("\\", "/", $file);
+                                
                                 $pdf->addPDF($caminhoPdf);
 
-                                if(!\File::exists(storage_path("app/edicao/".$ano))) {
-                                    \File::makeDirectory(storage_path("app/edicao/".$ano));
-                                }
-                                if(!\File::exists(storage_path("app/edicao/".$ano."/".$mes))) {
-                                    \File::makeDirectory(storage_path("app/edicao/".$ano."/".$mes));
-                                }
-                                if(!\File::exists(storage_path("app/edicao/".$ano."/".$mes."/".$dia))) {
-                                    \File::makeDirectory(storage_path("app/edicao/".$ano."/".$mes."/".$dia));
-                                }
-
-                                if ($sequencia == 1){
+                                if ($file === reset($files)) {
                                     $capa = "capa_".uniqid();
                                 
                                     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
@@ -129,8 +146,8 @@ class TransferFilesCommand extends Command
                                         $output = shell_exec('/usr/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/".$capa.".jpg ").$caminhoPdf);
                                     }
                                 }
-
-                                if ($sequencia == $qtdFiles){
+                             
+                                if ($file === end($files)) {
                                     $pdfFinal = "ed_".$dia."_".uniqid();
 
                                     $pdf->merge('file', storage_path("app/edicao/".$ano."/".$mes."/".$dia."/".$pdfFinal.".pdf"));
@@ -156,7 +173,7 @@ class TransferFilesCommand extends Command
                             $this->error('Edição deste dia já existe! '.$dirPdf);
                         }
                     }else{
-                        $this->error('Arquivo não encontrado! '.$filePDF);
+                        $this->error('Diretorio não possui Arquivos! '.$dirPdf);
                     }
                 }else{
                     $this->error('Diretorio Não Existe '.$dirPdf);
