@@ -67,7 +67,7 @@
 						<a type="button" class="btn btn-pattern" href="{{ url('/logoutAssinante') }}">Sair</a></li>
 					</div>
 
-					<a class="navbar-brand" href="#">
+					<a class="navbar-brand" href="{{ url('/assinante') }}">
 						<img src="{{ asset('/assets/images/diario-logo.svg') }}" alt="Marca">
 					</a>
 				</div>
@@ -97,21 +97,22 @@
 				<div class="col-xs-12">
 					<div class="periodselect">
 						<div class="col-xs-12 col-sm-3">
-							<div class="periodselect-title">Selecione o período</div>
+							<div class="periodselect-title">Filtro</div>
 						</div>
 
 						<div class="col-xs-12 col-sm-9">
 							<form class="form-inline periodselect__right">
 								<div class="form-group">
                                     <div class="formitem periodselect-mobile">
-										<i class="fe-calendar"></i>&nbsp;
-									    <input type="text" name="daterange" class="datarangerform" />
+										<label for="daterange" class="fe-calendar"></label>&nbsp;
+									    <input type="text" name="daterange" class="datarangerform" id="daterange" />
+									    <label for="daterange" class="fe-chevron-down"></label>
                                     </div>
                                     
 									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
 										<div class="form-group">
 	                                        <select name="categoria">
-	                                            <option selected>Selecione um Caderno</option>-->
+	                                            <option value="0" selected>Selecione um Caderno</option>
 	                                            <option value="1">Edições</option>
 	                                            <option value="2">Classificados</option>
 	                                        </select>
@@ -120,7 +121,7 @@
 
 	                                <div class="formitem formitem__last">
 	                                    <button type="button" class="btn search-button">
-	                                        <i class="fe-search"></i>
+	                                        <label class="fe-search"></label>
 	                                    </button>
 	                                </div>
 	                            </div>
