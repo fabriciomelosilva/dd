@@ -73,7 +73,7 @@
 			<div class="container">
 				<div class="navbar-header">
 					<div class="navbar-logout">
-						<a type="button" class="btn btn-pattern" href="{{ url('/logoutAssinante') }}">Sair</a></li>
+						<a type="button" class="btn btn-pattern" href="{{ url('/logoutAssinante') }}">Sair</a>
 					</div>
 
 					<a class="navbar-brand" href="{{ url('/assinante') }}">
@@ -92,11 +92,13 @@
 			<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-					<div class="modal-body">
-						<div class="mount-node">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</button>
+						<div class="modal-body">
+							<div class="mount-node">
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
@@ -121,7 +123,7 @@
 									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
 										<div class="form-group">
 	                                        <select name="categoria">
-	                                            <option value="0" selected>Selecione um Caderno</option>
+	                                            <!--<option value="0" selected>Selecione um Caderno</option>-->
 	                                            <option value="1">Edições</option>
 	                                            <option value="2">Classificados</option>
 	                                        </select>
@@ -145,7 +147,10 @@
 				<!-- TITULO E VISUALIZAÇÃO -->
 	            <div class="row classificadoslista">
 	                <div class="col-xs-7 col-sm-6">
-	                    <div class="classificadoslista-title">{{$titlePublications}}</div>
+	                    <div class="classificadoslista-title">
+		                    {{$titlePublications}}
+		                </div>
+	                    {{$descriPublications}}
 	                </div>
 					<div class="col-xs-5 col-sm-6">
 						<div class="pull-right classificadoslista-buttons">
@@ -275,12 +280,12 @@
 			$(function() {
                 $('input[name="daterange"]').daterangepicker({
                     opens: 'left',
+                    autoApply: true,
                     showDropdowns: true,
 				    minYear: 1970,
 				    maxYear: parseInt(moment().format('YYYY')) +1
                 }, function(start, end, label) {
                     console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
-                    search();
                 });
             });
 
