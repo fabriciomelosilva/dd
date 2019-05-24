@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TCJFC9X');</script>
+<!-- End Google Tag Manager -->
+
+<!--
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137234529-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'UA-137234529-1');
+		</script>
+-->
 		<script type='text/javascript'>
 			(function() {
 				var useSSL = 'https:' == document.location.protocol;
@@ -10,16 +27,18 @@
 				document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
 			})();
 		</script>
-<style type="text/css">
-	.monthselect{
-	    border: none;
-    	border-top: solid 1pt;
-	}
-	.yearselect{
-	    border: none;
-    	border-top: solid 1pt;
-	}
-</style>
+
+		<style type="text/css">
+			.monthselect{
+				border: none;
+				border-top: solid 1pt;
+			}
+			.yearselect{
+				border: none;
+				border-top: solid 1pt;
+			}
+		</style>
+
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 
@@ -39,13 +58,6 @@
 		
 		<script src="{{ asset('/js/jquery.min.js') }}"></script>
 		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		  gtag('config', 'UA-137234529-1');
-		</script>
 
 		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 
@@ -69,6 +81,12 @@
 	</head>
 
 	<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCJFC9X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 		<nav class="navbar navbarassinante">
 			<div class="container">
 				<div class="navbar-header">
