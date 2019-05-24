@@ -119,7 +119,22 @@ class TransferFilesCommand extends Command
 
                                 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                                     //windows
-                                    shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                    shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 -dNOSUBSTDEVICECOLORS -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                            //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 -dNOSUBSTDEVICECOLORS
+                                    // 5.602
+                                    // 1.198
+                                    // 10.004
+
+                            //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 
+                                    // 1.198
+                                    // 10.004
+
+                            //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None
+                                    // 1.198
+                                    // 10.008--dPDFSETTINGS=/ebook 
+
+                            //-sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile=
+
                             //-sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r256 -dAutoRotatePages=/None
                                 }else{
                                     //unix

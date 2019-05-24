@@ -76,6 +76,14 @@ class LoginAssinanteController extends Controller
 
     public function login(Request $request)
     {
+       // Deslogar e apagar sessões antigas
+       $this->guard()->logout();
+       $request->session()->invalidate();
+       
+       \Session::flush();
+       \Session::forget('laravel_session'); 
+       \Auth::logout();
+
        $cpf = $request->input('cpf');
 
        try{
