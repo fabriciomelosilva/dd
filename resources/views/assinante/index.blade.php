@@ -10,7 +10,16 @@
 				document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
 			})();
 		</script>
-
+<style type="text/css">
+	.monthselect{
+	    border: none;
+    	border-top: solid 1pt;
+	}
+	.yearselect{
+	    border: none;
+    	border-top: solid 1pt;
+	}
+</style>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 
@@ -265,7 +274,10 @@
 
 			$(function() {
                 $('input[name="daterange"]').daterangepicker({
-                    opens: 'left'
+                    opens: 'left',
+                    showDropdowns: true,
+				    minYear: 1970,
+				    maxYear: parseInt(moment().format('YYYY')) +1
                 }, function(start, end, label) {
                     console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
                     search();
