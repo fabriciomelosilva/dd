@@ -119,7 +119,7 @@ class TransferFilesCommand extends Command
 
                                 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                                     //windows
-                                    shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 -dNOSUBSTDEVICECOLORS -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                    shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r20 -dNOSUBSTDEVICECOLORS -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
                             //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 -dNOSUBSTDEVICECOLORS
                                     // 5.602
                                     // 1.198
@@ -138,7 +138,7 @@ class TransferFilesCommand extends Command
                             //-sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r256 -dAutoRotatePages=/None
                                 }else{
                                     //unix
-                                    shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                    shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
                                 }
                             }
 

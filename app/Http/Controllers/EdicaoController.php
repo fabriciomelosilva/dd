@@ -205,13 +205,13 @@ class EdicaoController extends Controller
 
             if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                 //windows
-                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
+                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
                 $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
                 $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name;
         
             }else{
                 //unix
-                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
+                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."compress_".$edicao->ed_file_name." ").storage_path("app/edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/"."$edicao->ed_file_name"));
                 $edicao->ed_file_name = "compress_".$edicao->ed_file_name;
                 $edicao->url = "edicao/".$edicao->ed_year."/".$edicao->ed_month."/".$edicao->ed_day."/".$edicao->ed_file_name;
             }     

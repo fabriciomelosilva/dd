@@ -52,7 +52,7 @@
 
 					<div class="card-footer">
 						<div class="d-flex justify-content-end">
-							<form class="form" action="visualizar" method="post" target="_blank">
+							<form class="form" action="visualizar" method="post">
 								{{csrf_field()}}
 								<input name="year" type="hidden" value="{{$year}}">
 								<input name="month" type="hidden" value="{{$month}}">

@@ -14,8 +14,9 @@ class AssinanteController extends Controller
         
         $titlePublications  = 'Edições';
         $publicationType    = 'edicao';
+        $descriPublications = '';
 
-        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType'));
+        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType', 'descriPublications'));
     }
 
     public function getPublicationsFilter(Request $request)
@@ -23,21 +24,24 @@ class AssinanteController extends Controller
         switch ($request->input('category')) {
             case 1:
                 $titlePublications  = 'Edições';
+                $descriPublications  = 'Exibindo resultados';
                 $publicationType    = 'edicao';
                 break;
             case 2:
                 $titlePublications  = 'Classificados';
+                $descriPublications  = 'Exibindo resultados';
                 $publicationType    = 'classificado';
                 break;
             default:
                 $titlePublications  = 'Edições';
+                $descriPublications  = 'Exibindo resultados';
                 $publicationType    = 'edicao';
                 break;
         }
 
         $publications = $this->getPublications($request);
 
-        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType'));
+        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType', 'descriPublications'));
     }
 
     public function getPublications(Request $where = null){
@@ -92,8 +96,9 @@ class AssinanteController extends Controller
         
         $titlePublications  = 'Edições';
         $publicationType    = 'edicao';
+        $descriPublications = '';
 
-        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType'));
+        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType', 'descriPublications'));
     }
 
     // getYear -- retorna o Ano atual

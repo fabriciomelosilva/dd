@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TCJFC9X');</script>
+<!-- End Google Tag Manager -->
+
+<!--
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137234529-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'UA-137234529-1');
+		</script>
+-->
 		<script type='text/javascript'>
 			(function() {
 				var useSSL = 'https:' == document.location.protocol;
@@ -10,16 +27,18 @@
 				document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
 			})();
 		</script>
-<style type="text/css">
-	.monthselect{
-	    border: none;
-    	border-top: solid 1pt;
-	}
-	.yearselect{
-	    border: none;
-    	border-top: solid 1pt;
-	}
-</style>
+
+		<style type="text/css">
+			.monthselect{
+				border: none;
+				border-top: solid 1pt;
+			}
+			.yearselect{
+				border: none;
+				border-top: solid 1pt;
+			}
+		</style>
+
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 
@@ -39,13 +58,6 @@
 		
 		<script src="{{ asset('/js/jquery.min.js') }}"></script>
 		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		  gtag('config', 'UA-137234529-1');
-		</script>
 
 		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 
@@ -69,11 +81,17 @@
 	</head>
 
 	<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCJFC9X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 		<nav class="navbar navbarassinante">
 			<div class="container">
 				<div class="navbar-header">
 					<div class="navbar-logout">
-						<a type="button" class="btn btn-pattern" href="{{ url('/logoutAssinante') }}">Sair</a></li>
+						<a type="button" class="btn btn-pattern" href="{{ url('/logoutAssinante') }}">Sair</a>
 					</div>
 
 					<a class="navbar-brand" href="{{ url('/assinante') }}">
@@ -92,11 +110,13 @@
 			<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-					<div class="modal-body">
-						<div class="mount-node">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</button>
+						<div class="modal-body">
+							<div class="mount-node">
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
@@ -122,7 +142,7 @@
 										<div class="form-group">
 											<label for="categoria" class="fe-book-open"></label>
 	                                        <select name="categoria">
-	                                            <option value="0" selected>Selecione um Caderno</option>
+	                                            <!--<option value="0" selected>Selecione um Caderno</option>-->
 	                                            <option value="1">Edições</option>
 	                                            <option value="2">Classificados</option>
 	                                        </select>
@@ -146,7 +166,10 @@
 				<!-- TITULO E VISUALIZAÇÃO -->
 	            <div class="row classificadoslista">
 	                <div class="col-xs-7 col-sm-6">
-	                    <div class="classificadoslista-title">{{$titlePublications}}</div>
+	                    <div class="classificadoslista-title">
+		                    {{$titlePublications}}
+		                </div>
+	                    {{$descriPublications}}
 	                </div>
 					<div class="col-xs-5 col-sm-6">
 						<div class="pull-right classificadoslista-buttons">
@@ -276,12 +299,12 @@
 			$(function() {
                 $('input[name="daterange"]').daterangepicker({
                     opens: 'left',
+                    autoApply: true,
                     showDropdowns: true,
 				    minYear: 1970,
 				    maxYear: parseInt(moment().format('YYYY')) +1
                 }, function(start, end, label) {
                     console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
-                    search();
                 });
             });
 
