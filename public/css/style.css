@@ -432,6 +432,7 @@ body::after{
 
 .thumbnail-style img {
   max-width: 100%;
+  min-height: 414px;
   height: auto;
 }
 
@@ -443,12 +444,13 @@ body::after{
   position: relative;
 
   margin: 2%;
-  overflow: hidden;
+/*  overflow: hidden;*/
   width: 100%;
 }
 .capazoom img {
   max-width: 100%;
-  height: auto;
+  height: 118px;
+  object-fit: cover;
 
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -471,7 +473,7 @@ body::after{
 }
 
 .list-style .capazoom {
-  width: 30%;
+  width: 28%;
   display: inline-block;
 }
 
@@ -731,16 +733,6 @@ and (-webkit-min-device-pixel-ratio: 1) {
   }
 }
 
-/* IPAD PRO */
-@media only screen 
-  and (min-width: 1024px) 
-  and (max-height: 1366px) 
-  and (orientation: portrait) 
-  and (-webkit-min-device-pixel-ratio: 1.5) {
-
-
-}
-
 /* Landscape */
 @media only screen 
   and (min-width: 1024px) 
@@ -779,7 +771,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
 /* CELULAR - Portrait and Landscape */
 @media only screen
 and (min-device-width: 320px)
-and (max-device-width: 480px)
+and (max-device-width: 767px)
 and (-webkit-min-device-pixel-ratio: 2) {
 
   .navbar-header img {

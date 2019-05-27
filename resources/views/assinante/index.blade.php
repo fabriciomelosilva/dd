@@ -125,11 +125,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="periodselect">
-						<div class="col-xs-12 col-sm-3">
+						<div class="col-xs-12 col-sm-2">
 							<div class="periodselect-title">Filtros</div>
 						</div>
 
-						<div class="col-xs-12 col-sm-9">
+						<div class="col-xs-12 col-sm-10">
 							<form class="form-inline periodselect__right">
 								<div class="form-group">
                                     <div class="formitem periodselect-mobile">
