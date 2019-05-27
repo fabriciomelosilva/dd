@@ -208,13 +208,13 @@ class ClassificadoController extends Controller
 
             if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                 //windows
-                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."compress_".$classificado->ed_file_name." ").storage_path("app/classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."$classificado->ed_file_name"));
+                $output = shell_exec('gswin64c -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."compress_".$classificado->ed_file_name." ").storage_path("app/classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."$classificado->ed_file_name"));
                 $classificado->ed_file_name = "compress_".$classificado->ed_file_name;
                 $classificado->url = "classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."compress_".$classificado->ed_file_name;
         
             }else{
                 //unix
-                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."compress_".$classificado->ed_file_name." ").storage_path("app/classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."$classificado->ed_file_name"));
+                $output = shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."compress_".$classificado->ed_file_name." ").storage_path("app/classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/"."$classificado->ed_file_name"));
                 $classificado->ed_file_name = "compress_".$classificado->ed_file_name;
                 $classificado->url = "classificado/".$classificado->ed_year."/".$classificado->ed_month."/".$classificado->ed_day."/".$classificado->ed_file_name;
             }     
