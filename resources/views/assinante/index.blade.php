@@ -106,7 +106,7 @@
 				<div class="col-xs-12">
 					<div class="periodselect">
 						<div class="col-xs-12 col-sm-3">
-							<div class="periodselect-title">Filtro</div>
+							<div class="periodselect-title">Filtros</div>
 						</div>
 
 						<div class="col-xs-12 col-sm-9">
@@ -115,11 +115,12 @@
                                     <div class="formitem periodselect-mobile">
 										<label for="daterange" class="fe-calendar"></label>&nbsp;
 									    <input type="text" name="daterange" class="datarangerform" id="daterange" />
-									    <label for="daterange" class="fe-chevron-down"></label>
+									    <i class="icondaterange">&#x25BC;</i>
                                     </div>
                                     
 									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
 										<div class="form-group">
+											<label for="categoria" class="fe-book-open"></label>
 	                                        <select name="categoria">
 	                                            <option value="0" selected>Selecione um Caderno</option>
 	                                            <option value="1">Edições</option>
@@ -130,7 +131,7 @@
 
 	                                <div class="formitem formitem__last">
 	                                    <button type="button" class="btn search-button">
-	                                        <label class="fe-search"></label>
+	                                        <i class="fe-search"></i>
 	                                    </button>
 	                                </div>
 	                            </div>

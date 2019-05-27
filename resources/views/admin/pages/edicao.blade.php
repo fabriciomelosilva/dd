@@ -29,7 +29,7 @@
 				<div class="card">
 					<div class="card-body">
 					
-						<form class="form-horizontal" id="formulario" action="edicao" method="post" enctype="multipart/form-data">
+						<form class="form-horizontal" id="formulario" action="edicaoPost" method="post" enctype="multipart/form-data">
 							{{csrf_field()}}
 							<div class="form-group row">
 								<div class="col-sm-10 offset-sm-1">

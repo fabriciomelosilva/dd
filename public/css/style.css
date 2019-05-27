@@ -273,10 +273,16 @@ body::after{
   color: #169990;
 }
 
+.periodselect .icondaterange {
+  font-size: 0.65em;
+  float: right;
+  padding: 13px 5px;
+}
+
 .periodselect button {
   background: none;
   border: 0;
-  color: #169990;
+  color: #000;
   font-size: 1.5em;
   padding: 5px 10px;
   -moz-transition: .25s ease-in-out;
@@ -287,6 +293,17 @@ body::after{
   background: #169990;
   color: #fff;
   border: 0;
+}
+
+.daterangepicker select.monthselect,
+.daterangepicker select.yearselect {
+  background: white;
+  color: #169990;
+  font-size: 1.2em !important;
+  border: 1px solid #169990;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family: roboto-condesed-regular, arial, sans-serif;
 }
 
 .formitem {
@@ -307,10 +324,15 @@ body::after{
   font-size: 1.2em;
   width: 170px;
   color: #000;
-  padding-top: 7px;
+  margin-top: 7px;
   font-family: roboto-condesed-regular, arial, sans-serif;
 }
 
+.formitem select:hover,
+.formitem select:focus {
+  color: #169990;
+  cursor: pointer;
+}
 
 /** LISTA DE CLASSIFICADOS **/
 
@@ -478,7 +500,7 @@ body::after{
   border-radius: 5px;
   -webkit-box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
   box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
-  padding: 50px 15px;
+  padding: 30px 15px;
 }
 
 .page-title-box .page-title {
@@ -810,6 +832,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
     background: #169990;
     color: #fff;
     margin-left: 15px;
+  }
+
+  .form-group label:hover {
+    color: #fff;
   }
 
   .classificadoslista-title {

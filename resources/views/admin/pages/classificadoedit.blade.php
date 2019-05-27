@@ -50,7 +50,7 @@
 							<div class="form-group row">
 								<label class="col-sm-1 col-form-label"></label>
 								<div class="col-sm-10">
-									<button id="novaClassificado" type="button"  class="btn btn-light btn-sm btn-rounded">
+									<button id="novaEdicao" type="button"  class="btn btn-light btn-sm btn-rounded">
 										<i class="fe-plus"></i>
 										Novo carderno
 									</button>
