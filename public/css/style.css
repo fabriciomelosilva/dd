@@ -399,7 +399,7 @@ body::after{
   -webkit-box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
   box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
   margin: 15px 0;
-  min-height: 414px;
+  min-height: 390px;
 }
 
 .thumbnail-date {
@@ -432,7 +432,7 @@ body::after{
 
 .thumbnail-style img {
   max-width: 100%;
-  min-height: 414px;
+  min-height: 315px;
   height: auto;
 }
 
@@ -442,15 +442,14 @@ body::after{
 
 .capazoom {
   position: relative;
-
-  margin: 2%;
-/*  overflow: hidden;*/
+  overflow: hidden; 
   width: 100%;
 }
 .capazoom img {
-  max-width: 100%;
-  height: 118px;
+  width: 100%;
+  height: 315px;
   object-fit: cover;
+  object-position: 0 0;
 
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -473,7 +472,9 @@ body::after{
 }
 
 .list-style .capazoom {
-  width: 28%;
+  width: 26%;
+  height: 111px;
+  margin: 3%;
   display: inline-block;
 }
 
@@ -488,6 +489,12 @@ body::after{
 
 .list-style .thumbnail-date .readmore {
   display: block;
+}
+
+.list-style img {
+  max-width: 100%;
+  height: 118px;
+  object-fit: cover;
 }
 
 /*************************
@@ -770,9 +777,9 @@ and (-webkit-min-device-pixel-ratio: 1) {
 
 /* CELULAR - Portrait and Landscape */
 @media only screen
-and (min-device-width: 320px)
-and (max-device-width: 767px)
-and (-webkit-min-device-pixel-ratio: 2) {
+and (min-width: 320px)
+and (max-width: 767px)
+ {
 
   .navbar-header img {
     max-width: 84%;
@@ -836,7 +843,15 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .thumbnail-style {
-    min-height: 249px;
+    min-height: 209px;
+  }
+
+  .capazoom img {
+    height: 150px;
+  }
+
+  .thumbnail-style img {
+    min-height: 150px;
   }
 
   .thumbnail-date {
@@ -859,6 +874,16 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   .list-style .thumbnail-date {
     margin-top: 18px;
+  }
+
+  .list-style .capazoom img {
+    height: 70px;
+  }
+
+  .list-style .capazoom {
+    width: 26%;
+    height: 70px;
+    margin: 3%;
   }
 
   .welcomepage {
@@ -894,37 +919,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
   font-size: 1.4em;
  }
 }
-
-/* MIDDLE 
-@media only screen
-and (min-device-width: 480px)
-and (max-device-width: 768px)
-and (-webkit-min-device-pixel-ratio: 2) {
-
-  #vertical {
-    top: 0;
-    transform: none;
-  }
-
-  .loginside {
-    padding: 50px 15px 70px;
-    width: 100%;
-    height: auto;
-  }
-
-  .loginright {
-    padding: 30px 15px 0;
-    width: 100%;
-    height: auto;
-    float: none;
-  }
-
-  .loginright .btndegustacao {
-    margin-bottom: 30px;
-  }
-}*/
-
-/***************/
 
 #modal-wnd .modal-dialog {
   position: relative;

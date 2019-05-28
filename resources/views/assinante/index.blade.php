@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -141,7 +143,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
 										<div class="form-group">
 											<label for="categoria" class="fe-book-open"></label>
-	                                        <select name="categoria">
+	                                        <select name="categoria" id="categoria">
 	                                            <!--<option value="0" selected>Selecione um Caderno</option>-->
 	                                            <option value="1">Edições</option>
 	                                            <option value="2">Classificados</option>
