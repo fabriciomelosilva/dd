@@ -8,9 +8,9 @@
   height: 100%;
 }
 
-.flip-book .view canvas {
-  margin-top: -2%;
-}
+ .flip-book .view canvas {
+    margin-top: -2%;
+  }
 
 .flip-book .view .fnav {
 }
@@ -1163,4 +1163,26 @@ and (-webkit-min-device-pixel-ratio: 2) {
   font-family: roboto-condesed-regular, arial, sans-serif;
   font-size: 0.9em;
   font-weight: bold;
+}
+
+/* CELULAR - Portrait and Landscape */
+@media only screen
+and (min-width: 320px)
+and (max-width: 767px) {  
+
+  .cmdZoomIn,
+  .cmdZoomOut,
+  .widSettings {
+    display: none !important;
+  }
+
+  .fa-bookmark:last-child, 
+  .fa-arrows-alt:last-child {
+    border-right: 0;
+  }
+
+ .flip-book .view canvas {
+    margin-top: -5%;
+  }
+
 }
