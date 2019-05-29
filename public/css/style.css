@@ -57,6 +57,7 @@ body::after{
 #topnav {
   background-color: #169990;
   position: relative;
+  height: 70px;
 }
 
 #topnav .navigation-menu > li > a {
@@ -813,10 +814,6 @@ and (-webkit-min-device-pixel-ratio: 1) {
 and (min-width: 320px)
 and (max-width: 767px) {
 
-  .wrapper {
-    background-color: #169990;
-  }
-
   .navbar-header img {
     max-width: 84%;
   }
@@ -1444,10 +1441,6 @@ body .navbar {
 }
 
 /*Lightbox Effect*/
-
-.fb3d-modal-shadow {
-
-}
 
 body::before {
   position: fixed;

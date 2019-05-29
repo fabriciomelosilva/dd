@@ -7,97 +7,33 @@
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
                 <li class="dropdown notification-list">
-                    <!-- Mobile menu toggle-->
-                    <a class="navbar-toggle nav-link">
+
+                    <a class="navbar-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <div class="lines">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
                     </a>
-                    <!-- End mobile menu toggle-->
-                </li>
 
-                <li class="dropdown notification-list">
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5 class="m-0">
-                                <span class="float-right">
-                                    <a href="" class="text-dark">
-                                        <small>Clear All</small>
-                                    </a>
-                                </span>Notification</h5>
-                        </div>
 
-                        <div class="slimscroll noti-scroll">
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                                <div class="notify-icon">
-                                <p class="notify-details">Cristina Pride</p>
-                                <p class="text-muted mb-0 user-msg">
-                                    <small>Hi, How are you? What about our next meeting</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-light">
-                                    <i class="mdi mdi-comment-account-outline"></i>
-                                </div>
-                                <p class="notify-details">Caleb Flakelar commented on Admin
-                                    <small class="text-muted">1 min ago</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon">
-                                <p class="notify-details">Karen Robinson</p>
-                                <p class="text-muted mb-0 user-msg">
-                                    <small>Wow ! this admin looks good and awesome design</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-light">
-                                    <i class="mdi mdi-account-plus"></i>
-                                </div>
-                                <p class="notify-details">New user registered.
-                                    <small class="text-muted">5 hours ago</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-light">
-                                    <i class="mdi mdi-comment-account-outline"></i>
-                                </div>
-                                <p class="notify-details">Caleb Flakelar commented on Admin
-                                    <small class="text-muted">4 days ago</small>
-                                </p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-light">
-                                    <i class="mdi mdi-heart"></i>
-                                </div>
-                                <p class="notify-details">Carlos Crouch liked
-                                    <b>Admin</b>
-                                    <small class="text-muted">13 days ago</small>
-                                </p>
-                            </a>
-                        </div>
-
-                        <!-- All-->
-                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                            View all
-                            <i class="fi-arrow-right"></i>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-119px, 70px, 0px);">
+                    <!-- item-->
+                        <a href="{{ route('edicaoGet') }}" class="dropdown-item notify-item">
+                            <i class="fe-plus-circle"></i> Cadastrar Edição
                         </a>
-
+                        <a href="{{ route('lista_edicao') }}" class="dropdown-item notify-item">
+                            <i class="fe-list"></i> Listar Edições
+                        </a>
+                        <a href="{{ route('classificadoGet') }}" class="dropdown-item notify-item">
+                            <i class="fe-plus-circle"></i> Cadastrar Classificados
+                        </a>
+                        <a href="{{ route('lista_classificado') }}" class="dropdown-item notify-item">
+                            <i class="fe-list"></i> Listar Classificados
+                        </a>
+                        <a href="{{ route('register') }}" class="dropdown-item notify-item">
+                            <i class="fe-user-plus"></i>Cadastrar Usuários
+                        </a>
                     </div>
                 </li>
 
@@ -135,10 +71,10 @@
                 <li class="float-left">
                     <a href="index.html" class="logo">
                         <span class="logo-lg">
-                            <img src="assets/images/logo.png" alt="" height="18">
+                            <img src="{{ asset('/assets/images/logo-diario-do-nordeste-dd.svg') }}" alt="" height="18">
                         </span>
                         <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="28">
+                            <img src="{{ asset('/assets/images/logo-diario-do-nordeste-dd.svg') }}" alt="" height="28">
                         </span>
                     </a>
                 </li>
