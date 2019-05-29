@@ -59,7 +59,7 @@
 
 							<div class="text-right d-print-none">
 								<div class="col-sm-10 offset-sm-1">
-									<button type="submit" class="btn btn-edicao">
+									<button type="submit" class="btn btn-edicao" onsubmit="$('.load-stop').css('display', 'block')">
 										Criar Classificados
 									</button>
 								</div>
@@ -71,6 +71,4 @@
 		</div>
 	</div>
 </div>
-
 @stop
-

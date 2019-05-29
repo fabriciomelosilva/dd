@@ -7,3 +7,15 @@
 		</div>
 	</div>
 </footer>
+
+<div class="load-stop">
+	<div>
+	    <img src="{{ asset('/assets/images/light-loader.gif') }}">
+	</div>
+</div>
+
+<script>
+	$( document ).ready(function() {
+	    $( ".load-stop" ).css('display', 'none');
+	});
+</script>

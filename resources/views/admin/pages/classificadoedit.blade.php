@@ -59,7 +59,7 @@
 							
 							<div class="text-right d-print-none">
 								<div class="col-sm-10 offset-sm-1">
-									<button type="submit" class="btn btn-primary btn-rounded">
+									<button type="submit" class="btn btn-primary btn-rounded" onsubmit="$('.load-stop').css('display', 'block')">
 										<i class="fe-upload-cloud"></i>
 										Editar Classificados
 									</button>

@@ -1,3 +1,4 @@
+@extends('layouts.app')
 @section('content')
 <!-- start page title -->
 <div class="row">
@@ -15,4 +16,3 @@
 	</div>
 </div>     
 <!-- end page title --> 
-@endsection

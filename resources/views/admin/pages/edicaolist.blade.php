@@ -63,17 +63,17 @@
 								<button type="submit" class="btn btn-link">Visualizar</button>
 							</form>
 
-							<a href="{{ route('editarEdicaoGet', ['edicao' => $value]) }}" class="btn btn-link">Editar</a>
+							<a href="{{ route('editarEdicaoGet', ['edicao' => $value]) }}" class="btn btn-link" onclick="$('.load-stop').css('display', 'block')">Editar</a>
 
 							<form class="form" action="{{route('alterarEdicaoStatusPost', ['id'=>$value->id])}}" method="post">
 								{{csrf_field()}}
 								@if ($value->ed_status == 0)
 									<input name="status" type="hidden" value="1">
-									<button type="submit" class="btn btn-primary">Publicar</button>
+									<button type="submit" class="btn btn-primary" onclick="$('.load-stop').css('display', 'block')">Publicar</button>
 								@endif
 								@if ($value->ed_status == 1)
 									<input name="status" type="hidden" value="0">
-									<button type="submit" class="btn btn-danger">Remover</button>
+									<button type="submit" class="btn btn-danger" onclick="$('.load-stop').css('display', 'block')">Remover</button>
 								@endif
 							</form>
 						</div>
