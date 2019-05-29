@@ -56,6 +56,7 @@ body::after{
 
 #topnav {
   background-color: #169990;
+  position: relative;
 }
 
 #topnav .navigation-menu > li > a {
@@ -235,6 +236,7 @@ body::after{
 /*************************
   LISTAGEM DOS CLASSIFICADOS
 *********/
+
 /** SELECIONAR PERIODO **/
 
 .periodselect {
@@ -274,7 +276,7 @@ body::after{
 }
 
 .periodselect .icondaterange {
-  font-size: 0.65em;
+  font-size: 0.67em;
   float: right;
   padding: 13px 5px;
 }
@@ -308,7 +310,7 @@ body::after{
 
 .formitem {
   float: left;
-  padding: 0 30px;
+  padding: 0 20px;
   border-right: 1px solid #169990;
   height: 40px;
 }
@@ -495,6 +497,10 @@ body::after{
   max-width: 100%;
   height: 118px;
   object-fit: cover;
+}
+
+.flip-book .controls .fnavbar {
+  overflow-x: scroll;
 }
 
 /*************************
@@ -693,6 +699,11 @@ footer{
   height: 55px;
 }
 
+.lisfooter footer {
+  position: relative;
+  margin-top: 30px;
+}
+
 /*************************
 	QUERIES
 *********/
@@ -778,8 +789,11 @@ and (-webkit-min-device-pixel-ratio: 1) {
 /* CELULAR - Portrait and Landscape */
 @media only screen
 and (min-width: 320px)
-and (max-width: 767px)
- {
+and (max-width: 767px) {
+
+  .wrapper {
+    background-color: #169990;
+  }
 
   .navbar-header img {
     max-width: 84%;
@@ -794,6 +808,10 @@ and (max-width: 767px)
 
   .periodselect .col-xs-12 {
     padding: 0;
+  }
+
+  .periodselect .icondaterange {
+    float: none;
   }
 
   .formitem {
@@ -918,6 +936,7 @@ and (max-width: 767px)
   padding: 15px;
   font-size: 1.4em;
  }
+
 }
 
 #modal-wnd .modal-dialog {

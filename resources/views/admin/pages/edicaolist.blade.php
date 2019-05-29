@@ -90,4 +90,7 @@
 		</nav>
 	</div>
 </div>
-@stop
+
+<div class="lisfooter">
+	@stop
+</div>

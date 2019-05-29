@@ -1,5 +1,8 @@
 @extends('layouts.app')
-@section('content')
+
+<div class="lisheader">
+  @section('content')
+</div>
 
 <script src="{{ URL::to('/js/html2canvas.min.js') }}"></script>
 <script src="{{ URL::to('/js/three.min.js') }}"></script>
@@ -40,4 +43,7 @@
   });
   
 </script>
-@stop
+
+<div class="lisfooter">
+  @stop
+</div>

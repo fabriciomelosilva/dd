@@ -281,17 +281,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					scene: undefined,
 					options: undefined,
 					node: $('#flip-book-window').find('.mount-node')
-					};
-					$('#flip-book-window').on('hidden.bs.modal',  function() {
-						instance.scene.dispose();
-					});
-					$('#flip-book-window').on('shown.bs.modal', function() {
-						instance.scene = instance.node.FlipBook(instance.options);
-					});
-					if(e.target.id) {
-						instance.options = booksOptions[e.target.id];
-						$('#flip-book-window').modal('show');
-					}
+				};
+				$('#flip-book-window').on('hidden.bs.modal',  function() {
+					instance.scene.dispose();
+				});
+				$('#flip-book-window').on('shown.bs.modal', function() {
+					instance.scene = instance.node.FlipBook(instance.options);
+				});
+				if(e.target.id) {
+					instance.options = booksOptions[e.target.id];
+					$('#flip-book-window').modal('show');
+				}
 			});
 
 			//// PESQUISA
