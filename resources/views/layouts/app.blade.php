@@ -52,6 +52,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		@yield('content')
 
-		@include('partials.footer')
+		<div class="load-stop">
+            <div>
+                <img src="{{ asset('/assets/images/light-loader.gif') }}">
+            </div>
+        </div>
+
+        <script>
+            $( document ).ready(function() {
+                $( ".load-stop" ).css('display', 'none');
+            });
+        </script>
 	</body>
 </html>
