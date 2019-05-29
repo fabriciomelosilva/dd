@@ -1,15 +1,13 @@
 @extends('layouts.app')
+@section('content')
 
-<div class="lisheader">
-  @section('content')
-</div>
 
 <script src="{{ URL::to('/js/html2canvas.min.js') }}"></script>
 <script src="{{ URL::to('/js/three.min.js') }}"></script>
 <script src="{{ URL::to('/js/pdf.min.js') }}"></script>
 <script src="{{ URL::to('/js/3dflipbook.min.js') }}"></script>
 
-<div class="container" style="padding-top: 5%">
+<div class="container" style="padding-top: 1%">
   <div class="sample-container">
     <div>
 
