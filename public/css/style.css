@@ -76,6 +76,12 @@ body::after{
   background: #007563;
 }
 
+logo-fix {
+    height: 27px;
+    float: left;
+    margin-top: 20px;
+}
+
 .btn-pattern {
   background: #169990;
   color: #fff;

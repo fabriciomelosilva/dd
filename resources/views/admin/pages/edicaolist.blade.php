@@ -91,6 +91,4 @@
 	</div>
 </div>
 
-<div class="lisfooter">
 	@stop
-</div>

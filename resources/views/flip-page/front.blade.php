@@ -42,6 +42,4 @@
   
 </script>
 
-<div class="lisfooter">
-  @stop
-</div>
+@stop

@@ -4,7 +4,7 @@
     <nav class="navbar-custom">
 
         <div class="container-fluid">
-            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+            <ul class="list-unstyled topbar-right-menu float-right mb-0 logo-fix">
 
                 <li class="dropdown notification-list">
 
@@ -69,7 +69,7 @@
 
             <ul class="list-inline menu-left mb-0">
                 <li class="float-left">
-                    <a href="index.html" class="logo">
+                    <a href="{{ url('/login') }}" class="logo">
                         <span class="logo-lg">
                             <img src="{{ asset('/assets/images/logo-diario-do-nordeste-dd.svg') }}" alt="" height="18">
                         </span>
