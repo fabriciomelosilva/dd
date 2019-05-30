@@ -43,7 +43,10 @@ class TransferFilesCommand extends Command
 
         $dir = $this->argument('diretorio'); // 'C:\Users\610782341\Documents\pdfs';
 
-        $nameCapa = "PRIMEIRA";
+        $nameCapa1 = "PRIMEIRA";
+        $nameCapa2 = "PAGINA";
+
+        $nameRemove = "CLASSIFICADOS";
 
         $ano = ($this->argument('ano'))? $this->argument('ano') : date("Y");
         $mesSelc = ($this->argument('mes'))? $this->argument('mes') : null;
@@ -52,6 +55,11 @@ class TransferFilesCommand extends Command
         $this->info('********* Diario Digital *********');
         $this->info('Trasferencia de Dados iniciada...');
         $this->info('');
+
+        if($ano < 2010)
+            $this->info('Antes de 2010');
+        else
+            $this->info('Depois de 2010');
 
         if(\File::exists( $dir )){
             $this->info('Diretorio Existe '.$dir);
@@ -110,35 +118,45 @@ class TransferFilesCommand extends Command
                                 $caminhoPdf = str_replace("\\", "/", $file);
                                 $this->info($file->getBasename());
 
-                                $capa = strpos($file->getBasename(), $nameCapa);
-                                if($capa == false){
-                                    $namePdf = "compress_".$file->getBasename();
-                                }else{
-                                    $namePdf = "capa_compress_".$file->getBasename();
-                                }
+                                $capaAntiga = strpos($file->getBasename(), $nameCapa1);
+                                $capaNova = strpos($file->getBasename(), $nameCapa2);
 
-                                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-                                    //windows
-                                    shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r20 -dNOSUBSTDEVICECOLORS -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
-                            //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 -dNOSUBSTDEVICECOLORS
-                                    // 5.602
-                                    // 1.198
-                                    // 10.004
+                                $classificado = strpos($file->getBasename(), $nameRemove);
 
-                            //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 
-                                    // 1.198
-                                    // 10.004
+                                if($classificado == false){
+                                    if($capaAntiga == false && $capaNova == false){
+                                        $namePdf = "compress_".$file->getBasename();
+                                    }else{
+                                        $namePdf = "capa_compress_".$file->getBasename();
+                                    }
 
-                            //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None
-                                    // 1.198
-                                    // 10.008--dPDFSETTINGS=/ebook 
+                                    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                                        //windows
+                                        if($ano < 2010)
+                                            shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r20 -dNOSUBSTDEVICECOLORS -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                        else
+                                            shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
 
-                            //-sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile=
+                                //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 -dNOSUBSTDEVICECOLORS
+                                        // 5.602
+                                        // 1.198
+                                        // 10.004
 
-                            //-sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r256 -dAutoRotatePages=/None
-                                }else{
-                                    //unix
-                                    shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 
+                                        // 1.198
+                                        // 10.004
+
+                                //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None
+                                        // 1.198
+                                        // 10.008--dPDFSETTINGS=/ebook 
+
+                                //-sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile=
+
+                                //-sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r256 -dAutoRotatePages=/None
+                                    }else{
+                                        //unix
+                                        shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                    }
                                 }
                             }
 
@@ -175,7 +193,7 @@ class TransferFilesCommand extends Command
                                     $edicao->ed_day = $dia;
                                     $edicao->ed_date = $data_edicao_string;
                                     $edicao->ed_file_name = $pdfFinal.".pdf";
-                                    $edicao->ed_status = 0; // Em Rascunho
+                                    $edicao->ed_status = 1;
                                     $edicao->ed_capa = $capa.".jpg";
                                     $edicao->url = "edicao/".$ano."/".$mes."/".$dia."/".$pdfFinal.".pdf";
 

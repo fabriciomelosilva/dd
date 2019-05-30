@@ -52,5 +52,22 @@ class OrganizerFile extends Command
 
         $files = \File::allFiles( $dir );
         $this->info('Diretorio Possui '.count($files).' elementos');
+
+        foreach ($files as $file) {
+            $nome = explode('-', $file->getBasename());
+            $data = $nome[0];
+
+            $this->info($data . ' - ' . $file);
+            $dirNovo = $dir."\\".$data;
+            
+            if(!\File::exists($dirNovo)) {
+                \File::makeDirectory($dirNovo);
+                $this->info('Criado diretorio ' .$dirNovo);
+            }
+
+            if(\File::move($file, $dirNovo.'\\'.$file->getBasename())){
+                $this->info('Arquivo Movido '.$dirNovo.'\\'.$file->getBasename());
+            }
+        }
     }
 }
