@@ -15,6 +15,7 @@
 
 
 // Authentication Routes...
+Route::get('/', 'AuthAssinantes\LoginAssinanteController@showLoginForm');
 
 //Rotas login admin
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -31,10 +32,6 @@ Route::get('/acessonegado', 'UserController@getPermissao');
 
 
 Route::group(['middleware' => ['auth', 'role:admin']], function() {
-
-    Route::get('/', function () {
-        return view('dashboard');
-    });
     Route::get('/home', 'HomeController@index')->name('home');
 
     //criar Edição

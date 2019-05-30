@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\DateEditionUpdateCommand::class,
         Commands\TransferFilesCommand::class,
+        Commands\OrganizerFile::class,
     ];
 
     /**
