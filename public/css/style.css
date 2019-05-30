@@ -518,6 +518,13 @@ logo-fix {
   font-family: roboto-condesed-regular, arial, sans-serif;
 }
 
+.card-center-heigh {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .card-body {
   border-radius: 5px;
   -webkit-box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
@@ -960,6 +967,11 @@ and (max-width: 767px) {
  .loginright .btndegustacao {
   padding: 15px;
   font-size: 1.4em;
+ }
+
+ .card-center-heigh {
+    left: 20%;
+    transform: translate(-13%, -50%);
  }
 
 }
