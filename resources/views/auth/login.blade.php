@@ -1,12 +1,10 @@
 @extends('layouts.app')
-
-<div style="height: 100%">
-	<div style="position: relative; top: 50%; transform: translateY(-50%);">
 @section('content')
+
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-5">
-					<div class="card">
+				<div class="col-md-4">
+					<div class="card card-center-heigh">
 						<div class="card-body">
 							<div class="text-center w-75 m-auto">
 								<a href="index.html">
@@ -42,6 +40,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+
 @endsection
