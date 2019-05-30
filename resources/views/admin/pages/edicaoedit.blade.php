@@ -34,7 +34,7 @@
 							<div class="form-group row">
 								<div class="col-sm-10 offset-sm-1">
 									<label class="col-sm-12 col-form-label">Data</label>
-									<input value="<?php echo $edicao->ed_day."/".$edicao->ed_month."/".$edicao->ed_year; ?>" class="form-control" name="data_edicao" type="text" id="calendario" autocomplete="off"/>
+									<input required value="<?php echo $edicao->ed_day."/".$edicao->ed_month."/".$edicao->ed_year; ?>" class="form-control" name="data_edicao" type="text" id="calendario" autocomplete="off"/>
 								</div>
 							</div>
 
@@ -42,7 +42,7 @@
 								<div class="form-group row">
 									<div class="col-sm-10 offset-sm-1">
 										<label class="col-sm-12 col-form-label">Upload do caderno 1 </label>
-										<input type="file" class="form-control" name="edicao[]">
+										<input required type="file" class="form-control" name="edicao[]">
 									</div>
 								</div>
 							</div>
