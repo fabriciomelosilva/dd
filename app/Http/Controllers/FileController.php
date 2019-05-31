@@ -3,18 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Edicao;
+use App\Classificado;
 
 class FileController extends Controller
 {
     public function show($p0,$p1,$p2,$p3,$p4)
     {
+        /*$ano = (int) $p1;
 
-    //$pdfContent = storage_path('app/TheThreeMusketeers.pdf');
-    
-    $pdfContent = storage_path("app/".$p0."/".$p1."/".$p2."/".$p3."/".$p4);
+        if($ano < 2019){
+            if($p0 == "edicao"){
+                $findEdicao = Edicao::where('ed_year', $p1)->where('ed_month', $p2)->where('ed_day', $p3)->first();
 
-    return \Response::file($pdfContent);
+                $pdfContent = $findEdicao->url;
+            }else{
+                $findClassificado = Classificado::where('ed_year', $p1)->where('ed_month', $p2)->where('ed_day', $p3)->first();
 
+                $pdfContent = $findClassificado->url;
+            }
+        }else{*/
+            $pdfContent = storage_path("app/".$p0."/".$p1."/".$p2."/".$p3."/".$p4);
+        //}
+
+        return \Response::file($pdfContent);
     }
     
     public function toView(Request $request)

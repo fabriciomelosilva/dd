@@ -115,7 +115,7 @@ class TransferFilesCommand extends Command
                             
                             $this->info("Compressao de Arquivos");
                             foreach ($files as $file) {
-                                $caminhoPdf = $file;// str_replace("\\", "/", $file);
+                                $caminhoPdf = str_replace("/", "\\", $file);
                                 
                                 $this->info($file->getBasename());
 
@@ -134,9 +134,9 @@ class TransferFilesCommand extends Command
                                     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                                         //windows
                                         if($ano < 2010)
-                                            shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r20 -dNOSUBSTDEVICECOLORS -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                            shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r20 -dNOSUBSTDEVICECOLORS -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf)." ".$caminhoPdf);
                                         else
-                                            shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                            shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf)." ".$caminhoPdf);
 
                                 //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 -dNOSUBSTDEVICECOLORS
                                         // 5.602
@@ -156,7 +156,7 @@ class TransferFilesCommand extends Command
                                 //-sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r256 -dAutoRotatePages=/None
                                     }else{
                                         //unix
-                                        shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf." ").$caminhoPdf);
+                                        shell_exec('/usr/bin/gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf)." ".$caminhoPdf);
                                     }
                                 }
                             }
@@ -174,10 +174,10 @@ class TransferFilesCommand extends Command
                                 
                                     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                                     //windows
-                                        $output = shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/".$capa.".jpg ").$caminhoPdf);
+                                        $output = shell_exec('gswin64c -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/".$capa.".jpg")." ".$caminhoPdf);
                                     }else{
                                     //unix
-                                        $output = shell_exec('/usr/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/".$capa.".jpg ").$caminhoPdf);
+                                        $output = shell_exec('/usr/bin/gs -dBATCH -dNOPAUSE -dQUIET -sDEVICE=jpeg -r50x50 -dFirstPage=1 -dLastPage=1 -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/".$capa.".jpg")." ".$caminhoPdf);
                                     }
                                 }
                              
