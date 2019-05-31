@@ -12,7 +12,11 @@
 			<p>
 				Acessar todo o conteúdo do Diário do Nordeste agora é exclusividade de nossos assinantes, a qualquer hora, em qualquer lugar, no computador, celular ou tablet.
 			</p>
-
+			@if (session()->has('flash.message'))
+				<div class="alert alert-danger" role="alert">
+					{{ session('flash.message') }}
+				</div>
+			@endif
 			<form method="post" action="{{ route('loginAssinante') }}">
 				{{csrf_field()}}
 				<div class="form-group">

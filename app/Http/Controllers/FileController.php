@@ -49,4 +49,24 @@ class FileController extends Controller
             
         return view("flip-page-assinante.front", compact('year','month','day','file_name'));
     }
+
+    public function sqlExport($year, $month){
+        $year   = (int) $year;
+        $month  = (int) $month;
+
+        $edicoes = Edicao::where('ed_year', $year)->where('ed_month', $month)->get();
+        $classificados = Classificado::where('ed_year', $year)->where('ed_month', $month)->get();
+
+        $sql = "";
+
+        foreach ($edicoes as $key => $value) {
+            $sql .= 'INSERT INTO edicaos (ed_year, ed_month, ed_day, url, ed_status, ed_file_name, ed_capa, ed_date) VALUES ( '.$value->ed_year.', '.$value->ed_month.', '.$value->ed_day.', "'.$value->url.'", '.$value->ed_status.', "'.$value->ed_file_name.'", "'.$value->ed_capa.'", "'.$value->ed_date.'" );<br>';
+        }
+
+        foreach ($classificados as $key => $value) {
+            $sql .= 'INSERT INTO classificados (ed_year, ed_month, ed_day, url, ed_status, ed_file_name, ed_capa, ed_date) VALUES ( '.$value->ed_year.', '.$value->ed_month.', '.$value->ed_day.', "'.$value->url.'", '.$value->ed_status.', "'.$value->ed_file_name.'", "'.$value->ed_capa.'", "'.$value->ed_date.'" );<br>';
+        }
+
+        return $sql;
+    }
 }

@@ -77,6 +77,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function() {
     Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
+    Route::get('/sqlExport/{ano}/{mes}', "FileController@sqlExport");
+
 });
 
 
