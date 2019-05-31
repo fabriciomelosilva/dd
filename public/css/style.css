@@ -109,6 +109,14 @@ logo-fix {
 /*************************
   LOGIN ASSINANTE
 *********/
+
+/* OLD VERSION */
+.cardlogin-assinante .card-body {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* OLD VERSION */
+
 .loginside {
   color: #fff;
   background: #009992;

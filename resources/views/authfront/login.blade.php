@@ -96,7 +96,7 @@
 				<h1 class="jumbotron-heading text-white">Direto. Claro. Simples</h1>
 				<p class="lead text-white">Acessar todo o conteúdo do Diário do Nordeste agora é exclusividade de nossos assinantes, a qualquer hora, em qualquer lugar, no computador, celular ou tablet.</p>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 cardlogin-assinante cardlogin-assinante">
 				<div class="card shadow bg-white rounded p-lg-4">
 					<div class="bg-white border-0 card-header">
 						<p class="font-weight-bold m-0 text-uppercase">Acesso do assinante</p>
@@ -127,11 +127,18 @@
 <section class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 	<div class="container">
 		<h1 class="display-5"><a href="http://centraldoassinante.diariodonordeste.com.br/assinar" target="_blank">Quero Assinar</a></h1>
-		<p class="lead">Vantagens de ser assinante impresso + digital</p>
+		<p class="lead">
+			Vantagens de ser assinante impresso + digital
+			<br />
+			<a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" target="_blank">Experimente grátis por 15 dias</a>
+			<br /><br />
+		</p>
+
 		<div class="row">
 			<div class="col-lg-4 col-sm-6">
 				<div class="card text-center hover-shadow-lg hover-translate-y-n10">
 				<div class="px-4 py-5">
+					<img src="{{ asset('/assets/images/discount-circle-icon.png') }}">
 				</div>
 				<div class="px-4 pb-5">
 					<h5>Comodidade</h5>
@@ -143,6 +150,7 @@
 			<div class="col-lg-4 col-sm-6">
 				<div class="card text-center hover-shadow-lg hover-translate-y-n10">
 				<div class="px-4 py-5">
+					<img src="{{ asset('/assets/images/cellphone-circle-icon.png') }}">
 				</div>
 				<div class="px-4 pb-5">
 					<h5>Acervo</h5>
@@ -153,10 +161,11 @@
 			<div class="col-lg-4 col-sm-6">
 				<div class="card text-center hover-shadow-lg hover-translate-y-n10">
 				<div class="px-4 py-5">
+					<img src="{{ asset('/assets/images/journal-circle-icon.png') }}">
 				</div>
-				<div class="px-4 pb-5">
+				<div class="px-4 pb-5">	
 					<h5>Vantagens</h5>
-					<p class="text-muted">Vantagens do Clube do Assinante.</p>
+					<p class="text-muted">Vantagens do Clube do Assinante.<br /><br /></p>
 				</div>
 				</div>
 			</div>
