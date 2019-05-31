@@ -115,7 +115,8 @@ class TransferFilesCommand extends Command
                             
                             $this->info("Compressao de Arquivos");
                             foreach ($files as $file) {
-                                $caminhoPdf = str_replace("\\", "/", $file);
+                                $caminhoPdf = $file;// str_replace("\\", "/", $file);
+                                
                                 $this->info($file->getBasename());
 
                                 $capaAntiga = strpos($file->getBasename(), $nameCapa1);
