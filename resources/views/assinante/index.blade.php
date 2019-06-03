@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('/css/style.css') }}?v=v1.0.0">
 
 		<link href=	"{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
 		
