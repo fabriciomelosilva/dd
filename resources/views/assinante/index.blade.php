@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/style.css') }}?v=v1.0.0">
+		<link rel="stylesheet" href="{{ asset('/css/style.css') }}?v=v1.0.1">
 
 		<link href=	"{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
 		
@@ -239,9 +239,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				html: './templates/default-book-view.html',
 				styles: [
 				'./css/font-awesome.min.css',
-				'./css/short-white-book-view.css'
+				'./css/short-white-book-view.css?v=v1.0.0'
 				],
-				script: './js/default-book-view.js'
+				script: './js/default-book-view.js?v=v1.0.0'
 			};
 
 			$(document).on('click', '.js-thumbnail-target', function(e){
@@ -301,7 +301,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			$(function() {
                 $('input[name="daterange"]').daterangepicker({
                     opens: 'left',
-                    autoApply: true,
+                    autoApply: false,
                     showDropdowns: true,
 				    minYear: 1970,
 				    maxYear: parseInt(moment().format('YYYY')) +1
