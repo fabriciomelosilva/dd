@@ -112,7 +112,7 @@
 							</div>
 						@endif
 						<form method="post" action="{{ route('loginAssinante') }}">
-            				{{csrf_field()}}
+            				{{ csrf_field() }}
 							<div class="form-group">
 								<label for="" class="text-uppercase">Digite o CPF ou CNPJ do assinante</label>
 								<input type="text" name="cpf" class="form-control" value="{{ old('cpf') }}" id="cpf" placeholder="000.000.000-00" required>

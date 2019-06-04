@@ -53,7 +53,7 @@
 					<div class="card-footer">
 						<div class="d-flex justify-content-end">
 							<form class="form" action="visualizar" method="post">
-								{{csrf_field()}}
+								{{ csrf_field() }}
 								<input name="year" type="hidden" value="{{$year}}">
 								<input name="month" type="hidden" value="{{$month}}">
 								<input name="day" type="hidden" value="{{$day}}">
@@ -66,7 +66,7 @@
 							<a href="{{ route('editarClassificadoGet', ['classificado' => $value]) }}" class="btn btn-link" onclick="$('.load-stop').css('display', 'block')">Editar</a>
 
 							<form class="form" action="{{route('alterarClassificadoStatusPost', ['id'=>$value->id])}}" method="post">
-								{{csrf_field()}}
+								{{ csrf_field() }}
 								@if ($value->ed_status == 0)
 									<input name="status" type="hidden" value="1">
 									<button type="submit" class="btn btn-primary" onclick="$('.load-stop').css('display', 'block')">Publicar</button>

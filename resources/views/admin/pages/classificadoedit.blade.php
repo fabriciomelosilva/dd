@@ -30,7 +30,7 @@
 					<div class="card-body">
 
 						<form class="form-horizontal" id="formulario" action="{{route('editarClassificadoPost', ['classificado'=>$classificado->id])}}" method="post" enctype="multipart/form-data">
-							{{csrf_field()}}
+							{{ csrf_field() }}
 							<div class="form-group row">
 								<div class="col-sm-10 offset-sm-1">
 									<label class="col-sm-12 col-form-label">Data</label>
