@@ -158,6 +158,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	                                        <i class="fe-search"></i>
 	                                    </button>
 	                                </div>
+
+	                                <div class="formitem formitem__last">
+	                                    <button title="Remover Filtros" type="button" class="btn search-button" onclick="location.href='{{ url('/assinante') }}'">
+	                                        <i class="fe-x"></i>
+	                                    </button>
+	                                </div>
 	                            </div>
 							</form>
 						</div>

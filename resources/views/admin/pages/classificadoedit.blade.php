@@ -50,7 +50,7 @@
 							<div class="form-group row">
 								<label class="col-sm-1 col-form-label"></label>
 								<div class="col-sm-10">
-									<button id="novaEdicao" type="button"  class="btn btn-light btn-sm btn-rounded">
+									<button id="novaEdicao" type="button"  class="btn btn-novocaderno">
 										<i class="fe-plus"></i>
 										Novo carderno
 									</button>
@@ -59,8 +59,7 @@
 							
 							<div class="text-right d-print-none">
 								<div class="col-sm-10 offset-sm-1">
-									<button type="submit" class="btn btn-primary btn-rounded" onsubmit="$('.load-stop').css('display', 'block')">
-										<i class="fe-upload-cloud"></i>
+									<button type="submit" class="btn btn-edicao" onsubmit="$('.load-stop').css('display', 'block')">
 										Editar Classificados
 									</button>
 								</div>
