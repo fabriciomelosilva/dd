@@ -91,7 +91,7 @@ class EdicaoController extends Controller
 
                         $this->edicao->save();
 
-                        return redirect()->route('edicaoGet')->with('sucess.message', "Edição de $day / $month / $year criada!");
+                        return redirect()->route('lista_edicao')->with('sucess.message', "Edição de $day / $month / $year criada!");
                     }
                 }
             }
@@ -187,7 +187,7 @@ class EdicaoController extends Controller
 
                         $edicao->update();
 
-                        return redirect()->route('lista_edicao')->with('sucess.message', 'Edição atualizada!');
+                        return redirect()->route('lista_edicao')->with('sucess.message', "Edição de $day / $month / $year atualizada!");
                     }
                 }
             }

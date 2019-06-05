@@ -13,29 +13,37 @@
 </div>
 
 <script type="text/javascript">
+  var template = {
+    html: './templates/default-book-view.html',
+    styles: [
+    './css/font-awesome.min.css',
+    './css/short-white-book-view.css?v=v1.0.0'
+    ],
+    script: './js/default-book-view.js?v=v1.0.0'
+  };
 
-  $('.sample-container div').FlipBook({pdf: "{{route('uploadsAssinante', ['ano' => $year, 'mes' =>  $month,'dia' => $day, 'arquivo' => $file_name])}}",
-  
-     controlsProps: {
-     actions: {
-       cmdBackward: {
-         code: 37,
-       },
-       cmdForward: {
-         code: 39
-       },
-       cmdZoomIn: {
-       code: 38
-       },
-       cmdZoomOut: {
-       code: 40
-       },
-       cmdSinglePage: {
-       activeForMobile: true
-       }  
-     }
-   }  
+  $('.sample-container div').FlipBook({
+    pdf: "{{route('uploadsAssinante', ['ano' => $year, 'mes' =>  $month,'dia' => $day, 'arquivo' => $file_name])}}",
+    template: template,
+    controlsProps: {
+      actions: {
+        cmdBackward: {
+          code: 37,
+        },
+        cmdForward: {
+          code: 39
+        },
+        cmdZoomIn: {
+          code: 38
+        },
+        cmdZoomOut: {
+          code: 40
+        },
+        cmdSinglePage: {
+          activeForMobile: true
+        }  
+      }
+    }  
   });
-  
 </script>
 @stop
