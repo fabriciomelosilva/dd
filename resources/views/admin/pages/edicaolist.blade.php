@@ -34,7 +34,7 @@
 			{{ !$file_name = (string) $value->ed_file_name}}
 
 			<div class="col-lg-6 col-xl-3">
-				<div class="card d-block">
+				<div class="card d-block card-shadow">
 					<div class="card-body">
 						<h5 class="card-title">{{$value->ed_day}}/{{$value->ed_month}}/{{$value->ed_year}}</h5>
 						<h6 class="card-subtitle text-muted">Status:

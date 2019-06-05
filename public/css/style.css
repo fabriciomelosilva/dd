@@ -34,6 +34,7 @@ body::after{
   font-weight: normal;
   font-style: normal;
 }
+
 /*************************/
 
 /*************************
@@ -362,51 +363,20 @@ logo-fix {
   color: #169990;
   font-size: 2em;
   padding: 0;
+  margin-bottom: 10px;
   text-transform: uppercase;
   font-weight: bold;
 }
 
-.classificadoslista-buttons {
-  padding: 10px 0;
+.classificadoslista::after {
+  height: 5px;
+  width: 100px; 
+  margin-left: 15px;
+  background-color: #169990;
 }
 
-.classificadoslista-buttons ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.classificadoslista-buttons ul li {
-  display: inline-block;
-}
-
-.classificadoslista-buttons ul li:first-child {
-  margin-right: 5px;
-}
-
-.classificadoslista-buttons ul li button {
-  border: 1px solid #000;
-  background: #fff;
-  font-size: 1.2em;
-  color: #000;
-  border-radius: 5px;
-  padding: 5px 9px;
-  -moz-transition: background .25s ease-in-out;
-  -webkit-transition: background .25s ease-in-out;
-}
-
-.classificadoslista-buttons ul li button:hover {
-  text-decoration: none;
-  background: #169990;
-  color: #fff;
-  border: 1px solid #169990;
-}
-
-.classificadoslista-buttons ul li button.selected {
-  text-decoration: none;
-  background: #169990;
-  color: #fff;
-  border: 1px solid #169990;
+.results-wrapper {
+  margin-left: 15px;
 }
 
 /* TIPO THUMBNAIL */
@@ -478,46 +448,6 @@ logo-fix {
   transform: scale(1.1);
 }
 
-/* TIPO LISTA */
-.list-style {
-  border-bottom: 4px solid #169990;
-  padding: 0;
-  -webkit-box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
-  box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
-  margin: 15px 0;
-  min-height: 135px;
-}
-
-.list-style .capazoom {
-  width: 26%;
-  height: 111px;
-  margin: 3%;
-  display: inline-block;
-}
-
-.list-style .thumbnail-date {
-  float: right;
-  width: 60%;
-  margin-right: 15px;
-  margin-top: 35px;
-  color: #000;
-  border-color: #000;
-}
-
-.list-style .thumbnail-date .readmore {
-  display: block;
-}
-
-.list-style img {
-  max-width: 100%;
-  height: 118px;
-  object-fit: cover;
-}
-
-.flip-book .controls .fnavbar {
-  overflow-x: scroll;
-}
-
 /*************************
 	CADASTRO DE CLASSIFICADOS CONTENT
 *********/
@@ -535,8 +465,6 @@ logo-fix {
 
 .card-body {
   border-radius: 5px;
-  -webkit-box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
-  box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
   padding: 30px 15px;
 }
 
@@ -626,6 +554,11 @@ logo-fix {
 
 .welcomepage p {
   font-size: 1.3em;
+}
+
+.card-shadow {
+  -webkit-box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px 5px rgba(0,0,0,0.1);
 }
 
 /*************************
@@ -869,7 +802,7 @@ and (max-width: 767px) {
   }
 
   .periodselect-mobile {
-    width: 100%;
+    width: 80%;
     padding: 0 0 8px;
     border-radius: 5px;
     text-align: center;
@@ -882,7 +815,7 @@ and (max-width: 767px) {
   }
 
   .periodselect-mobile__smaller {
-    width: 80.6%;
+    width: 100%;
   }
 
   .periodselect button {
@@ -910,10 +843,6 @@ and (max-width: 767px) {
 
   .thumbnail-style img {
     min-height: 150px;
-  }
-
-  .thumbnail-date {
-    font-size: 1em;
   }
 
   .list-style .thumbnail-date {

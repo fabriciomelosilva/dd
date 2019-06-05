@@ -102,6 +102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 			</div>
 		</nav>
+
 		<div class="container">
 			<!-- /1028625/SLB1 -->
 			<div id='div-gpt-ad-1538588809041-0' class="main-ad">
@@ -134,22 +135,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<div class="col-xs-12 col-sm-10">
 							<form class="form-inline periodselect__right">
 								<div class="form-group">
-                                    <div class="formitem periodselect-mobile">
-										<label for="daterange" class="fe-calendar"></label>&nbsp;
-									    <input type="text" name="daterange" class="datarangerform" id="daterange" />
-									    <i class="icondaterange">&#x25BC;</i>
-                                    </div>
                                     
 									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
 										<div class="form-group">
 											<label for="categoria" class="fe-book-open"></label>
 	                                        <select name="categoria" id="categoria">
-	                                            <!--<option value="0" selected>Selecione um Caderno</option>-->
+	                                            <option value="0" selected>Selecione um Caderno</option>
 	                                            <option value="1">Edições</option>
 	                                            <option value="2">Classificados</option>
 	                                        </select>
 	                                    </div>
 									</div>
+
+                                    <div class="formitem periodselect-mobile">
+										<label for="daterange" class="fe-calendar"></label>&nbsp;
+									    <input type="text" name="daterange" class="datarangerform" id="daterange" />
+									    <i class="icondaterange">&#x25BC;</i>
+                                    </div>
 
 	                                <div class="formitem formitem__last">
 	                                    <button type="button" class="btn search-button">
@@ -164,29 +166,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<!-- SELECIONE O PERIODO -->
 			
-			<div id="results-wrapper" class="results-wrapper">
-				<!-- TITULO E VISUALIZAÇÃO -->
+			<div id="results-wrapper">
+				<!-- TITULO -->
 	            <div class="row classificadoslista">
-	                <div class="col-xs-7 col-sm-6">
+	                <div class="col-xs-12">
 	                    <div class="classificadoslista-title">
 		                    {{$titlePublications}}
 		                </div>
-	                    {{$descriPublications}}
 	                </div>
-					<div class="col-xs-5 col-sm-6">
-						<div class="pull-right classificadoslista-buttons">
-							<ul>
-								<li>
-	                                <button class="buttonvisualizacao buttonvisualizacao-grid"><i class="fe-grid"></i></button>
-								</li>
-								<li>
-									<button class="buttonvisualizacao buttonvisualizacao-lista"><i class="fe-list"></i></button>
-								</li>
-							</ul>
-						</div>
-					</div>
 	            </div>
-				<!-- TITULO E VISUALIZAÇÃO -->
+	            <div class="row">
+	            	<div class="col-xs-12">
+	            		<div class="results-wrapper">
+	            			{{$descriPublications}}
+	            		</div>
+	            	</div>
+	            </div>
+				<!-- TITULO -->
 
 				<!-- CLASSIFICADOS E EDICOES -->
 				@foreach ($publications as $value)
