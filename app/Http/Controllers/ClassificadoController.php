@@ -94,7 +94,7 @@ class ClassificadoController extends Controller
 
                         $this->classificado->save();
 
-                        return redirect()->route('classificadoGet')->with('sucess.message', "Edição de $day / $month / $year criada!");
+                        return redirect()->route('lista_classificado')->with('sucess.message', "Edição de $day / $month / $year criada!");
                     }
                 }
             }
@@ -190,7 +190,7 @@ class ClassificadoController extends Controller
 
                         $classificado->update();
 
-                        return redirect()->route('lista_classificado')->with('sucess.message', 'Edição atualizada!');
+                        return redirect()->route('lista_classificado')->with('sucess.message', "Edição de $day / $month / $year atualizada!");
                     }
                 }
             }
