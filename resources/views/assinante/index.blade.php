@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/style.css') }}?v=v1.0.1">
+		<link rel="stylesheet" href="{{ asset('/css/style.css') }}?v=v1.0.2">
 
 		<link href=	"{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
 		
@@ -235,9 +235,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				html: './templates/default-book-view.html',
 				styles: [
 				'./css/font-awesome.min.css',
-				'./css/short-white-book-view.css?v=v1.0.0'
+				'./css/short-white-book-view.css?v=v1.0.1'
 				],
-				script: './js/default-book-view.js?v=v1.0.0'
+				script: './js/default-book-view.js?v=v1.0.1'
 			};
 
 			$(document).on('click', '.js-thumbnail-target', function(e){
@@ -302,6 +302,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				    minYear: 1970,
 				    maxYear: parseInt(moment().format('YYYY')) +1
                 }, function(start, end, label) {
+
+                	search();
                     console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
                 });
             });
@@ -338,7 +340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				});
 		    });
 
-			//// VISUALIZAÇÃO CLASSIFICADOS
+			/*/// VISUALIZAÇÃO CLASSIFICADOS
 			//// VISUALIZAÇÃO CLASSIFICADOS
 			//// VISUALIZAÇÃO CLASSIFICADOS
 
@@ -371,6 +373,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
             
             atualizarButtonVisualizacao();
+            */
 		</script>
 	</body>
 </html>
