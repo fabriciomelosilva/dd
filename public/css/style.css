@@ -478,6 +478,10 @@ logo-fix {
 /*************************
 	CADASTRO DE CLASSIFICADOS CONTENT
 *********/
+.wrapper {
+  margin-top: 30px;
+}
+
 .page-title-box {
   text-align: center;
   font-family: roboto-condesed-regular, arial, sans-serif;
@@ -495,10 +499,22 @@ logo-fix {
   padding: 30px 15px;
 }
 
+.page-item.active .page-link {
+  background-color: #169990;
+  border-color: #169990;
+}
+
+.pagination .page-link,
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+  background: none;
+}
+
 .page-title-box .page-title {
   color: #169990;
   text-transform: uppercase;
   font-size: 2em;
+  margin-bottom: 30px;
 }
 
 .form-control {
