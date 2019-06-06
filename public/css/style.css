@@ -23,6 +23,12 @@ body::after{
   height: auto;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 /*************************
 	WEBFONTS
 *********/
@@ -255,11 +261,15 @@ logo-fix {
 
 /** SELECIONAR PERIODO **/
 
+.marginrow {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .periodselect {
   width: 100%;
   background: #F3F3F3;
   padding: 10px 15px;
-  margin: 15px 0;
   border-radius: 5px;
   min-height: 60px;
 }
@@ -350,6 +360,23 @@ logo-fix {
 .formitem select:focus {
   color: #169990;
   cursor: pointer;
+}
+
+.button-removefilter {
+  text-align: right;
+  margin: 15px -15px;
+}
+
+.button-removefilter button {
+  background: none;
+  color: #169990;
+  padding: 0;
+  -moz-transition: .25s ease-in-out;
+  -webkit-transition: .25s ease-in-out;
+}
+
+.button-removefilter button:hover {
+  color: #EB5757;
 }
 
 /** LISTA DE CLASSIFICADOS **/
@@ -775,8 +802,13 @@ and (max-width: 767px) {
   .periodselect {
     background: none;
     padding: 0;
-    margin: 15px 0 30px;
+    margin: 15px 0 0;
     min-height: 150px;
+  }
+
+  .button-removefilter {
+    text-align: left;
+    margin: 0 -15px 0 0px;
   }
 
   .periodselect .col-xs-12 {
@@ -830,7 +862,6 @@ and (max-width: 767px) {
 
   .classificadoslista-title {
     font-size: 1.6em;
-    padding-top: 13px;
   }
 
   .thumbnail-style {

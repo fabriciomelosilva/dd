@@ -125,7 +125,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 
 			<!-- SELECIONE O PERIODO -->
-			<div class="row">
+			<div class="row marginrow">
 				<div class="col-xs-12">
 					<div class="periodselect">
 						<div class="col-xs-12 col-sm-2">
@@ -158,12 +158,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	                                        <i class="fe-search"></i>
 	                                    </button>
 	                                </div>
-
-	                                <div class="formitem formitem__last">
-	                                    <button title="Remover Filtros" type="button" class="btn search-button" onclick="location.href='{{ url('/assinante') }}'">
-	                                        <i class="fe-x"></i>
-	                                    </button>
-	                                </div>
 	                            </div>
 							</form>
 						</div>
@@ -171,8 +165,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 			</div>
 			<!-- SELECIONE O PERIODO -->
+
+			
 			
 			<div id="results-wrapper">
+				<!-- REMOVER FILTROS -->
+			@if ($descriPublications !="") 
+			<div class="row">
+				<div class="col-xs-12 button-removefilter">
+	                <button title="Remover Filtros" type="button" class="btn search-button" onclick="location.href='{{ url('/assinante') }}'">
+	                    Remover filtros <i class="fe-delete"></i>
+	                </button>
+				</div>
+			</div>
+			@endif
+			<!-- REMOVER FILTROS -->
 				<!-- TITULO -->
 	            <div class="row classificadoslista">
 	                <div class="col-xs-12">

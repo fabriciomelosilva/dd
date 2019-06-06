@@ -674,7 +674,7 @@
 
 /* CELULAR - Portrait and Landscape */
 @media only screen
-and (min-device-width: 320px)
+and (min-device-width: 300px)
 and (max-device-width: 480px)
 and (-webkit-min-device-pixel-ratio: 2) {
 
@@ -686,6 +686,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
     padding: 0 32px;
   }
 
+  .flip-book .controls .fnavbar {
+    opacity: 1;
+  }
+
+  .fa-bookmark, .fa-arrows-alt {
+    padding: 0 10px 0 12px !important;
+  }
 }
 
 .cmdDefaultZoom .ctrl .fnavbar .fnav .fnav-item>a {
