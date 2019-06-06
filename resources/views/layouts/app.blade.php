@@ -53,9 +53,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		@yield('content')
 
 		<div class="load-stop">
-            <div>
-                <img src="{{ asset('/assets/images/light-loader.gif') }}">
-            </div>
+            <p id="vertical">
+                <img width="100px" height="100px" src="{{ asset('/assets/images/loading_white.gif') }}">
+                <span>Isso pode durar alguns minutos</span>
+            </p>
         </div>
 
         <script>

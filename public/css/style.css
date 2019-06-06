@@ -482,6 +482,21 @@ logo-fix {
   margin-top: 30px;
 }
 
+.load-stop {
+  text-align: center;
+  width: 100%;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+}
+
+.load-stop span {
+  margin-top: 15px;
+  width: 100%;
+  text-align: center;
+  display: block;
+  color: #fff;
+  font-size: 2em;
+}
+
 .page-title-box {
   text-align: center;
   font-family: roboto-condesed-regular, arial, sans-serif;
@@ -707,7 +722,7 @@ footer{
   top: 0;
   width:100%;
   height: 100%;
-  background-color: #cacaca90;
+  background-color: #00000090;
   z-index: 10000;
 }
 
