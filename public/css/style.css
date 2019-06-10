@@ -122,6 +122,35 @@ logo-fix {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+.loginpage-form {
+  position: relative;
+}
+
+.loginpage-form .loginpage-phoneinfo {
+  color: #fff;
+  position: absolute;
+  bottom: 7%;
+  font-size: 1.1em
+}
+
+.loginpage-form .loginpage-phoneinfo span {
+  display: block;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.queroassinararea {
+  padding-top: 0.5rem !important;
+}
+
+.queroassinararea a {
+  color: #169990;
+}
+
+.queroassinararea a:hover {
+  color: #094945;
+}
 /* OLD VERSION */
 
 .loginside {
@@ -784,6 +813,17 @@ and (-webkit-min-device-pixel-ratio: 1) {
   .loginright {
     padding: 0 25px 0;
   }
+
+  .hidden-sm {
+    display: none;
+  }
+
+  .loginpage-form .loginpage-phoneinfo {
+    position: relative;
+    bottom: 0;
+    margin-top: 50px;
+  }
+
 }
 
 /* Landscape */
@@ -798,6 +838,15 @@ and (-webkit-min-device-pixel-ratio: 1) {
 
   .loginright {
       padding: 227px 25px 0;
+  }
+
+  .hidden-sm {
+    display: none;
+  }
+
+  .loginpage-form .loginpage-phoneinfo {
+    position: relative;
+    bottom: 0;
   }
 }
 
@@ -825,6 +874,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
 @media only screen
 and (min-width: 320px)
 and (max-width: 767px) {
+
+  .hidden-xs {
+    display: none;
+  }
 
   .navbar-header img {
     max-width: 84%;
@@ -950,6 +1003,11 @@ and (max-width: 767px) {
     transform: none;
   }
 
+.loginpage-form .loginpage-phoneinfo {
+  position: relative;
+  bottom: 0;
+}
+
  .loginside {
     width: 100%;
     height: auto;
@@ -974,6 +1032,23 @@ and (max-width: 767px) {
  }
 
 }
+
+@media only screen
+and (min-device-width: 1024px)
+and (-webkit-min-device-pixel-ratio: 1) {
+
+  .hidden-lg {
+    display: none;
+  }
+
+  .loginpage-form .loginpage-phoneinfo {
+    position: absolute;
+    bottom: 7%;
+  }
+
+}
+
+/*************************/
 
 #modal-wnd .modal-dialog {
   position: relative;

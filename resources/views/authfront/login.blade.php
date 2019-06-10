@@ -86,20 +86,24 @@
 @section('content')
 <section class="jumbotron">
 	<div class="container">
-		<!-- navbar -->
-		<nav class="navbar navbar-main navbar-expand-lg navbar-transparent p-0 mb-4" id="navbar-main">
-			<div class="container px-lg-0">
+
+		<div class="row">
+			<div class="col-md-6 loginpage-form">
 				<a class="navbar-brand mr-lg-5" href="index.html">
 					<img alt="Image placeholder" src="{{ asset('/assets/images/diario-logo-light.svg') }}" id="navbar-logo" style="height: 50px;">
 				</a>
-			</div>
-		</nav>
-		<!-- /navbar -->
-		<div class="row">
-			<div class="col-md-6">
 				<h1 class="jumbotron-heading text-white">Direto. Claro. Simples</h1>
-				<p class="lead text-white">Acessar todo o conteúdo do Diário do Nordeste agora é exclusividade de nossos assinantes, a qualquer hora, em qualquer lugar, no computador, celular ou tablet.</p>
+				<p class="lead text-white">
+					Acessar todo o conteúdo do Diário do Nordeste agora é exclusividade de nossos assinantes, a qualquer hora, em qualquer lugar, no computador, celular ou tablet.
+				</p>
+
+				<div class="loginpage-phoneinfo hidden-xs hidden-md">
+					Dúvidas? Deseja assinar Diário Digital?<br />
+					Entre em contato com nossa Central de Atendimento 
+					<span>(85) 3266-9191</span>
+				</div>
 			</div>
+
 			<div class="col-md-6 cardlogin-assinante cardlogin-assinante">
 				<div class="card shadow bg-white rounded p-lg-4">
 					<div class="bg-white border-0 card-header">
@@ -125,10 +129,18 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="col-md-6 loginpage-form hidden-sm hidden-md hidden-lg">
+				<div class="loginpage-phoneinfo">
+					Dúvidas? Deseja assinar Diário Digital?<br />
+					Entre em contato com nossa Central de Atendimento 
+					<span>(85) 3266-9191</span>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
-<section class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+<section class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center queroassinararea">
 	<div class="container">
 		<h1 class="display-5"><a href="http://centraldoassinante.diariodonordeste.com.br/assinar" target="_blank">Quero Assinar</a></h1>
 		<p class="lead">
