@@ -12,15 +12,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-TCJFC9X');</script>
 <!-- End Google Tag Manager -->
 
-<!--
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137234529-1"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		  gtag('config', 'UA-137234529-1');
-		</script>
--->
 		<script type='text/javascript'>
 			(function() {
 				var useSSL = 'https:' == document.location.protocol;
@@ -129,13 +120,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="col-xs-12">
 					<div class="periodselect">
 						<div class="col-xs-12 col-sm-2">
-							<div class="periodselect-title">Filtros</div>
+							<div class="periodselect-title">Selecione uma data</div>
 						</div>
 
 						<div class="col-xs-12 col-sm-10">
 							<form class="form-inline periodselect__right">
 								<div class="form-group">
-                                    
+                                    <!--
 									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
 										<div class="form-group">
 											<label for="categoria" class="fe-book-open"></label>
@@ -146,13 +137,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	                                        </select>
 	                                    </div>
 									</div>
+								-->
 
                                     <div class="formitem periodselect-mobile">
 										<label for="daterange" class="fe-calendar"></label>&nbsp;
 									    <input type="text" name="daterange" class="datarangerform" id="daterange" />
-									    <i class="icondaterange">&#x25BC;</i>
+									    <label for="daterange" class="icondaterange">&#x25BC;</label>
                                     </div>
-
+                                    
 	                                <div class="formitem formitem__last">
 	                                    <button type="button" class="btn search-button">
 	                                        <i class="fe-search"></i>
@@ -166,20 +158,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<!-- SELECIONE O PERIODO -->
 
-			
-			
 			<div id="results-wrapper">
 				<!-- REMOVER FILTROS -->
-			@if ($descriPublications !="") 
-			<div class="row">
-				<div class="col-xs-12 button-removefilter">
-	                <button title="Remover Filtros" type="button" class="btn search-button" onclick="location.href='{{ url('/assinante') }}'">
-	                    Remover filtros <i class="fe-delete"></i>
-	                </button>
+				@if ($descriPublications !="") 
+				<div class="row">
+					<div class="col-xs-12 button-removefilter">
+		                <button title="Remover Filtros" type="button" class="btn search-button" onclick="location.href='{{ url('/assinante') }}'">
+		                    Remover filtros <i class="fe-delete"></i>
+		                </button>
+					</div>
 				</div>
-			</div>
-			@endif
-			<!-- REMOVER FILTROS -->
+				@endif
+				<!-- REMOVER FILTROS -->
+
 				<!-- TITULO -->
 	            <div class="row classificadoslista">
 	                <div class="col-xs-12">
@@ -200,28 +191,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<!-- CLASSIFICADOS E EDICOES -->
 				@foreach ($publications as $value)
 				<div class="col-xs-6 col-sm-4 col-md-3">
-					<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['type' => $publicationType, 'ano' => $value->ed_year, 'mes' =>  $value->ed_month,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
+					<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['type' => $value->type, 'ano' => $value->ed_year, 'mes' =>  $value->ed_month,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
 						<div class="thumbnail-date">
-							{{$value->ed_day}}/{{$value->ed_month}}/{{$value->ed_year}}
+							@if ($paginate)
+								{{$value->ed_day}}/{{$value->ed_month}}/{{$value->ed_year}}
+							@else
+								{{$value->caderno}}
+							@endif
 							<hr />
 							<div class="readmore"><a id="edicaos" href="#">Leia Mais <i class="fe-chevron-right"></i></a></div>
 						</div>
 
 						<div class="capazoom">
-							<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/'.$publicationType.'/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
+							<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/'.$value->type.'/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
 						</div>
 					</div>
 				</div>
 				@endforeach
 				<!-- CLASSIFICADOS E EDICOES -->
 
+				@if ($paginate)
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<nav class="d-flex justify-content-center text-center">
 						<ul class="pagination results-wrapper" id="pagination-wrapper">
-							{{$publications->appends(request()->except('page'))->links()}}
+							{{ $publications->appends(request()->except('page'))->links() }}
 						</ul>
 					</nav>
 				</div>
+				@endif
 			</div>
 		</div>
 		
@@ -310,16 +307,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			$(function() {
                 $('input[name="daterange"]').daterangepicker({
                     opens: 'left',
-                    autoApply: false,
-                    showDropdowns: true,
+                    singleDatePicker: true,
+                    //autoApply: false,
+                    //showDropdowns: true,
 				    minYear: 1970,
 				    maxYear: parseInt(moment().format('YYYY')) +1
                 }, function(start, end, label) {
-
-                	search();
+                	//search();
                     console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
                 });
             });
+
+            $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+				search();
+			});
 
             $('.search-button').on('click', function(){
             	search();
@@ -341,7 +342,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 get += '&category=' + $('select[name="categoria"]').val();
 
                 $('#results-wrapper').load("{{ route('buscaEdicao') }}" + get + " #results-wrapper", function() {
-		        	atualizarButtonVisualizacao();
+		        	//atualizarButtonVisualizacao();
 				});
             }
 
@@ -349,7 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		    $(document).on('click', '#pagination-wrapper a', function(e){
 		        e.preventDefault();
 		        $('#results-wrapper').load($(this).attr('href') + ' #results-wrapper', function() {
-		        	atualizarButtonVisualizacao();
+		        	//atualizarButtonVisualizacao();
 				});
 		    });
 

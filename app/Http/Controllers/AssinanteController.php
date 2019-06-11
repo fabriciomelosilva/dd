@@ -13,21 +13,38 @@ class AssinanteController extends Controller
         $publications = $this->getPublications();
         
         $titlePublications  = 'Edições';
-        $publicationType    = 'edicao';
         $descriPublications = '';
+        $paginate = true;
 
-        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType', 'descriPublications'));
+        return view("assinante.index", compact('publications', 'titlePublications', 'descriPublications', 'paginate'));
     }
 
     public function getPublicationsFilter(Request $request)
     {
         $publications = $this->getPublications($request);
+        
+        $data_edicao = explode('-', $request->input('startDate'));
+    
+        $day    = $data_edicao[2];
+        $month  = $data_edicao[1];
+        $year   = $data_edicao[0];
 
+        $titlePublications  = "$day/$month/$year";
+        
         if( $publications->isNotEmpty() )
-            $descriPublications  = 'Exibindo resultados';
-        else
-            $descriPublications  = 'Nenhum resultado encontrado';
+            $descriPublications  = 'Exibindo resultados.';
+        else{
+            if($year < 2019)
+                $descriPublications  = 'Ainda não existem publicações anteriores a 1 de janeiro de 2019.';
+            else
+                $descriPublications  = 'Não foi encontrado nenhum resultado.';
+        }
+        //'Nenhum resultado encontrado';
 
+        //$titlePublications  = $request->input('startDate');2019-06-11
+
+        
+        /*
         switch ($request->input('category')) {
             case 1:
                 $titlePublications  = 'Edições';
@@ -41,8 +58,11 @@ class AssinanteController extends Controller
                 $titlePublications  = 'Edições';
                 $publicationType    = 'edicao';
                 break;
-        }
-        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType', 'descriPublications'));
+        }*/
+
+        $paginate = false;
+
+        return view("assinante.index", compact('publications', 'titlePublications', 'descriPublications', 'paginate'));
     }
 
     public function getPublications(Request $where = null){
@@ -50,28 +70,41 @@ class AssinanteController extends Controller
             switch ($where->input('category')) {
                 case 1:
                     $publications = \DB::table('edicaos')
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
                         ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
                         ->where('ed_status', '1') // Status: Ativo
                         ->whereBetween('ed_date', [$where->input('startDate'), $where->input('endDate')])
-                        ->where('ed_status', '1')->paginate(8);
+                        ->paginate(8);
                     break;
                 case 2:
                     $publications = \DB::table('classificados')
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "classificado" as type, "Classificados" as caderno'))
                         ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
                         ->where('ed_status', '1') // Status: Ativo
                         ->whereBetween('ed_date', [$where->input('startDate'), $where->input('endDate')])
-                        ->where('ed_status', '1')->paginate(8);
+                        ->paginate(8);
                     break;
                 default:
-                    $publications = \DB::table('edicaos')
+                    $edicaos = \DB::table('edicaos')
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
                         ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
                         ->where('ed_status', '1') // Status: Ativo
                         ->whereBetween('ed_date', [$where->input('startDate'), $where->input('endDate')])
-                        ->where('ed_status', '1')->paginate(8);
+                        ->get();
+
+                    $classificados = \DB::table('classificados')
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "classificado" as type, "Classificados" as caderno'))
+                        ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
+                        ->where('ed_status', '1') // Status: Ativo
+                        ->whereBetween('ed_date', [$where->input('startDate'), $where->input('endDate')])
+                        ->get();
+
+                    $publications = $edicaos->merge($classificados);
                     break;
             }
         }else{
             $publications = \DB::table('edicaos')
+                ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
                 ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
                 ->where('ed_status', '1') // Status: Ativo
                 ->paginate(8);
@@ -86,6 +119,7 @@ class AssinanteController extends Controller
         $month = $request->input('month');
 
         $publications = \DB::table('edicaos')
+                ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
                             ->orderBy('ed_year', 'desc')
                             ->orderBy('ed_month', 'desc')
                             ->orderBy('ed_day', 'desc')
@@ -96,10 +130,10 @@ class AssinanteController extends Controller
                             ->paginate(8);
         
         $titlePublications  = 'Edições';
-        $publicationType    = 'edicao';
         $descriPublications = '';
+        $paginate = true;
 
-        return view("assinante.index", compact('publications', 'titlePublications', 'publicationType', 'descriPublications'));
+        return view("assinante.index", compact('publications', 'titlePublications', 'descriPublications', 'paginate'));
     }
 
     // getYear -- retorna o Ano atual
