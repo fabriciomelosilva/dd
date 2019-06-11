@@ -776,9 +776,8 @@ footer{
 /* Portrait */
 
 @media only screen
-and (min-device-width: 768px)
-and (max-device-width: 1024px)
-and (-webkit-min-device-pixel-ratio: 1) {
+and (min-width: 768px)
+and (max-width: 1024px) {
 
   .thumbnail-style {
     min-height: 351px;
@@ -824,14 +823,22 @@ and (-webkit-min-device-pixel-ratio: 1) {
     margin-top: 50px;
   }
 
+  .formitem {
+    padding: 0 15px;
+  }
+
+  .cardlogin-assinante .card {
+    margin-bottom: 0;
+    padding: 62px 0px;
+  }
+
 }
 
 /* Landscape */
 @media only screen 
   and (min-width: 1024px) 
   and (max-height: 1366px) 
-  and (orientation: landscape) 
-  and (-webkit-min-device-pixel-ratio: 1.5) {
+  and (orientation: landscape) {
   .loginside {
       padding: 258px 25px;
   }
@@ -850,12 +857,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
   }
 }
 
-/* Landscape - IPAD */
+/* Landscape - SMALLER IPAD */
 @media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
-  and (orientation: landscape) 
-  and (-webkit-min-device-pixel-ratio: 2) {
+  and (min-width: 768px) 
+  and (max-width: 1024px) {
   .loginside {
       padding: 130px 25px;
   }
@@ -1034,8 +1039,7 @@ and (max-width: 767px) {
 }
 
 @media only screen
-and (min-device-width: 1024px)
-and (-webkit-min-device-pixel-ratio: 1) {
+and (min-width: 1024px) {
 
   .hidden-lg {
     display: none;
