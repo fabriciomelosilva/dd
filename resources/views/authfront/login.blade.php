@@ -194,7 +194,6 @@
 		</div>
 	</div>
 </section>
-@endsection
 
 <footer class="footerlogin">
 	<div class="container">
@@ -205,3 +204,5 @@
 		</div>
 	</div>
 </footer>
+@endsection
+
