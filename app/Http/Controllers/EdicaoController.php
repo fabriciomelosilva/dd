@@ -58,7 +58,12 @@ class EdicaoController extends Controller
                     }
                     if(!\File::exists(storage_path("app/edicao/".$year."/".$month."/".$day))) {
                         \File::makeDirectory(storage_path("app/edicao/".$year."/".$month."/".$day));
-                    }             
+                    }
+/*
+https://pdfcandy.com/pt/split-pdf.html
+
+                    shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/compress/pdf.pdf")." ".storage_path("app/".$tempPdf));
+*/
                     if ($cont == 1){
                         $capa = "capa_".uniqid();
                     
