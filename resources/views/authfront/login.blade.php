@@ -123,7 +123,7 @@
 							</div>
 							<div class="mt-4">
 								<button type="submit" class="btn btn-primary">Acessar</button>
-								<a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" target="_blank" class="btn btn-link">Degustação</a>
+								<!-- <a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" target="_blank" class="btn btn-link">Degustação</a> -->
 							</div>
 						</form>
 					</div>
@@ -138,16 +138,22 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-12 assinaranchor">
+				<a class="scrollTo" href="#queroassinar">Quero Assinar <i class="fe-corner-right-down"></i></a>
+			</div>
+		</div>
 	</div>
 </section>
-<section class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center queroassinararea">
+<section id="queroassinar" class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center queroassinararea">
 	<div class="container">
-		<h1 class="display-5"><a href="http://centraldoassinante.diariodonordeste.com.br/assinar" target="_blank">Quero Assinar</a></h1>
 		<p class="lead">
-			Vantagens de ser assinante impresso + digital
+			<a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" class="btn btn-primary" target="_blank">
+				Experimente grátis por 15 dias
+			</a>
 			<br />
-			<a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" target="_blank">Experimente grátis por 15 dias</a>
-			<br /><br />
+			Vantagens de ser assinante impresso + digital
 		</p>
 
 		<div class="row">
@@ -189,3 +195,13 @@
 	</div>
 </section>
 @endsection
+
+<footer class="footerlogin">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				Sistema Verdes Mares © 2019
+			</div>
+		</div>
+	</div>
+</footer>
