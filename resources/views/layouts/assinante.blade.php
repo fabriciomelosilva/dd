@@ -18,7 +18,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<link href="./css/front.css" rel="stylesheet">
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<link href="{{ asset('/css/style.css')}}?v=v1.0.0" rel="stylesheet">
+		
+
+
+
+		<link href="{{ asset('/css/style.css')}}?v=v1.0.3" rel="stylesheet">
+
+
 
 
 		<script src="{{ asset('/js/jquery.min.js')}}"></script>
