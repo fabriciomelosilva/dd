@@ -29,7 +29,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link href="{{ asset('/simulor/admin/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/simulor/admin/dist/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css') }}?v=v1.0.0" rel="stylesheet">
+
+
+
+    <link href="{{ asset('/css/style.css') }}?v=v1.0.3" rel="stylesheet">
+
+
+
     <link href="{{ asset('/css/front.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 
