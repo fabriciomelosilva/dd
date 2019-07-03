@@ -73,7 +73,11 @@ class LoginAssinanteController extends Controller
         }
         return view('authfront.login');
     }
-
+    
+    public function experimente()
+    {
+        return view('authfront.experimente');
+    }
     public function login(Request $request)
     {
        // Deslogar e apagar sessões antigas

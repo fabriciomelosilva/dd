@@ -15,7 +15,7 @@
 
 
 // Authentication Routes...
-Route::get('/', 'AuthAssinantes\LoginAssinanteController@showLoginForm');
+Route::get('/', 'AuthAssinantes\LoginAssinanteController@experimente');
 
 //Rotas login admin
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

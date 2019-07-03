@@ -2,12 +2,13 @@
 	WEBSITE BODY
 *********/
 html{
-    min-height: 100% !important;
-    height: 100%;
+    min-height: 100vh !important;
+    height: 100vh;
 }
 
 body{
     min-height:100%;
+    height: 100vh;
     padding:0;
     margin:0;
     position:relative;
@@ -27,6 +28,10 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+.hidden-xs {
+  display: none;
 }
 
 /*************************
@@ -114,6 +119,254 @@ logo-fix {
 *********/
 
 /*************************
+  LOGIN ASSINANTE V2
+*********/
+
+.content-all {
+  margin: 0 auto;
+  font-family: roboto-condesed-regular, arial, sans-serif;
+}
+
+.experimente-content-left {
+  display: inline-block;
+  width: 70%;
+  padding: 50px;
+}
+
+.experimente-content-left__logo {
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+}
+
+.experimente-content-left__login {
+  text-align: right;
+  float: right;
+  line-height: 3em;
+}
+
+.experimente-content-left__login-btn {
+    border: 1px solid #009992;
+    border-radius: 4px;
+    color: #009992;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+
+    transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -webkit-transition: .25s ease-in-out;
+}
+
+.experimente-content-left__login-btn:hover {
+  background: #009992;
+  color: #fff;
+}
+
+.experimente-content-left__experimente {
+  display: block;
+  width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.experimente-content-left__experimente--vertical-align {
+  width: 680px;
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.experimente-content-left__title {
+  color: #009992;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.experimente-content-left__title:after {
+  background-color: #009992;
+  content: " ";
+  height: 4px;
+  margin-top: 32px;
+  width: 100px;
+  display: block;
+}
+
+.experimente-content-left__text {
+  color: #3E3E3E;
+  font-size: 1.2rem;
+  margin: 32px 0;
+}
+
+.experimente-content-left__text--orange {
+  color: #FF5533;
+}
+
+.experimente-content-left__btn {
+  background-color: #009992;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  padding: 30px;
+  display: block;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+
+  transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -webkit-transition: .25s ease-in-out;
+}
+
+.experimente-content-left__btn:hover {
+  color: #fff;
+  background-color: #007563;
+}
+
+.experimente-content-left__footer {
+  color: #3E3E3E;
+  font-size: 1rem;
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+}
+
+.experimente-content-left__footer:before {
+  content: " ";
+  display: block;
+  width: 400px;
+  height: 1px;
+  background-color: #3E3E3E;
+  margin-bottom: 8px;
+}
+
+.experimente-content-left__footer--orange {
+  color: #FF5533;
+}
+
+.experimente-content-left__footer a {
+  color: #FF5533;
+}
+
+.experimente-content-right {
+  float: right;
+  width: 30%;
+  height: 100vh;
+}
+
+.carousel-item__image {
+  width: 100%
+  height: 100vh;
+  object-fit: cover;
+  border-bottom-left-radius: 200px;
+}
+
+.carousel-item {
+  height: 100vh;
+}
+
+.carousel-item__experimente--vertical-align {
+  width: 680px;
+  position: fixed;
+  top: 50%;
+  transform: translate(-7%, -50%);
+}
+
+.carousel-item__bg {
+  border-bottom-left-radius: 200px;
+}
+
+.carousel-item__bg--1 { 
+  background: url('../images/bg-clube-dd.jpg') center;
+  background-size: cover;
+}
+
+.carousel-item__bg--2 { 
+  background: url('../images/bg-acesso-total.jpg') center;
+  background-size: cover;
+}
+
+.carousel-item__bg--3 { 
+  background: url('../images/bg-entrega.jpg') center;
+  background-size: cover;
+}
+
+.carousel-item__caption {
+  color: #fff;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+}
+
+.carousel-item__caption--title {
+  font-size: 1.6rem;
+  margin: 16px 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.carousel-item__caption--descriprion {
+  font-size: 1.3em;
+}
+
+.login-content-right {
+  float: right;
+  display: inline-block;
+}
+
+.login-content-left {
+  float: left;
+  display: inline-block;
+}
+
+.login__back {
+  color: #3E3E3E;
+}
+
+.login__back:hover {
+  color: #009992;
+}
+
+.login__line-height {
+  line-height: 0;
+}
+
+.login-content-left__experimente {
+  width: 450px;
+}
+
+.login-content-left__experimente--vertical-align {
+  width: 450px;
+}
+
+.login__form {
+    border-color: #8B8B8B !important;
+    padding: 30px 25px !important;
+    text-transform: uppercase;
+}
+
+.login__label {
+  margin-top: 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: normal !important;
+}
+
+.login__btnlogin {
+  width: 100%;
+  padding: 25px;
+  border: 0;
+}
+
+.login__carousel-item--bg {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 200px;
+}
+
+.login-content-left__footer {
+  left: 32%;
+}
+
+/*************************
   LOGIN ASSINANTE
 *********/
 
@@ -192,8 +445,8 @@ logo-fix {
 }
 
 .scrollTo:hover {
-  background-color: white;
-  color: #169990;
+  background-color: #138179;
+  color: #fff;
 }
 
 #queroassinar .btn-primary {
@@ -842,7 +1095,7 @@ footer{
 
 @media only screen
 and (min-width: 768px)
-and (max-width: 1024px) {
+and (max-width: 1366px) {
 
   .thumbnail-style {
     min-height: 351px;
@@ -897,6 +1150,52 @@ and (max-width: 1024px) {
     padding: 62px 0px;
   }
 
+  .experimente-content-left {
+    width: 60%;
+    padding: 30px;
+  }
+
+  .experimente-content-left__login-btn {
+    font-size: 0.9rem;
+  }
+
+  .experimente-content-left__experimente--vertical-align {
+    width: 44%;
+  }
+
+  .experimente-content-left__title {
+    font-size: 1.5rem;
+  }
+
+  .experimente-content-left__footer {
+    width: 50%;
+  }
+
+  .experimente-content-left__footer:before {
+    width: 180px;
+  }
+
+  .experimente-content-right {
+    width: 40%;
+  }
+
+  .carousel-item__bg {
+    border-bottom-left-radius: 100px;
+  }
+
+  .login__carousel-item--bg {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 100px;
+  }
+
+  .carousel-item__experimente--vertical-align {
+    width: 80%;
+    transform: translate(12%, -50%);
+  }
+
+  .login-content-left__footer {
+      left: 45%;
+  }
 }
 
 /* Landscape */
@@ -944,10 +1243,6 @@ and (max-width: 1024px) {
 @media only screen
 and (min-width: 320px)
 and (max-width: 767px) {
-
-  .hidden-xs {
-    display: none;
-  }
 
   .navbar-header img {
     max-width: 84%;
@@ -1073,24 +1368,6 @@ and (max-width: 767px) {
     transform: none;
   }
 
-.loginpage-form .loginpage-phoneinfo {
-  position: relative;
-  bottom: 0;
-}
-
- .loginside {
-    width: 100%;
-    height: auto;
-    padding: 70px 15px 85px;
- }
-
- .loginright {
-  float: none;
-  width: 100%;
-  height: auto;
-  padding: 30px 15px;
- }
-
  .loginright .btndegustacao {
   padding: 15px;
   font-size: 1.4em;
@@ -1105,6 +1382,77 @@ and (max-width: 767px) {
   text-align: center;
  }
 
+.experimente-content-left {
+  display: block;
+  width: 100%;
+  padding: 30px;
+}
+
+.experimente-content-left__title {
+  font-size: 1.8rem;
+}
+
+.experimente-content-left__login-btn {
+  font-size: 0.9rem;
+  padding: 10px 20px;
+}
+
+.experimente-content-left__experimente {
+  margin: 50px auto 0;
+  width: 100%;
+  position: relative;
+}
+
+.experimente-content-left__experimente--vertical-align {
+  width: unset;
+  position: unset;
+  top: 0;
+  transform: unset;
+}
+
+.experimente-content-right {
+  float: unset;
+  width: 100%;
+  height: 100vh;
+}
+
+.carousel-item__bg {
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.carousel-item__experimente--vertical-align {
+  transform: translate(0%, -50%);
+  width: 100%;
+}
+
+.carousel-item__caption {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.experimente-content-left__footer {
+  position: unset;
+}
+
+.experimente-content-left__footer:before {
+  width: 100px;
+  margin-top: 40px;
+}
+
+.content-all--mobile {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-content-right--mobile {
+  order: 1;
+}
+
+.login-content-left--mobile {
+  order: 2;
+}
+
 }
 
 @media only screen
@@ -1117,6 +1465,15 @@ and (min-width: 1024px) {
   .loginpage-form .loginpage-phoneinfo {
     position: absolute;
     bottom: 7%;
+  }
+
+}
+
+@media only screen
+and (min-width: 1920px) {
+
+  .content-all {
+    width: 1920px;
   }
 
 }
