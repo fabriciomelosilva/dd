@@ -1,8 +1,38 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="content-all content-all--mobile">
-	<div class="experimente-content-right login-content-left login-content-left--mobile">
+<div class="content-all">
+
+	<div class="experimente-content-left">
+		<div class="experimente-content-left__logo">
+			<img class="img-responsive" src="{{ asset('/assets/images/diario-logo.svg') }}" height="50" />
+		</div>
+
+		<div class="experimente-content-left__login">
+			<a href="{{ url('/loginAssinante')}}" class="experimente-content-left__login-btn">
+				Entrar
+			</a>
+		</div>
+
+		<div class="experimente-content-left__experimente">
+			<div class="experimente-content-left__experimente--vertical-align">
+				<h1 class="experimente-content-left__title">
+					Acesse o Diário do Nordeste Inteiramente Grátis por 15 dias
+				</h1>
+				<p class="experimente-content-left__text">
+					Todo o conteúdo do Diário do Nordeste agora é exclusividade de nossos assinantes, a qualquer hora, em qualquer lugar, no computador, celular ou tablet.
+				</p>
+				<a href="http://centraldoassinante.diariodonordeste.com.br/assinar/experimente-15-dias/7" target="_blank" class="experimente-content-left__btn">
+					Experimente grátis
+				</a>
+			</div>
+			<div class="experimente-content-left__footer">
+				Dúvidas? Deseja assinar o Diário Digital? Entre em contato com nossa Central de Atendimento <span class="experimente-content-left__footer--orange">(85) 3266-9191</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="experimente-content-right">
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
 		  <ol class="carousel-indicators">
 		    <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
@@ -10,7 +40,7 @@
 		    <li data-target="#carouselExampleFade" data-slide-to="2"></li>
 		  </ol>
 		  <div class="carousel-inner">
-		    <div class="carousel-item carousel-item__bg carousel-item__bg--1 login__carousel-item--bg active">
+		    <div class="carousel-item carousel-item__bg carousel-item__bg--1 active">
 		      	<div class="carousel-item__experimente--vertical-align">
 			      	<div class="carousel-item__caption">
 			      		<img src="{{ asset('/assets/images/icon-clube-assinante.png') }}">
@@ -21,7 +51,7 @@
 			  		</div>
 		  		</div>
 		    </div>
-		    <div class="carousel-item carousel-item__bg carousel-item__bg--2 login__carousel-item--bg">
+		    <div class="carousel-item carousel-item__bg carousel-item__bg--2">
 		      	<div class="carousel-item__experimente--vertical-align">
 			      	<div class="carousel-item__caption">
 			      		<img src="{{ asset('/assets/images/icon-smartphone.png') }}">
@@ -32,7 +62,7 @@
 			  		</div>
 		  		</div>
 		    </div>
-		    <div class="carousel-item carousel-item__bg carousel-item__bg--3 login__carousel-item--bg">
+		    <div class="carousel-item carousel-item__bg carousel-item__bg--3">
 		      	<div class="carousel-item__experimente--vertical-align">
 			      	<div class="carousel-item__caption">
 			      		<img src="{{ asset('/assets/images/icon-acervo.png') }}">
@@ -46,39 +76,6 @@
 		  </div>
 		</div>
 	</div>
-
-	<div class="experimente-content-left login-content-right login-content-right--mobile">
-		<div class="experimente-content-left__login login__line-height">
-			<a href="{{ url('/')}}" class="login__back">
-				← Novo por aqui? Assine grátis por 15 dias
-			</a>
-		</div>
-
-		<div class="experimente-content-left__experimente login-content-left__experimente">
-			<div class="experimente-content-left__experimente--vertical-align login-content-left__experimente--vertical-align">
-				<h1 class="experimente-content-left__title">
-					Acesso do assinante
-				</h1>
-				@if (session()->has('flash.message'))
-				<div class="alert alert-danger" role="alert">
-					{{ session('flash.message') }}
-					</div>
-				@endif
-				<form method="post" action="{{ route('loginAssinante') }}">
-    				{{ csrf_field() }}
-					<div class="form-group">
-						<label for="cpf" class="login__label">Digite o CPF ou CNPJ do assinante</label>
-						<input type="number" name="cpf" class="form-control login__form" value="{{ old('cpf') }}" id="cpf" placeholder="Utilize somente números" required>
-					</div>
-					<button type="submit" class="experimente-content-left__btn login__btnlogin">Acessar</button>
-				</form>
-			</div>
-			<div class="experimente-content-left__footer login-content-left__footer">
-				Dúvidas? Deseja assinar o Diário Digital? Entre em contato com nossa Central de Atendimento <span class="experimente-content-left__footer--orange">(85) 3266-9191</span>
-			</div>
-		</div>
-	</div>
-
 </div>
 
 @endsection
