@@ -1,2 +1,2 @@
-@extends('layouts.app')
+@extends('layouts.assinante')
 @section('content')
