@@ -59,9 +59,18 @@ class EdicaoController extends Controller
                     if(!\File::exists(storage_path("app/edicao/".$year."/".$month."/".$day))) {
                         \File::makeDirectory(storage_path("app/edicao/".$year."/".$month."/".$day));
                     }
-/*
-https://pdfcandy.com/pt/split-pdf.html
 
+// ** Em caso de imagens vetorizadas que travem o navegador
+// * Identifique a pagina problemática e a recorte
+// --- https://pdfcandy.com/pt/split-pdf.html
+// * Transforme o pdf em imagem
+// --- https://smallpdf.com/pt/pdf-para-jpg
+// * Transforme a imagem em pdf
+// --- https://smallpdf.com/pt/jpg-para-pdf
+// * Una todos os pdf's para refazer a edição, agora sem nenhum vetor na página problemática
+
+/*                    
+                    // * Comando de maior compressão possivel pelo GostScript
                     shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$year."/".$month."/".$day."/compress/pdf.pdf")." ".storage_path("app/".$tempPdf));
 */
                     if ($cont == 1){
