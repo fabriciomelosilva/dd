@@ -17,7 +17,7 @@
 		<div class="experimente-content-left__experimente">
 			<div class="experimente-content-left__experimente--vertical-align">
 				<h1 class="experimente-content-left__title">
-					Acesse o Diário do Nordeste Inteiramente Grátis por 15 dias
+					Acesse o Diário Digital Inteiramente Grátis por 15 dias
 				</h1>
 				<p class="experimente-content-left__text">
 					Todo o conteúdo do Diário do Nordeste agora é exclusividade de nossos assinantes, a qualquer hora, em qualquer lugar, no computador, celular ou tablet.
@@ -33,11 +33,11 @@
 	</div>
 
 	<div class="experimente-content-right">
-		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+		<div id="carouselArguments" class="carousel slide carousel-fade" data-ride="carousel">
 		  <ol class="carousel-indicators">
-		    <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
-		    <li data-target="#carouselExampleFade" data-slide-to="1"></li>
-		    <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+		    <li data-target="#carouselArguments" data-slide-to="0" class="active"></li>
+		    <li data-target="#carouselArguments" data-slide-to="1"></li>
+		    <li data-target="#carouselArguments" data-slide-to="2"></li>
 		  </ol>
 		  <div class="carousel-inner">
 		    <div class="carousel-item carousel-item__bg carousel-item__bg--1 active">

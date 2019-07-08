@@ -716,6 +716,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
   border-left: 1px solid #DADADA;
 }
 
+.fa-download {
+  padding: 0 0 0 32px;
+  border-left: 1px solid #DADADA;
+}
+
 .ctrl .fnavbar .fnav .fnav-item {
   display: inline-block;
 }
@@ -1226,6 +1231,10 @@ and (max-width: 767px) {
 
  .flip-book .view canvas {
     margin-top: -5%;
+  }
+
+  .ctrl .fnavbar .fnav .fnav-item>a {
+    padding: 10px 5px;
   }
 
 }

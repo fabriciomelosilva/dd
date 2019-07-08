@@ -41,27 +41,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-
-
-
-
 		<link rel="stylesheet" href="{{ asset('/css/style.css') }}?v=v1.0.3">
-
-
-
-
-
 		<link href=	"{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
 		
 		<!-- SELECIONAR O PERIODO -->
 		<link rel="stylesheet" type="text/css" href="{{ asset('/css/daterangepicker.css') }}" />
-		
-		
+
 		<script src="{{ asset('/js/jquery.min.js') }}"></script>
 		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-
 		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-
 		<script type='text/javascript'>
 			var googletag = googletag || {};
 			googletag.cmd = googletag.cmd || [];
@@ -126,41 +114,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<!-- SELECIONE O PERIODO -->
 			<div class="row marginrow">
 				<div class="col-xs-12">
+					<div class="menu-edicoes">
+						<ul>
+							<li><a href="#" class="active">Jornal</a></li>
+							<li><a href="#">Classificados</a></li>
+						</ul>
+					</div>
 					<div class="periodselect">
-						<div class="col-xs-12 col-sm-2">
-							<div class="periodselect-title">Selecione uma data</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-10">
-							<form class="form-inline periodselect__right">
-								<div class="form-group">
-                                    <!--
-									<div class="formitem periodselect-mobile periodselect-mobile__smaller">
-										<div class="form-group">
-											<label for="categoria" class="fe-book-open"></label>
-	                                        <select name="categoria" id="categoria">
-	                                            <option value="0" selected>Selecione um Caderno</option>
-	                                            <option value="1">Edições</option>
-	                                            <option value="2">Classificados</option>
-	                                        </select>
-	                                    </div>
-									</div>
-								-->
-
-                                    <div class="formitem periodselect-mobile">
-										<label for="daterange" class="fe-calendar"></label>&nbsp;
-									    <input type="text" name="daterange" class="datarangerform" id="daterange" />
-									    <label for="daterange" class="icondaterange">&#x25BC;</label>
-                                    </div>
-                                    
-	                                <div class="formitem formitem__last">
-	                                    <button type="button" class="btn search-button">
-	                                        <i class="fe-search"></i>
-	                                    </button>
-	                                </div>
+						<form class="form-inline">
+							<label class="periodselect__label">Busca:</label>
+							<div class="form-group data-smartphone">
+	                            <div class="formitem">
+								    <input type="text" name="daterange" class="datarangerform" id="daterange" />
+								    <label for="daterange" class="icondaterange">&#x25BC;</label>
 	                            </div>
-							</form>
-						</div>
+	                        </div>
+						</form>
 					</div>
 				</div>
 			</div>

@@ -12,7 +12,7 @@ class AssinanteController extends Controller
     {
         $publications = $this->getPublications();
         
-        $titlePublications  = 'Edições';
+        $titlePublications  = 'Jornal';
         $descriPublications = '';
         $paginate = true;
 
