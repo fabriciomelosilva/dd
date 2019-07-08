@@ -19,6 +19,44 @@ class AssinanteController extends Controller
         return view("assinante.index", compact('publications', 'titlePublications', 'descriPublications', 'paginate'));
     }
 
+    public function getCategory(Request $request)
+    {   
+        switch ($request->input('category')) {
+            case 1:
+                $titlePublications  = 'Jornal';
+
+                $publications = \DB::table('edicaos')
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
+                        ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
+                        ->where('ed_status', '1') // Status: Ativo
+                        ->paginate(8);
+                break;
+            case 2:
+                $titlePublications  = 'Classificados';
+                
+                $publications = \DB::table('classificados')
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "classificado" as type, "Classificados" as caderno'))
+                        ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
+                        ->where('ed_status', '1') // Status: Ativo
+                        ->paginate(8);
+                break;
+            default:
+                $titlePublications  = 'Jornal';
+                
+                $publications = \DB::table('edicaos')
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
+                        ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
+                        ->where('ed_status', '1') // Status: Ativo
+                        ->paginate(8);
+                break;
+        }
+
+        $descriPublications = '';
+        $paginate = true;
+
+        return view("assinante.index", compact('publications', 'titlePublications', 'descriPublications', 'paginate'));
+    }
+
     public function getPublicationsFilter(Request $request)
     {
         $publications = $this->getPublications($request);
@@ -32,7 +70,7 @@ class AssinanteController extends Controller
         $titlePublications  = "$day/$month/$year";
         
         if( $publications->isNotEmpty() )
-            $descriPublications  = 'Exibindo resultados.';
+            $descriPublications  = 'Exibindo resultado.';
         else{
             if($year < 2019)
                 $descriPublications  = 'Ainda não existem publicações anteriores a 1 de janeiro de 2019.';
@@ -70,7 +108,7 @@ class AssinanteController extends Controller
             switch ($where->input('category')) {
                 case 1:
                     $publications = \DB::table('edicaos')
-                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Jornal" as caderno'))
                         ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
                         ->where('ed_status', '1') // Status: Ativo
                         ->whereBetween('ed_date', [$where->input('startDate'), $where->input('endDate')])
@@ -86,7 +124,7 @@ class AssinanteController extends Controller
                     break;
                 default:
                     $edicaos = \DB::table('edicaos')
-                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Jornal" as caderno'))
                         ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
                         ->where('ed_status', '1') // Status: Ativo
                         ->whereBetween('ed_date', [$where->input('startDate'), $where->input('endDate')])

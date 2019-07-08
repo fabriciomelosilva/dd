@@ -15,7 +15,7 @@
 
 
 // Authentication Routes...
-Route::get('/', 'AuthAssinantes\LoginAssinanteController@experimente');
+
 
 //Rotas login admin
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -26,6 +26,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/loginAssinante', 'AuthAssinantes\LoginAssinanteController@showLoginForm')->name('loginAssinante');
 Route::post('/loginAssinante', 'AuthAssinantes\LoginAssinanteController@login')->name('loginAssinante');
 Route::get('/logoutAssinante', 'AuthAssinantes\LoginAssinanteController@logout');
+Route::get('/', 'AuthAssinantes\LoginAssinanteController@experimente');
 
 //Acesso Negado
 Route::get('/acessonegado', 'UserController@getPermissao');
@@ -93,4 +94,6 @@ Route::group(['middleware' => ['auth', 'role:assinante']], function() {
   
   Route::get('/buscaEdicao', 'AssinanteController@getPublicationsFilter')->name('buscaEdicao');
 
+  Route::get('/buscaPorData', 'AssinanteController@getPublicationsFilter')->name('buscaPorData');
+  Route::get('/buscaCategoria', 'AssinanteController@getCategory')->name('buscaCategoria');
 });

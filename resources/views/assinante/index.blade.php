@@ -107,8 +107,8 @@
 				<div class="col-xs-12">
 					<div class="menu-edicoes">
 						<ul>
-							<li><a href="#" class="active">Jornal</a></li>
-							<li><a href="#">Classificados</a></li>
+							<li><a class="active btn-paginate-content" data-category="1">Jornal</a></li>
+							<li><a class="btn-paginate-content" data-category="2">Classificados</a></li>
 						</ul>
 					</div>
 					<div class="periodselect">
@@ -290,11 +290,19 @@
 				search();
 			});
 
-            $('.search-button').on('click', function(){
+            $('.search-button').on('click', function(){btn-paginate-content
             	search();
             });
 
             function search(){
+            	var category = 0;
+
+            	$('.btn-paginate-content').each(function(){
+            		if ( $(this).hasClass('active') ){
+            			category = $(this).data('category');
+            		}
+            	});
+
                 var get = '?';
 
                 get += 'startDateYear=' + $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY');
@@ -307,11 +315,29 @@
 
                 get += '&startDate=' + $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
                 get += '&endDate=' + $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
-                get += '&category=' + $('select[name="categoria"]').val();
+                get += '&category=' + category;
 
                 $('#results-wrapper').load("{{ route('buscaEdicao') }}" + get + " #results-wrapper", function() {
 		        	//atualizarButtonVisualizacao();
 				});
+            }
+
+            $('.btn-paginate-content').on('click', function(){
+            	$('.btn-paginate-content').removeClass('active');
+            	$(this).addClass('active');
+
+            	if ( $('.button-removefilter').length ){
+            		search();
+            	}else{
+	            	searchCategory( $(this).data('category') );
+	            }
+            });
+
+            function searchCategory( category ){
+                var get = '?';
+                get += 'category=' + category;
+
+                $('#results-wrapper').load("{{ route('buscaCategoria') }}" + get + " #results-wrapper", function() {});
             }
 
             // PAGINAÇÃO CONTEÚDO
