@@ -34,6 +34,25 @@ input[type=number]::-webkit-outer-spin-button {
   display: none;
 }
 
+.close {
+  opacity: .5;
+}
+
+#flip-book-window .close {
+    padding: 10px;
+    background: #009992;
+    border-radius: 5px;
+}
+
+.close:focus, .close:hover {
+  opacity: .9;
+}
+
+#flip-book-window .close:active {
+  padding-top: 10px !important;
+  padding-right: 10px !important;
+}
+
 /*************************
 	WEBFONTS
 *********/
@@ -493,6 +512,7 @@ logo-fix {
 
 .menu-edicoes ul li {
   display: inline-block;
+  cursor: pointer;
 }
 
 .menu-edicoes ul li a {
@@ -509,6 +529,11 @@ logo-fix {
   text-decoration: none;
   color: #fff;
   background-color: #169990;
+  text-decoration: none;
+}
+
+.menu-edicoes ul li a:focus {
+  text-decoration: none;
 }
 
 .menu-edicoes ul li .active {
@@ -1025,7 +1050,7 @@ and (max-width: 1366px) {
 /* Landscape - SMALLER IPAD */
 @media only screen 
   and (min-width: 768px) 
-  and (max-width: 1023px) {
+  and (max-width: 990px) {
   .loginside {
       padding: 130px 25px;
   }

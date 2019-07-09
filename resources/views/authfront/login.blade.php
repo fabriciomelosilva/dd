@@ -87,13 +87,24 @@
 		      	<div class="carousel-item__experimente--vertical-align">
 			      	<div class="carousel-item__caption">
 			      		<img src="{{ asset('/assets/images/icon-acervo-v2.png') }}">
+			      		<h2 class="carousel-item__caption--title">Leia a notícia em primeira mão</h2>
+				    	<p class="carousel-item__caption--descriprion">
+				    		O assinante do jornal digital recebe a edição antes do impresso.
+				    	</p>
+			  		</div>
+		  		</div>
+		    </div>
+<!-- 		    <div class="carousel-item carousel-item__bg carousel-item__bg--6 login__carousel-item--bg">
+		      	<div class="carousel-item__experimente--vertical-align">
+			      	<div class="carousel-item__caption">
+			      		<img src="{{ asset('/assets/images/icon-acervo-v2.png') }}">
 			      		<h2 class="carousel-item__caption--title">Acesse todo o acervo</h2>
 				    	<p class="carousel-item__caption--descriprion">
 				    		Mais de 30 anos de edições disponíveis para você.
 				    	</p>
 			  		</div>
 		  		</div>
-		    </div>
+		    </div> -->
 		  </div>
 		</div>
 	</div>

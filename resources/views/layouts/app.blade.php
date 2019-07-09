@@ -57,7 +57,7 @@
 		@yield('content')
 
 		<div class="load-stop">
-            <p id="vertical">
+            <p class="card-center-heigh">
                 <img width="100px" height="100px" src="{{ asset('/assets/images/loading_white.gif') }}">
                 <span>Isso pode durar alguns minutos</span>
             </p>
