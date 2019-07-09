@@ -131,8 +131,8 @@
 				@if ($descriPublications !="") 
 				<div class="row">
 					<div class="col-xs-12 button-removefilter">
-		                <button title="Remover Filtros" type="button" class="btn search-button" onclick="location.href='{{ url('/assinante') }}'">
-		                    Remover filtros <i class="fe-delete"></i>
+		                <button title="Voltar" type="button" class="btn search-button">
+		                    Voltar para listagem <i class="fe-delete"></i>
 		                </button>
 					</div>
 				</div>
@@ -331,6 +331,17 @@
             	}else{
 	            	searchCategory( $(this).data('category') );
 	            }
+            });
+
+            $(document).on('click', '.search-button', function(){
+            	var category = 0;
+            	$('.btn-paginate-content').each(function(){
+            		if ( $(this).hasClass('active') ){
+            			category = $(this).data('category');
+            		}
+            	});
+
+            	searchCategory( category );
             });
 
             function searchCategory( category ){

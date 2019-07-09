@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.assinante')
 @section('content')
 
 <div class="content-all content-all--mobile">
