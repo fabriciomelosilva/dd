@@ -45,6 +45,7 @@ class TransferFilesCommand extends Command
 
         $nameCapa1 = "PRIMEIRA";
         $nameCapa2 = "PAGINA";
+        $nameCapa2018 = "NLVL-01";
 
         $nameRemove = "CLASSIFICADOS";
 
@@ -121,11 +122,12 @@ class TransferFilesCommand extends Command
 
                                 $capaAntiga = strpos($file->getBasename(), $nameCapa1);
                                 $capaNova = strpos($file->getBasename(), $nameCapa2);
+                                $capa2018 = strpos($file->getBasename(), $nameCapa2018);
 
                                 $classificado = strpos($file->getBasename(), $nameRemove);
 
                                 if($classificado == false){
-                                    if($capaAntiga == false && $capaNova == false){
+                                    if($capaAntiga == false && $capaNova == false && $capa2018 == false){
                                         $namePdf = "compress_".$file->getBasename();
                                     }else{
                                         $namePdf = "capa_compress_".$file->getBasename();
@@ -136,7 +138,7 @@ class TransferFilesCommand extends Command
                                         if($ano < 2010)
                                             shell_exec('gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r20 -dNOSUBSTDEVICECOLORS -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf)." ".$caminhoPdf);
                                         else
-                                            shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r2 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf)." ".$caminhoPdf);
+                                            shell_exec('gswin64c -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -dCompressFonts=true -dUseCIEColor -r20 -dAutoRotatePages=/None -sOutputFile='.storage_path("app/edicao/".$ano."/".$mes."/".$dia."/compress/".$namePdf)." ".$caminhoPdf);
 
                                 //-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -dAutoRotatePages=/None -r50 -dNOSUBSTDEVICECOLORS
                                         // 5.602
