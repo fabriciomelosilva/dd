@@ -132,7 +132,7 @@
 				<div class="row">
 					<div class="col-xs-12 button-removefilter">
 		                <button title="Voltar" type="button" class="btn search-button">
-		                    Voltar para listagem <i class="fe-delete"></i>
+		                    Voltar para listagem {{-- <i class="fe-delete"></i> --}}
 		                </button>
 					</div>
 				</div>
