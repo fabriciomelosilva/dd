@@ -227,7 +227,7 @@
 						template: template,
 						controlsProps: {
 							
-							downloadURL: pdf,
+							//downloadURL: pdf,
 
 							actions: {
 								cmdBackward: {

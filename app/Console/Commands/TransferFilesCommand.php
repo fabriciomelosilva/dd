@@ -47,7 +47,8 @@ class TransferFilesCommand extends Command
         $nameCapa2 = "PAGINA";
         $nameCapa2018 = "NLVL-01";
 
-        $nameRemove = "CLASSIFICADOS";
+        $nameRemoveClassificados = "CLASSIFICADOS";
+        $nameRemoveEnem = "ENEM";
 
         $ano = ($this->argument('ano'))? $this->argument('ano') : date("Y");
         $mesSelc = ($this->argument('mes'))? $this->argument('mes') : null;
@@ -124,9 +125,10 @@ class TransferFilesCommand extends Command
                                 $capaNova = strpos($file->getBasename(), $nameCapa2);
                                 $capa2018 = strpos($file->getBasename(), $nameCapa2018);
 
-                                $classificado = strpos($file->getBasename(), $nameRemove);
+                                $classificado = strpos($file->getBasename(), $nameRemoveClassificados);
+                                $enem = strpos($file->getBasename(), $nameRemoveEnem);
 
-                                if($classificado == false){
+                                if($classificado == false && $enem == false){
                                     if($capaAntiga == false && $capaNova == false && $capa2018 == false){
                                         $namePdf = "compress_".$file->getBasename();
                                     }else{
