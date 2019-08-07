@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\DateEditionUpdateCommand::class,
         Commands\TransferFilesCommand::class,
         Commands\OrganizerFile::class,
+        Commands\getEdCompress::class,
     ];
 
     /**
