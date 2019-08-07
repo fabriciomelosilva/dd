@@ -6,20 +6,15 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Diário Digital</title>
+
+  <title>Diário do Nordeste - Digital</title>
   
     <link rel="shortcut icon" type="image/ico" href="{{ asset('/images/favicon.ico') }}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="{{ asset('/simulor/admin/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/simulor/admin/dist/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
-
-
-
     <link href="{{ asset('/css/style.css') }}?v=v1.0.3" rel="stylesheet">
-
-
-
     <link href="{{ asset('/css/front.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 

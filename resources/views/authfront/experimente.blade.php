@@ -1,8 +1,44 @@
 @extends('layouts.assinante')
+
+@section('metatag')
+<meta name="description" content="Acesse o Diário do Nordeste Digital inteiramente grátis por 15 dias.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="http://diariodigital.verdesmares.com.br/public/" />
+
+<meta property="og:title" content="Diário do Nordeste Digital - Acesse por 15 dias grátis">
+<meta property="og:site_name" content="Diário do Nordeste">
+<meta property="og:url" content="http://diariodigital.verdesmares.com.br/public/">
+<meta property="og:description" content="Acesse o Diário do Nordeste Digital inteiramente grátis por 15 dias.">
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:type" content="website">
+<meta property="og:image" content="http://diariodigital.verdesmares.com.br/public/assets/images/diario-logo.svg">
+
+<script type='application/ld+json'>
+{
+  "@context": "http://www.schema.org",
+  "@type": "Organization",
+  "name": "Diário Digital",
+  "logo": "http://diariodigital.verdesmares.com.br/public/assets/images/diario-logo.svg",
+  "sameAs": [
+    "https://www.facebook.com/diariodonordeste/",
+    "https://twitter.com/diarioonline",
+    "https://www.instagram.com/diariodonordeste/",
+    "https://www.youtube.com/channel/UCMf_wuiFqxdhZI1GVx02mmw"
+  ]
+  "description": "Acesse o Diário do Nordeste Digital inteiramente grátis por 15 dias.",
+  "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Fortaleza",
+     "addressRegion": "Ceará",
+     "addressCountry": "Brasil"
+  }
+}
+</script>
+@endsection
+
 @section('content')
 
 <div class="content-all">
-
 	<div class="experimente-content-left">
 		<div class="experimente-content-left__logo">
 			<img class="img-responsive" src="{{ asset('/assets/images/diario-logo.svg') }}" height="50" />
@@ -27,7 +63,7 @@
 				</a>
 			</div>
 			<div class="experimente-content-left__footer">
-				Dúvidas? Deseja assinar o Diário Digital? Entre em contato com nossa Central de Atendimento <span class="experimente-content-left__footer--orange">(85) 3266-9191</span>
+				Dúvidas? Deseja assinar o Diário Digital? Entre em contato com nossa Central de Atendimento <a href="tel:+558532669191">(85) 3266-9191</a>
 			</div>
 		</div>
 	</div>

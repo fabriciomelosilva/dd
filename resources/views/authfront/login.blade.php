@@ -1,9 +1,47 @@
 @extends('layouts.assinante')
+
+@section('metatag')
+<meta name="description" content="Acesso do assinante ao Diário do Nordeste Digital. Entre com o CPF ou CNPJ do assinante.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="http://diariodigital.verdesmares.com.br/public/loginAssinante" />
+
+<meta property="og:title" content="Diário do Nordeste Digital -Login do assinante">
+<meta property="og:site_name" content="Diário do Nordeste">
+<meta property="og:url" content="http://diariodigital.verdesmares.com.br/public/loginAssinante/">
+<meta property="og:description" content="Acesso do assinante ao Diário do Nordeste - Digital. Entre com o CPF ou CNPJ do assinante.">
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:type" content="website">
+<meta property="og:image" content="http://diariodigital.verdesmares.com.br/public/assets/images/diario-logo.svg">
+
+<script type='application/ld+json'>
+{
+  "@context": "http://www.schema.org",
+  "@type": "Organization",
+  "name": "Diário Digital",
+  "logo": "http://diariodigital.verdesmares.com.br/public/assets/images/diario-logo.svg",
+  "sameAs": [
+    "https://www.facebook.com/diariodonordeste/",
+    "https://twitter.com/diarioonline",
+    "https://www.instagram.com/diariodonordeste/",
+    "https://www.youtube.com/channel/UCMf_wuiFqxdhZI1GVx02mmw"
+  ]
+  "description": "Acesso do assinante ao Diário do Nordeste Digital. Entre com o CPF ou CNPJ do assinante.",
+  "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Fortaleza",
+     "addressRegion": "Ceará",
+     "addressCountry": "Brasil"
+  }
+}
+</script>
+@endsection
+
 @section('content')
 
 <div class="content-all content-all--mobile">
 	<div class="experimente-content-right login-content-left login-content-left--mobile">
 		<div class="logo-slider">
+		<a href="{{ url('/')}}">
 			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="206" height="40" viewBox="0 0 206 40">
 			  <defs>
 			    <polygon id="logo-a" points=".007 .204 6.943 .204 6.943 7.777 .007 7.777"/>
@@ -53,6 +91,7 @@
 			    <polygon fill="#fff" fill-rule="nonzero" points="56.658 6.094 65.007 6.094 65.007 0 56.658 0" mask="url(#logo-n)"/>
 			  </g>
 			</svg>
+		</a>
 		</div>
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
 		  <ol class="carousel-indicators">
@@ -152,7 +191,7 @@
 				</form>
 			</div>
 			<div class="experimente-content-left__footer login-content-left__footer">
-				Dúvidas? Deseja assinar o Diário Digital? Entre em contato com nossa Central de Atendimento <span class="experimente-content-left__footer--orange">(85) 3266-9191</span>
+				Dúvidas? Deseja assinar o Diário Digital? Entre em contato com nossa Central de Atendimento <a href="tel:+558532669191">(85) 3266-9191</a>
 			</div>
 		</div>
 	</div>

@@ -370,8 +370,18 @@ logo-fix {
 
 .login__form {
     border-color: #8B8B8B !important;
-    padding: 30px 25px !important;
+    padding: 25px !important;
     text-transform: uppercase;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
 }
 
 .login__label {
@@ -693,7 +703,7 @@ logo-fix {
 
 .form-control {
   border-color: #169990;
-  min-height: 50px;
+  height: auto;
   padding: 11px 15px;
   font-family: Muli,sans-serif;
 }

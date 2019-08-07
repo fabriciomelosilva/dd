@@ -5,7 +5,10 @@
     @include('partials.headertagmanager')
 
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  @yield('metatag')
+
 	<title>Diário Digital</title>
   
     <link rel="shortcut icon" type="image/ico" href="{{ asset('/images/favicon.ico') }}"/>
@@ -14,11 +17,7 @@
     <link href="{{ asset('/simulor/admin/dist/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
 
-
-
     <link href="{{ asset('/css/style.css') }}?v=v1.0.3" rel="stylesheet">
-
-
 
     <link href="{{ asset('/css/front.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
