@@ -45,6 +45,17 @@
     });
     </script>
 
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#cpf").keypress(function(e){
+    var keyCode = e.which;
+    if ( (keyCode != 8 || keyCode ==32 ) && (keyCode < 48 || keyCode > 57)) { 
+      return false;
+    }
+  });
+});
+</script>
+
 	</head>
 
 	<body class="bg-light">

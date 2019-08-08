@@ -285,7 +285,7 @@ logo-fix {
 
 .carousel-item__experimente--vertical-align {
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 50%;
   transform: translate(0, -50%);
 }
@@ -382,7 +382,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance:textfield;
-}
+} 
 
 .login__label {
   margin-top: 16px;
@@ -1236,8 +1236,8 @@ and (max-width: 767px) {
 }
 
 .carousel-item__bg {
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .carousel-item__experimente--vertical-align {
