@@ -72,8 +72,8 @@ class AssinanteController extends Controller
         if( $publications->isNotEmpty() )
             $descriPublications  = 'Exibindo resultado.';
         else{
-            if($year < 2019)
-                $descriPublications  = 'Ainda não existem publicações anteriores a 1 de janeiro de 2019.';
+            if($year < 2018)
+                $descriPublications  = 'Ainda não existem publicações anteriores a 1 de janeiro de 2018.';
             else
                 $descriPublications  = 'Não foi encontrado nenhum resultado.';
         }
