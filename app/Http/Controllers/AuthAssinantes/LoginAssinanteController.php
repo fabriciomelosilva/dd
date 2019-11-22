@@ -55,7 +55,6 @@ class LoginAssinanteController extends Controller
     public function isAssinante($cpfcnpj)
     {
         $responseXML = $this->connectWS($cpfcnpj);
-
         $dados = simplexml_load_string($responseXML->AssinanteDNResult);
 
         if ($dados->Dados->Assinante == "True"){
@@ -90,81 +89,103 @@ class LoginAssinanteController extends Controller
 
        $cpf = $request->input('cpf');
 
-       try{
-            $apiResponse = $this->isAssinante($cpf);
-        }catch(\Exception $e){
-            return redirect()->route('loginAssinante')->with('flash.message', 'Estamos com problemas técnicos. Tente novamente em alguns instantes. Caso não consiga, entre em contato no e-mail: desenvolvimento@verdesmares.com.br')->with('flash.class', 'danger');
-       }
-
        $request->request->add(['password' => 'svmdes9605']);
        $userExist = User::where('name', $cpf)-> first();
 
-       if ($apiResponse == 'False') {
+       try{
+            $apiResponse = $this->isAssinante($cpf);
+        }catch(\Exception $e){
+    
+            if ($userExist){
 
-        if ($userExist){
+                $this->validateLogin($request);
+        
+                if ($this->hasTooManyLoginAttempts($request)) {
+                    $this->fireLockoutEvent($request);
+        
+                    return $this->sendLockoutResponse($request);
+                }
+        
+                if ($this->attemptLogin($request)) {
+                    return $this->sendLoginResponse($request);
+                }
+        
+                $this->incrementLoginAttempts($request);
+        
+                return $this->sendFailedLoginResponse($request);
+        
+            }else{
+                return redirect()->route('loginAssinante')->with('flash.message', 'Favor verificar o status da sua assinatura com nossa Central de Atendimento (85) 3266-9191')->with('flash.class', 'danger');
 
+            }
+       
+        }
+
+        if ($apiResponse == 'False') {
+
+            if ($userExist){
+
+                $user = User::findOrFail($userExist->id);
+                $user->status_assinante = "false";
+                $user->update();
+
+            }
+            return redirect()->route('loginAssinante')->with('flash.message', 'Usuário não possui assinatura')->with('flash.class', 'danger');
+        }
+
+        if (($apiResponse == 'True') && ($userExist === null)) {
+                $user = User::create([
+                    'name' => $cpf,
+                    'email' => $cpf.'@verdesmares.com.br',
+                    'cpf' => $cpf,
+                    'password' => bcrypt('svmdes9605'),
+                    'status_assinante' => 'true',
+                    'type' => 'assinante',
+                ]);
+        
+                $findRole = Role::where('name','assinante')->first();
+                
+                $user->roles()->attach($findRole);
+        
+            $this->validateLogin($request);
+
+            if ($this->hasTooManyLoginAttempts($request)) {
+                $this->fireLockoutEvent($request);
+
+                return $this->sendLockoutResponse($request);
+            }
+
+            if ($this->attemptLogin($request)) {
+                return $this->sendLoginResponse($request);
+            }
+
+            $this->incrementLoginAttempts($request);
+
+            return $this->sendFailedLoginResponse($request);
+        
+        } else if (($apiResponse == 'True') && ($userExist)) {
             $user = User::findOrFail($userExist->id);
-
-            $user->status_assinante = "false";
+            $user->status_assinante = "true";
 
             $user->update();
+
+            $this->validateLogin($request);
+
+            if ($this->hasTooManyLoginAttempts($request)) {
+                $this->fireLockoutEvent($request);
+
+                return $this->sendLockoutResponse($request);
+            }
+
+            if ($this->attemptLogin($request)) {
+                return $this->sendLoginResponse($request);
+            }
+
+            $this->incrementLoginAttempts($request);
+
+            return $this->sendFailedLoginResponse($request);
+
         }
-           return redirect()->route('loginAssinante')->with('flash.message', 'Usuário não possui assinatura')->with('flash.class', 'danger');
-       }
-
-       if (($apiResponse == 'True') && ($userExist === null)) {
-            $user = User::create([
-                'name' => $cpf,
-                'email' => $cpf.'@verdesmares.com.br',
-                'cpf' => $cpf,
-                'password' => bcrypt('svmdes9605'),
-                'status_assinante' => 'true',
-                'type' => 'assinante',
-            ]);
-    
-            $findRole = Role::where('name','assinante')->first();
-            
-            $user->roles()->attach($findRole);
-       
-        $this->validateLogin($request);
-
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
-        }
-
-        $this->incrementLoginAttempts($request);
-
-        return $this->sendFailedLoginResponse($request);
-    }
-    else if (($apiResponse == 'True') && ($userExist)) {
-        $user = User::findOrFail($userExist->id);
-        $user->status_assinante = "true";
-
-        $user->update();
-
-        $this->validateLogin($request);
-
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
-        }
-
-        $this->incrementLoginAttempts($request);
-
-        return $this->sendFailedLoginResponse($request);
-
-    }
     
     }
 
