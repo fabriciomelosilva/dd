@@ -3,22 +3,22 @@
 @section('metatag')
 <meta name="description" content="Acesse o Diário do Nordeste Digital inteiramente grátis por 15 dias.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="http://diariodigital.verdesmares.com.br/public/" />
+<link rel="canonical" href="https://diariodigital.verdesmares.com.br/" />
 
 <meta property="og:title" content="Diário do Nordeste Digital - Acesse por 15 dias grátis">
 <meta property="og:site_name" content="Diário do Nordeste">
-<meta property="og:url" content="http://diariodigital.verdesmares.com.br/public/">
+<meta property="og:url" content="https://diariodigital.verdesmares.com.br/">
 <meta property="og:description" content="Acesse o Diário do Nordeste Digital inteiramente grátis por 15 dias.">
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:type" content="website">
-<meta property="og:image" content="http://diariodigital.verdesmares.com.br/public/assets/images/diario-logo.svg">
+<meta property="og:image" content="https://diariodigital.verdesmares.com.br/assets/images/diario-logo.svg">
 
 <script type='application/ld+json'>
 {
   "@context": "http://www.schema.org",
   "@type": "Organization",
   "name": "Diário Digital",
-  "logo": "http://diariodigital.verdesmares.com.br/public/assets/images/diario-logo.svg",
+  "logo": "https://diariodigital.verdesmares.com.br/assets/images/diario-logo.svg",
   "sameAs": [
     "https://www.facebook.com/diariodonordeste/",
     "https://twitter.com/diarioonline",

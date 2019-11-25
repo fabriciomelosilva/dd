@@ -16,7 +16,7 @@
     <link href="{{ asset('/simulor/admin/dist/css/icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}?v=v1.0.3" rel="stylesheet">
     <link href="{{ asset('/css/front.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 
     <script src="{{ asset('/simulor/admin/dist/js/vendor.min.js') }}"></script>
     <script src="{{ asset('/simulor/admin/dist/js/app.min.js') }}"></script>            
