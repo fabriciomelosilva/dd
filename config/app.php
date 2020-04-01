@@ -164,7 +164,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Skydiver\LaravelMaterializeCSS\MaterializeCSSServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
-		LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
+        LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+
 
 
 
@@ -233,7 +235,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'MaterializeCSS' => Skydiver\LaravelMaterializeCSS\MaterializeCSS::class,
 		'Image' => Intervention\Image\Facades\Image::class,
-		'PdfMerger' => LynX39\LaraPdfMerger\PdfManage::class,
+        'PdfMerger' => LynX39\LaraPdfMerger\PdfManage::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+
 
 
 
