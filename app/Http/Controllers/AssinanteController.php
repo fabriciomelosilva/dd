@@ -108,7 +108,7 @@ class AssinanteController extends Controller
             switch ($where->input('category')) {
                 case 1:
                     $publications = \DB::table('edicaos')
-                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Jornal" as caderno'))
+                        ->select(\DB::raw('ed_day, ed_month, ed_year, ed_file_name, ed_capa, "edicao" as type, "Edição" as caderno'))
                         ->orderBy('ed_year', 'desc')->orderBy('ed_month', 'desc')->orderBy('ed_day', 'desc')
                         ->where('ed_status', '1') // Status: Ativo
                         ->whereBetween('ed_date', [$where->input('startDate'), $where->input('endDate')])
