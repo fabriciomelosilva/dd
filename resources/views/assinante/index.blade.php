@@ -107,8 +107,7 @@
 				<div class="col-xs-12">
 					<div class="menu-edicoes">
 						<ul>
-							<li><a class="active btn-paginate-content" data-category="1">Jornal</a></li>
-							<li><a class="btn-paginate-content" data-category="2">Classificados</a></li>
+							<li><a class="active btn-paginate-content" data-category="1">Edição</a></li>
 						</ul>
 					</div>
 					<div class="periodselect">
