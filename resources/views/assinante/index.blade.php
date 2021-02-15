@@ -193,7 +193,7 @@
 		<script src="{{ asset('/js/html2canvas.min.js') }}"></script>
 		<script src="{{ asset('/js/three.min.js') }}"></script>
 		<script src="{{ asset('/js/pdf.min.js') }}"></script>
-		<script src="{{ asset('/js/3dflipbook.min.js') }}"></script>
+		<script src="{{ asset('/js/3dflipbook.min.js?v=1.0.2') }}"></script>
 
 		<!-- SELECIONAR O PERIODO -->
 		<script type="text/javascript" src="{{ asset('/js/datapicker/moment.min.js') }}"></script>
