@@ -128,18 +128,15 @@
 			</div>
 
 			<div id="results-wrapper">
-				<!-- REMOVER FILTROS -->
 					@if ($descriPublications !="") 
-					<!-- REMOVER FILTROS -->
-					<div id="results-wrapper">
-						<div class="button-removefilter">
-							<button title="Voltar" type="button" class="btn search-button">
-								Voltar para listagem {{-- <i class="fe-delete"></i> --}}
-							</button>
-						</div>
+
+					<div class="button-removefilter">
+						<button title="Voltar" type="button" class="btn search-button">
+							Voltar para listagem {{-- <i class="fe-delete"></i> --}}
+						</button>
 					</div>
+
 					@endif
-					<!-- REMOVER FILTROS -->
 
 					<!-- TITULO -->
 					<div class="results-wrapper">
@@ -210,6 +207,7 @@
 
 			$(document).on('click', '.js-thumbnail-target', function(e){
 				var pdf = $(this).attr('data-route');
+				
 
 				var booksOptions = {
 					edicaos: {
@@ -234,12 +232,20 @@
     							}, 
 								cmdSinglePage: {
 									activeForMobile: true
-								}
-										 
-							}
-						}
+								}	 
+							},
+							loadingAnimation: {
+
+							},
+							scale: {
+								default: 1,
+								levels: 2,
+								max: 4
+							},
+						},
 					},
 				};
+				
 
 				var instance = {
 					scene: undefined,
