@@ -108,14 +108,14 @@
 			</div>
 
 			<div class="row header">
-				<div class="col-xs-8 col-md-9">
+				<div class="col-xs-7 col-md-10">
 					<h2 class="text-primary" style="margin: 0">Edição</h2>
 				</div>
 
-				<div class="col-xs-4 col-md-3">
+				<div class="col-xs-5 col-md-2">
 					<div class="periodselect">
 						<form class="form-inline">
-							<label class="periodselect__label">Buscar por data:</label>
+							<label class="periodselect__label">Buscar por data</label>
 							<div class="form-group data-smartphone">
 								<div class="formitem">
 									<input type="text" name="daterange" class="datarangerform" id="daterange" />
@@ -233,9 +233,6 @@
 								cmdSinglePage: {
 									activeForMobile: true
 								}	 
-							},
-							loadingAnimation: {
-
 							},
 							scale: {
 								default: 1,

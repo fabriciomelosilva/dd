@@ -384,6 +384,14 @@ logo-fix {
     padding: 25px !important;
     text-transform: uppercase;
 }
+.periodselect {
+	text-align: right;
+}
+
+.formitem {
+	width: 120px;
+    position: relative;
+  }
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
@@ -879,6 +887,7 @@ and (max-width: 1366px) {
 
   .formitem {
     padding: 0 14px;
+	position: relative;
   }
 
   .list-style {
@@ -915,6 +924,7 @@ and (max-width: 1366px) {
 
   .formitem {
     padding: 0 15px;
+	position: relative;
   }
 
   .cardlogin-assinante .card {
