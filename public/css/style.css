@@ -12,6 +12,7 @@ body{
     padding:0;
     margin:0;
     position:relative;
+	font-family: roboto-condesed-regular, arial, sans-serif;
 }
 
 body::after{
@@ -70,6 +71,18 @@ input[type=number]::-webkit-outer-spin-button {
 /*************************
 	HEADER
 *********/
+.header {
+	margin-bottom: 1em;
+	padding: 1em 0;
+}
+
+.header .text-primary {
+	text-transform: uppercase;
+	font-weight: 900;
+}
+.text-primary {
+	color: #169990;
+}
 
 /* LOGO */
 .navbar-header img {
@@ -116,7 +129,6 @@ logo-fix {
 .btn-pattern {
   background: #169990;
   color: #fff;
-  font-family: roboto-condesed-regular, arial, sans-serif;
   padding: 5px 20px;
   transition: background .25s ease-in-out;
   -moz-transition: background .25s ease-in-out;
@@ -143,7 +155,6 @@ logo-fix {
 
 .content-all {
   margin: 0 auto;
-  font-family: roboto-condesed-regular, arial, sans-serif;
 }
 
 .experimente-content-left {
@@ -373,6 +384,14 @@ logo-fix {
     padding: 25px !important;
     text-transform: uppercase;
 }
+.periodselect {
+	text-align: right;
+}
+
+.formitem {
+	width: 120px;
+    position: relative;
+  }
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
@@ -424,29 +443,13 @@ input[type=number] {
   margin-right: 0;
 }
 
-.periodselect {
-  background: #F3F3F3;
-  padding: 8px 15px 8px 20px;
-  border-radius: 5px;
-  float: right;
-}
-
-.periodselect__label {
-  margin-right: 10px; 
-  font-weight: normal;
-  font-size: 1.6rem;
-  font-family: roboto-condesed-regular, arial, sans-serif;
-}
-
 .datarangerform {
   background: none;
   border: 0;
-  font-family: roboto-condesed-regular, arial, sans-serif;
   color: #000;
   text-transform: uppercase;
   font-size: 1.2em;
   width: 100px;
-  padding-top: 8px;
 }
 
 .datarangerform:hover {
@@ -455,9 +458,12 @@ input[type=number] {
 }
 
 .periodselect .icondaterange {
-  font-size: 0.67em;
-  float: right;
-  padding: 13px 5px;
+	font-size: 0.67em;
+	float: right;
+	padding: 13px 5px;
+	position: absolute;
+	right: 0;
+	top: -6px;
 }
 
 .periodselect button {
@@ -484,7 +490,6 @@ input[type=number] {
   border: 1px solid #169990;
   border-radius: 5px;
   text-transform: uppercase;
-  font-family: roboto-condesed-regular, arial, sans-serif;
 }
 
 .button-removefilter {
@@ -506,26 +511,10 @@ input[type=number] {
 
 .menu-edicoes {
   background: #F3F3F3;
-  display: inline-block;
-  position: relative;
-  font-family: roboto-condesed-regular, arial, sans-serif;
-  border-radius: 5px;
-  width: 79%;
+  border-radius: 8px;
 }
 
-.menu-edicoes ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  line-height: 6rem;
-}
-
-.menu-edicoes ul li {
-  display: inline-block;
-  cursor: pointer;
-}
-
-.menu-edicoes ul li a {
+.menu-edicoes button {
   padding: 20px 30px;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -533,27 +522,22 @@ input[type=number] {
   color: #3E3E3E;
   -moz-transition: .25s ease-in-out;
   -webkit-transition: .25s ease-in-out;
+  border: none;
 }
 
-.menu-edicoes ul li a:hover {
+.menu-edicoes button:hover {
   text-decoration: none;
   color: #fff;
   background-color: #169990;
   text-decoration: none;
 }
 
-.menu-edicoes ul li a:focus {
-  text-decoration: none;
-}
-
-.menu-edicoes ul li .active {
+.menu-edicoes button.active {
   color: #fff;
   background-color: #169990;
 }
 
-.menu-edicoes ul li .active:hover {
-  background-color: #007563;
-}
+.menu-edicoes button.active:hover { background-color: #007563}
 
 /** LISTA DE CLASSIFICADOS **/
 
@@ -562,7 +546,6 @@ input[type=number] {
 }
 
 .classificadoslista-title {
-  font-family: roboto-condesed-regular, arial, sans-serif;
   color: #169990;
   font-size: 2em;
   padding: 0;
@@ -578,18 +561,13 @@ input[type=number] {
 /* TIPO THUMBNAIL */
 .thumbnail-style {
   border-bottom: 4px solid #169990;
-  padding: 15px;
-  -webkit-box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
-  box-shadow: 0 5px 8px 3px rgba(0,0,0,0.1);
-  margin: 15px 0;
-  min-height: 390px;
+  min-height: 278px;
 }
 
 .thumbnail-date {
-  color: #169990;
-  font-family: roboto-condesed-regular, arial, sans-serif;
-  text-align: center;
-  font-size: 1.3em;
+  color: #2E2E31;
+  font-size: 1em;
+  padding: 1rem;
 }
 
 .thumbnail-date hr {
@@ -614,35 +592,20 @@ input[type=number] {
 }
 
 .thumbnail-style img {
-  max-width: 100%;
-  min-height: 315px;
-  height: auto;
+	object-fit: contain;
+    object-position: center center;
+    width: 100%;
+    height: auto;
 }
 
 .thumbnail-style img:hover {
-  cursor: pointer;
+  
 }
 
 .capazoom {
-  position: relative;
-  overflow: hidden; 
-  width: 100%;
+  
 }
-.capazoom img {
-  width: 100%;
-  height: 315px;
-  object-fit: cover;
-  object-position: 0 0;
-
-  -moz-transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.capazoom:hover img {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
+.capazoom img { }
 
 /*************************
 	CADASTRO DE CLASSIFICADOS CONTENT
@@ -654,7 +617,6 @@ input[type=number] {
 .load-stop {
   text-align: center;
   width: 100%;
-  font-family: roboto-condesed-regular, arial, sans-serif;
 }
 
 .load-stop span {
@@ -668,7 +630,6 @@ input[type=number] {
 
 .page-title-box {
   text-align: center;
-  font-family: roboto-condesed-regular, arial, sans-serif;
 }
 
 .card-center-heigh {
@@ -738,7 +699,6 @@ input[type=number] {
 .btn-edicao {
   background: #169990;
   color: #ffffff;
-  font-family: roboto-condesed-regular, arial, sans-serif;
   text-transform: uppercase;
   font-size: 1.2em;
   padding: 10px 35px;
@@ -751,7 +711,6 @@ input[type=number] {
 }
 
 .remover_campo {
-  font-family: roboto-condesed-regular, arial, sans-serif;
   padding-top: 5px;
   color: #c0392b;
 }
@@ -762,7 +721,6 @@ input[type=number] {
 
 .welcomepage {
   color: #2D2D2D;
-  font-family: roboto-condesed-regular, arial, sans-serif;
   margin: 40px auto;
   position: fixed;
   top: 50%;
@@ -792,7 +750,6 @@ input[type=number] {
 	PAGINAÇÃO
 *********/
 .pagination {
-  font-family: roboto-condesed-regular, arial, sans-serif;
   font-size: 1.05em;
 }
 
@@ -846,7 +803,6 @@ input[type=number] {
 /* 401 */
 .warningcontainer {
   width: 500px;
-  font-family: roboto-condesed-regular, arial, sans-serif;
   text-align: center;
   margin: 0 auto;
   position: fixed;
@@ -926,11 +882,12 @@ and (min-width: 768px)
 and (max-width: 1366px) {
 
   .thumbnail-style {
-    min-height: 351px;
+    min-height: 428px;
   }
 
   .formitem {
     padding: 0 14px;
+	position: relative;
   }
 
   .list-style {
@@ -967,6 +924,7 @@ and (max-width: 1366px) {
 
   .formitem {
     padding: 0 15px;
+	position: relative;
   }
 
   .cardlogin-assinante .card {
@@ -1031,6 +989,9 @@ and (max-width: 1366px) {
   and (min-width: 1024px) 
   and (max-height: 1366px) 
   and (orientation: landscape) {
+	.thumbnail-style {
+		min-height: 428px;
+	}
   .loginside {
       padding: 258px 25px;
   }
@@ -1094,9 +1055,10 @@ and (max-width: 767px) {
   }
 
   .formitem {
-    padding: 0;
+	padding: 0;
     border-right: 0;
     height: auto;
+    position: relative;
   }
 
   .formitem select {
@@ -1107,22 +1069,11 @@ and (max-width: 767px) {
     width: 100%;
   }
 
-  .periodselect {
-    float: unset;
-    margin: 15px 0 0;
-  }
+  .periodselect {}
 
-  .periodselect__label {
-    display: inline-block;
-    width: 45px;
-    margin-left: 12px;
-  }
+  .periodselect__label {margin-bottom: 0;}
 
-  .data-smartphone {
-    margin-bottom: unset;
-    width: 130px;
-    display: inline-block;
-  }
+  .data-smartphone { margin: 0;}
 
   .form-group label:hover {
     color: #fff;
@@ -1133,15 +1084,8 @@ and (max-width: 767px) {
   }
 
   .thumbnail-style {
-    min-height: 209px;
-  }
-
-  .capazoom img {
-    height: 150px;
-  }
-
-  .thumbnail-style img {
-    min-height: 150px;
+	border-radius: 4px;
+	overflow: hidden;
   }
 
   .list-style .thumbnail-date {
@@ -1570,8 +1514,11 @@ body .navbar {
 *********/
 
 #flip-book-window .modal-content {
-  height: 100%;
-  background-image: url('../images/texture.jpg');
+	height: 100%;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	padding: .5em;
 }
 
 #flip-book-window .close {
@@ -1591,6 +1538,7 @@ body .navbar {
 
 #flip-book-window .modal-body {
   height: 100%;
+  padding: 0;
 }
 
 #flip-book-window .modal-body .mount-node {
@@ -1598,20 +1546,10 @@ body .navbar {
   height: 100%;
 }
 
-#flip-book-window .modal-body .mount-node.fullscreen {
-  background-image: url('../images/texture.jpg');
-}
-
-/*.mount-node {
+#flip-book-window .modal-dialog {
   width: 100%;
   height: 100%;
-  background-color: red;
-}*/
-
-#flip-book-window .modal-dialog {
-  width: 98%;
-  height: 98%;
-  margin: 0.5% auto;
+  margin: 0;
 }
 
 .books {
