@@ -81,112 +81,99 @@
 			</div>
 		</nav>
 
-		<div class="container">
-			<!-- /1028625/SLB1 -->
-			<div id='div-gpt-ad-1538588809041-0' class="main-ad">
-				<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1538588809041-0'); });
-				</script>
-			</div>
-			<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						</button>
-						<div class="modal-body">
-							<div class="mount-node">
-							</div>
+		<div class="modal fade" id="flip-book-window" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<div class="modal-body">
+						<div class="mount-node">
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<!-- SELECIONE O PERIODO -->
-			<div class="row marginrow">
+		<div class="container">
+			<div class="row">
 				<div class="col-xs-12">
-					<div class="menu-edicoes">
-						<ul>
-							<li><a class="active btn-paginate-content" data-category="1">Jornal</a></li>
-							<li><a class="btn-paginate-content" data-category="2">Classificados</a></li>
-						</ul>
+					<!-- /1028625/SLB1 -->
+					<div id='div-gpt-ad-1538588809041-0' class="main-ad">
+						<script>
+						googletag.cmd.push(function() { googletag.display('div-gpt-ad-1538588809041-0'); });
+						</script>
 					</div>
+				</div>
+			</div>
+
+			<div class="row header">
+				<div class="col-xs-7 col-md-10">
+					<h2 class="text-primary" style="margin: 0">Edição</h2>
+				</div>
+
+				<div class="col-xs-5 col-md-2">
 					<div class="periodselect">
 						<form class="form-inline">
-							<label class="periodselect__label">Busca:</label>
+							<label class="periodselect__label">Buscar por data</label>
 							<div class="form-group data-smartphone">
-	                            <div class="formitem">
-								    <input type="text" name="daterange" class="datarangerform" id="daterange" />
-								    <label for="daterange" class="icondaterange">&#x25BC;</label>
-	                            </div>
-	                        </div>
+								<div class="formitem">
+									<input type="text" name="daterange" class="datarangerform" id="daterange" />
+									<label for="daterange" class="icondaterange">&#x25BC;</label>
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>
 			</div>
-			<!-- SELECIONE O PERIODO -->
 
 			<div id="results-wrapper">
-				<!-- REMOVER FILTROS -->
-				@if ($descriPublications !="") 
-				<div class="row">
-					<div class="col-xs-12 button-removefilter">
-		                <button title="Voltar" type="button" class="btn search-button">
-		                    Voltar para listagem {{-- <i class="fe-delete"></i> --}}
-		                </button>
+					@if ($descriPublications !="") 
+
+					<div class="button-removefilter">
+						<button title="Voltar" type="button" class="btn search-button">
+							Voltar para listagem {{-- <i class="fe-delete"></i> --}}
+						</button>
 					</div>
-				</div>
-				@endif
-				<!-- REMOVER FILTROS -->
 
-				<!-- TITULO -->
-	            <div class="row classificadoslista">
-	                <div class="col-xs-12">
-	                    <div class="classificadoslista-title">
-		                    {{$titlePublications}}
-		                </div>
-	                </div>
-	            </div>
-	            <div class="row">
-	            	<div class="col-xs-12">
-	            		<div class="results-wrapper">
-	            			{{$descriPublications}}
-	            		</div>
-	            	</div>
-	            </div>
-				<!-- TITULO -->
+					@endif
 
-				<!-- CLASSIFICADOS E EDICOES -->
-				@foreach ($publications as $value)
-				<div class="col-xs-6 col-sm-4 col-md-3">
-					<div class="thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['type' => $value->type, 'ano' => $value->ed_year, 'mes' =>  $value->ed_month,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
-						<div class="thumbnail-date">
-							@if ($paginate)
-								{{$value->ed_day}}/{{$value->ed_month}}/{{$value->ed_year}}
-							@else
-								{{$value->caderno}}
-							@endif
-							<hr />
-							<div class="readmore"><a id="edicaos" href="#">Leia Mais <i class="fe-chevron-right"></i></a></div>
-						</div>
-
-						<div class="capazoom">
-							<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/'.$value->type.'/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
-						</div>
+					<!-- TITULO -->
+					<div class="results-wrapper">
+						{{$descriPublications}}
 					</div>
-				</div>
-				@endforeach
-				<!-- CLASSIFICADOS E EDICOES -->
+					<!-- TITULO -->
 
-				@if ($paginate)
-				<div class="col-xs-12 col-sm-12 col-md-12">
-					<nav class="d-flex justify-content-center text-center">
-						<ul class="pagination results-wrapper" id="pagination-wrapper">
-							{{ $publications->appends(request()->except('page'))->links() }}
-						</ul>
-					</nav>
+					<div class="row">
+						@foreach ($publications as $value)
+						<div class="col-xs-6 col-md-3">
+							<div class="thumbnail thumbnail-style js-thumbnail-target" data-route="{{route('uploadsAssinante', ['type' => $value->type, 'ano' => $value->ed_year, 'mes' =>  $value->ed_month,'dia' => $value->ed_day, 'arquivo' => $value->ed_file_name])}}" >
+								<div class="capazoom">
+									<img id="edicaos" src="{{ url('/uploadsThumbAssinante/app/'.$value->type.'/'.$value->ed_year.'/'.$value->ed_month.'/'.$value->ed_day.'/'.$value->ed_capa) }}" alt="" height="350" width="250"/>
+								</div>
+								<div class="thumbnail-date">
+									@if ($paginate)
+										{{$value->ed_day}}/{{$value->ed_month}}/{{$value->ed_year}}
+									@else
+										{{$value->caderno}}
+									@endif
+									<div class="readmore"><a id="edicaos" href="#">Leia Mais <i class="fe-chevron-right"></i></a></div>
+								</div>
+							</div>
+						</div>
+						@endforeach
+					</div>
+
+					@if ($paginate)
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<nav class="d-flex justify-content-center text-center">
+							<ul class="pagination results-wrapper" id="pagination-wrapper">
+								{{ $publications->appends(request()->except('page'))->links() }}
+							</ul>
+						</nav>
+					</div>
+					@endif
 				</div>
-				@endif
 			</div>
 		</div>
 		
@@ -194,7 +181,7 @@
 		<script src="{{ asset('/js/html2canvas.min.js') }}"></script>
 		<script src="{{ asset('/js/three.min.js') }}"></script>
 		<script src="{{ asset('/js/pdf.min.js') }}"></script>
-		<script src="{{ asset('/js/3dflipbook.min.js') }}"></script>
+		<script src="{{ asset('/js/3dflipbook.min.js?v=1.0.2') }}"></script>
 
 		<!-- SELECIONAR O PERIODO -->
 		<script type="text/javascript" src="{{ asset('/js/datapicker/moment.min.js') }}"></script>
@@ -220,6 +207,7 @@
 
 			$(document).on('click', '.js-thumbnail-target', function(e){
 				var pdf = $(this).attr('data-route');
+				
 
 				var booksOptions = {
 					edicaos: {
@@ -227,7 +215,7 @@
 						template: template,
 						controlsProps: {
 							
-							//downloadURL: pdf,
+							downloadURL: pdf,
 
 							actions: {
 								cmdBackward: {
@@ -244,12 +232,17 @@
     							}, 
 								cmdSinglePage: {
 									activeForMobile: true
-								}
-										 
-							}
-						}
+								}	 
+							},
+							scale: {
+								default: 1,
+								levels: 2,
+								max: 4
+							},
+						},
 					},
 				};
+				
 
 				var instance = {
 					scene: undefined,
