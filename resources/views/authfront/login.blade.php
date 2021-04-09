@@ -97,7 +97,7 @@
 		  <ol class="carousel-indicators">
 		    <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
 		    <li data-target="#carouselExampleFade" data-slide-to="1"></li>
-		    <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+		    <!-- <li data-target="#carouselExampleFade" data-slide-to="2"></li> -->
 		  </ol>
 		  <div class="carousel-inner">
 		    <div class="carousel-item carousel-item__bg carousel-item__bg--5 login__carousel-item--bg active">
@@ -122,7 +122,7 @@
 			  		</div>
 		  		</div>
 		    </div>
-		    <div class="carousel-item carousel-item__bg carousel-item__bg--6 login__carousel-item--bg">
+		    <!-- <div class="carousel-item carousel-item__bg carousel-item__bg--6 login__carousel-item--bg">
 					<div class="carousel-item__experimente--vertical-align">
 						<div class="carousel-item__caption">
 							<img src="{{ asset('/assets/images/icon-acervo-v2.png') }}">
@@ -132,7 +132,7 @@
 				    	</p>
 			  		</div>
 		  		</div>
-		    </div>
+		    </div> -->
 				<!-- <div class="carousel-item carousel-item__bg carousel-item__bg--5 login__carousel-item--bg active">
 						<div class="carousel-item__experimente--vertical-align">
 							<div class="carousel-item__caption">
@@ -165,11 +165,11 @@
 			<img class="img-responsive" src="{{ asset('/assets/images/diario-logo.svg') }}" height="50" />
 		</div>
 
-		<div class="experimente-content-left__login right__experimente--xs">
+		<!-- <div class="experimente-content-left__login right__experimente--xs">
 			<a href="{{ url('/')}}" class="login__back">
 				← Assine grátis por 15 dias
 			</a>
-		</div>
+		</div> -->
 
 		<div class="experimente-content-left__experimente login-content-left__experimente">
 			<div class="experimente-content-left__experimente--vertical-align login-content-left__experimente--vertical-align">
