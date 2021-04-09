@@ -104,10 +104,13 @@
 		      	<div class="carousel-item__experimente--vertical-align">
 			      	<div class="carousel-item__caption">
 			      		<img src="{{ asset('/assets/images/icon-exclusive.png') }}">
-			      		<h2 class="carousel-item__caption--title">Acesse um conteúdo exclusivo</h2>
-				    	<p class="carousel-item__caption--descriprion">
-								Direto. Claro. Simples. Como toda informação deve ser.
-				    	</p>
+			      		<h2 class="carousel-item__caption--title">
+						  Compromisso com a verdade em qualquer plataforma
+						</h2>
+				    	<!-- <p class="carousel-item__caption--descriprion">
+							Como toda informação deve ser.<br/>
+							Compromisso com a verdade em qualquer plataforma.	
+				    	</p> -->
 			  		</div>
 		  		</div>
 		    </div>
@@ -191,7 +194,7 @@
 				</form>
 			</div>
 			<div class="experimente-content-left__footer login-content-left__footer">
-				Dúvidas? Deseja assinar o Diário Digital? Entre em contato com nossa Central de Atendimento <a href="tel:+558532669191">(85) 3266-9191</a>
+				Dúvidas? Entre em contato com nossa Central de Atendimento <a href="tel:+558532669191">(85) 3266-9191</a>
 			</div>
 		</div>
 	</div>
