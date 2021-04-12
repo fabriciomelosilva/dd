@@ -1,5 +1,7 @@
 ## Instalação
 
+- laravel/framework: 5.4.
+
 - composer install
 - php artisan migrate
 - php artisan db:seed

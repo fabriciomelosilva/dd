@@ -97,17 +97,20 @@
 		  <ol class="carousel-indicators">
 		    <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
 		    <li data-target="#carouselExampleFade" data-slide-to="1"></li>
-		    <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+		    <!-- <li data-target="#carouselExampleFade" data-slide-to="2"></li> -->
 		  </ol>
 		  <div class="carousel-inner">
 		    <div class="carousel-item carousel-item__bg carousel-item__bg--5 login__carousel-item--bg active">
 		      	<div class="carousel-item__experimente--vertical-align">
 			      	<div class="carousel-item__caption">
 			      		<img src="{{ asset('/assets/images/icon-exclusive.png') }}">
-			      		<h2 class="carousel-item__caption--title">Acesse um conteúdo exclusivo</h2>
-				    	<p class="carousel-item__caption--descriprion">
-								Direto. Claro. Simples. Como toda informação deve ser.
-				    	</p>
+			      		<h2 class="carousel-item__caption--title">
+						  Compromisso com a verdade em qualquer plataforma
+						</h2>
+				    	<!-- <p class="carousel-item__caption--descriprion">
+							Como toda informação deve ser.<br/>
+							Compromisso com a verdade em qualquer plataforma.	
+				    	</p> -->
 			  		</div>
 		  		</div>
 		    </div>
@@ -122,7 +125,7 @@
 			  		</div>
 		  		</div>
 		    </div>
-		    <div class="carousel-item carousel-item__bg carousel-item__bg--6 login__carousel-item--bg">
+		    <!-- <div class="carousel-item carousel-item__bg carousel-item__bg--6 login__carousel-item--bg">
 					<div class="carousel-item__experimente--vertical-align">
 						<div class="carousel-item__caption">
 							<img src="{{ asset('/assets/images/icon-acervo-v2.png') }}">
@@ -132,7 +135,7 @@
 				    	</p>
 			  		</div>
 		  		</div>
-		    </div>
+		    </div> -->
 				<!-- <div class="carousel-item carousel-item__bg carousel-item__bg--5 login__carousel-item--bg active">
 						<div class="carousel-item__experimente--vertical-align">
 							<div class="carousel-item__caption">
@@ -165,11 +168,11 @@
 			<img class="img-responsive" src="{{ asset('/assets/images/diario-logo.svg') }}" height="50" />
 		</div>
 
-		<div class="experimente-content-left__login right__experimente--xs">
+		<!-- <div class="experimente-content-left__login right__experimente--xs">
 			<a href="{{ url('/')}}" class="login__back">
 				← Assine grátis por 15 dias
 			</a>
-		</div>
+		</div> -->
 
 		<div class="experimente-content-left__experimente login-content-left__experimente">
 			<div class="experimente-content-left__experimente--vertical-align login-content-left__experimente--vertical-align">
@@ -191,7 +194,7 @@
 				</form>
 			</div>
 			<div class="experimente-content-left__footer login-content-left__footer">
-				Dúvidas? Deseja assinar o Diário Digital? Entre em contato com nossa Central de Atendimento <a href="tel:+558532669191">(85) 3266-9191</a>
+				Dúvidas? Entre em contato com nossa Central de Atendimento <a href="tel:+558532669191">(85) 3266-9191</a>
 			</div>
 		</div>
 	</div>
