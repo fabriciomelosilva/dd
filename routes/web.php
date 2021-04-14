@@ -27,7 +27,7 @@ Route::get('/loginAssinante', 'AuthAssinantes\LoginAssinanteController@showLogin
 Route::post('/loginAssinante', 'AuthAssinantes\LoginAssinanteController@login')->name('loginAssinante');
 Route::get('/logoutAssinante', 'AuthAssinantes\LoginAssinanteController@logout');
 // Route::get('/', 'AuthAssinantes\LoginAssinanteController@experimente');
-Route::get('/', 'AuthAssinantes\LoginAssinanteController@showLoginForm')->name('loginAssinante');
+Route::get('/', 'AuthAssinantes\LoginAssinanteController@showLoginForm')->name('loginAssinanteHome');
 
 //Acesso Negado
 Route::get('/acessonegado', 'UserController@getPermissao');
